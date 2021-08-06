@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>ByteCTF2020-PT Site复现 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -279,13 +279,13 @@ ByteCTF Secret PT Server</p>
 <p>工具使用<a href="https://github.com/Aloxaf/rbkcrack/releases/tag/v0.2.1" target="_blank" rel="noopener">rbkcrack</a>，</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># 明文文件1.txt</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># 明文文件1.txt</span>
 <span class="n">亲爱的员工888888</span><span class="err">，</span><span class="n">您自助申请的PT邀请服务已受理完成</span><span class="err">，</span><span class="n">邀请链接在附件压缩包中</span><span class="err">，</span><span class="n">欢迎下次使用</span><span class="err">。</span>
 <span class="c"># 明文攻击</span>
 <span class="p">.\</span><span class="n">rbkcrack</span><span class="p">.</span><span class="n">exe</span> <span class="n">-C</span> <span class="n">crack</span><span class="p">.</span><span class="n">zip</span> <span class="n">-c</span> <span class="n">receipt</span><span class="p">.</span><span class="n">txt</span> <span class="n">-P</span> <span class="n">1</span><span class="p">.</span><span class="n">zip</span> <span class="n">-p</span> <span class="n">1</span><span class="p">.</span><span class="n">txt</span>
@@ -296,11 +296,11 @@ ByteCTF Secret PT Server</p>
 <p>后来看rbkcrack的使用文档，<code>rbkcrack -C encrypted.zip -c cipher -P plain.zip -p plain -d final -u</code>命令终于可以分离出来了。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># 还原文件</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># 还原文件</span>
 <span class="p">.\</span><span class="n">rbkcrack</span><span class="p">.</span><span class="n">exe</span> <span class="n">-C</span> <span class="n">crack</span><span class="p">.</span><span class="n">zip</span> <span class="n">-c</span> <span class="n">receipt</span><span class="p">.</span><span class="n">txt</span> <span class="n">-P</span> <span class="n">1</span><span class="p">.</span><span class="n">zip</span> <span class="n">-p</span> <span class="n">1</span><span class="p">.</span><span class="n">txt</span> <span class="n">-d</span> <span class="n">final</span><span class="p">.</span><span class="n">txt</span> <span class="n">-u</span>
 </code></pre></td></tr></table></div>
 </div>
@@ -353,7 +353,7 @@ ByteCTF 2020</p>
 <p>使用<a href="https://rapid.acg.uy/" target="_blank" rel="noopener">百度网盘秒传链接转存</a>选择<code>手动输入文件属性</code>，输入文件路径、大小、md5值、前256K的md5值。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -364,7 +364,7 @@ ByteCTF 2020</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 大小</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 大小</span>
 使用010打开损坏的mp4文件，然后右击查看属性能够看到文件字节数为 <span class="m">117910925</span>
 <span class="c1"># md5值</span>
 <span class="c1">## nfo文件内：</span>

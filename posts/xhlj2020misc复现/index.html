@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>西湖论剑2020Misc复现 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -268,10 +268,10 @@
 <p>      这道题很明显是USB流量分析，先提取流量数据：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">tshark -r game.pcap -T fields -e usb.capdata <span class="p">|</span> sed <span class="s1">&#39;/^\s*$/d&#39;</span> &gt; usbdata.txt
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">tshark -r game.pcap -T fields -e usb.capdata <span class="p">|</span> sed <span class="s1">&#39;/^\s*$/d&#39;</span> &gt; usbdata.txt
 </code></pre></td></tr></table></div>
 </div>
 </div><p>该命令可以帮助我们在提取时删去空行，然后得到提取出来的数据：</p>
@@ -315,7 +315,7 @@
 <p>      nc获取源码：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -483,7 +483,7 @@
 </span><span class="lnt">166
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">operator</span>
@@ -545,7 +545,7 @@
             <span class="n">classVotes</span><span class="p">[</span><span class="n">response</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">classVotes</span><span class="p">[</span><span class="n">response</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">sortedVotes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">classVotes</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">sortedVotes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">classVotes</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">sortedVotes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 
 
@@ -561,13 +561,13 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="n">c_p</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">pic</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Please upload right picture.&#34;</span><span class="p">)</span>
-        <span class="nb">exit</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Please upload right picture.&#34;</span><span class="p">)</span>
+        <span class="n">exit</span><span class="p">()</span>
     <span class="n">diff_pixel</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">source_p</span><span class="o">.</span><span class="n">size</span>
     <span class="k">if</span> <span class="n">c_p</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span> <span class="ow">and</span> <span class="n">c_p</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">b</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Please upload right picture size(&#34;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;,&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
-        <span class="nb">exit</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Please upload right picture size(&#34;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;,&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+        <span class="n">exit</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
             <span class="n">diff_pixel</span> <span class="o">+=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">source_p</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">-</span> <span class="n">c_p</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span>
@@ -575,52 +575,52 @@
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">134</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;      ____       __            _          _   _                _                              _   _            _                         
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">134</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;      ____       __            _          _   _                _                              _   _            _                         
 </span><span class="s1">     |  __ \     / _|          | |        | | | |              | |                            | | | |          | |                        
 </span><span class="s1">     | |__) |___| |_ ___ _ __  | |_ ___   | |_| |__   ___    __| | ___  ___ _ __    __ _ ___  | |_| |__   ___  | |__   ___  _ __ ___  ___ 
 </span><span class="s1">     |  _  // _ \  _/ _ \ &#39;__| | __/ _ \  | __| &#39;_ \ / _ \  / _` |/ _ \/ _ \ &#39;__|  / _` / __| | __| &#39;_ \ / _ \ | &#39;_ \ / _ \| &#39;__/ __|/ _ </span><span class="se">\\</span><span class="s1">
 </span><span class="s1">     | | \ \  __/ ||  __/ |    | || (_) | | |_| | | |  __/ | (_| |  __/  __/ |    | (_| \__ \ | |_| | | |  __/ | | | | (_) | |  \__ \  __/
 </span><span class="s1">     |_|  \_\___|_| \___|_|     \__\___/   \__|_| |_|\___|  \__,_|\___|\___|_|     \__,_|___/  \__|_| |_|\___| |_| |_|\___/|_|  |___/\___|
 </span><span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">134</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">1.show source code&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">2.give me the source pictures&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">3.upload picture&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">4.exit&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">134</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">1.show source code&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">2.give me the source pictures&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">3.upload picture&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">4.exit&#39;</span><span class="p">)</span>
         <span class="n">choose</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">choose</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
             <span class="n">w</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;run.py&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
             <span class="k">continue</span>
         <span class="k">elif</span> <span class="n">choose</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;this is horse`s picture:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;this is horse`s picture:&#39;</span><span class="p">)</span>
             <span class="n">h</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;horse.png&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">134</span><span class="p">)</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;this is deer`s picture:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">134</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;this is deer`s picture:&#39;</span><span class="p">)</span>
             <span class="n">d</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;deer.png&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
             <span class="k">continue</span>
         <span class="k">elif</span> <span class="n">choose</span> <span class="o">==</span> <span class="s1">&#39;4&#39;</span><span class="p">:</span>
             <span class="k">break</span>
         <span class="k">elif</span> <span class="n">choose</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Please input your deer picture`s base64(Preferably in png format)&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Please input your deer picture`s base64(Preferably in png format)&#39;</span><span class="p">)</span>
             <span class="n">pic</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">pic</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">pic</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span>
-                <span class="nb">exit</span><span class="p">()</span>
+                <span class="n">exit</span><span class="p">()</span>
             <span class="k">if</span> <span class="sa">b</span><span class="s2">&#34;&lt;?php&#34;</span> <span class="ow">in</span> <span class="n">pic</span> <span class="ow">or</span> <span class="sa">b</span><span class="s1">&#39;eval&#39;</span> <span class="ow">in</span> <span class="n">pic</span><span class="p">:</span>
-                <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Hacker!!This is not WEB,It`s Just a misc!!!&#34;</span><span class="p">)</span>
-                <span class="nb">exit</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Hacker!!This is not WEB,It`s Just a misc!!!&#34;</span><span class="p">)</span>
+                <span class="n">exit</span><span class="p">()</span>
             <span class="n">salt</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
             <span class="n">pic_name</span> <span class="o">=</span> <span class="s1">&#39;tmp_&#39;</span><span class="o">+</span><span class="n">salt</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span>
             <span class="n">tmp_pic</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">pic_name</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span>
             <span class="n">tmp_pic</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pic</span><span class="p">)</span>
             <span class="n">tmp_pic</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">pic_name</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">100000</span><span class="p">:</span>
-                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Don`t give me the horse source picture!!!&#39;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Don`t give me the horse source picture!!!&#39;</span><span class="p">)</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">pic_name</span><span class="p">)</span>
                 <span class="k">break</span>
             <span class="n">ma</span> <span class="o">=</span> <span class="n">load_horse</span><span class="p">()</span>
@@ -632,20 +632,20 @@
             <span class="n">result</span> <span class="o">=</span> <span class="n">getResponse</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">repr</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;clear&#39;</span><span class="p">)</span>
-                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Yes,I want this horse like deer,here is your flag encoded by base64&#39;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Yes,I want this horse like deer,here is your flag encoded by base64&#39;</span><span class="p">)</span>
                 <span class="n">flag</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;flag&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
                 <span class="c1"># flag</span>
-                <span class="k">print</span><span class="p">(</span><span class="n">flag</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">pic_name</span><span class="p">)</span>
                 <span class="k">break</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;I want horse but not deer!!!&#39;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I want horse but not deer!!!&#39;</span><span class="p">)</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">pic_name</span><span class="p">)</span>
                 <span class="k">break</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;wrong choose!!!&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;wrong choose!!!&#39;</span><span class="p">)</span>
             <span class="k">break</span>
-    <span class="nb">exit</span><span class="p">()</span>
+    <span class="n">exit</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
@@ -655,7 +655,7 @@
 <p>贴一下官网脚本：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -688,7 +688,7 @@
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/env python</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># coding: utf-8</span>
 
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>

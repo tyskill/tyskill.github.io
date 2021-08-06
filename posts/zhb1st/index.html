@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.83.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,7 +14,7 @@
 
     <title>[BUUOJ]纵横杯1st线下赛复现 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.09e7384df2ebf8f7760291a0d443770f44b39f5563546dd950293ed79e8d779b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
 
     
     
@@ -267,7 +267,7 @@
 <p><code>$_FILES(upload.php: 1090行)</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -290,7 +290,7 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">get_upload_data</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">get_upload_data</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="o">@</span><span class="nv">$_FILES</span><span class="p">[</span><span class="nv">$id</span><span class="p">];</span>
 <span class="p">}</span>
 <span class="c1">// 
@@ -316,7 +316,7 @@
 </div><p><code>处理上传文件(upload.php: 1024行)</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -335,7 +335,7 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">if</span> <span class="p">(</span><span class="nv">$uploaded_file</span> <span class="o">&amp;&amp;</span> <span class="nx">is_uploaded_file</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$content_range</span><span class="p">)</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">if</span> <span class="p">(</span><span class="nv">$uploaded_file</span> <span class="o">&amp;&amp;</span> <span class="nx">is_uploaded_file</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$content_range</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$append_file</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">file_put_contents</span><span class="p">(</span>
             <span class="nv">$file_path</span><span class="p">,</span>
@@ -358,7 +358,7 @@
 <p>很明显，<code>get_upload_data</code>函数就是负责传回上传文件的信息数组，那我们先本地传文件尝试一下，将index.php修改为(其他方法也行)</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -380,7 +380,7 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
 	<span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">upload</span><span class="o">&lt;/</span><span class="nx">title</span><span class="o">&gt;</span>
@@ -406,13 +406,13 @@
 <p>将目光聚焦于1056行的代码</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$content_range</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">[</span><span class="s1">&#39;discard_aborted_uploads&#39;</span><span class="p">])</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$content_range</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">[</span><span class="s1">&#39;discard_aborted_uploads&#39;</span><span class="p">])</span> <span class="p">{</span>
     <span class="nx">unlink</span><span class="p">(</span><span class="nv">$file_path</span><span class="p">);</span>
     <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">error</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get_error_message</span><span class="p">(</span><span class="s1">&#39;abort&#39;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -422,12 +422,12 @@
 <p>那这个变量是什么呢？跳到1281行</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$content_range_header</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get_server_var</span><span class="p">(</span><span class="s1">&#39;HTTP_CONTENT_RANGE&#39;</span><span class="p">);</span> <span class="c1">// $_SERVER[&#39;HTTP_CONTENT_RANGE&#39;]
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nv">$content_range_header</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get_server_var</span><span class="p">(</span><span class="s1">&#39;HTTP_CONTENT_RANGE&#39;</span><span class="p">);</span> <span class="c1">// $_SERVER[&#39;HTTP_CONTENT_RANGE&#39;]
 </span><span class="c1"></span><span class="nv">$content_range</span> <span class="o">=</span> <span class="nv">$content_range_header</span> <span class="o">?</span>
     <span class="nx">preg_split</span><span class="p">(</span><span class="s1">&#39;/[^0-9]+/&#39;</span><span class="p">,</span> <span class="nv">$content_range_header</span><span class="p">)</span> <span class="o">:</span> <span class="k">null</span><span class="p">;</span>
 </code></pre></td></tr></table></div>
@@ -437,7 +437,7 @@
 <p>exp</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -445,7 +445,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">io</span>
 <span class="n">target</span> <span class="o">=</span> <span class="s2">&#34;http://d33bd228-368f-4581-93d1-9d54451a30bf.node3.buuoj.cn/&#34;</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&#34;Content-Range&#34;</span><span class="p">:</span> <span class="s2">&#34;bytes 0-1023/1070&#34;</span> <span class="p">}</span>
@@ -459,21 +459,21 @@
 <p><code>routes/api.php</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;check/{id}&#39;</span><span class="p">,</span><span class="s1">&#39;CheckController@index&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;[0-9]+&#39;</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;check/{id}&#39;</span><span class="p">,</span><span class="s1">&#39;CheckController@index&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;[0-9]+&#39;</span><span class="p">);</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p><code>routes/web.php</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;HomeController@index&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;HomeController@index&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">);</span>
 <span class="nx">Route</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/sendmessage/{postid}&#39;</span><span class="p">,</span><span class="s1">&#39;HomeController@sendme&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;postid&#39;</span><span class="p">,</span> <span class="s1">&#39;[0-9]+&#39;</span><span class="p">);</span>
 <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/viewed/{id}&#39;</span><span class="p">,</span><span class="s1">&#39;HomeController@viewed&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;[0-9]+&#39;</span><span class="p">);</span>
 </code></pre></td></tr></table></div>
@@ -481,7 +481,7 @@
 </div><p>api先不管，<code>web.php</code>三个路由都用到了控制器<strong>HomeController</strong>，去<code>app/Http/Controllers/HomeController.php</code>看看</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -526,7 +526,7 @@
 </span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">class</span> <span class="nc">HomeController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">class</span> <span class="nc">HomeController</span> <span class="k">extends</span> <span class="nx">Controller</span>
 <span class="p">{</span>
     <span class="sd">/**
 </span><span class="sd">     * Create a new controller instance.
@@ -574,7 +574,7 @@
 </div><p>需要经过鉴权，而我们又不知道email和password，所以只能从<code>api.php</code>提供的check路由入手，查看CheckController控制器了解路由功能</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -584,7 +584,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">class</span> <span class="nc">CheckController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">class</span> <span class="nc">CheckController</span> <span class="k">extends</span> <span class="nx">Controller</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
     <span class="p">{</span>
@@ -598,10 +598,10 @@
 <p>参考<a href="https://laravelacademy.org/post/21970" target="_blank" rel="noopener">https://laravelacademy.org/post/21970</a>访问<code>/api/check/{id}</code>进行爆破，但是laravel限制api请求频率就很难受。。。所以从另一个方面开搞，laravel.log保存操作日志，从中可以找到<code>&quot;userId&quot;:1639</code>，成功获得用户信息</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="nt">&#34;id&#34;</span><span class="p">:</span><span class="mi">1639</span><span class="p">,</span><span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;adminzhtt1m&#34;</span><span class="p">,</span><span class="nt">&#34;email&#34;</span><span class="p">:</span><span class="s2">&#34;adminzhtt1@aa.com&#34;</span><span class="p">,</span><span class="nt">&#34;email_verified_at&#34;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="nt">&#34;password&#34;</span><span class="p">:</span><span class="s2">&#34;$2y$10$RSqYBW6k6gyBpOr6ECDZhOiC026moyKFSvA5OV2DFqUbgZonWi2gG&#34;</span><span class="p">,</span><span class="nt">&#34;remember_token&#34;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="nt">&#34;created_at&#34;</span><span class="p">:</span><span class="s2">&#34;2020-12-17 14:55:51&#34;</span><span class="p">,</span><span class="nt">&#34;updated_at&#34;</span><span class="p">:</span><span class="s2">&#34;2020-12-17 14:55:51&#34;</span><span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="nt">&#34;id&#34;</span><span class="p">:</span><span class="mi">1639</span><span class="p">,</span><span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;adminzhtt1m&#34;</span><span class="p">,</span><span class="nt">&#34;email&#34;</span><span class="p">:</span><span class="s2">&#34;adminzhtt1@aa.com&#34;</span><span class="p">,</span><span class="nt">&#34;email_verified_at&#34;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="nt">&#34;password&#34;</span><span class="p">:</span><span class="s2">&#34;$2y$10$RSqYBW6k6gyBpOr6ECDZhOiC026moyKFSvA5OV2DFqUbgZonWi2gG&#34;</span><span class="p">,</span><span class="nt">&#34;remember_token&#34;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="nt">&#34;created_at&#34;</span><span class="p">:</span><span class="s2">&#34;2020-12-17 14:55:51&#34;</span><span class="p">,</span><span class="nt">&#34;updated_at&#34;</span><span class="p">:</span><span class="s2">&#34;2020-12-17 14:55:51&#34;</span><span class="p">}</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>但是password是加密过的，所以拼字典的时候到了，密码是<code>admin888</code></p>

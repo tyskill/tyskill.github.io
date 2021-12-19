@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -275,7 +275,7 @@
 </blockquote>
 <p>Cao了，这道题连方向都错了，嘤嘤嘤好菜啊😭。。。</p>
 <p>随便传一个<code>print(&quot;Hello World!&quot;)</code>执行返回</p>
-<pre><code>[-] Are you fucking kidding me? I don't know anything other than print and # !
+<pre tabindex="0"><code>[-] Are you fucking kidding me? I don't know anything other than print and # !
 </code></pre><p>触发了WAF，也就是只能靠<code>print</code>和<code>#</code>，且不能在同一行，具体还是没啥思路，就fuzz一下，发现print内部只能使用大小写字母，#倒可以为所欲为。没思路，然后我就开始找php除了命令行执行python文件，是不是有什么特别的模块漏洞，一入脑洞深似海。。。</p>
 <p>有一个解是通过python声明编码方式<code>raw_unicode_escape</code>从而实现Unicode解析字符逃逸危险代码，接下来就来试图理解一下大佬的思路：</p>
 <p>python常用的header声明有解释器声明和编码声明，如下所示：</p>
@@ -322,7 +322,7 @@
 </blockquote>
 <h3 id="解题过程"><a href="#解题过程" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:解题过程" class="headings">解题过程</a></h3>
 <p>既然是mysql8，那肯定要用到Table语句了，fuzz一下发现<code>\</code>或<code>'</code>时回显报错信息</p>
-<pre><code>Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '123'' at line 1
+<pre tabindex="0"><code>Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '123'' at line 1
 </code></pre><p>被ban字符</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210714220312.png" alt=""></p>
 <p>接下来注入，参考<a href="https://www.anquanke.com/post/id/231627" target="_blank" rel="noopener">浅谈利用mysql8新特性进行SQL注入</a>修改脚本注入即可（不会用脚本，是我太菜了。。。）</p>

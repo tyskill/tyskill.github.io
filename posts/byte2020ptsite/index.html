@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -272,7 +272,7 @@
 <p>      根据<code>使用帮助</code>的文档，我们可以获得一个等级为Peasant的帐号<code>888888</code>，且文档透露了<code>receipt.txt</code>文件的内容：(此处以帐号888888为例，账号取决于你获取链接时输入的员工账号)</p>
 <blockquote>
 <p>亲爱的员工888888，您自助申请的PT邀请服务已受理完成，邀请链接在附件压缩包中，欢迎下次使用。</p>
-<p>申请编号：202009293667<br>
+<p>申请编号：202009293667 <br>
 ByteCTF Secret PT Server</p>
 </blockquote>
 <p>      已知zip解密后的内容，我们可以想到<code>zip明文攻击</code>。<a href="https://lazzzaro.github.io/2020/09/26/match-CTFshow-%E6%9C%88%E9%A5%BC%E6%9D%AF/#misc2-%E6%B4%97%E5%AF%B0%E7%80%9B" target="_blank" rel="noopener">https://lazzzaro.github.io/2020/09/26/match-CTFshow-%E6%9C%88%E9%A5%BC%E6%9D%AF/#misc2-%E6%B4%97%E5%AF%B0%E7%80%9B</a>这道题的考点就是zip明文攻击，原理文章中也有叙述。</p>
@@ -312,12 +312,12 @@ ByteCTF Secret PT Server</p>
 <p><strong>receipt.txt</strong></p>
 <blockquote>
 <p>亲爱的员工888888，您自助申请的PT邀请服务已受理完成，邀请链接在附件压缩包中，欢迎下次使用。</p>
-<p>申请编号：202010298688<br>
+<p>申请编号：202010298688 <br>
 ByteCTF Secret PT Server</p>
 </blockquote>
 <p>访问链接地址进行注册，然后登录，在<code>论坛</code>功能面板处存在一个帖子需要<code>Elite User</code>才能查看。寻找提升等级的办法，在<code>常见问题</code>面板处找到</p>
 <blockquote>
-<p>Elite User:<br>
+<p>Elite User: <br>
 必须注册至少0周，并且下载至少120G，分享率大于1.55。<br>
 当条件符合时将被自动提升。注意，无论何时，如果你的分享率低于1.45，你将自动降级。</p>
 </blockquote>

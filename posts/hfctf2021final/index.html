@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -387,7 +387,7 @@
 </div>
 </div><p>通过简单的审计我们可以发现<code>/file</code>路由存在任意文件读(<code>os.path.join</code>函数在接收绝对路径时会抛弃前面添加的路径)，剩下的考点应该是pickle反序列化RCE</p>
 <p><code>/proc/self/environ</code></p>
-<pre><code>HOSTNAME=99d252572f0c
+<pre tabindex="0"><code>HOSTNAME=99d252572f0c
 PYTHON_VERSION=3.8.2
 PWD=/app
 _=/usr/local/bin/python3

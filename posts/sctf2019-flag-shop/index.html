@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -266,9 +266,9 @@
               <h2 id="解题过程"><a href="#解题过程" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:解题过程" class="headings">解题过程</a></h2>
 <p> ​ ​ ​ ​ ​ 看到题目关键字<strong>shop</strong>，怀疑需要抓包修改money进行购买，而金额一般通过加密隐藏在cookie字段中，接下来就着重观察cookie字段。</p>
 <p> ​ ​ ​ ​ ​ 抓包得到cookie字段，</p>
-<pre><code class="language-cookie" data-lang="cookie">auth=eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJmNGE3OWEyMy05YjA4LTRhZDUtODgyMS05YzEzY2M1MDdmYWIiLCJqa2wiOjMwfQ.ex-ThOTfqKGa3TqShqqkU-aF2VhY6i9KJaddUao7mW4
+<pre tabindex="0"><code class="language-cookie" data-lang="cookie">auth=eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJmNGE3OWEyMy05YjA4LTRhZDUtODgyMS05YzEzY2M1MDdmYWIiLCJqa2wiOjMwfQ.ex-ThOTfqKGa3TqShqqkU-aF2VhY6i9KJaddUao7mW4
 </code></pre><p>很可疑，看着像JWT，于是拿到<a href="https://jwt.io/" target="_blank" rel="noopener">解密网站</a>看看。</p>
-<p><img src="https://gitee.com/tyskill/ImageHost/raw/master/img/20210125152111.png" style="zoom: 80%;" /></p>
+<img src="https://gitee.com/tyskill/ImageHost/raw/master/img/20210125152111.png" style="zoom: 80%;" />
 <p>接下来就直接jwtcracker爆破，半个小时过去了。。。除了风扇狂笑(，我一无所获，无计可施的我只能直接跟着大佬wp走，没想到第一步就懵逼了。</p>
 <p>？？？为什么要robots.txt，又是脑洞吗(还是我太菜了...)，想了想参加过的比赛都规定不需要用扫描器，也就没往这方面想，下次一定。</p>
 <p>访问robots.txt得到一个文件地址<code>/filebak</code>，访问得到源码：</p>
@@ -452,20 +452,20 @@
 </div>
 </div><p>ruby源码(这不是欺负人吗)，不会，果断放弃审计，直接下一步--erb模板注入。</p>
 <p>知道了模板注入之后我们可以尝试着审计一下源码，结合以前做题的经验，<code>ENV[&quot;SECRET&quot;]</code>应该是我们注入的目标，<code>#{params[:SECRET].match(/[0-9a-z]+/)}</code>和<code>#{params[:name][0,7]}</code>可能是我们模板注入的利用点，因为这些都是我们可控的字符，百度到erb常用模板注入payload<code>&lt;%=攻击字段%&gt;</code>，但是具体利用还是不会。</p>
-<p><img src="https://gitee.com/tyskill/ImageHost/raw/master/img/20210125152146.png"  /></p>
+<img src="https://gitee.com/tyskill/ImageHost/raw/master/img/20210125152146.png"  />
 <p>依照wp所说，在/work路由中，<code>[0,7]</code>应该是我们通过GET传递的name字段的长度，且<code>ENV[&quot;SECRET&quot;].match(&quot;#{params[:SECRET].match(/[0-9a-z]+/)}&quot;)</code>的作用是对密钥正则。</p>
 <p>于是，新的姿势出现了--<strong>用ruby的预定义字符$对匹配的字符串读取secret</strong>(ruby的特性：<a href="https://docs.ruby-lang.org/en/2.4.0/globals_rdoc.html" target="_blank" rel="noopener">预定义变量</a>)，
 构造payload：</p>
-<pre><code class="language-payload" data-lang="payload">/work?SECRET=&amp;name=%3c%25%3d%24%27%25%3e&amp;do=%3c%25%3d%24%27%25%3e%20is%20working
+<pre tabindex="0"><code class="language-payload" data-lang="payload">/work?SECRET=&amp;name=%3c%25%3d%24%27%25%3e&amp;do=%3c%25%3d%24%27%25%3e%20is%20working
 </code></pre><p>分析一下这个payload：</p>
 <ol>
 <li><code>ENV[&quot;SECRET&quot;].match(&quot;#{params[:SECRET].match(/[0-9a-z]+/)}&quot;)</code>正则判断上传的SECRET字段不能包含pattern中的内容，因此这里选择了传递空字符。</li>
 <li><code>params[:do] == &quot;#{params[:name][0,7]} is working&quot;</code>判断上传的do字段和name字段是否相同，而我们构造 <code>&lt;%=$'%&gt;</code>，根据<code>$'-最后一次成功匹配右侧的字符串</code>的作用，我们使name和do成功匹配，上传时要urlencode。</li>
 </ol>
 <p>获得密钥secret：</p>
-<pre><code class="language-secret" data-lang="secret">90b980318681b75c0ace1d7916d53d14ba419244b27d1f8b68ea3482889f9d9f8e013c7a021b4f119998f1e4d2b194062ea963e17606a52f0eb3bcc3bc77d655
+<pre tabindex="0"><code class="language-secret" data-lang="secret">90b980318681b75c0ace1d7916d53d14ba419244b27d1f8b68ea3482889f9d9f8e013c7a021b4f119998f1e4d2b194062ea963e17606a52f0eb3bcc3bc77d655
 </code></pre><p>构造cookie：</p>
-<p><img src="https://gitee.com/tyskill/ImageHost/raw/master/img/20210125152209.png" style="zoom: 50%;" /></p>
+<img src="https://gitee.com/tyskill/ImageHost/raw/master/img/20210125152209.png" style="zoom: 50%;" />
 <p>提交回显新cookie，JWT解码得flag。</p>
 <h2 id="总结"><a href="#总结" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:总结" class="headings">总结</a></h2>
 <ol>

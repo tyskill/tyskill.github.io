@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -519,7 +519,7 @@
 </div>
 </div><p>生成的payload传入反序列化点，bp爆破，然后再开一个访问<code>hack.php</code>的任务，把线程调整到10~20即可</p>
 <p>接着就可以看到phpinfo了</p>
-<pre><code># disable_functions
+<pre tabindex="0"><code># disable_functions
 pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_get_handler,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,pcntl_async_signals,pcntl_unshare
 </code></pre><p>很明显这里ban的都是什么用不到的函数，所以system在没有特别标注waf的情况下可以使用。后面就是寻找RCE，看着就觉得waf很麻烦，导致卡了很久，后来想到动态调用函数就去找可以绕waf的编码（system支持动态调用），结果编码没找到，找到了字符串倒序函数<code>strrev</code>，最后payload<code>strrev('metsys')('cat /*');</code>条件竞争读flag</p>
 

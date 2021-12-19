@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -297,7 +297,7 @@
 </blockquote>
 <p>有waf。那在vps上试试，向vps发起请求，观察请求头：</p>
 <blockquote>
-<p>User-Agent: scrapy_redis<br>
+<p>User-Agent: scrapy_redis <br>
 User-Agent: PycURL/7.43.0.6 libcurl/7.64.0 OpenSSL/1.1.1d zlib/1.2.11 libidn2/2.0.5 libpsl/0.20.2 (+libidn2/2.0.5) libssh2/1.8.0 nghttp2/1.36.0 librtmp/2.3</p>
 </blockquote>
 <p>发起两次请求，两次请求的UA分别是上面的<code>redis</code>和<code>pycurl</code>， redis打了没回显，放弃。</p>

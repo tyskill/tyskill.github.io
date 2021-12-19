@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -824,9 +824,9 @@
 </div>
 </div><p>可以看到抽奖人信息被保存在<code>$serilized</code>变量中，然后加密，加密方法是<strong>MCRYPT_RIJNDAEL_256加密</strong>，是以256位为一个块，即32字节。</p>
 <p><strong>加密流程</strong>(例)：</p>
-<pre><code>{&quot;lottery&quot;:&quot;48e51545-cfd3-4d2e-8ea4-851c945b5faf&quot;,&quot;user&quot;:&quot;0123ff93-c230-49b9-b078-5d205247c5a8&quot;,&quot;coin&quot;:81}
+<pre tabindex="0"><code>{&quot;lottery&quot;:&quot;48e51545-cfd3-4d2e-8ea4-851c945b5faf&quot;,&quot;user&quot;:&quot;0123ff93-c230-49b9-b078-5d205247c5a8&quot;,&quot;coin&quot;:81}
 </code></pre><p>按照32字节的分组后结构如下</p>
-<pre><code>{&quot;lottery&quot;:&quot;48e51545-cfd3-4d2e-8
+<pre tabindex="0"><code>{&quot;lottery&quot;:&quot;48e51545-cfd3-4d2e-8
 ea4-851c945b5faf&quot;,&quot;user&quot;:&quot;0123ff
 93-c230-49b9-b078-5d205247c5a8&quot;,
 &quot;coin&quot;:81}AAAAAAAAAAAAAAAAAAAAAA(不足位填充)

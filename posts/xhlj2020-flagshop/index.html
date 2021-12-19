@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -407,7 +407,7 @@
 </div>
 </div><p>得到函数偏移地址：</p>
 <blockquote>
-<p>1337: 0000000000046590    45 FUNC    WEAK   DEFAULT   12 system@@GLIBC_2.2.5<br>
+<p>1337: 0000000000046590    45 FUNC    WEAK   DEFAULT   12 system@@GLIBC_2.2.5 <br>
 1681: 00000000000ef160    90 FUNC    WEAK   DEFAULT   12 open@@GLIBC_2.2.5</p>
 </blockquote>
 <p>对于为什么<code>0x7ffff5f40000</code>是system函数的起始地址？我的理解是：这个内存拥有可执行权限<code>r-xp</code>，而其他三个并没有，因此这个内存地址是system函数的起始地址。</p>

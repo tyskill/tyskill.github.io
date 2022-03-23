@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -362,93 +362,93 @@
 </span><span class="lnt">86
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;sinatra&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;sinatra/cookies&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;sinatra/json&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;jwt&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;securerandom&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;erb&#39;</span>
-
-<span class="n">set</span> <span class="ss">:public_folder</span><span class="p">,</span> <span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/static&#39;</span>
-
-<span class="no">FLAGPRICE</span> <span class="o">=</span> <span class="mi">1000000000000000000000000000</span>
-<span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="o">=</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">hex</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
-
-<span class="n">configure</span> <span class="k">do</span>
-  <span class="n">enable</span> <span class="ss">:logging</span>
-  <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/../log/http.log&#39;</span><span class="p">,</span><span class="s2">&#34;a+&#34;</span><span class="p">)</span>
-  <span class="n">file</span><span class="o">.</span><span class="n">sync</span> <span class="o">=</span> <span class="kp">true</span>
-  <span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">CommonLogger</span><span class="p">,</span> <span class="n">file</span>
-<span class="k">end</span>
-
-<span class="n">get</span> <span class="s2">&#34;/&#34;</span> <span class="k">do</span>
-  <span class="n">redirect</span> <span class="s1">&#39;/shop&#39;</span><span class="p">,</span> <span class="mi">302</span>
-<span class="k">end</span>
-
-<span class="n">get</span> <span class="s2">&#34;/filebak&#34;</span> <span class="k">do</span>
-  <span class="n">content_type</span> <span class="ss">:text</span>
-  <span class="n">erb</span> <span class="no">IO</span><span class="o">.</span><span class="n">binread</span> <span class="bp">__FILE__</span>
-<span class="k">end</span>
-
-<span class="n">get</span> <span class="s2">&#34;/api/auth&#34;</span> <span class="k">do</span>
-  <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">uid</span><span class="p">:</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">uuid</span> <span class="p">,</span> <span class="ss">jkl</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-  <span class="n">auth</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">.</span><span class="n">encode</span> <span class="n">payload</span><span class="p">,</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="p">,</span> <span class="s1">&#39;HS256&#39;</span>
-  <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">]</span> <span class="o">=</span> <span class="n">auth</span>
-<span class="k">end</span>
-
-<span class="n">get</span> <span class="s2">&#34;/api/info&#34;</span> <span class="k">do</span>
-  <span class="n">islogin</span>
-  <span class="n">auth</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">.</span><span class="n">decode</span> <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">]</span><span class="p">,</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="p">{</span> <span class="ss">algorithm</span><span class="p">:</span> <span class="s1">&#39;HS256&#39;</span> <span class="p">}</span>
-  <span class="n">json</span><span class="p">({</span><span class="ss">uid</span><span class="p">:</span> <span class="n">auth</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="s2">&#34;uid&#34;</span><span class="o">]</span><span class="p">,</span><span class="ss">jkl</span><span class="p">:</span> <span class="n">auth</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="s2">&#34;jkl&#34;</span><span class="o">]</span><span class="p">})</span>
-<span class="k">end</span>
-
-<span class="n">get</span> <span class="s2">&#34;/shop&#34;</span> <span class="k">do</span>
-  <span class="n">erb</span> <span class="ss">:shop</span>
-<span class="k">end</span>
-
-<span class="n">get</span> <span class="s2">&#34;/work&#34;</span> <span class="k">do</span>
-  <span class="n">islogin</span>
-  <span class="n">auth</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">.</span><span class="n">decode</span> <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">]</span><span class="p">,</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="p">{</span> <span class="ss">algorithm</span><span class="p">:</span> <span class="s1">&#39;HS256&#39;</span> <span class="p">}</span>
-  <span class="n">auth</span> <span class="o">=</span> <span class="n">auth</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
-  <span class="k">unless</span> <span class="n">params</span><span class="o">[</span><span class="ss">:SECRET</span><span class="o">].</span><span class="n">nil?</span>
-    <span class="k">if</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">].</span><span class="n">match</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">#{</span><span class="n">params</span><span class="o">[</span><span class="ss">:SECRET</span><span class="o">].</span><span class="n">match</span><span class="p">(</span><span class="sr">/[0-9a-z]+/</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-      <span class="nb">puts</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;FLAG&#34;</span><span class="o">]</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-
-  <span class="k">if</span> <span class="n">params</span><span class="o">[</span><span class="ss">:do</span><span class="o">]</span> <span class="o">==</span> <span class="s2">&#34;</span><span class="si">#{</span><span class="n">params</span><span class="o">[</span><span class="ss">:name</span><span class="o">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="o">]</span><span class="si">}</span><span class="s2"> is working&#34;</span> <span class="k">then</span>
-
-    <span class="n">auth</span><span class="o">[</span><span class="s2">&#34;jkl&#34;</span><span class="o">]</span> <span class="o">=</span> <span class="n">auth</span><span class="o">[</span><span class="s2">&#34;jkl&#34;</span><span class="o">].</span><span class="n">to_i</span> <span class="o">+</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">random_number</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">auth</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">.</span><span class="n">encode</span> <span class="n">auth</span><span class="p">,</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="p">,</span> <span class="s1">&#39;HS256&#39;</span>
-    <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">]</span> <span class="o">=</span> <span class="n">auth</span>
-    <span class="no">ERB</span><span class="o">::</span><span class="kp">new</span><span class="p">(</span><span class="s2">&#34;&lt;script&gt;alert(&#39;</span><span class="si">#{</span><span class="n">params</span><span class="o">[</span><span class="ss">:name</span><span class="o">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="o">]</span><span class="si">}</span><span class="s2"> working successfully!&#39;)&lt;/script&gt;&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">result</span>
-
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="n">post</span> <span class="s2">&#34;/shop&#34;</span> <span class="k">do</span>
-  <span class="n">islogin</span>
-  <span class="n">auth</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">.</span><span class="n">decode</span> <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">]</span><span class="p">,</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="p">{</span> <span class="ss">algorithm</span><span class="p">:</span> <span class="s1">&#39;HS256&#39;</span> <span class="p">}</span>
-
-  <span class="k">if</span> <span class="n">auth</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="s2">&#34;jkl&#34;</span><span class="o">]</span> <span class="o">&lt;</span> <span class="no">FLAGPRICE</span> <span class="k">then</span>
-
-    <span class="n">json</span><span class="p">({</span><span class="ss">title</span><span class="p">:</span> <span class="s2">&#34;error&#34;</span><span class="p">,</span><span class="ss">message</span><span class="p">:</span> <span class="s2">&#34;no enough jkl&#34;</span><span class="p">})</span>
-  <span class="k">else</span>
-
-    <span class="n">auth</span> <span class="o">&lt;&lt;</span> <span class="p">{</span><span class="ss">flag</span><span class="p">:</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;FLAG&#34;</span><span class="o">]</span><span class="p">}</span>
-    <span class="n">auth</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">.</span><span class="n">encode</span> <span class="n">auth</span><span class="p">,</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="p">,</span> <span class="s1">&#39;HS256&#39;</span>
-    <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">]</span> <span class="o">=</span> <span class="n">auth</span>
-    <span class="n">json</span><span class="p">({</span><span class="ss">title</span><span class="p">:</span> <span class="s2">&#34;success&#34;</span><span class="p">,</span><span class="ss">message</span><span class="p">:</span> <span class="s2">&#34;jkl is good thing&#34;</span><span class="p">})</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-
-<span class="k">def</span> <span class="nf">islogin</span>
-  <span class="k">if</span> <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">].</span><span class="n">nil?</span> <span class="k">then</span>
-    <span class="n">redirect</span> <span class="n">to</span><span class="p">(</span><span class="s1">&#39;/shop&#39;</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;sinatra&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;sinatra/cookies&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;sinatra/json&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;jwt&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;securerandom&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;erb&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="ss">:public_folder</span><span class="p">,</span> <span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/static&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="no">FLAGPRICE</span> <span class="o">=</span> <span class="mi">1000000000000000000000000000</span>
+</span></span><span class="line"><span class="cl"><span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="o">=</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">hex</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">configure</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">enable</span> <span class="ss">:logging</span>
+</span></span><span class="line"><span class="cl">  <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/../log/http.log&#39;</span><span class="p">,</span><span class="s2">&#34;a+&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">file</span><span class="o">.</span><span class="n">sync</span> <span class="o">=</span> <span class="kp">true</span>
+</span></span><span class="line"><span class="cl">  <span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">CommonLogger</span><span class="p">,</span> <span class="n">file</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;/&#34;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">redirect</span> <span class="s1">&#39;/shop&#39;</span><span class="p">,</span> <span class="mi">302</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;/filebak&#34;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">content_type</span> <span class="ss">:text</span>
+</span></span><span class="line"><span class="cl">  <span class="n">erb</span> <span class="no">IO</span><span class="o">.</span><span class="n">binread</span> <span class="bp">__FILE__</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;/api/auth&#34;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">uid</span><span class="p">:</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">uuid</span> <span class="p">,</span> <span class="ss">jkl</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">auth</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">.</span><span class="n">encode</span> <span class="n">payload</span><span class="p">,</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="p">,</span> <span class="s1">&#39;HS256&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">]</span> <span class="o">=</span> <span class="n">auth</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;/api/info&#34;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">islogin</span>
+</span></span><span class="line"><span class="cl">  <span class="n">auth</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">.</span><span class="n">decode</span> <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">]</span><span class="p">,</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="p">{</span> <span class="ss">algorithm</span><span class="p">:</span> <span class="s1">&#39;HS256&#39;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">json</span><span class="p">({</span><span class="ss">uid</span><span class="p">:</span> <span class="n">auth</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="s2">&#34;uid&#34;</span><span class="o">]</span><span class="p">,</span><span class="ss">jkl</span><span class="p">:</span> <span class="n">auth</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="s2">&#34;jkl&#34;</span><span class="o">]</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;/shop&#34;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">erb</span> <span class="ss">:shop</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;/work&#34;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">islogin</span>
+</span></span><span class="line"><span class="cl">  <span class="n">auth</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">.</span><span class="n">decode</span> <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">]</span><span class="p">,</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="p">{</span> <span class="ss">algorithm</span><span class="p">:</span> <span class="s1">&#39;HS256&#39;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">auth</span> <span class="o">=</span> <span class="n">auth</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="k">unless</span> <span class="n">params</span><span class="o">[</span><span class="ss">:SECRET</span><span class="o">].</span><span class="n">nil?</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">].</span><span class="n">match</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">#{</span><span class="n">params</span><span class="o">[</span><span class="ss">:SECRET</span><span class="o">].</span><span class="n">match</span><span class="p">(</span><span class="sr">/[0-9a-z]+/</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">puts</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;FLAG&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="n">params</span><span class="o">[</span><span class="ss">:do</span><span class="o">]</span> <span class="o">==</span> <span class="s2">&#34;</span><span class="si">#{</span><span class="n">params</span><span class="o">[</span><span class="ss">:name</span><span class="o">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="o">]</span><span class="si">}</span><span class="s2"> is working&#34;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">auth</span><span class="o">[</span><span class="s2">&#34;jkl&#34;</span><span class="o">]</span> <span class="o">=</span> <span class="n">auth</span><span class="o">[</span><span class="s2">&#34;jkl&#34;</span><span class="o">].</span><span class="n">to_i</span> <span class="o">+</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">random_number</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">auth</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">.</span><span class="n">encode</span> <span class="n">auth</span><span class="p">,</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="p">,</span> <span class="s1">&#39;HS256&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">]</span> <span class="o">=</span> <span class="n">auth</span>
+</span></span><span class="line"><span class="cl">    <span class="no">ERB</span><span class="o">::</span><span class="kp">new</span><span class="p">(</span><span class="s2">&#34;&lt;script&gt;alert(&#39;</span><span class="si">#{</span><span class="n">params</span><span class="o">[</span><span class="ss">:name</span><span class="o">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="o">]</span><span class="si">}</span><span class="s2"> working successfully!&#39;)&lt;/script&gt;&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">result</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">post</span> <span class="s2">&#34;/shop&#34;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">islogin</span>
+</span></span><span class="line"><span class="cl">  <span class="n">auth</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">.</span><span class="n">decode</span> <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">]</span><span class="p">,</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="p">{</span> <span class="ss">algorithm</span><span class="p">:</span> <span class="s1">&#39;HS256&#39;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="n">auth</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="s2">&#34;jkl&#34;</span><span class="o">]</span> <span class="o">&lt;</span> <span class="no">FLAGPRICE</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">json</span><span class="p">({</span><span class="ss">title</span><span class="p">:</span> <span class="s2">&#34;error&#34;</span><span class="p">,</span><span class="ss">message</span><span class="p">:</span> <span class="s2">&#34;no enough jkl&#34;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">auth</span> <span class="o">&lt;&lt;</span> <span class="p">{</span><span class="ss">flag</span><span class="p">:</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;FLAG&#34;</span><span class="o">]</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">auth</span> <span class="o">=</span> <span class="no">JWT</span><span class="o">.</span><span class="n">encode</span> <span class="n">auth</span><span class="p">,</span><span class="no">ENV</span><span class="o">[</span><span class="s2">&#34;SECRET&#34;</span><span class="o">]</span> <span class="p">,</span> <span class="s1">&#39;HS256&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">]</span> <span class="o">=</span> <span class="n">auth</span>
+</span></span><span class="line"><span class="cl">    <span class="n">json</span><span class="p">({</span><span class="ss">title</span><span class="p">:</span> <span class="s2">&#34;success&#34;</span><span class="p">,</span><span class="ss">message</span><span class="p">:</span> <span class="s2">&#34;jkl is good thing&#34;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">islogin</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="n">cookies</span><span class="o">[</span><span class="ss">:auth</span><span class="o">].</span><span class="n">nil?</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="n">redirect</span> <span class="n">to</span><span class="p">(</span><span class="s1">&#39;/shop&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>ruby源码(这不是欺负人吗)，不会，果断放弃审计，直接下一步--erb模板注入。</p>
 <p>知道了模板注入之后我们可以尝试着审计一下源码，结合以前做题的经验，<code>ENV[&quot;SECRET&quot;]</code>应该是我们注入的目标，<code>#{params[:SECRET].match(/[0-9a-z]+/)}</code>和<code>#{params[:name][0,7]}</code>可能是我们模板注入的利用点，因为这些都是我们可控的字符，百度到erb常用模板注入payload<code>&lt;%=攻击字段%&gt;</code>，但是具体利用还是不会。</p>

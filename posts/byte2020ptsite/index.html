@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -285,11 +285,11 @@ ByteCTF Secret PT Server</p>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># 明文文件1.txt</span>
-<span class="n">亲爱的员工888888</span><span class="err">，</span><span class="n">您自助申请的PT邀请服务已受理完成</span><span class="err">，</span><span class="n">邀请链接在附件压缩包中</span><span class="err">，</span><span class="n">欢迎下次使用</span><span class="err">。</span>
-<span class="c"># 明文攻击</span>
-<span class="p">.\</span><span class="n">rbkcrack</span><span class="p">.</span><span class="n">exe</span> <span class="n">-C</span> <span class="n">crack</span><span class="p">.</span><span class="n">zip</span> <span class="n">-c</span> <span class="n">receipt</span><span class="p">.</span><span class="n">txt</span> <span class="n">-P</span> <span class="n">1</span><span class="p">.</span><span class="n">zip</span> <span class="n">-p</span> <span class="n">1</span><span class="p">.</span><span class="n">txt</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># 明文文件1.txt</span>
+</span></span><span class="line"><span class="cl"><span class="n">亲爱的员工888888</span><span class="err">，</span><span class="n">您自助申请的PT邀请服务已受理完成</span><span class="err">，</span><span class="n">邀请链接在附件压缩包中</span><span class="err">，</span><span class="n">欢迎下次使用</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 明文攻击</span>
+</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">rbkcrack</span><span class="p">.</span><span class="n">exe</span> <span class="n">-C</span> <span class="n">crack</span><span class="p">.</span><span class="n">zip</span> <span class="n">-c</span> <span class="n">receipt</span><span class="p">.</span><span class="n">txt</span> <span class="n">-P</span> <span class="n">1</span><span class="p">.</span><span class="n">zip</span> <span class="n">-p</span> <span class="n">1</span><span class="p">.</span><span class="n">txt</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>解出keys：<code>993382b8 88b4a37d 125ae27e</code>。</p>
 <p>      由于直接使用rbkcrack分离的receipt.txt里面内容是乱码，导致AZPR无法完成明文攻击，在这里试了好久，真TM绝了。</p>
@@ -300,9 +300,9 @@ ByteCTF Secret PT Server</p>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># 还原文件</span>
-<span class="p">.\</span><span class="n">rbkcrack</span><span class="p">.</span><span class="n">exe</span> <span class="n">-C</span> <span class="n">crack</span><span class="p">.</span><span class="n">zip</span> <span class="n">-c</span> <span class="n">receipt</span><span class="p">.</span><span class="n">txt</span> <span class="n">-P</span> <span class="n">1</span><span class="p">.</span><span class="n">zip</span> <span class="n">-p</span> <span class="n">1</span><span class="p">.</span><span class="n">txt</span> <span class="n">-d</span> <span class="n">final</span><span class="p">.</span><span class="n">txt</span> <span class="n">-u</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># 还原文件</span>
+</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">rbkcrack</span><span class="p">.</span><span class="n">exe</span> <span class="n">-C</span> <span class="n">crack</span><span class="p">.</span><span class="n">zip</span> <span class="n">-c</span> <span class="n">receipt</span><span class="p">.</span><span class="n">txt</span> <span class="n">-P</span> <span class="n">1</span><span class="p">.</span><span class="n">zip</span> <span class="n">-p</span> <span class="n">1</span><span class="p">.</span><span class="n">txt</span> <span class="n">-d</span> <span class="n">final</span><span class="p">.</span><span class="n">txt</span> <span class="n">-u</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>没有乱码的文件压缩成zip格式，然后使用AZPR的<strong>明文攻击</strong>获得解密后的压缩包，解压获得</p>
 <p><strong>invitation.txt</strong></p>
@@ -364,16 +364,16 @@ ByteCTF 2020</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 大小</span>
-使用010打开损坏的mp4文件，然后右击查看属性能够看到文件字节数为 <span class="m">117910925</span>
-<span class="c1"># md5值</span>
-<span class="c1">## nfo文件内：</span>
-MD5: BBD6FC7CC3A6E0F3B7260B2CDB24717B
-<span class="c1"># 前256K的md5值</span>
-dd <span class="k">if</span><span class="o">=</span>The.Byte.Flag.First.Part.2020.HD.1080P.x264.mp4.part <span class="nv">of</span><span class="o">=</span>ou.mm <span class="nv">count</span><span class="o">=</span><span class="m">1</span> <span class="nv">bs</span><span class="o">=</span>256k
-md5sum ou.mm
-<span class="c1"># 195249cbf77f5bc45894bb4062b3427d</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 大小</span>
+</span></span><span class="line"><span class="cl">使用010打开损坏的mp4文件，然后右击查看属性能够看到文件字节数为 <span class="m">117910925</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># md5值</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## nfo文件内：</span>
+</span></span><span class="line"><span class="cl">MD5: BBD6FC7CC3A6E0F3B7260B2CDB24717B
+</span></span><span class="line"><span class="cl"><span class="c1"># 前256K的md5值</span>
+</span></span><span class="line"><span class="cl">dd <span class="k">if</span><span class="o">=</span>The.Byte.Flag.First.Part.2020.HD.1080P.x264.mp4.part <span class="nv">of</span><span class="o">=</span>ou.mm <span class="nv">count</span><span class="o">=</span><span class="m">1</span> <span class="nv">bs</span><span class="o">=</span>256k
+</span></span><span class="line"><span class="cl">md5sum ou.mm
+</span></span><span class="line"><span class="cl"><span class="c1"># 195249cbf77f5bc45894bb4062b3427d</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><blockquote>
 <p>文件路径：/The.Byte.Flag.First.Part.2020.HD.1080P.x264.mp4<br>

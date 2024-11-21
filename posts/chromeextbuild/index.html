@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.138.0"><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,20 +17,23 @@
 
     <title>ChromeExt开发从负无穷到0 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
+    <link rel="stylesheet" href="/css/meme.min.cd02b536614fd0f8997bbef766818b80087dadba226adb377b2ef10c06253363.css"/>
 
     
     
-        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
+        
+            <script src="/js/meme.min.93caf51ca41a6ed5e468d2ac73c7cdfe253a756a2192255cf28aaa8da5ea4209.js"></script>
 
+        
     
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'" />
-        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" /></noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" /></noscript>
 
-    <meta name="author" content="tyskill" /><meta name="description" content="前言 前段时间看了@LoRexxar大佬的ChromeExt安全，安全没学会，就是觉得写一个自己的……" />
+    <meta name="author" content="tyskill" /><meta name="description" content="前言 前段时间看了@LoRexxar大佬的ChromeExt安全，安全没学会，就是觉得写一个自己的插件很秀，就趁着自己的新鲜劲还在赶紧入门一下Chrome插件开发
+" />
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
@@ -46,7 +52,7 @@
     
 
     
-    <link rel="canonical" href="https://tyskill.github.io/posts/chromeextbuild/" />
+        <link rel="canonical" href="http://localhost:1313/posts/chromeextbuild/" />
     
 
 <script type="application/ld+json">
@@ -55,9 +61,9 @@
         "@type": "BlogPosting",
         "datePublished": "2021-08-18T00:00:00+00:00",
         "dateModified": "2021-08-24T00:00:00+00:00",
-        "url": "https://tyskill.github.io/posts/chromeextbuild/",
+        "url": "http://localhost:1313/posts/chromeextbuild/",
         "headline": "ChromeExt开发从负无穷到0",
-        "description": "前言 前段时间看了@LoRexxar大佬的ChromeExt安全，安全没学会，就是觉得写一个自己的……",
+        "description": "前言 前段时间看了@LoRexxar大佬的ChromeExt安全，安全没学会，就是觉得写一个自己的插件很秀，就趁着自己的新鲜劲还在赶紧入门一下Chrome插件开发\n",
         "inLanguage" : "zh-CN",
         "articleSection": "posts",
         "wordCount":  1252 ,
@@ -65,7 +71,7 @@
         "author": {
             "@type": "Person",
             "email": "tyskill@foxmail.com",
-            "image": "https://tyskill.github.io/icons/favicon.ico",
+            "image": "http://localhost:1313/icons/favicon.ico",
             "url": "https://tyskill.github.io",
             "name": "tyskill"
         },
@@ -75,13 +81,13 @@
             "name": "tyskillのBlog",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://tyskill.github.io/icons/favicon.ico"
+                "url": "http://localhost:1313/icons/favicon.ico"
             },
-            "url": "https://tyskill.github.io/"
+            "url": "http://localhost:1313/"
         },
         "mainEntityOfPage": {
             "@type": "WebSite",
-            "@id": "https://tyskill.github.io/"
+            "@id": "http://localhost:1313/"
         }
     }
 </script>
@@ -97,10 +103,11 @@
 
 
 <meta property="og:title" content="ChromeExt开发从负无穷到0" />
-<meta property="og:description" content="前言 前段时间看了@LoRexxar大佬的ChromeExt安全，安全没学会，就是觉得写一个自己的……" />
-<meta property="og:url" content="https://tyskill.github.io/posts/chromeextbuild/" />
+<meta property="og:description" content="前言 前段时间看了@LoRexxar大佬的ChromeExt安全，安全没学会，就是觉得写一个自己的插件很秀，就趁着自己的新鲜劲还在赶紧入门一下Chrome插件开发
+" />
+<meta property="og:url" content="http://localhost:1313/posts/chromeextbuild/" />
 <meta property="og:site_name" content="tyskillのBlog" />
-<meta property="og:locale" content="zh" /><meta property="og:image" content="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210828184046.png" />
+<meta property="og:locale" content="zh-cn" /><meta property="og:image" content="https://cdn.jsdelivr.net/gh/tyskill/ImageHost@master/2021/20210828184046.png" />
 <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2021-08-18T00:00:00&#43;00:00" />
     <meta property="article:modified_time" content="2021-08-24T00:00:00&#43;00:00" />
@@ -132,10 +139,7 @@
                     <nav class="nav">
     <ul class="menu" id="menu">
         
-            
-        
-        
-        
+
         
             
                 <li class="menu-item"><a href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon home"><path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/></svg><span class="menu-item-name">首页</span></a>
@@ -207,7 +211,23 @@
             
             
     <main class="main single" id="main">
-    <div class="main-inner">
+
+    
+    
+    <div class="side-toc"data-toc-place="right"><nav class="contents">
+  <h2 id="contents" class="contents-title">目录</h2><ol class="toc">
+    <li><a class="vertical-line" id="contents:前言" href="#前言">&nbsp;&nbsp;前言</a></li>
+    <li><a class="vertical-line" id="contents:概述" href="#概述">&nbsp;&nbsp;概述</a></li>
+    <li><a class="vertical-line" id="contents:manifestjson" href="#manifestjson">&nbsp;&nbsp;manifest.json</a>
+      <ol>
+        <li><a class="vertical-line" id="contents:action" href="#action">&nbsp;&nbsp;action</a></li>
+        <li><a class="vertical-line" id="contents:background" href="#background">&nbsp;&nbsp;background</a></li>
+        <li><a class="vertical-line" id="contents:permissions" href="#permissions">&nbsp;&nbsp;permissions</a></li>
+      </ol>
+    </li>
+    <li><a class="vertical-line" id="contents:参考" href="#参考">&nbsp;&nbsp;参考</a></li>
+  </ol>
+</nav></div><div class="main-inner">
 
         
 
@@ -257,21 +277,8 @@
 
             
 
-            <nav class="contents">
-  <h2 id="contents" class="contents-title">目录</h2><ol class="toc">
-    <li><a id="contents:前言" href="#前言">前言</a></li>
-    <li><a id="contents:概述" href="#概述">概述</a></li>
-    <li><a id="contents:manifestjson" href="#manifestjson">manifest.json</a>
-      <ol>
-        <li><a id="contents:action" href="#action">action</a></li>
-        <li><a id="contents:background" href="#background">background</a></li>
-        <li><a id="contents:permissions" href="#permissions">permissions</a></li>
-      </ol>
-    </li>
-    <li><a id="contents:参考" href="#参考">参考</a></li>
-  </ol>
-</nav><div class="post-body e-content">
-              <h2 id="前言"><a href="#前言" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:前言" class="headings">前言</a></h2>
+            <div class="post-body e-content">
+                <h2 id="前言"><a href="#前言" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:前言" class="headings">前言</a></h2>
 <p>前段时间看了@LoRexxar大佬的ChromeExt安全，安全没学会，就是觉得写一个自己的插件很秀，就趁着自己的新鲜劲还在赶紧入门一下Chrome插件开发</p>
 <h2 id="概述"><a href="#概述" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:概述" class="headings">概述</a></h2>
 <p>简而言之，Chrome插件就是一个配置文件<code>manifest.json</code>加一堆html、css、js文件，虽然由于效率问题也有人选择了vue等js框架来开发，但使用三剑客来开发还是有不少的</p>
@@ -437,7 +444,7 @@
                 
                 
                 
-                <li class="copyright-item link"><span class="copyright-item-text">链接</span>：<a href="/posts/chromeextbuild/" target="_blank" rel="noopener">https://tyskill.github.io/posts/chromeextbuild/</a></li>
+                <li class="copyright-item link"><span class="copyright-item-text">链接</span>：<a href="/posts/chromeextbuild/" target="_blank" rel="noopener">http://localhost:1313/posts/chromeextbuild/</a></li>
             
             <li class="copyright-item license"><span class="copyright-item-text">许可</span>：<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></li>
             
@@ -483,7 +490,7 @@
                     </li>
                 
                     <li class="related-item">
-                        <a href="/posts/linux%E6%8F%90%E6%9D%83/" class="related-link">Linux提权学习记录</a>
+                        <a href="/posts/javaagenttovalveshell/" class="related-link">通过Agent注入Valve型内存马</a>
                     </li>
                 
             </ul>
@@ -555,10 +562,7 @@
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2020–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;tyskill</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div>
-                <div class="busuanzi-site-uv-and-pv">
-                    <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
-                </div>
+            <div class="site-info">©&nbsp;2020–2024&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;tyskill</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></div>
 
             
 
@@ -572,11 +576,11 @@
         
 
         
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha256-gPJfuwTULrEAAcI3X4bALVU/2qBU+QY/TpoD3GO+Exw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
 <script>
     if (typeof renderMathInElement === 'undefined') {
-        var getScript = (options) => {
-            var script = document.createElement('script');
+        const getScript = (options) => {
+            const script = document.createElement('script');
             script.defer = true;
             script.crossOrigin = 'anonymous';
             Object.keys(options).forEach((key) => {
@@ -585,16 +589,13 @@
             document.body.appendChild(script);
         };
         getScript({
-            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js',
-            integrity: 'sha256-YTW9cMncW/ZQMhY69KaUxIa2cPTxV87Uh627Gf5ODUw=',
+            src: 'https:\/\/cdn.jsdelivr.net\/npm\/katex@0.13.0\/dist\/katex.min.js',
             onload: () => {
                 getScript({
-                    src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/mhchem.min.js',
-                    integrity: 'sha256-yzSfYeVsWJ1x+2g8CYHsB/Mn7PcSp8122k5BM4T3Vxw=',
+                    src: 'https:\/\/cdn.jsdelivr.net\/npm\/katex@0.13.0\/dist\/contrib\/mhchem.min.js',
                     onload: () => {
                         getScript({
-                            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js',
-                            integrity: 'sha256-fxJzNV6hpc8tgW8tF0zVobKa71eTCRGTgxFXt1ZpJNM=',
+                            src: 'https:\/\/cdn.jsdelivr.net\/npm\/katex@0.13.0\/dist\/contrib\/auto-render.min.js',
                             onload: () => {
                                 renderKaTex();
                             }
@@ -633,7 +634,10 @@
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>
@@ -645,9 +649,6 @@
 
 
 
-
-    
-        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
 

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.93.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.138.0"><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,20 +17,24 @@
 
     <title>UNCTF2020记录&#43;复现 | tyskillのBlog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.12acc0ca7f74225e7b015741d28e3038696047c86698a0fb722ce126d04c739e.css"/>
+    <link rel="stylesheet" href="/css/meme.min.cd02b536614fd0f8997bbef766818b80087dadba226adb377b2ef10c06253363.css"/>
 
     
     
-        <script src="/js/meme.min.45a777da25d0b1805991f984be4e9ae5e17f3ea94097882dff058256fa34eb17.js"></script>
+        
+            <script src="/js/meme.min.93caf51ca41a6ed5e468d2ac73c7cdfe253a756a2192255cf28aaa8da5ea4209.js"></script>
 
+        
     
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'" />
-        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" /></noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" /></noscript>
 
-    <meta name="author" content="tyskill" /><meta name="description" content="前言 最后几天都没登进去。。。这验证码河里 🐎 Web easy_ssrf 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 &lt;?php echo&#39;&lt;center&gt;&lt;strong&gt;welc0me to 2020UNCTF!!&lt;/strong&gt;&lt;/center&gt;&#39;; highlight_file(__FILE__); $url = $_GET[&#39;url&#39;]; if(preg_match(&#39;/unctf\.com/&#39;,$url)){ if(!preg_match(&#39;/php|file|zip|bzip|zlib|base|data/i&#39;,$url)){……" />
+    <meta name="author" content="tyskill" /><meta name="description" content="前言 最后几天都没登进去。。。这验证码河里 🐎
+Web easy_ssrf 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 &lt;?php echo&#39;&lt;center&gt;&lt;strong&gt;welc0me to 2020UNCTF!!&lt;/strong&gt;&lt;/center&gt;&#39;; highlight_file(__FILE__); $url = $_GET[&#39;url&#39;]; if(preg_match(&#39;/unctf\.com/&#39;,$url)){ if(!preg_match(&#39;/php|file|zip|bzip|zlib|base|data/i&#39;,$url)){ $url=file_get_contents($url); echo($url); }else{ echo(&#39;error!!&#39;); } }else{ echo(&#34;error&#34;); } ?&gt; 本来以为是利用bypass技巧达到php伪协议嵌套一层unctf.com的，但是bypass不了，僵了好久。。。
+" />
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
@@ -46,7 +53,7 @@
     
 
     
-    <link rel="canonical" href="https://tyskill.github.io/posts/unctf2020/" />
+        <link rel="canonical" href="http://localhost:1313/posts/unctf2020/" />
     
 
 <script type="application/ld+json">
@@ -55,17 +62,17 @@
         "@type": "BlogPosting",
         "datePublished": "2020-11-07T00:00:00+00:00",
         "dateModified": "2020-11-10T00:00:00+00:00",
-        "url": "https://tyskill.github.io/posts/unctf2020/",
+        "url": "http://localhost:1313/posts/unctf2020/",
         "headline": "UNCTF2020记录+复现",
-        "description": "前言 最后几天都没登进去。。。这验证码河里 🐎 Web easy_ssrf 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 \u003c?php echo'\u003ccenter\u003e\u003cstrong\u003ewelc0me to 2020UNCTF!!\u003c/strong\u003e\u003c/center\u003e'; highlight_file(__FILE__); $url = $_GET['url']; if(preg_match('/unctf\\.com/',$url)){ if(!preg_match('/php|file|zip|bzip|zlib|base|data/i',$url)){……",
+        "description": "前言 最后几天都没登进去。。。这验证码河里 🐎\nWeb easy_ssrf 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 \u003c?php echo'\u003ccenter\u003e\u003cstrong\u003ewelc0me to 2020UNCTF!!\u003c/strong\u003e\u003c/center\u003e'; highlight_file(__FILE__); $url = $_GET['url']; if(preg_match('/unctf\\.com/',$url)){ if(!preg_match('/php|file|zip|bzip|zlib|base|data/i',$url)){ $url=file_get_contents($url); echo($url); }else{ echo('error!!'); } }else{ echo(\"error\"); } ?\u003e 本来以为是利用bypass技巧达到php伪协议嵌套一层unctf.com的，但是bypass不了，僵了好久。。。\n",
         "inLanguage" : "zh-CN",
         "articleSection": "posts",
-        "wordCount":  7530 ,
-        "image": "https://tyskill.github.io/icons/favicon.ico",
+        "wordCount":  7536 ,
+        "image": "http://localhost:1313/icons/favicon.ico",
         "author": {
             "@type": "Person",
             "email": "tyskill@foxmail.com",
-            "image": "https://tyskill.github.io/icons/favicon.ico",
+            "image": "http://localhost:1313/icons/favicon.ico",
             "url": "https://tyskill.github.io",
             "name": "tyskill"
         },
@@ -75,13 +82,13 @@
             "name": "tyskillのBlog",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://tyskill.github.io/icons/favicon.ico"
+                "url": "http://localhost:1313/icons/favicon.ico"
             },
-            "url": "https://tyskill.github.io/"
+            "url": "http://localhost:1313/"
         },
         "mainEntityOfPage": {
             "@type": "WebSite",
-            "@id": "https://tyskill.github.io/"
+            "@id": "http://localhost:1313/"
         }
     }
 </script>
@@ -96,10 +103,12 @@
 
 
 <meta property="og:title" content="UNCTF2020记录&#43;复现" />
-<meta property="og:description" content="前言 最后几天都没登进去。。。这验证码河里 🐎 Web easy_ssrf 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 &lt;?php echo&#39;&lt;center&gt;&lt;strong&gt;welc0me to 2020UNCTF!!&lt;/strong&gt;&lt;/center&gt;&#39;; highlight_file(__FILE__); $url = $_GET[&#39;url&#39;]; if(preg_match(&#39;/unctf\.com/&#39;,$url)){ if(!preg_match(&#39;/php|file|zip|bzip|zlib|base|data/i&#39;,$url)){……" />
-<meta property="og:url" content="https://tyskill.github.io/posts/unctf2020/" />
+<meta property="og:description" content="前言 最后几天都没登进去。。。这验证码河里 🐎
+Web easy_ssrf 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 &lt;?php echo&#39;&lt;center&gt;&lt;strong&gt;welc0me to 2020UNCTF!!&lt;/strong&gt;&lt;/center&gt;&#39;; highlight_file(__FILE__); $url = $_GET[&#39;url&#39;]; if(preg_match(&#39;/unctf\.com/&#39;,$url)){ if(!preg_match(&#39;/php|file|zip|bzip|zlib|base|data/i&#39;,$url)){ $url=file_get_contents($url); echo($url); }else{ echo(&#39;error!!&#39;); } }else{ echo(&#34;error&#34;); } ?&gt; 本来以为是利用bypass技巧达到php伪协议嵌套一层unctf.com的，但是bypass不了，僵了好久。。。
+" />
+<meta property="og:url" content="http://localhost:1313/posts/unctf2020/" />
 <meta property="og:site_name" content="tyskillのBlog" />
-<meta property="og:locale" content="zh" /><meta property="og:image" content="https://tyskill.github.io/icons/favicon.ico" />
+<meta property="og:locale" content="zh-cn" /><meta property="og:image" content="http://localhost:1313/icons/favicon.ico" />
     <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2020-11-07T00:00:00&#43;00:00" />
     <meta property="article:modified_time" content="2020-11-10T00:00:00&#43;00:00" />
@@ -131,10 +140,7 @@
                     <nav class="nav">
     <ul class="menu" id="menu">
         
-            
-        
-        
-        
+
         
             
                 <li class="menu-item"><a href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon home"><path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/></svg><span class="menu-item-name">首页</span></a>
@@ -206,7 +212,63 @@
             
             
     <main class="main single" id="main">
-    <div class="main-inner">
+
+    
+    
+    <div class="side-toc"data-toc-place="right"><nav class="contents">
+  <h2 id="contents" class="contents-title">目录</h2><ol class="toc">
+    <li><a class="vertical-line" id="contents:easy_ssrf" href="#easy_ssrf">&nbsp;&nbsp;easy_ssrf</a></li>
+    <li><a class="vertical-line" id="contents:easyflask" href="#easyflask">&nbsp;&nbsp;easyflask</a></li>
+    <li><a class="vertical-line" id="contents:ezfind" href="#ezfind">&nbsp;&nbsp;ezfind</a></li>
+    <li><a class="vertical-line" id="contents:babyeval" href="#babyeval">&nbsp;&nbsp;babyeval</a></li>
+    <li><a class="vertical-line" id="contents:easyunserialize" href="#easyunserialize">&nbsp;&nbsp;easyunserialize</a></li>
+    <li><a class="vertical-line" id="contents:ezphp" href="#ezphp">&nbsp;&nbsp;ezphp</a></li>
+    <li><a class="vertical-line" id="contents:easy_upload" href="#easy_upload">&nbsp;&nbsp;easy_upload</a></li>
+    <li><a class="vertical-line" id="contents:uns_online_tools" href="#uns_online_tools">&nbsp;&nbsp;UN's_online_tools</a></li>
+    <li><a class="vertical-line" id="contents:easy_flask2" href="#easy_flask2">&nbsp;&nbsp;easy_flask2</a></li>
+    <li><a class="vertical-line" id="contents:l0vephp" href="#l0vephp">&nbsp;&nbsp;L0vephp</a></li>
+    <li><a class="vertical-line" id="contents:easyphp" href="#easyphp">&nbsp;&nbsp;easyphp</a>
+      <ol>
+        <li><a class="vertical-line" id="contents:条件判断" href="#条件判断">&nbsp;&nbsp;条件判断</a></li>
+        <li><a class="vertical-line" id="contents:php复杂变量" href="#php复杂变量">&nbsp;&nbsp;php复杂变量</a></li>
+      </ol>
+    </li>
+    <li><a class="vertical-line" id="contents:checkin-sql" href="#checkin-sql">&nbsp;&nbsp;checkin-sql</a></li>
+    <li><a class="vertical-line" id="contents:俄罗斯方块人大战奥特曼" href="#俄罗斯方块人大战奥特曼">&nbsp;&nbsp;俄罗斯方块人大战奥特曼</a>
+      <ol>
+        <li><a class="vertical-line" id="contents:预期解" href="#预期解">&nbsp;&nbsp;预期解</a></li>
+        <li><a class="vertical-line" id="contents:非预期解" href="#非预期解">&nbsp;&nbsp;非预期解</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li><a class="vertical-line" id="contents:re_checkin" href="#re_checkin">&nbsp;&nbsp;re_checkin</a></li>
+    <li><a class="vertical-line" id="contents:反编译" href="#反编译">&nbsp;&nbsp;反编译</a></li>
+  </ol>
+
+  <ol>
+    <li><a class="vertical-line" id="contents:easy_rsa" href="#easy_rsa">&nbsp;&nbsp;easy_rsa</a></li>
+    <li><a class="vertical-line" id="contents:简单的rsa" href="#简单的rsa">&nbsp;&nbsp;简单的RSA</a></li>
+  </ol>
+
+  <ol>
+    <li><a class="vertical-line" id="contents:baba_is_you" href="#baba_is_you">&nbsp;&nbsp;baba_is_you</a></li>
+    <li><a class="vertical-line" id="contents:爷的历险记" href="#爷的历险记">&nbsp;&nbsp;爷的历险记</a></li>
+    <li><a class="vertical-line" id="contents:躲猫猫" href="#躲猫猫">&nbsp;&nbsp;躲猫猫</a></li>
+    <li><a class="vertical-line" id="contents:ylb绝密文件" href="#ylb绝密文件">&nbsp;&nbsp;YLB绝密文件</a></li>
+    <li><a class="vertical-line" id="contents:零" href="#零">&nbsp;&nbsp;零</a></li>
+    <li><a class="vertical-line" id="contents:mouse_click" href="#mouse_click">&nbsp;&nbsp;mouse_click</a></li>
+    <li><a class="vertical-line" id="contents:网络深处1" href="#网络深处1">&nbsp;&nbsp;网络深处1</a></li>
+    <li><a class="vertical-line" id="contents:被删除的flag" href="#被删除的flag">&nbsp;&nbsp;被删除的flag</a></li>
+    <li><a class="vertical-line" id="contents:阴阳人编码" href="#阴阳人编码">&nbsp;&nbsp;阴阳人编码</a></li>
+    <li><a class="vertical-line" id="contents:撕坏的二维码" href="#撕坏的二维码">&nbsp;&nbsp;撕坏的二维码</a></li>
+    <li><a class="vertical-line" id="contents:你能破解我的密码吗" href="#你能破解我的密码吗">&nbsp;&nbsp;你能破解我的密码吗</a></li>
+    <li><a class="vertical-line" id="contents:et-msg" href="#et-msg">&nbsp;&nbsp;ET-msg</a></li>
+    <li><a class="vertical-line" id="contents:倒影" href="#倒影">&nbsp;&nbsp;倒影</a></li>
+    <li><a class="vertical-line" id="contents:ez_image" href="#ez_image">&nbsp;&nbsp;EZ_IMAGE</a></li>
+  </ol>
+</nav></div><div class="main-inner">
 
         
 
@@ -244,7 +306,7 @@
     
     
         
-        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;7530</span>
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;7536</span>
     
     
         
@@ -256,61 +318,8 @@
 
             
 
-            <nav class="contents">
-  <h2 id="contents" class="contents-title">目录</h2><ol class="toc">
-    <li><a id="contents:easy_ssrf" href="#easy_ssrf">easy_ssrf</a></li>
-    <li><a id="contents:easyflask" href="#easyflask">easyflask</a></li>
-    <li><a id="contents:ezfind" href="#ezfind">ezfind</a></li>
-    <li><a id="contents:babyeval" href="#babyeval">babyeval</a></li>
-    <li><a id="contents:easyunserialize" href="#easyunserialize">easyunserialize</a></li>
-    <li><a id="contents:ezphp" href="#ezphp">ezphp</a></li>
-    <li><a id="contents:easy_upload" href="#easy_upload">easy_upload</a></li>
-    <li><a id="contents:uns_online_tools" href="#uns_online_tools">UN's_online_tools</a></li>
-    <li><a id="contents:easy_flask2" href="#easy_flask2">easy_flask2</a></li>
-    <li><a id="contents:l0vephp" href="#l0vephp">L0vephp</a></li>
-    <li><a id="contents:easyphp" href="#easyphp">easyphp</a>
-      <ol>
-        <li><a id="contents:条件判断" href="#条件判断">条件判断</a></li>
-        <li><a id="contents:php复杂变量" href="#php复杂变量">php复杂变量</a></li>
-      </ol>
-    </li>
-    <li><a id="contents:checkin-sql" href="#checkin-sql">checkin-sql</a></li>
-    <li><a id="contents:俄罗斯方块人大战奥特曼" href="#俄罗斯方块人大战奥特曼">俄罗斯方块人大战奥特曼</a>
-      <ol>
-        <li><a id="contents:预期解" href="#预期解">预期解</a></li>
-        <li><a id="contents:非预期解" href="#非预期解">非预期解</a></li>
-      </ol>
-    </li>
-  </ol>
-
-  <ol>
-    <li><a id="contents:re_checkin" href="#re_checkin">re_checkin</a></li>
-    <li><a id="contents:反编译" href="#反编译">反编译</a></li>
-  </ol>
-
-  <ol>
-    <li><a id="contents:easy_rsa" href="#easy_rsa">easy_rsa</a></li>
-    <li><a id="contents:简单的rsa" href="#简单的rsa">简单的RSA</a></li>
-  </ol>
-
-  <ol>
-    <li><a id="contents:baba_is_you" href="#baba_is_you">baba_is_you</a></li>
-    <li><a id="contents:爷的历险记" href="#爷的历险记">爷的历险记</a></li>
-    <li><a id="contents:躲猫猫" href="#躲猫猫">躲猫猫</a></li>
-    <li><a id="contents:ylb绝密文件" href="#ylb绝密文件">YLB绝密文件</a></li>
-    <li><a id="contents:零" href="#零">零</a></li>
-    <li><a id="contents:mouse_click" href="#mouse_click">mouse_click</a></li>
-    <li><a id="contents:网络深处1" href="#网络深处1">网络深处1</a></li>
-    <li><a id="contents:被删除的flag" href="#被删除的flag">被删除的flag</a></li>
-    <li><a id="contents:阴阳人编码" href="#阴阳人编码">阴阳人编码</a></li>
-    <li><a id="contents:撕坏的二维码" href="#撕坏的二维码">撕坏的二维码</a></li>
-    <li><a id="contents:你能破解我的密码吗" href="#你能破解我的密码吗">你能破解我的密码吗</a></li>
-    <li><a id="contents:et-msg" href="#et-msg">ET-msg</a></li>
-    <li><a id="contents:倒影" href="#倒影">倒影</a></li>
-    <li><a id="contents:ez_image" href="#ez_image">EZ_IMAGE</a></li>
-  </ol>
-</nav><div class="post-body e-content">
-              <h1 id="前言"><a href="#前言" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:前言" class="headings">前言</a></h1>
+            <div class="post-body e-content">
+                <h1 id="前言"><a href="#前言" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:前言" class="headings">前言</a></h1>
 <p>最后几天都没登进去。。。这验证码河里 🐎</p>
 <h1 id="web"><a href="#web" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:web" class="headings">Web</a></h1>
 <h2 id="easy_ssrf"><a href="#easy_ssrf" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:easy_ssrf" class="headings">easy_ssrf</a></h2>
@@ -776,12 +785,12 @@
 </span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">flag</span> <span class="o">=</span> <span class="s2">&#34;xxx&#34;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&#34;SECRET_KEY&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">secret_key</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&#34;login&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&#34;/login&#34;</span><span class="p">,</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;GET&#34;</span><span class="p">,</span><span class="s2">&#34;POST&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&#34;/login&#34;</span><span class="p">,</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;GET&#34;</span><span class="p">,</span><span class="s2">&#34;POST&#34;</span><span class="p">])</span>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">login</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
@@ -809,14 +818,14 @@
 </span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&#34;login.html&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&#34;/logout&#34;</span><span class="p">,</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;GET&#34;</span><span class="p">,</span><span class="s2">&#34;POST&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&#34;/logout&#34;</span><span class="p">,</span><span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;GET&#34;</span><span class="p">,</span><span class="s2">&#34;POST&#34;</span><span class="p">])</span>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">logout</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="n">resp</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="s2">&#34;success&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">resp</span><span class="o">.</span><span class="n">delete_cookie</span><span class="p">(</span><span class="s2">&#34;session&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">resp</span><span class="o">.</span><span class="n">delete_cookie</span><span class="p">(</span><span class="s2">&#34;pkl&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">resp</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&#34;/source&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&#34;/source&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">source</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;code.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
@@ -1446,7 +1455,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">python</span> <span class="n">pyinstxtractor</span><span class="p">.</span><span class="n">py</span> <span class="n">run</span><span class="p">.</span><span class="n">exe</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">python</span> <span class="n">pyinstxtractor</span><span class="p">.</span><span class="py">py</span> <span class="n">run</span><span class="p">.</span><span class="py">exe</span>
 </span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>通过<a href="https://github.com/extremecoders-re/pyinstxtractor" target="_blank" rel="noopener">pyinstxtractor.py</a>获得拆解的pyc文件，然后使用<a href="https://github.com/rocky/python-uncompyle6/" target="_blank" rel="noopener">uncompyle6</a>反编译run.pyc(反编译前修复一下字节码，照着struct.pyc的前八个字节码修改就行)。</p>
@@ -1455,7 +1464,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">uncompyle6</span><span class="p">.</span><span class="n">exe</span> <span class="n">run</span><span class="p">.</span><span class="n">pyc</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">uncompyle6</span><span class="p">.</span><span class="py">exe</span> <span class="n">run</span><span class="p">.</span><span class="py">pyc</span>
 </span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>获得<code>run.py</code></p>
@@ -1634,7 +1643,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">john</span><span class="p">.</span><span class="n">exe</span> <span class="p">-</span><span class="n">-show</span> <span class="n">shadow</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">john</span><span class="p">.</span><span class="py">exe</span> <span class="p">-</span><span class="n">-show</span> <span class="n">shadow</span>
 </span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>获得guguguguji密码</p>
@@ -1712,7 +1721,7 @@
                 
                 
                 
-                <li class="copyright-item link"><span class="copyright-item-text">链接</span>：<a href="/posts/unctf2020/" target="_blank" rel="noopener">https://tyskill.github.io/posts/unctf2020/</a></li>
+                <li class="copyright-item link"><span class="copyright-item-text">链接</span>：<a href="/posts/unctf2020/" target="_blank" rel="noopener">http://localhost:1313/posts/unctf2020/</a></li>
             
             <li class="copyright-item license"><span class="copyright-item-text">许可</span>：<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></li>
             
@@ -1742,10 +1751,6 @@
             <ul class="related-list">
                 
                     <li class="related-item">
-                        <a href="/posts/dfjk2020%E9%83%A8%E5%88%86wp/" class="related-link">巅峰极客2020部分wp</a>
-                    </li>
-                
-                    <li class="related-item">
                         <a href="/posts/swpu2020/" class="related-link">SWPU2020</a>
                     </li>
                 
@@ -1754,11 +1759,15 @@
                     </li>
                 
                     <li class="related-item">
-                        <a href="/posts/ctfshow%E5%8E%9F%E8%B0%85%E6%9D%AF/" class="related-link">CTFshow-原谅杯</a>
+                        <a href="/posts/byte2020scrapy/" class="related-link">ByteCTF2020-easy_scrapy复现</a>
                     </li>
                 
                     <li class="related-item">
-                        <a href="/posts/byte2020scrapy/" class="related-link">ByteCTF2020-easy_scrapy复现</a>
+                        <a href="/posts/n1ctf2020/" class="related-link">N1CTF2020赛后复现</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/ciscn2021/" class="related-link">CISCN2021部分writeup及复现</a>
                     </li>
                 
             </ul>
@@ -1897,7 +1906,7 @@
         <ul class="post-nav">
             
                 <li class="post-nav-prev">
-                    <a href="/posts/ctfshow%E5%8E%9F%E8%B0%85%E6%9D%AF/" rel="prev">&lt; CTFshow-原谅杯</a>
+                    <a href="/posts/nctf2020/" rel="prev">&lt; NCTF2020记录+复现</a>
                 </li>
             
             
@@ -1926,10 +1935,7 @@
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2020–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;tyskill</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div>
-                <div class="busuanzi-site-uv-and-pv">
-                    <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
-                </div>
+            <div class="site-info">©&nbsp;2020–2024&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;tyskill</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></div>
 
             
 
@@ -1943,11 +1949,11 @@
         
 
         
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha256-gPJfuwTULrEAAcI3X4bALVU/2qBU+QY/TpoD3GO+Exw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
 <script>
     if (typeof renderMathInElement === 'undefined') {
-        var getScript = (options) => {
-            var script = document.createElement('script');
+        const getScript = (options) => {
+            const script = document.createElement('script');
             script.defer = true;
             script.crossOrigin = 'anonymous';
             Object.keys(options).forEach((key) => {
@@ -1956,16 +1962,13 @@
             document.body.appendChild(script);
         };
         getScript({
-            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js',
-            integrity: 'sha256-YTW9cMncW/ZQMhY69KaUxIa2cPTxV87Uh627Gf5ODUw=',
+            src: 'https:\/\/cdn.jsdelivr.net\/npm\/katex@0.13.0\/dist\/katex.min.js',
             onload: () => {
                 getScript({
-                    src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/mhchem.min.js',
-                    integrity: 'sha256-yzSfYeVsWJ1x+2g8CYHsB/Mn7PcSp8122k5BM4T3Vxw=',
+                    src: 'https:\/\/cdn.jsdelivr.net\/npm\/katex@0.13.0\/dist\/contrib\/mhchem.min.js',
                     onload: () => {
                         getScript({
-                            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js',
-                            integrity: 'sha256-fxJzNV6hpc8tgW8tF0zVobKa71eTCRGTgxFXt1ZpJNM=',
+                            src: 'https:\/\/cdn.jsdelivr.net\/npm\/katex@0.13.0\/dist\/contrib\/auto-render.min.js',
                             onload: () => {
                                 renderKaTex();
                             }
@@ -2004,7 +2007,10 @@
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>
@@ -2016,9 +2022,6 @@
 
 
 
-
-    
-        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
 
